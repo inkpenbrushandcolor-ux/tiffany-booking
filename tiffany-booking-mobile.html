@@ -208,6 +208,33 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 .sheet .btn+.btn{margin-top:10px}
 .sheet .mission-card{margin-bottom:14px}
 @keyframes up{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.mlist{display:flex;flex-direction:column;gap:8px}
+.mopt{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line-2);background:transparent;text-align:left;cursor:pointer;transition:background .12s,border-color .12s,transform .12s}
+.mopt .mn{flex:0 0 auto;font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--gold-hi);padding:3px 8px;border-radius:999px;border:1px solid rgba(241,215,150,.35)}
+.mopt .mt{flex:1;min-width:0;font-size:14px}
+.mopt .mk{flex:0 0 auto;color:var(--gold-hi);opacity:0;display:grid}
+.mopt.on{background:var(--surface-2);border-color:var(--gold)}
+.mopt.on .mk{opacity:1}
+.mopt.hot{background:rgba(241,215,150,.2);border-color:var(--gold-hi);transform:scale(1.02)}
+.mopt.done .mt::after{content:attr(data-done);margin-left:6px;font-size:11px;color:var(--faint)}
+.mopt.landed{animation:land .6s ease-out}
+@keyframes land{0%{box-shadow:0 0 0 0 rgba(241,215,150,.75)}100%{box-shadow:0 0 0 14px rgba(241,215,150,0)}}
+.go-in{animation:dropin .3s ease-out}
+@keyframes dropin{from{transform:translateY(-10px);opacity:0}to{transform:none;opacity:1}}
+.promo-tag{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:5px 11px;border-radius:999px;border:1px dashed var(--gold);background:rgba(212,176,98,.1);color:var(--gold-hi);font-size:12px;font-weight:600;cursor:pointer}
+.pl-item{padding:14px;border-radius:14px;border:1px solid var(--line-2);background:var(--surface-2);margin-bottom:10px}
+.pl-item.fit{border-color:var(--ok)}
+.pl-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px}
+.pl-h{font-weight:600;font-size:15px}
+.pl-code{flex:0 0 auto;font:600 13px ui-monospace,Menlo,monospace;letter-spacing:.06em;padding:3px 8px;border-radius:8px;background:rgba(241,215,150,.14);color:var(--gold-hi)}
+.pl-s{font-size:13px;color:var(--muted);margin:2px 0 6px}
+.pl-fit{font-size:12px;color:var(--faint);margin-bottom:6px}
+.pl-st{font-size:12px;margin-bottom:10px}
+.pl-st.ok{color:var(--ok)}.pl-st.no{color:var(--warn)}
+.pl-item .btn{padding:10px 14px;font-size:14px}
+.r-who{text-align:center;margin:-6px 0 14px;font-size:14px;color:var(--muted)}
+.r-who b{color:var(--text)}
+@media (prefers-reduced-motion:reduce){.mopt,.mopt.landed,.go-in{animation:none;transition:none}}
 @media (prefers-reduced-motion:reduce){.sheet{animation:none}.pc-dots button::after{transition:none}}
 .sh-ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;margin:4px 0 12px;background:rgba(255,145,145,.14);color:var(--danger)}
 .sug{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line-2);background:var(--surface-2);margin-bottom:8px;cursor:pointer;text-align:left}
@@ -366,11 +393,11 @@ pr_EARLY15_h:'จองล่วงหน้า 7 วัน ลด 15%',pr_EARLY
 pr_SAT1630_h:'รอบพิเศษเสาร์ 16:30 ดริงก์ฟรี',pr_SAT1630_s:'เวลคัมดริงก์ฟรี 1 แก้วต่อที่นั่ง สั่งในขั้นอาหารแล้วระบบหักให้',
 pr_GROUP4_h:'มา 4 คนขึ้นไป ลด 10%',pr_GROUP4_s:'ลดทั้งค่าบัตรและอาหาร เมื่อจองตั้งแต่ 4 ที่นั่ง',
 pr_DINE20_h:'ดินเนอร์ + โชว์ บุฟเฟต์ลด 20%',pr_DINE20_s:'ลดค่าบุฟเฟต์ Thai Marché ทุกวัน ยกเว้นวันอังคาร',
-pr_MEZZ990_h:'Mezzanine วันธรรมดา ที่นั่งละ ฿990',pr_MEZZ990_s:'วันจันทร์ถึงพฤหัสบดี จากปกติ ฿1,200',
+pr_MEZZ990_h:'Mezzanine วันธรรมดา ที่นั่งละ ฿990',pr_MEZZ990_s:'วันจันทร์ถึงพฤหัสบดี จากปกติ ฿1,200',pr_EARLY15_fit:'คนที่วางแผนเที่ยวล่วงหน้า',pr_SAT1630_fit:'ครอบครัวหรือเพื่อนที่มาดูรอบพิเศษวันเสาร์',pr_GROUP4_fit:'กลุ่มเพื่อน ครอบครัว หรือกรุ๊ปทัวร์ 4 คนขึ้นไป',pr_DINE20_fit:'คนที่อยากกินดินเนอร์ก่อนดูโชว์',pr_MEZZ990_fit:'คนที่อยากประหยัด มาวันจันทร์ถึงพฤหัสบดี',pl_tag:'โปรโม',pl_title:'โค้ดส่วนลดทั้งหมด',pl_sub:'โค้ดจากแบนเนอร์โปรโมชั่น ดูว่าโค้ดไหนเหมาะกับการจองของคุณ แล้วกด "ใช้โค้ดนี้"',pl_fit:'เหมาะกับ',pl_ok:'ใช้ได้กับการจองนี้ · ลด ฿{a}',pl_no:'ยังใช้ไม่ได้: {r}',pl_use:'ใช้โค้ดนี้',
 rs_early:'วันแสดงต้องห่างจากวันนี้ 7 วันขึ้นไป',rs_sat:'ใช้ได้เฉพาะรอบพิเศษวันเสาร์ 16:30',rs_sat_drink:'เพิ่มเวลคัมดริงก์ในขั้นอาหารก่อน',rs_group:'ต้องจอง 4 ที่นั่งขึ้นไป',rs_dine:'เพิ่มบุฟเฟต์ Thai Marché ในขั้นอาหารก่อน',rs_mezz_day:'ใช้ได้เฉพาะวันจันทร์ถึงพฤหัสบดี',rs_mezz_zone:'ต้องมีที่นั่งโซน Mezzanine',
 contact:'ข้อมูลผู้จอง',contact_sub:'ไม่ต้องสมัครสมาชิก ระบบจะส่งตั๋วไปที่อีเมลนี้',
 f_name:'ชื่อ-นามสกุล',f_email:'อีเมล',f_phone:'เบอร์โทรศัพท์',f_nat:'สัญชาติ (ไม่บังคับ)',nat_ph:'เลือกสัญชาติ',
-e_name:'กรุณากรอกชื่อ-นามสกุล',e_email:'กรุณากรอกอีเมลให้ถูกต้อง',e_phone:'กรุณากรอกเบอร์โทร 8–12 หลัก',e_agree:'กรุณายอมรับเงื่อนไขก่อนชำระเงิน',fix_form:'กรุณาตรวจข้อมูลที่ไฮไลต์ไว้',
+e_name:'กรุณากรอกชื่อ-นามสกุล',e_email:'กรุณากรอกอีเมลให้ถูกต้อง',e_phone:'เบอร์มือถือไม่ถูกต้อง สำหรับ {cc} ใช้รูปแบบ {x}',h_name:'ระบบต้นแบบ ใส่ชื่อสมมติได้',ph_name:'เช่น สมใจ ใจดี',h_email:'ใส่อีเมลสมมติได้ แต่ต้องอยู่ในรูปแบบอีเมล',ph_email:'เช่น name@example.com',h_phone:'ใส่เบอร์สมมติได้ แต่จำนวนหลักต้องถูกต้องตามเบอร์มือถือ เช่น {x}',e_agree:'กรุณายอมรับเงื่อนไขก่อนชำระเงิน',fix_form:'กรุณาตรวจข้อมูลที่ไฮไลต์ไว้',
 pay_method:'ช่องทางชำระเงิน',pm_card:'บัตรเครดิต / เดบิต',pm_card_sub:'Visa · Mastercard · JCB · UnionPay',pm_pp:'พร้อมเพย์ QR',pm_pp_sub:'สแกนจ่ายผ่านแอปธนาคารไทย',pm_ali:'Alipay',pm_ali_sub:'支付宝',pm_wc:'WeChat Pay',pm_wc_sub:'微信支付',
 agree:'ฉันยอมรับเงื่อนไขการจองและนโยบายความเป็นส่วนตัว',btn_pay:'ชำระเงิน',
 gw_tag:'ต้นแบบ',gw_title:'หน้าชำระเงินจำลอง',gw_note:'ในระบบจริง ขั้นนี้จะส่งต่อไปยังผู้ให้บริการรับชำระเงิน',gw_qr_note:'QR ตัวอย่าง ใช้จ่ายจริงไม่ได้',gw_ok:'จำลอง: จ่ายสำเร็จ',gw_fail:'จำลอง: จ่ายไม่สำเร็จ',
@@ -385,8 +412,8 @@ tips_title:'ก่อนวันแสดง',tip1:'มาถึงก่อน
 book_again:'จองรอบอื่นเพิ่ม',proto_toast:'ต้นแบบ: ปุ่มนี้ยังไม่ทำงานจริง',
 g_eyebrow:'Usability test · ต้นแบบ',g_title:'ภารกิจจองตั๋ว Tiffany’s Show',g_intro:'ช่วยเราทดสอบระบบจองตั๋วแบบใหม่ คุณจะได้โจทย์ 1 ข้อ แล้วจองตั๋วให้ตรงตามโจทย์ให้เร็วที่สุด',
 g_how1:'อ่านโจทย์ แล้วกดเริ่มจับเวลา',g_how2:'จองตามโจทย์จนได้ตั๋ว ระบบจับเวลาให้อัตโนมัติ',g_how3:'ตอบแบบประเมินสั้นๆ 6 ข้อ แล้วส่งผลให้ผู้จัดทดสอบ',
-g_nick:'ชื่อเล่นของคุณ',g_nick_ph:'เช่น ปอ',g_nick_hint:'ใช้แยกผลของแต่ละคน ไม่บังคับ',g_pick:'เลือกโจทย์',g_random:'สุ่มให้',g_m:'ภารกิจ {n}',
-g_get:'รับโจทย์',g_free:'ลองระบบจองแบบอิสระ ไม่จับเวลา',g_dash:'ดูผลการทดสอบ',g_note:'นี่คือระบบต้นแบบ ไม่มีการจองหรือเก็บเงินจริง ข้อมูลในฟอร์มใส่เป็นข้อมูลสมมุติได้ และระบบไม่เก็บไว้',
+g_nick:'ชื่อเล่นของคุณ',g_nick_ph:'เช่น ปอ',g_nick_hint:'ชื่อนี้จะขึ้นบนรูปผลทดสอบที่คุณส่งให้เรา',e_nick:'กรุณากรอกชื่อเล่นก่อนเริ่มเล่น',g_pick_hint:'กดปุ่ม "เลือกภารกิจ" ให้ระบบสุ่มให้ หรือแตะชื่อภารกิจเพื่อเลือกเอง',g_spin:'เลือกภารกิจ',g_spinning:'กำลังสุ่มภารกิจ…',g_go:'เริ่มภารกิจ',g_done_tag:'เล่นแล้ว',r_mission:'ภารกิจที่ได้รับ',r_via_spin:'ได้จากการสุ่ม',r_via_self:'เลือกเอง',g_pick:'ภารกิจทั้ง 5 แบบ',g_random:'สุ่มให้',g_m:'ภารกิจ {n}',
+g_get:'เริ่มเล่น',g_free:'ลองระบบจองแบบอิสระ ไม่จับเวลา',g_dash:'ดูผลการทดสอบ',g_note:'นี่คือระบบต้นแบบ ไม่มีการจองหรือเก็บเงินจริง ข้อมูลในฟอร์มใส่เป็นข้อมูลสมมุติได้ และระบบไม่เก็บไว้',
 g_todo:'สิ่งที่ต้องทำให้ครบ',g_timer_note:'เวลาเริ่มนับเมื่อกดปุ่มด้านล่าง และหยุดเมื่อจองสำเร็จ ระหว่างจองกดปุ่ม "โจทย์" ด้านบนเพื่ออ่านอีกครั้งได้ตลอด',g_start:'เริ่มจับเวลา',
 g_view:'โจทย์',g_giveup:'ทำต่อไม่ได้ ข้ามไปทำแบบประเมิน',g_done_bar:'ภารกิจเสร็จใน {t}',g_to_survey:'ทำแบบประเมิน',
 mA_t:'ครอบครัวเที่ยววันเสาร์',mA_s:'คุณพาครอบครัว 4 คนมาเที่ยวพัทยา อยากดูรอบพิเศษ 16:30 ของ{d} และอยากได้เวลคัมดริงก์ฟรีจากโปรโมชั่น',
@@ -394,7 +421,7 @@ mA_1:'รอบพิเศษ 16:30 ของ{d}',mA_2:'VIP Gold 4 ที่น
 mB_t:'เซอร์ไพรส์วันครบรอบ',mB_s:'คุณจะพาแฟนดูโชว์ในวันครบรอบ ตั้งใจดูรอบ 19:30 ของ{d} ถ้ารอบนั้นเต็ม ให้เลือกรอบถัดไปของวันเดียวกัน',
 mB_1:'{d} รอบถัดจาก 19:30',mB_2:'VIP Diamond 2 ที่นั่งติดกัน',mB_3:'บุฟเฟต์ Thai Marché 2 ที่',mB_4:'สปาร์กลิงไวน์ 2 แก้ว',mB_5:'ใช้โปรโมชั่นลดค่าบุฟเฟต์',mB_6:'จ่ายด้วยบัตรเครดิต',mB_7:'ครั้งแรกให้กด "จำลอง: จ่ายไม่สำเร็จ" แล้วจ่ายใหม่จนสำเร็จ',
 mC_t:'ไกด์พากรุ๊ปทัวร์จีน',mC_s:'คุณเป็นไกด์พานักท่องเที่ยวจีน 5 คนที่มีงบจำกัด ลูกทัวร์อ่านภาษาไทยไม่ได้ จึงต้องจองในหน้าภาษาอังกฤษ',
-mC_1:'เปลี่ยนเว็บเป็นภาษาอังกฤษก่อนจอง',mC_2:'{d} รอบไหนก็ได้',mC_3:'Mezzanine 5 ที่นั่ง',mC_4:'ทั้ง 5 ที่นั่งติดกันในแถวเดียว',mC_5:'ไม่สั่งอาหารและเครื่องดื่ม',mC_6:'ใช้โปรโมชั่นที่ประหยัดที่สุดสำหรับกลุ่มนี้',mC_7:'สัญชาติ Chinese',mC_8:'จ่ายผ่าน Alipay',
+mC_1:'เปลี่ยนเว็บเป็นภาษาอังกฤษก่อนจอง',mC_2:'{d} รอบไหนก็ได้',mC_3:'Mezzanine 5 ที่นั่ง',mC_4:'ทั้ง 5 ที่นั่งติดกันในแถวเดียว',mC_5:'ไม่สั่งอาหารและเครื่องดื่ม',mC_6:'ใช้โปรโมชั่นที่ประหยัดที่สุดสำหรับกลุ่มนี้',mC_7:'สัญชาติ Chinese',mC_8:'จ่ายผ่าน Alipay',mD_t:'คู่ฮันนีมูนจากอินเดีย',mD_s:'คุณเป็นคู่แต่งงานใหม่จากอินเดีย วางแผนมาฮันนีมูนที่พัทยา อยากดูโชว์รอบ 21:00 ของ{d} และอยากได้ส่วนลดเพราะจองล่วงหน้า',mD_1:'{d} รอบ 21:00',mD_2:'VIP Silver 2 ที่นั่งติดกัน',mD_3:'สปาร์กลิงไวน์ 2 แก้ว',mD_4:'ใช้โปรโมชั่นจองล่วงหน้า',mD_5:'สัญชาติ Indian',mD_6:'จ่ายด้วยบัตรเครดิต',mE_t:'แก๊งเพื่อนจากเกาหลี',mE_s:'คุณมากับเพื่อนชาวเกาหลีรวม 6 คน อยากดูรอบ 19:30 ของ{d} นั่งติดกันทั้งแก๊งในโซน VIP Gold พร้อมชุดขนมคนละชุด และใช้โปรที่คุ้มที่สุดสำหรับกลุ่ม',mE_1:'{d} รอบ 19:30',mE_2:'VIP Gold 6 ที่นั่ง',mE_3:'ทั้ง 6 ที่นั่งติดกันในแถวเดียว',mE_4:'ชุดขนมและน้ำอัดลม 6 ชุด',mE_5:'ใช้โปรโมชั่นสำหรับกลุ่ม',mE_6:'สัญชาติ Korean',mE_7:'จ่ายด้วยบัตรเครดิต',
 s_title:'แบบประเมินสั้นๆ',s_sub:'6 ข้อ ใช้เวลาไม่ถึง 1 นาที',s_q1:'เลือกวันและรอบการแสดงได้ง่ายแค่ไหน',s_q2:'เลือกที่นั่งบนผังได้ง่ายแค่ไหน',s_q3:'โปรโมชั่นและราคาเข้าใจได้ชัดเจนแค่ไหน',s_q4:'กรอกข้อมูลและชำระเงินได้ง่ายแค่ไหน',s_q5:'โดยรวมพอใจกับการจองครั้งนี้แค่ไหน',
 s_q6:'ข้อเสนอแนะเพิ่มเติม',s_q6_ph:'ตรงไหนที่สับสน หรืออยากให้ปรับอะไร',s_lo_easy:'ยากมาก',s_hi_easy:'ง่ายมาก',s_lo_clear:'ไม่ชัดเลย',s_hi_clear:'ชัดมาก',s_lo_sat:'ไม่พอใจ',s_hi_sat:'พอใจมาก',
 s_err:'เลือกคะแนนข้อนี้ก่อน',s_missing:'ยังเหลือ {n} ข้อที่ยังไม่ได้ให้คะแนน',s_submit:'ส่งแบบประเมิน',
@@ -434,11 +461,11 @@ pr_EARLY15_h:'Book 7 days ahead, 15% off',pr_EARLY15_s:'On tickets in every zone
 pr_SAT1630_h:'Saturday 16:30 special: free drink',pr_SAT1630_s:'One free welcome drink per seat. Add the drinks in the food step.',
 pr_GROUP4_h:'Groups of 4 or more, 10% off',pr_GROUP4_s:'On tickets and food, when you book 4 seats or more',
 pr_DINE20_h:'Dinner + show, buffet 20% off',pr_DINE20_s:'On the Thai Marché buffet, every day except Tuesday',
-pr_MEZZ990_h:'Weekday Mezzanine ฿990 a seat',pr_MEZZ990_s:'Monday to Thursday, normally ฿1,200',
+pr_MEZZ990_h:'Weekday Mezzanine ฿990 a seat',pr_MEZZ990_s:'Monday to Thursday, normally ฿1,200',pr_EARLY15_fit:'Planners booking a week or more ahead',pr_SAT1630_fit:'Families and friends at the Saturday special show',pr_GROUP4_fit:'Friends, families or tour groups of 4 or more',pr_DINE20_fit:'Guests who want dinner before the show',pr_MEZZ990_fit:'Budget travellers, Monday to Thursday',pl_tag:'Promos',pl_title:'All promo codes',pl_sub:'Codes from the promotion banners. See which one suits your booking, then tap "Use this code".',pl_fit:'Best for',pl_ok:'Works for this booking · saves ฿{a}',pl_no:'Not yet: {r}',pl_use:'Use this code',
 rs_early:'the show must be 7 or more days from today',rs_sat:'only for the Saturday 16:30 special show',rs_sat_drink:'add welcome drinks in the food step first',rs_group:'book 4 seats or more',rs_dine:'add the Thai Marché buffet in the food step first',rs_mezz_day:'only Monday to Thursday',rs_mezz_zone:'needs Mezzanine seats',
 contact:'Your details',contact_sub:'No account needed. We send your ticket to this email.',
 f_name:'Full name',f_email:'Email',f_phone:'Phone number',f_nat:'Nationality (optional)',nat_ph:'Select nationality',
-e_name:'Enter your full name',e_email:'Enter a valid email',e_phone:'Enter a phone number of 8–12 digits',e_agree:'Please accept the terms before paying',fix_form:'Please check the highlighted fields',
+e_name:'Enter your full name',e_email:'Enter a valid email',e_phone:'Not a valid mobile number for {cc}. Use the format {x}',h_name:'This is a prototype. Any made-up name is fine.',ph_name:'e.g. Somjai Jaidee',h_email:'A made-up email is fine, but it must look like an email',ph_email:'e.g. name@example.com',h_phone:'A made-up number is fine, but it needs the right number of digits for a mobile, e.g. {x}',e_agree:'Please accept the terms before paying',fix_form:'Please check the highlighted fields',
 pay_method:'Payment method',pm_card:'Credit / debit card',pm_card_sub:'Visa · Mastercard · JCB · UnionPay',pm_pp:'PromptPay QR',pm_pp_sub:'Scan with a Thai banking app',pm_ali:'Alipay',pm_ali_sub:'支付宝',pm_wc:'WeChat Pay',pm_wc_sub:'微信支付',
 agree:'I accept the booking terms and privacy policy',btn_pay:'Pay',
 gw_tag:'Prototype',gw_title:'Simulated payment page',gw_note:'In the real system this step hands off to the payment provider',gw_qr_note:'Sample QR, cannot be used to pay',gw_ok:'Simulate: payment succeeds',gw_fail:'Simulate: payment fails',
@@ -453,8 +480,8 @@ tips_title:'Before the show',tip1:'Arrive at least 30 minutes before showtime',t
 book_again:'Book another show',proto_toast:'Prototype: this button does nothing yet',
 g_eyebrow:'Usability test · Prototype',g_title:'The Tiffany’s Show booking challenge',g_intro:'Help us test a new ticket booking flow. You get one mission, then book tickets that match it as fast as you can.',
 g_how1:'Read the mission and start the timer',g_how2:'Book until you get the ticket. The timer runs on its own',g_how3:'Answer 6 short questions and send your result',
-g_nick:'Your nickname',g_nick_ph:'e.g. Po',g_nick_hint:'Helps us tell results apart. Optional.',g_pick:'Mission',g_random:'Random',g_m:'Mission {n}',
-g_get:'Get my mission',g_free:'Try the booking flow freely, no timer',g_dash:'View test results',g_note:'This is a prototype. Nothing is really booked or charged. Use made-up details in the form; they are not kept.',
+g_nick:'Your nickname',g_nick_ph:'e.g. Po',g_nick_hint:'This name appears on the result image you send us.',e_nick:'Enter your nickname to start',g_pick_hint:'Tap "Pick a mission" to draw one at random, or tap a mission to choose it yourself.',g_spin:'Pick a mission',g_spinning:'Drawing a mission…',g_go:'Start mission',g_done_tag:'played',r_mission:'Mission',r_via_spin:'Drawn at random',r_via_self:'Chosen by tester',g_pick:'The 5 missions',g_random:'Random',g_m:'Mission {n}',
+g_get:'Start playing',g_free:'Try the booking flow freely, no timer',g_dash:'View test results',g_note:'This is a prototype. Nothing is really booked or charged. Use made-up details in the form; they are not kept.',
 g_todo:'To complete',g_timer_note:'The timer starts when you tap the button below and stops when your booking is confirmed. Tap "Mission" at the top to read it again any time.',g_start:'Start the timer',
 g_view:'Mission',g_giveup:'I’m stuck, skip to the survey',g_done_bar:'Mission done in {t}',g_to_survey:'Answer the survey',
 mA_t:'Saturday family trip',mA_s:'You bring a family of 4 to Pattaya. You want the 16:30 special show on {d}, and free welcome drinks from a promotion.',
@@ -462,7 +489,7 @@ mA_1:'16:30 special show on {d}',mA_2:'4 seats in VIP Gold',mA_3:'All 4 seats ne
 mB_t:'Anniversary surprise',mB_s:'You are taking your partner to the show for your anniversary. You plan on the 19:30 show on {d}. If it is full, take the next show that same day.',
 mB_1:'{d}, the show after 19:30',mB_2:'2 VIP Diamond seats next to each other',mB_3:'2 Thai Marché buffets',mB_4:'2 glasses of sparkling wine',mB_5:'The promotion that discounts the buffet',mB_6:'Pay by credit card',mB_7:'First tap "Simulate: payment fails", then pay again until it works',
 mC_t:'Tour guide with a Chinese group',mC_s:'You guide 5 Chinese tourists on a tight budget. They can’t read Thai, so you book on the English site.',
-mC_1:'Switch the site to English before booking',mC_2:'{d}, any showtime',mC_3:'5 seats in Mezzanine',mC_4:'All 5 seats next to each other in one row',mC_5:'No food or drinks',mC_6:'The cheapest promotion for this group',mC_7:'Nationality: Chinese',mC_8:'Pay with Alipay',
+mC_1:'Switch the site to English before booking',mC_2:'{d}, any showtime',mC_3:'5 seats in Mezzanine',mC_4:'All 5 seats next to each other in one row',mC_5:'No food or drinks',mC_6:'The cheapest promotion for this group',mC_7:'Nationality: Chinese',mC_8:'Pay with Alipay',mD_t:'Honeymoon couple from India',mD_s:'You are newlyweds from India planning a honeymoon in Pattaya. You want the 21:00 show on {d}, and a discount for booking early.',mD_1:'21:00 show on {d}',mD_2:'2 seats next to each other in VIP Silver',mD_3:'2 glasses of sparkling wine',mD_4:'The early-booking promotion',mD_5:'Nationality: Indian',mD_6:'Pay by credit card',mE_t:'Friends trip from Korea',mE_s:'You travel with friends from Korea, 6 people in all. You want the 19:30 show on {d}, everyone together in VIP Gold, a snack set each, and the best promotion for a group.',mE_1:'19:30 show on {d}',mE_2:'6 seats in VIP Gold',mE_3:'All 6 seats next to each other in one row',mE_4:'6 snack & soft drink sets',mE_5:'The group promotion',mE_6:'Nationality: Korean',mE_7:'Pay by credit card',
 s_title:'Quick survey',s_sub:'6 questions, under a minute',s_q1:'How easy was it to choose the date and showtime?',s_q2:'How easy was it to choose seats on the map?',s_q3:'How clear were the promotions and prices?',s_q4:'How easy was it to fill in your details and pay?',s_q5:'Overall, how satisfied are you with this booking?',
 s_q6:'Any other suggestions?',s_q6_ph:'What was confusing, or what would you change?',s_lo_easy:'Very hard',s_hi_easy:'Very easy',s_lo_clear:'Not clear',s_hi_clear:'Very clear',s_lo_sat:'Not satisfied',s_hi_sat:'Very satisfied',
 s_err:'Pick a score for this question',s_missing:'{n} questions still need a score',s_submit:'Send survey',
@@ -500,7 +527,7 @@ dish:svg('<path d="M3 15h18M5 15a7 7 0 0 1 14 0M12 6V5M4 19h16"/>',22),wine:svg(
 card:svg('<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/>',22),qr:svg('<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2M20 14v.01M18 18h2v2M14 20h2"/>',22),
 wallet:svg('<path d="M4 7a2 2 0 0 1 2-2h11v4"/><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M16 13h2"/>',22),
 flag:svg('<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',15),img:svg('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>',18),copy:svg('<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',18),
-chart:svg('<path d="M4 20V10M10 20V4M16 20v-7M2 20h20"/>',18)};
+chart:svg('<path d="M4 20V10M10 20V4M16 20v-7M2 20h20"/>',18),tag:svg('<path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/>',14)};
 
 const ZONES=[{id:'diamond',name:'VIP Diamond'},{id:'gold',name:'VIP Gold'},{id:'silver',name:'VIP Silver'},{id:'mezz',name:'Mezzanine'}];
 const ZN=Object.fromEntries(ZONES.map(z=>[z.id,z.name]));
@@ -508,6 +535,8 @@ const PRICES={diamond:2800,gold:2400,silver:2200,mezz:1200};
 const FOOD=[{id:'welcome',price:150,icon:'glass'},{id:'snack',price:250,icon:'box'},{id:'dinner',price:690,icon:'dish',restaurant:true},{id:'bubbly',price:390,icon:'wine'}];
 const FPRICE=Object.fromEntries(FOOD.map(f=>[f.id,f.price]));
 const PM=[{id:'card',name:'pm_card',sub:'pm_card_sub',icon:'card'},{id:'pp',name:'pm_pp',sub:'pm_pp_sub',icon:'qr'},{id:'ali',name:'pm_ali',sub:'pm_ali_sub',icon:'wallet'},{id:'wc',name:'pm_wc',sub:'pm_wc_sub',icon:'wallet'}];
+const PH_RE={'+66':/^0?[689]\d{8}$/,'+86':/^1\d{10}$/,'+91':/^0?[6-9]\d{9}$/,'+82':/^0?1\d{8,9}$/,'+7':/^8?9\d{9}$/,'+81':/^0?[789]0\d{8}$/,'+60':/^0?1\d{8,9}$/,'+84':/^0?[35789]\d{8}$/,'+44':/^0?7\d{9}$/,'+1':/^1?[2-9]\d{9}$/};
+const PH_EX={'+66':'081 234 5678','+86':'138 1234 5678','+91':'98765 43210','+82':'010 1234 5678','+7':'912 345 6789','+81':'090 1234 5678','+60':'012 345 6789','+84':'091 234 5678','+44':'07700 900123','+1':'(555) 123 4567'};
 const CC=['+66','+86','+91','+82','+7','+81','+60','+84','+44','+1'];
 const NAT=[['TH','ไทย','Thai'],['CN','จีน','Chinese'],['IN','อินเดีย','Indian'],['KR','เกาหลี','Korean'],['RU','รัสเซีย','Russian'],['JP','ญี่ปุ่น','Japanese'],['MY','มาเลเซีย','Malaysian'],['VN','เวียดนาม','Vietnamese'],['GB','อังกฤษ','British'],['US','อเมริกัน','American'],['OT','อื่น ๆ','Other']];
 
@@ -519,6 +548,8 @@ const keyOf=(i,tm)=>ymd(DATES[i])+'_'+tm;
 const SAT_IDX=DATES.findIndex((d,i)=>i>=1&&d.getDay()===6);
 const SOLD_IDX=DATES.findIndex((d,i)=>i>=2&&![2,6].includes(d.getDay()));
 const WKD_IDX=DATES.findIndex((d,i)=>i>=3&&d.getDay()>=1&&d.getDay()<=4&&i!==SOLD_IDX);
+const EARLY_IDX=DATES.findIndex((d,i)=>i>=8&&![SAT_IDX,SOLD_IDX,WKD_IDX].includes(i));
+const FRI_IDX=DATES.findIndex((d,i)=>i>=2&&d.getDay()===5&&![SOLD_IDX,EARLY_IDX].includes(i));
 
 const P=22,SW=18,SH=16,LM=34,AISLE=28;
 const L0=LM,C0=L0+7*P+AISLE,R0=C0+16*P+AISLE,CX=C0+(16*P-(P-SW))/2,MAP_W=R0+7*P-(P-SW)+LM;
@@ -540,6 +571,7 @@ const FORCE={[keyOf(1,'18:00')]:.93,[keyOf(SAT_IDX,'16:30')]:.35,[keyOf(SOLD_IDX
 showsFor(WKD_IDX).forEach(s=>{FORCE[keyOf(WKD_IDX,s.time)]=.35});
 const GUAR={[keyOf(SAT_IDX,'16:30')]:[['gold',4]],[keyOf(SOLD_IDX,'21:00')]:[['diamond',2]]};
 showsFor(WKD_IDX).forEach(s=>{GUAR[keyOf(WKD_IDX,s.time)]=[['mezz',5]]});
+GUAR[keyOf(FRI_IDX,'19:30')]=[['gold',6]];
 function hasRun(set,zone,n){
   const g={};SEATS.forEach(s=>{if(s.zone===zone)(g[s.row+s.block]??=[]).push(s)});
   return Object.values(g).some(r=>{r.sort((a,b)=>a.n-b.n);let c=0;for(const s of r){c=set.has(s.id)?0:c+1;if(c>=n)return true}return false});
@@ -592,14 +624,16 @@ const inZone=(ids,z)=>ids.every(id=>SEAT[id].zone===z);
 const MISSIONS={
   A:{num:1,day:SAT_IDX,checks:[['mA_1',b=>b.date===SAT_IDX&&b.time==='16:30'],['mA_2',b=>b.seats.length===4&&inZone(b.seats,'gold')],['mA_3',b=>b.seats.length===4&&adjacent(b.seats)],['mA_4',b=>(b.food.welcome||0)===4],['mA_5',b=>b.promo==='SAT1630'&&b.promoOk],['mA_6',b=>b.pay==='pp']]},
   B:{num:2,day:SOLD_IDX,checks:[['mB_1',b=>b.date===SOLD_IDX&&b.time==='21:00'],['mB_2',b=>b.seats.length===2&&inZone(b.seats,'diamond')&&adjacent(b.seats)],['mB_3',b=>(b.food.dinner||0)===2],['mB_4',b=>(b.food.bubbly||0)===2],['mB_5',b=>b.promo==='DINE20'&&b.promoOk],['mB_6',b=>b.pay==='card'],['mB_7',b=>b.payFails>=1]]},
-  C:{num:3,day:WKD_IDX,checks:[['mC_1',b=>b.lang==='en'],['mC_2',b=>b.date===WKD_IDX],['mC_3',b=>b.seats.length===5&&inZone(b.seats,'mezz')],['mC_4',b=>b.seats.length===5&&adjacent(b.seats)],['mC_5',b=>!Object.values(b.food).some(Boolean)],['mC_6',b=>b.promo==='MEZZ990'&&b.promoOk],['mC_7',b=>b.nat==='CN'],['mC_8',b=>b.pay==='ali']]}
+  C:{num:3,day:WKD_IDX,checks:[['mC_1',b=>b.lang==='en'],['mC_2',b=>b.date===WKD_IDX],['mC_3',b=>b.seats.length===5&&inZone(b.seats,'mezz')],['mC_4',b=>b.seats.length===5&&adjacent(b.seats)],['mC_5',b=>!Object.values(b.food).some(Boolean)],['mC_6',b=>b.promo==='MEZZ990'&&b.promoOk],['mC_7',b=>b.nat==='CN'],['mC_8',b=>b.pay==='ali']]},
+  D:{num:4,day:EARLY_IDX,checks:[['mD_1',b=>b.date===EARLY_IDX&&b.time==='21:00'],['mD_2',b=>b.seats.length===2&&inZone(b.seats,'silver')&&adjacent(b.seats)],['mD_3',b=>(b.food.bubbly||0)===2],['mD_4',b=>b.promo==='EARLY15'&&b.promoOk],['mD_5',b=>b.nat==='IN'],['mD_6',b=>b.pay==='card']]},
+  E:{num:5,day:FRI_IDX,checks:[['mE_1',b=>b.date===FRI_IDX&&b.time==='19:30'],['mE_2',b=>b.seats.length===6&&inZone(b.seats,'gold')],['mE_3',b=>b.seats.length===6&&adjacent(b.seats)],['mE_4',b=>(b.food.snack||0)===6],['mE_5',b=>b.promo==='GROUP4'&&b.promoOk],['mE_6',b=>b.nat==='KR'],['mE_7',b=>b.pay==='card']]}
 };
 const SQ=[['s_q1','s_lo_easy','s_hi_easy'],['s_q2','s_lo_easy','s_hi_easy'],['s_q3','s_lo_clear','s_hi_clear'],['s_q4','s_lo_easy','s_hi_easy'],['s_q5','s_lo_sat','s_hi_sat']];
 const STEPK=['showtime','seats','food','pay'];
 const EVK=['back','soldout','closed','taken','promoFail','formErr','payFail','expire','brief','autopick','promoTap'];
 
-const newGame=()=>({mission:null,start:0,end:0,steps:{},cur:null,curAt:0,ev:{},ratings:[0,0,0,0,0],comment:'',gaveUp:false,sErr:false,send:null,run:null});
-const S={lang:'th',mode:'intro',nick:'',pick:'rand',g:newGame(),step:1,sub:'food',dateIdx:0,time:null,seats:[],zone:null,zonePref:null,zoomIdx:1,food:{},promo:null,promoInput:'',promoErr:false,
+const newGame=()=>({mission:null,via:null,start:0,end:0,steps:{},cur:null,curAt:0,ev:{},ratings:[0,0,0,0,0],comment:'',gaveUp:false,sErr:false,send:null,run:null});
+const S={lang:'th',mode:'intro',nick:'',pick:null,pickVia:null,nickErr:false,spinning:false,justLanded:false,g:newGame(),step:1,sub:'food',dateIdx:0,time:null,seats:[],zone:null,zonePref:null,zoomIdx:1,food:{},promo:null,promoInput:'',promoErr:false,
   form:{name:'',email:'',cc:'+66',phone:'',nat:''},pay:'card',agree:false,errors:{},sumOpen:false,holdEnd:null,booking:null,ap:{n:2,zone:'gold'},sheetLocked:false,pcIdx:0,
   isOwner:false,dashRuns:null,dashState:null};
 const INIT_S=JSON.stringify(S);
@@ -720,15 +754,21 @@ ${FOOD.map(f=>{const off=tue&&f.restaurant,q=S.food[f.id]||0;return`<div class="
 function promoBox(){
   if(S.promo){
     const e=evalPromo(S.promo);
-    return e.ok?`<div class="promo-ok">${IC.check}<span>${t('promo_ok',{c:S.promo,a:fmt(e.amount)})}</span><button class="link" data-act="promoRm">${t('remove')}</button></div>`
-      :`<div class="promo-wait">${IC.info}<span>${t('promo_wait',{c:S.promo,r:t(e.reason)})}</span><button class="link" data-act="promoRm">${t('remove')}</button></div>`;
+    return(e.ok?`<div class="promo-ok">${IC.check}<span>${t('promo_ok',{c:S.promo,a:fmt(e.amount)})}</span><button class="link" data-act="promoRm">${t('remove')}</button></div>`
+      :`<div class="promo-wait">${IC.info}<span>${t('promo_wait',{c:S.promo,r:t(e.reason)})}</span><button class="link" data-act="promoRm">${t('remove')}</button></div>`)+promoTag();
   }
-  return`<div class="promo"><input id="f-promo" class="in${S.promoErr?' bad':''}" data-f="promo" value="${esc(S.promoInput)}" placeholder="${t('promo_ph')}" autocapitalize="characters" aria-label="${t('promo')}"><button class="btn btn-ghost" data-act="promo">${t('apply')}</button></div>${S.promoErr?`<div class="err" id="err-promo">${t('promo_bad')}</div>`:''}`;
+  return promoTag(`<div class="promo"><input id="f-promo" class="in${S.promoErr?' bad':''}" data-f="promo" value="${esc(S.promoInput)}" placeholder="${t('promo_ph')}" autocapitalize="characters" aria-label="${t('promo')}"><button class="btn btn-ghost" data-act="promo">${t('apply')}</button></div>${S.promoErr?`<div class="err" id="err-promo">${t('promo_bad')}</div>`:''}`);
+}
+const promoTag=(h='')=>h+`<button class="promo-tag" data-act="promoList">${IC.tag}${t('pl_tag')}</button>`;
+function promoSheet(){
+  openSheet(`<div class="gw-h"><h3 style="margin:0">${t('pl_title')}</h3><button class="icon-btn" data-act="close" aria-label="${t('close')}">${IC.x}</button></div><p>${t('pl_sub')}</p>
+${PROMOS.map(p=>{const e=evalPromo(p.code);return`<div class="pl-item${e.ok?' fit':''}"><div class="pl-top"><span class="pl-h">${t('pr_'+p.code+'_h')}</span><span class="pl-code">${p.code}</span></div><div class="pl-s">${t('pr_'+p.code+'_s')}</div><div class="pl-fit">${t('pl_fit')}: ${t('pr_'+p.code+'_fit')}</div><div class="pl-st ${e.ok?'ok':'no'}">${e.ok?t('pl_ok',{a:fmt(e.amount)}):t('pl_no',{r:t(e.reason)})}</div><button class="btn ${e.ok?'btn-gold':'btn-ghost'} w100" data-act="promoUse" data-c="${p.code}">${t('pl_use')}</button></div>`}).join('')}
+<button class="btn btn-ghost w100" data-act="close">${t('close')}</button>`);
 }
 function viewPay(){
   const tt=totals(),d=DATES[S.dateIdx],f=S.form,E=S.errors,zc={};
   S.seats.forEach(id=>{const z=SEAT[id].zone;zc[z]=(zc[z]||0)+1});
-  const err=k=>E[k]?`<div class="err" id="err-${k}">${t(E[k])}</div>`:'',bad=k=>E[k]?' bad':'';
+  const err=k=>E[k]?`<div class="err" id="err-${k}">${t(E[k],{cc:f.cc,x:PH_EX[f.cc]||''})}</div>`:'',bad=k=>E[k]?' bad':'';
   return`<details class="card sum"${S.sumOpen?' open':''}><summary><span>${t('summary')}</span><span class="gold">฿${fmt(tt.total)}<span class="chev">▾</span></span></summary>
 <div class="sum-body"><div class="sum-line"><span>${fmtDate(d)} · ${S.time}</span></div><div class="sum-line"><span>${t('seat_label')}</span><b>${[...S.seats].sort(seatSort).join(', ')}</b></div>
 ${ZONES.filter(z=>zc[z.id]).map(z=>`<div class="sum-line"><span>${z.name} × ${zc[z.id]}</span><b>฿${fmt(zc[z.id]*PRICES[z.id])}</b></div>`).join('')}
@@ -737,9 +777,9 @@ ${tt.disc?`<div class="sum-line disc"><span>${t('discount')} (${S.promo})</span>
 <div class="sum-total"><span>${t('total')}</span><span>฿${fmt(tt.total)}</span></div></div></details>
 <h3 class="fh">${t('promo')}</h3>${promoBox()}
 <h3 class="fh">${t('contact')}</h3><p class="fs">${t('contact_sub')}</p>
-<div class="field"><label for="f-name">${t('f_name')}</label><input id="f-name" class="in${bad('name')}" data-f="name" value="${esc(f.name)}" autocomplete="name">${err('name')}</div>
-<div class="field"><label for="f-email">${t('f_email')}</label><input id="f-email" type="email" inputmode="email" class="in${bad('email')}" data-f="email" value="${esc(f.email)}" autocomplete="email">${err('email')}</div>
-<div class="field"><label for="f-phone">${t('f_phone')}</label><div class="phone-row"><select id="f-cc" class="in" data-f="cc" aria-label="Country code">${CC.map(c=>`<option${c===f.cc?' selected':''}>${c}</option>`).join('')}</select><input id="f-phone" type="tel" inputmode="tel" class="in${bad('phone')}" data-f="phone" value="${esc(f.phone)}" autocomplete="tel-national"></div>${err('phone')}</div>
+<div class="field"><label for="f-name">${t('f_name')}</label><input id="f-name" class="in${bad('name')}" data-f="name" value="${esc(f.name)}" placeholder="${t('ph_name')}" autocomplete="name"><div class="hint-s">${t('h_name')}</div>${err('name')}</div>
+<div class="field"><label for="f-email">${t('f_email')}</label><input id="f-email" type="email" inputmode="email" class="in${bad('email')}" data-f="email" value="${esc(f.email)}" placeholder="${t('ph_email')}" autocomplete="email"><div class="hint-s">${t('h_email')}</div>${err('email')}</div>
+<div class="field"><label for="f-phone">${t('f_phone')}</label><div class="phone-row"><select id="f-cc" class="in" data-f="cc" aria-label="Country code">${CC.map(c=>`<option${c===f.cc?' selected':''}>${c}</option>`).join('')}</select><input id="f-phone" type="tel" inputmode="tel" class="in${bad('phone')}" data-f="phone" value="${esc(f.phone)}" placeholder="${PH_EX[f.cc]||''}" autocomplete="tel-national"></div><div class="hint-s">${t('h_phone',{x:PH_EX[f.cc]||''})}</div>${err('phone')}</div>
 <div class="field"><label for="f-nat">${t('f_nat')}</label><select id="f-nat" class="in" data-f="nat"><option value="">${t('nat_ph')}</option>${NAT.map(n=>`<option value="${n[0]}"${f.nat===n[0]?' selected':''}>${S.lang==='th'?n[1]:n[2]}</option>`).join('')}</select></div>
 <h3 class="fh" id="pm-h">${t('pay_method')}</h3>
 ${PM.map(p=>`<button class="pm${S.pay===p.id?' on':''}" data-act="pm" data-m="${p.id}" aria-pressed="${S.pay===p.id}"><span class="rd"></span><span class="tx"><span class="nm">${t(p.name)}</span><span class="ds">${t(p.sub)}</span></span><span class="pm-ic">${IC[p.icon]}</span></button>`).join('')}
@@ -759,14 +799,41 @@ ${S.mode==='free'?`<button class="btn btn-ghost w100" data-act="again">${t('book
 }
 
 function viewIntro(){
-  const ms=['A','B','C'];
+  const ms=Object.keys(MISSIONS),played=playedSet(),land=S.justLanded;S.justLanded=false;
   return`<section><div class="eyebrow">${t('g_eyebrow')}</div><h1 class="g-title">${t('g_title')}</h1><p class="g-lead">${t('g_intro')}</p></section>
 <ol class="how">${['g_how1','g_how2','g_how3'].map((k,i)=>`<li class="how-i"><span class="how-n">${i+1}</span><span>${t(k)}</span></li>`).join('')}</ol>
-<div class="field"><label for="g-nick">${t('g_nick')}</label><input id="g-nick" class="in" value="${esc(S.nick)}" placeholder="${t('g_nick_ph')}" maxlength="40" autocomplete="nickname"><div class="hint-s">${t('g_nick_hint')}</div></div>
-<div class="field"><label>${t('g_pick')}</label><div class="mchips">${[['rand',t('g_random')],...ms.map(id=>[id,`${t('g_m',{n:MISSIONS[id].num})} · ${t('m'+id+'_t')}`])].map(([v,l])=>`<button class="chip${S.pick===v?' on':''}" data-act="gPick" data-v="${v}" aria-pressed="${S.pick===v}">${l}</button>`).join('')}</div></div>
+<div class="field"><label for="g-nick">${t('g_nick')}</label><input id="g-nick" class="in${S.nickErr?' bad':''}" value="${esc(S.nick)}" placeholder="${t('g_nick_ph')}" maxlength="40" autocomplete="nickname"><div class="hint-s">${t('g_nick_hint')}</div>${S.nickErr?`<div class="err" id="err-nick">${t('e_nick')}</div>`:''}</div>
+<div class="field"><label>${t('g_pick')}</label><div class="hint-s" style="margin:0 0 8px">${t('g_pick_hint')}</div><div class="mlist" id="mlist">${ms.map(id=>`<button class="mopt${S.pick===id?' on':''}${S.pick===id&&land?' landed':''}${played.has(id)?' done':''}" data-act="gPick" data-v="${id}" data-done="· ${t('g_done_tag')}" aria-pressed="${S.pick===id}"><span class="mn">${t('g_m',{n:MISSIONS[id].num})}</span><span class="mt">${t('m'+id+'_t')}</span><span class="mk">${IC.check}</span></button>`).join('')}</div></div>
+<button class="btn btn-ghost w100 mt12" data-act="gSpin" id="g-spin">${IC.wand}<span>${t('g_spin')}</span></button>
+${S.pick?`<button class="btn btn-gold w100 mt8${land?' go-in':''}" data-act="gGet" id="g-go">${t('g_go')}</button>`:''}
 <p class="tiny left">${t('g_note')}</p>
-<button class="btn btn-ghost w100 mt12" data-act="gFree">${t('g_free')}</button>
 ${S.isOwner?`<button class="btn btn-ghost w100 mt8" data-act="dash">${IC.chart}${t('g_dash')}${S.dashRuns?` (${S.dashRuns.length})`:''}</button>`:''}`;
+}
+function playedSet(){try{return new Set(JSON.parse(localStorage.getItem('tf_played')||'[]'))}catch(e){return new Set()}}
+function markPlayed(id){try{const p=playedSet();p.add(id);if(p.size>=Object.keys(MISSIONS).length)p.clear();localStorage.setItem('tf_played',JSON.stringify([...p]))}catch(e){}}
+// Draws a mission this browser has not played yet, never the one already shown.
+function pickTarget(){
+  const ids=Object.keys(MISSIONS),played=playedSet();
+  let pool=ids.filter(id=>!played.has(id)&&id!==S.pick);
+  if(!pool.length)pool=ids.filter(id=>id!==S.pick);
+  const a=new Uint32Array(1);crypto.getRandomValues(a);return pool[a[0]%pool.length];
+}
+function spinMission(then){
+  const btns=[...document.querySelectorAll('#mlist .mopt')];if(S.spinning||!btns.length)return;
+  const ids=btns.map(b=>b.dataset.v),target=pickTarget(),ti=ids.indexOf(target);
+  S.spinning=true;S.pick=null;
+  btns.forEach(b=>{b.classList.remove('on','landed');b.setAttribute('aria-pressed','false')});
+  $('#g-go')?.remove();
+  const sb=$('#g-spin');if(sb){sb.disabled=true;sb.lastChild.textContent=t('g_spinning')}
+  const finish=()=>{S.spinning=false;S.pick=target;S.pickVia='spin';S.justLanded=true;render(true);if(then)setTimeout(then,800)};
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){finish();return}
+  const steps=ids.length*3+ti;let i=0;
+  const tick=()=>{
+    btns.forEach(b=>b.classList.remove('hot'));btns[i%ids.length].classList.add('hot');
+    if(i>=steps){setTimeout(finish,250);return}
+    const p=i/steps;i++;setTimeout(tick,55+Math.pow(p,3)*420);
+  };
+  tick();
 }
 function missionCard(){
   const id=S.g.mission,m=MISSIONS[id],d=fmtLong(DATES[m.day]);
@@ -780,6 +847,7 @@ function viewSurvey(){
 function viewResult(){
   const r=S.g.run,send=S.g.send;
   return`<div class="done-h"><div class="eyebrow">${t('g_m',{n:MISSIONS[r.mission].num})} · ${esc(r.missionTitle)}</div><div class="r-time">${fmtDur(r.ms)}</div><p>${r.gaveUp?t('r_gaveup'):t('r_time')}</p></div>
+<div class="r-who">${t('rt_tester')}: <b>${esc(r.nick||t('d_anon'))}</b> · ${r.via==='spin'?t('r_via_spin'):t('r_via_self')}</div>
 <div class="r-grid"><div class="stat"><span>${t('r_score')}</span><b>${r.score}/${r.max}</b></div><div class="stat"><span>${t('r_sat')}</span><b>${r.ratings[4]}/5</b></div></div>
 <div class="send ${send==='sent'?'ok':send==='failed'?'warn':'wait'}">${send==='sent'?IC.check+'<span>'+t('r_sent')+'</span>':send==='failed'?IC.info+'<span>'+t('r_nosend')+'</span>':'<span>'+t('r_sending')+'</span>'}</div>
 <div class="card"><b>${t('r_checks')}</b><ul class="todo">${r.checks.map(c=>`<li class="${c.ok?'ok':'no'}"><span class="bx">${c.ok?IC.checkSm:IC.xSm}</span><span>${esc(c.label)}</span></li>`).join('')}</ul></div>
@@ -891,7 +959,7 @@ function validate(){
   const e={},f=S.form,dg=f.phone.replace(/\D/g,'');
   if(!f.name.trim())e.name='e_name';
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim()))e.email='e_email';
-  if(dg.length<8||dg.length>12)e.phone='e_phone';
+  if(!(PH_RE[f.cc]||/^\d{8,12}$/).test(dg))e.phone='e_phone';
   if(!S.agree)e.agree='e_agree';
   return e;
 }
@@ -933,12 +1001,12 @@ function grade(){
 }
 function buildRun(){
   const g=S.g,checks=grade(),b=g.gaveUp?null:S.booking;
-  return{v:1,at:new Date().toISOString(),nick:S.nick.trim().slice(0,40),mission:g.mission,missionTitle:t('m'+g.mission+'_t'),lang:S.lang,ms:g.end-g.start,gaveUp:g.gaveUp,
+  return{v:1,at:new Date().toISOString(),nick:S.nick.trim().slice(0,40),mission:g.mission,via:g.via,missionTitle:t('m'+g.mission+'_t'),lang:S.lang,ms:g.end-g.start,gaveUp:g.gaveUp,
     score:checks.filter(c=>c.ok).length,max:checks.length,checks,steps:{...g.steps},ev:{...g.ev},ratings:[...g.ratings],comment:g.comment.trim().slice(0,1000),
     booking:b?{date:ymd(DATES[b.date]),time:b.time,seats:b.seats,food:b.food,promo:b.promo,promoOk:b.promoOk,pay:b.pay,total:b.total}:null,width:window.innerWidth};
 }
 function runText(r){
-  const L=[t('rt_head'),`${t('rt_tester')}: ${r.nick||t('d_anon')} · ${t('g_m',{n:MISSIONS[r.mission].num})} ${r.missionTitle}`,
+  const L=[t('rt_head'),`${t('rt_tester')}: ${r.nick||t('d_anon')} · ${t('g_m',{n:MISSIONS[r.mission].num})} ${r.missionTitle} (${r.via==='spin'?t('r_via_spin'):t('r_via_self')})`,
     `${t('r_time')}: ${fmtDur(r.ms)}${r.gaveUp?` (${t('r_gaveup')})`:''} · ${t('r_score')}: ${r.score}/${r.max}`];
   const miss=r.checks.filter(c=>!c.ok).map(c=>c.label);if(miss.length)L.push(`${t('rt_missed')}: ${miss.join('; ')}`);
   L.push(`${t('rt_ratings')}: ${r.ratings.map((v,i)=>`${t('rq'+(i+1))} ${v}`).join(' · ')}`);
@@ -992,11 +1060,17 @@ function paintRun(ctx,r,draw){
   const at=new Date(r.at),dt=`${at.getDate()} ${(S.lang==='en'?EN_MON:TH_MON)[at.getMonth()]} ${at.getFullYear()+(S.lang==='en'?0:543)} · ${String(at.getHours()).padStart(2,'0')}:${String(at.getMinutes()).padStart(2,'0')}`;
   font(400,24);text(dt,W-P,y-6,C.muted,'right');
   y+=38;font(500,22);text('P A T T A Y A',P,y,C.muted);
-  y+=60;font(600,30);text(t('rt_head'),P,y,C.text);
-  y+=46;font(400,28);text(`${t('rt_tester')}: ${r.nick||t('d_anon')}`,P,y,C.muted);
+  y+=60;font(500,26);text(t('rt_head'),P,y,C.muted);
+  y+=60;font(600,46);text(`${t('rt_tester')}: ${r.nick||t('d_anon')}`,P,y,C.text);
+  // mission received
+  y+=36;const m=MISSIONS[r.mission],story=t('m'+r.mission+'_s',{d:fmtLong(DATES[m.day])});
+  font(400,26);const sl=wrapLines(ctx,story,IW-64),mh=48+50+sl.length*38+32;card(mh);
+  font(500,24);text(`${t('r_mission')} · ${r.via==='spin'?t('r_via_spin'):t('r_via_self')}`,P+32,y+50,C.muted);
+  font(600,34);text(`${t('g_m',{n:m.num})} · ${r.missionTitle}`,P+32,y+98,C.goldHi);
+  font(400,26);sl.forEach((ln,i)=>text(ln,P+32,y+98+46+i*38,C.muted));
+  y+=mh;
   // time
-  y+=84;font(500,30);text(`${t('g_m',{n:MISSIONS[r.mission].num})} · ${r.missionTitle}`,W/2,y,C.goldHi,'center');
-  y+=150;font(700,150,IMG_DISP);text(fmtDur(r.ms),W/2,y,C.goldHi,'center');
+  y+=176;font(700,150,IMG_DISP);text(fmtDur(r.ms),W/2,y,C.goldHi,'center');
   y+=58;font(400,32);text(r.gaveUp?t('r_gaveup'):t('r_time'),W/2,y,C.muted,'center');
   // stats
   y+=44;const sw=(IW-24)/2;
@@ -1080,7 +1154,7 @@ function renderDash(){
   else{
     const fin=runs.filter(r=>!r.gaveUp),full=runs.filter(r=>r.score===r.max).length;
     const tiles=[[t('d_runs'),runs.length],[t('d_avg_time'),fin.length?fmtDur(mean(fin.map(r=>r.ms))):t('d_none')],[t('d_full'),`${Math.round(full/runs.length*100)}%`],[t('d_sat'),`${mean(runs.map(r=>r.ratings?.[4]||0)).toFixed(1)}/5`]];
-    const mrows=['A','B','C'].map(id=>{
+    const mrows=Object.keys(MISSIONS).map(id=>{
       const rs=runs.filter(r=>r.mission===id);if(!rs.length)return'';
       const f=rs.filter(r=>!r.gaveUp),miss={};
       rs.forEach(r=>(r.checks||[]).forEach(c=>{if(!c.ok){miss[c.k]=miss[c.k]||{n:0,label:c.label};miss[c.k].n++}}));
@@ -1169,6 +1243,8 @@ const ACT={
     if(!PROMOS.some(p=>p.code===c)){S.promoErr=true;ev('promoFail');render(true);return}
     S.promo=c;S.promoErr=false;S.promoInput='';if(!evalPromo(c).ok)ev('promoFail');render(true);
   },
+  promoList(){promoSheet()},
+  promoUse(el){S.promoInput=el.dataset.c;closeSheet();ACT.promo()},
   promoRm(){S.promo=null;S.promoInput='';S.zonePref=null;render(true)},
   promoSlide(el){
     const p=PROMOS[+el.dataset.i];ev('promoTap');S.promo=p.code;S.promoErr=false;S.zonePref=p.code==='MEZZ990'?'mezz':null;S.pcIdx=+el.dataset.i;pcPause=Date.now()+8000;
@@ -1195,8 +1271,14 @@ const ACT={
   expireNow(){if(!S.holdEnd){toast(t('d_need_hold'));return}closeSheet();S.holdEnd=Date.now();tick()},
   reset(){const keep={lang:S.lang,isOwner:S.isOwner,dashRuns:S.dashRuns,dashState:S.dashState,nick:S.nick};Object.assign(S,JSON.parse(INIT_S),keep);closeSheet();render()},
   close(){closeSheet()},
-  gPick(el){S.pick=el.dataset.v;render(true)},
-  gGet(){const ids=['A','B','C'],id=S.pick==='rand'?ids[Math.floor(Math.random()*ids.length)]:S.pick;resetBooking();S.g=newGame();S.g.mission=id;S.mode='brief';render()},
+  gPick(el){if(S.spinning)return;S.pick=el.dataset.v;S.pickVia='self';S.justLanded=true;render(true)},
+  gSpin(){spinMission()},
+  gGet(){
+    if(S.spinning)return;
+    if(!S.nick.trim()){S.nickErr=true;render(true);$('#g-nick')?.focus();return}
+    if(!S.pick){spinMission(()=>ACT.gGet());return}
+    const id=S.pick;resetBooking();S.g=newGame();S.g.mission=id;S.g.via=S.pickVia||'self';S.mode='brief';render()
+  },
   gFree(){resetBooking();S.g=newGame();S.mode='free';render()},
   gStart(){S.mode='run';S.g.start=Date.now();render()},
   brief(){ev('brief');openSheet(`${missionCard()}<button class="btn btn-gold w100" data-act="close">${t('close')}</button><button class="btn btn-ghost w100" data-act="giveup">${t('g_giveup')}</button>`)},
@@ -1206,11 +1288,11 @@ const ACT={
   sSubmit(){
     const miss=S.g.ratings.filter(v=>!v).length;
     if(miss){S.g.sErr=true;render(true);$('.q.bad')?.scrollIntoView({block:'center',behavior:'smooth'});toast(t('s_missing',{n:miss}));return}
-    S.g.run=buildRun();S.mode='result';render();submitRun();
+    S.g.run=buildRun();markPlayed(S.g.mission);S.mode='result';render();submitRun();
   },
   rSave(){saveRunImage(S.g.run)},
   rCopy(){copyText(runText(S.g.run),()=>toast(t('r_copied')),()=>{const d=$('#rtd');if(d)d.open=true;const ta=$('#rtext');if(ta){ta.focus();ta.select()}toast(t('r_copy_fail'))})},
-  rAgain(){resetBooking();S.g=newGame();S.mode='intro';render()},
+  rAgain(){const done=S.mode==='result';resetBooking();S.g=newGame();if(done){S.pick=null;S.pickVia=null}S.mode='intro';render()},
   dash(){closeSheet();$('#dash').hidden=false;renderDash()},
   dashClose(){$('#dash').hidden=true},
   dashCsv(){
@@ -1223,7 +1305,7 @@ $('#layer').addEventListener('click',e=>{if(e.target.id==='layer'&&!S.sheetLocke
 document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(!$('#layer').hidden&&!S.sheetLocked)closeSheet();else if(!$('#dash').hidden)$('#dash').hidden=true});
 document.addEventListener('input',e=>{
   const id=e.target.id;
-  if(id==='g-nick'){S.nick=e.target.value;return}
+  if(id==='g-nick'){S.nick=e.target.value;if(S.nickErr){S.nickErr=false;e.target.classList.remove('bad');$('#err-nick')?.remove()}return}
   if(id==='s-comment'){S.g.comment=e.target.value;return}
   const f=e.target.dataset.f;if(!f)return;
   if(f==='promo'){S.promoInput=e.target.value;if(S.promoErr){S.promoErr=false;e.target.classList.remove('bad');$('#err-promo')?.remove()}return}
@@ -1232,7 +1314,7 @@ document.addEventListener('input',e=>{
 });
 document.addEventListener('change',e=>{
   if(e.target.id==='agree'){S.agree=e.target.checked;if(S.errors.agree){delete S.errors.agree;$('#err-agree')?.remove()}}
-  else if(e.target.dataset.f&&e.target.dataset.f!=='promo')S.form[e.target.dataset.f]=e.target.value;
+  else if(e.target.dataset.f&&e.target.dataset.f!=='promo'){S.form[e.target.dataset.f]=e.target.value;if(e.target.dataset.f==='cc'){delete S.errors.phone;render(true)}}
 });
 document.addEventListener('toggle',e=>{if(e.target.classList&&e.target.classList.contains('sum'))S.sumOpen=e.target.open},true);
 

@@ -399,7 +399,7 @@ s_title:'แบบประเมินสั้นๆ',s_sub:'6 ข้อ ใ�
 s_q6:'ข้อเสนอแนะเพิ่มเติม',s_q6_ph:'ตรงไหนที่สับสน หรืออยากให้ปรับอะไร',s_lo_easy:'ยากมาก',s_hi_easy:'ง่ายมาก',s_lo_clear:'ไม่ชัดเลย',s_hi_clear:'ชัดมาก',s_lo_sat:'ไม่พอใจ',s_hi_sat:'พอใจมาก',
 s_err:'เลือกคะแนนข้อนี้ก่อน',s_missing:'ยังเหลือ {n} ข้อที่ยังไม่ได้ให้คะแนน',s_submit:'ส่งแบบประเมิน',
 r_time:'เวลาที่ใช้จองจนสำเร็จ',r_gaveup:'ข้ามก่อนจองสำเร็จ',r_score:'ทำตามโจทย์ได้',r_sat:'ความพอใจโดยรวม',r_sending:'กำลังส่งผล…',r_sent:'ส่งผลให้ผู้จัดทดสอบแล้ว ขอบคุณที่ช่วยทดสอบ',
-r_nosend:'หน้านี้ส่งผลอัตโนมัติไม่ได้ กดคัดลอกผลลัพธ์แล้วส่งทาง LINE หรืออีเมลให้ผู้จัดทดสอบแทน',r_copy:'คัดลอกผลลัพธ์',r_copied:'คัดลอกแล้ว นำไปวางใน LINE หรืออีเมลได้เลย',r_copy_fail:'คัดลอกอัตโนมัติไม่ได้ เลือกข้อความด้านล่างแล้วคัดลอกเอง',
+r_nosend:'หน้านี้ส่งผลอัตโนมัติไม่ได้ กดบันทึกผลเป็นรูปภาพ แล้วส่งรูปทาง LINE หรืออีเมลให้ผู้จัดทดสอบแทน',r_save:'บันทึกผลเป็นรูปภาพ',r_saved:'บันทึกรูปแล้ว ส่งรูปนี้ทาง LINE หรืออีเมลให้ผู้จัดทดสอบได้เลย',r_save_fail:'สร้างรูปไม่สำเร็จ กดคัดลอกผลลัพธ์แทน',r_proto:'ต้นแบบเพื่อการออกแบบ · ไม่ใช่เว็บไซต์ทางการของ Tiffany’s Show',r_comment:'ความคิดเห็น',r_copy:'คัดลอกผลลัพธ์',r_copied:'คัดลอกแล้ว นำไปวางใน LINE หรืออีเมลได้เลย',r_copy_fail:'คัดลอกอัตโนมัติไม่ได้ เลือกข้อความด้านล่างแล้วคัดลอกเอง',
 r_show_text:'ดูข้อความผลลัพธ์',r_again:'เล่นอีกครั้ง',r_steps:'เวลาในแต่ละขั้น',r_checks:'ผลตามโจทย์',
 rt_head:'ผลทดสอบระบบจอง Tiffany’s (ต้นแบบ)',rt_tester:'ผู้ทดสอบ',rt_missed:'ข้อที่พลาด',rt_ratings:'คะแนน',rt_events:'สิ่งที่เกิดระหว่างจอง',
 rq1:'วัน/รอบ',rq2:'ที่นั่ง',rq3:'โปร/ราคา',rq4:'ชำระเงิน',rq5:'โดยรวม',k_showtime:'รอบ',k_seats:'ที่นั่ง',k_food:'อาหาร',k_pay:'ชำระเงิน',
@@ -467,7 +467,7 @@ s_title:'Quick survey',s_sub:'6 questions, under a minute',s_q1:'How easy was it
 s_q6:'Any other suggestions?',s_q6_ph:'What was confusing, or what would you change?',s_lo_easy:'Very hard',s_hi_easy:'Very easy',s_lo_clear:'Not clear',s_hi_clear:'Very clear',s_lo_sat:'Not satisfied',s_hi_sat:'Very satisfied',
 s_err:'Pick a score for this question',s_missing:'{n} questions still need a score',s_submit:'Send survey',
 r_time:'Time to a confirmed booking',r_gaveup:'Skipped before finishing',r_score:'Mission items done',r_sat:'Overall satisfaction',r_sending:'Sending your result…',r_sent:'Your result was sent to the test organiser. Thanks for helping.',
-r_nosend:'This page could not send your result automatically. Copy it and send it to the organiser by LINE or email.',r_copy:'Copy result',r_copied:'Copied. Paste it into LINE or an email.',r_copy_fail:'Could not copy automatically. Select the text below and copy it.',
+r_nosend:'This page could not send your result automatically. Save it as an image and send it to the organiser by LINE or email.',r_save:'Save result as image',r_saved:'Image saved. Send it to the organiser by LINE or email.',r_save_fail:'Could not create the image. Copy the result instead.',r_proto:'Design prototype · Not the official Tiffany’s Show website',r_comment:'Comment',r_copy:'Copy result',r_copied:'Copied. Paste it into LINE or an email.',r_copy_fail:'Could not copy automatically. Select the text below and copy it.',
 r_show_text:'Show result text',r_again:'Play again',r_steps:'Time per step',r_checks:'Mission checklist',
 rt_head:'Tiffany’s booking prototype – test result',rt_tester:'Tester',rt_missed:'Missed',rt_ratings:'Scores',rt_events:'During booking',
 rq1:'Date/time',rq2:'Seats',rq3:'Promos/prices',rq4:'Payment',rq5:'Overall',k_showtime:'Showtime',k_seats:'Seats',k_food:'Food',k_pay:'Payment',
@@ -499,7 +499,7 @@ box:svg('<path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/>',2
 dish:svg('<path d="M3 15h18M5 15a7 7 0 0 1 14 0M12 6V5M4 19h16"/>',22),wine:svg('<path d="M8 3h8l-.5 5a3.5 3.5 0 0 1-7 0z"/><path d="M12 11.5V20M8.5 20h7"/>',22),
 card:svg('<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/>',22),qr:svg('<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2M20 14v.01M18 18h2v2M14 20h2"/>',22),
 wallet:svg('<path d="M4 7a2 2 0 0 1 2-2h11v4"/><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M16 13h2"/>',22),
-flag:svg('<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',15),copy:svg('<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',18),
+flag:svg('<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',15),img:svg('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>',18),copy:svg('<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',18),
 chart:svg('<path d="M4 20V10M10 20V4M16 20v-7M2 20h20"/>',18)};
 
 const ZONES=[{id:'diamond',name:'VIP Diamond'},{id:'gold',name:'VIP Gold'},{id:'silver',name:'VIP Silver'},{id:'mezz',name:'Mezzanine'}];
@@ -784,7 +784,8 @@ function viewResult(){
 <div class="send ${send==='sent'?'ok':send==='failed'?'warn':'wait'}">${send==='sent'?IC.check+'<span>'+t('r_sent')+'</span>':send==='failed'?IC.info+'<span>'+t('r_nosend')+'</span>':'<span>'+t('r_sending')+'</span>'}</div>
 <div class="card"><b>${t('r_checks')}</b><ul class="todo">${r.checks.map(c=>`<li class="${c.ok?'ok':'no'}"><span class="bx">${c.ok?IC.checkSm:IC.xSm}</span><span>${esc(c.label)}</span></li>`).join('')}</ul></div>
 <div class="card"><b>${t('r_steps')}</b><div class="steps-mini">${STEPK.map(k=>`<div><span>${t('k_'+k)}</span><b>${fmtDur(r.steps[k])}</b></div>`).join('')}</div></div>
-<button class="btn btn-gold w100" data-act="rCopy">${IC.copy}${t('r_copy')}</button>
+<button class="btn btn-gold w100" data-act="rSave">${IC.img}${t('r_save')}</button>
+<button class="btn btn-ghost w100 mt8" data-act="rCopy">${IC.copy}${t('r_copy')}</button>
 <details class="rt" id="rtd"><summary>${t('r_show_text')}</summary><textarea id="rtext" class="in" readonly>${esc(runText(r))}</textarea></details>
 <button class="btn btn-ghost w100 mt8" data-act="rAgain">${t('r_again')}</button>`;
 }
@@ -961,6 +962,110 @@ async function submitRun(){
   }catch(e){S.g.send='failed'}
   if(S.mode==='result'&&S.g.run===r)render(true);
 }
+const IMG_C={bg:'#1c0830',surface:'#290f44',line:'rgba(255,255,255,.12)',text:'#f7f1ff',muted:'#b9a7d6',faint:'#8c7aa9',gold:'#d4b062',goldHi:'#f1d796',goldInk:'#2b1700',ok:'#7fdcae',danger:'#ff9191'};
+const IMG_DISP="'Cinzel',Georgia,serif",IMG_BODY="'IBM Plex Sans Thai',system-ui,-apple-system,sans-serif";
+function wrapLines(ctx,text,maxW){
+  const segs=typeof Intl!=='undefined'&&Intl.Segmenter?[...new Intl.Segmenter(S.lang==='en'?'en':'th',{granularity:'word'}).segment(text)].map(x=>x.segment):[...text];
+  const out=[];let line='';
+  for(const sg of segs){
+    if(sg==='\n'){out.push(line);line='';continue}
+    if(ctx.measureText(line+sg).width<=maxW||!line){line+=sg;continue}
+    out.push(line.trimEnd());line=sg.trimStart();
+  }
+  if(line)out.push(line);
+  return out;
+}
+function rrect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
+// Lays out the result card; with draw=false it only measures and returns the height.
+function paintRun(ctx,r,draw){
+  const W=1080,P=64,IW=W-P*2,C=IMG_C;let y=0;
+  const font=(w,px,f=IMG_BODY)=>{ctx.font=`${w} ${px}px ${f}`};
+  const text=(s,x,yy,color,align='left')=>{if(!draw)return;ctx.fillStyle=color;ctx.textAlign=align;ctx.fillText(s,x,yy)};
+  const card=(h)=>{if(!draw)return;rrect(ctx,P,y,IW,h,28);ctx.fillStyle=C.surface;ctx.fill();ctx.strokeStyle=C.line;ctx.lineWidth=2;ctx.stroke()};
+  ctx.textBaseline='alphabetic';
+  if(draw){ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,ctx.canvas.height)}
+  // prototype banner
+  if(draw){ctx.fillStyle=C.goldHi;ctx.fillRect(0,0,W,64)}
+  font(600,24);text(t('r_proto'),W/2,42,C.goldInk,'center');y=64+72;
+  // brand + date
+  font(700,48,IMG_DISP);text('Tiffany’s Show',P,y,C.goldHi);
+  const at=new Date(r.at),dt=`${at.getDate()} ${(S.lang==='en'?EN_MON:TH_MON)[at.getMonth()]} ${at.getFullYear()+(S.lang==='en'?0:543)} · ${String(at.getHours()).padStart(2,'0')}:${String(at.getMinutes()).padStart(2,'0')}`;
+  font(400,24);text(dt,W-P,y-6,C.muted,'right');
+  y+=38;font(500,22);text('P A T T A Y A',P,y,C.muted);
+  y+=60;font(600,30);text(t('rt_head'),P,y,C.text);
+  y+=46;font(400,28);text(`${t('rt_tester')}: ${r.nick||t('d_anon')}`,P,y,C.muted);
+  // time
+  y+=84;font(500,30);text(`${t('g_m',{n:MISSIONS[r.mission].num})} · ${r.missionTitle}`,W/2,y,C.goldHi,'center');
+  y+=150;font(700,150,IMG_DISP);text(fmtDur(r.ms),W/2,y,C.goldHi,'center');
+  y+=58;font(400,32);text(r.gaveUp?t('r_gaveup'):t('r_time'),W/2,y,C.muted,'center');
+  // stats
+  y+=44;const sw=(IW-24)/2;
+  [[t('r_score'),`${r.score}/${r.max}`],[t('r_sat'),`${r.ratings[4]}/5`]].forEach(([l,v],i)=>{
+    const x=P+i*(sw+24);
+    if(draw){rrect(ctx,x,y,sw,150,28);ctx.fillStyle=C.surface;ctx.fill();ctx.strokeStyle=C.line;ctx.lineWidth=2;ctx.stroke()}
+    font(400,26);text(l,x+32,y+52,C.muted);font(600,52);text(v,x+32,y+118,C.text);
+  });
+  y+=150+28;
+  // checklist
+  font(400,30);const rows=r.checks.map(c=>({c,lines:wrapLines(ctx,c.label,IW-64-60)}));
+  const ch=56+40+rows.reduce((a,x)=>a+x.lines.length*42+22,0)+14;card(ch);
+  let cy=y+60;font(600,32);text(t('r_checks'),P+32,cy,C.text);cy+=40;
+  rows.forEach(({c,lines})=>{
+    const bx=P+32,by=cy+4;
+    if(draw){
+      rrect(ctx,bx,by,40,40,8);
+      if(c.ok){ctx.fillStyle=C.ok;ctx.fill();ctx.strokeStyle=C.goldInk;ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(bx+10,by+21);ctx.lineTo(bx+17,by+28);ctx.lineTo(bx+30,by+13);ctx.stroke()}
+      else{ctx.strokeStyle=C.danger;ctx.lineWidth=3;ctx.stroke();ctx.beginPath();ctx.moveTo(bx+13,by+13);ctx.lineTo(bx+27,by+27);ctx.moveTo(bx+27,by+13);ctx.lineTo(bx+13,by+27);ctx.stroke()}
+    }
+    font(400,30);lines.forEach((ln,i)=>text(ln,bx+60,cy+34+i*42,c.ok?C.text:C.muted));
+    cy+=lines.length*42+22;
+  });
+  y+=ch+28;
+  // steps + ratings side by side
+  const kh=60+STEPK.length*48+24,rh=60+5*48+24,bh=Math.max(kh,rh);
+  [[t('r_steps'),STEPK.map(k=>[t('k_'+k),fmtDur(r.steps[k])])],[t('rt_ratings'),r.ratings.map((v,i)=>[t('rq'+(i+1)),`${v}/5`])]].forEach(([h,list],i)=>{
+    const x=P+i*(sw+24);
+    if(draw){rrect(ctx,x,y,sw,bh,28);ctx.fillStyle=C.surface;ctx.fill();ctx.strokeStyle=C.line;ctx.lineWidth=2;ctx.stroke()}
+    font(600,30);text(h,x+32,y+56,C.text);
+    list.forEach(([l,v],j)=>{const ly=y+60+48+j*48;font(400,26);text(l,x+32,ly,C.muted);font(600,26);text(v,x+sw-32,ly,C.text,'right')});
+  });
+  y+=bh+28;
+  // comment
+  if(r.comment){
+    font(400,28);const lines=wrapLines(ctx,r.comment,IW-64);const h=60+lines.length*40+36;card(h);
+    font(600,30);text(t('r_comment'),P+32,y+56,C.text);font(400,28);lines.forEach((ln,i)=>text(ln,P+32,y+60+44+i*40,C.text));
+    y+=h+28;
+  }
+  y+=24;
+  return y;
+}
+async function runImageBlob(r){
+  if(document.fonts&&document.fonts.load){
+    const sample='ทดสอบ Tiffany 0123';
+    await Promise.all([`700 48px ${IMG_DISP}`,`400 28px ${IMG_BODY}`,`500 28px ${IMG_BODY}`,`600 28px ${IMG_BODY}`].map(f=>document.fonts.load(f,sample).catch(()=>null)));
+  }
+  const c=document.createElement('canvas');c.width=1080;c.height=4000;
+  const h=Math.ceil(paintRun(c.getContext('2d'),r,false));
+  c.height=h;paintRun(c.getContext('2d'),r,true);
+  return new Promise((ok,no)=>c.toBlob(b=>b?ok(b):no(new Error('blob')),'image/jpeg',.92));
+}
+async function saveRunImage(r){
+  let blob;
+  try{blob=await runImageBlob(r)}catch(e){toast(t('r_save_fail'));return}
+  const at=new Date(r.at),stamp=`${at.getFullYear()}${String(at.getMonth()+1).padStart(2,'0')}${String(at.getDate()).padStart(2,'0')}-${String(at.getHours()).padStart(2,'0')}${String(at.getMinutes()).padStart(2,'0')}`;
+  const nick=(r.nick||'tester').replace(/[\\/:*?"<>|\s]+/g,'-').slice(0,30);
+  const name=`tiffany-result-${nick}-${stamp}.jpg`;
+  const file=typeof File==='function'?new File([blob],name,{type:'image/jpeg'}):null;
+  // Phones: the share sheet offers Save Image and LINE directly.
+  if(file&&matchMedia('(pointer:coarse)').matches&&navigator.canShare&&navigator.canShare({files:[file]})){
+    try{await navigator.share({files:[file]});toast(t('r_saved'));return}
+    catch(e){if(e&&e.name==='AbortError')return}
+  }
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),4000);
+  toast(t('r_saved'));
+}
 function copyText(txt,ok,fail){try{navigator.clipboard.writeText(txt).then(ok,fail)}catch(e){fail()}}
 
 const mean=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:0;
@@ -1103,6 +1208,7 @@ const ACT={
     if(miss){S.g.sErr=true;render(true);$('.q.bad')?.scrollIntoView({block:'center',behavior:'smooth'});toast(t('s_missing',{n:miss}));return}
     S.g.run=buildRun();S.mode='result';render();submitRun();
   },
+  rSave(){saveRunImage(S.g.run)},
   rCopy(){copyText(runText(S.g.run),()=>toast(t('r_copied')),()=>{const d=$('#rtd');if(d)d.open=true;const ta=$('#rtext');if(ta){ta.focus();ta.select()}toast(t('r_copy_fail'))})},
   rAgain(){resetBooking();S.g=newGame();S.mode='intro';render()},
   dash(){closeSheet();$('#dash').hidden=false;renderDash()},

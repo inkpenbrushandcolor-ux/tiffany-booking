@@ -1,0 +1,1147 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tiffany's Booking Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#12041c;--app:#1c0830;--surface:#290f44;--surface-2:#351659;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.18);--text:#f7f1ff;--muted:#b9a7d6;--faint:#8c7aa9;--gold:#d4b062;--gold-hi:#f1d796;--gold-ink:#2b1700;--danger:#ff9191;--warn:#ffc56e;--ok:#7fdcae;--pink-hi:#ffc2e6;--z-diamond:#aab5ff;--z-gold:#f2c14b;--z-silver:#d3d7e0;--z-mezz:#e563b5;--taken:#3b2953;--pc-0:#3a1d5c;--pc-1:#4a1c3e;--pc-2:#1d3350;--pc-3:#3d3115;--pc-4:#163a36;--display:'Cinzel',Georgia,serif;--body:'IBM Plex Sans Thai',system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--text);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px}
+.stage{min-height:100%;display:flex;align-items:center;justify-content:center;gap:48px;padding:24px}
+.phone{position:relative;width:390px;height:844px;max-height:calc(100vh - 48px);background:var(--app);border:10px solid #0a0211;border-radius:46px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 40px 90px rgba(0,0,0,.55)}
+.proto-banner{flex:0 0 auto;text-align:center;font-size:11px;font-weight:600;padding:5px 12px;background:var(--gold-hi);color:var(--gold-ink)}
+.top{display:flex;align-items:center;gap:10px;padding:14px 14px 10px;flex:0 0 auto}
+.icon-btn{width:36px;height:36px;flex:0 0 auto;border-radius:50%;border:1px solid var(--line-2);background:transparent;display:grid;place-items:center;cursor:pointer}
+.brand{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.15}
+.brand .display{font:700 18px var(--display);color:var(--gold-hi);letter-spacing:.02em;white-space:nowrap}
+.brand small{font-size:10px;letter-spacing:.24em;color:var(--muted)}
+.hdr-r{display:flex;gap:6px;align-items:center}
+.lang{display:flex;border:1px solid var(--line-2);border-radius:999px;padding:2px;background:transparent;cursor:pointer}
+.lang span{padding:3px 8px;border-radius:999px;font-size:12px;color:var(--muted)}
+.lang span.on{background:var(--surface-2);color:var(--text)}
+.demo-chip{display:none;align-items:center;padding:4px 9px;border-radius:999px;border:1px dashed var(--line-2);background:transparent;color:var(--muted);font-size:11px;cursor:pointer}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:2px 14px 12px;flex:0 0 auto;border-bottom:1px solid var(--line)}
+.st{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11.5px;color:var(--faint);text-align:center}
+.st i{width:100%;height:3px;border-radius:2px;background:var(--line-2)}
+.st.done{color:var(--muted)}.st.done i{background:var(--gold)}
+.st.on{color:var(--text);font-weight:600}.st.on i{background:var(--gold-hi)}
+.mrow{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:6px 10px 6px 14px;background:rgba(229,99,181,.14);color:var(--pink-hi);font-size:13px}
+.mrow b{font-variant-numeric:tabular-nums;font-size:14px;color:var(--text)}
+.mrow button{margin-left:auto;border:1px solid rgba(255,194,230,.4);background:transparent;color:var(--pink-hi);border-radius:999px;padding:3px 12px;font-size:12.5px;cursor:pointer}
+.timer{display:flex;justify-content:center;align-items:center;gap:6px;padding:7px 12px;font-size:13px;background:rgba(212,176,98,.12);color:var(--gold-hi);flex:0 0 auto}
+.timer.warn{background:rgba(255,145,145,.14);color:var(--danger)}
+.timer b{font-variant-numeric:tabular-nums;font-size:14px}
+#view{flex:1;overflow-y:auto;overflow-x:hidden;padding:16px 16px 28px;scrollbar-width:none}
+#view::-webkit-scrollbar{display:none}
+.bar{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:12px 16px calc(14px + env(safe-area-inset-bottom));background:var(--surface);border-top:1px solid var(--line)}
+.bar-info{flex:1;min-width:0}
+.bar-info .k{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-info .v{font-weight:600;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{appearance:none;border:0;border-radius:14px;padding:14px 20px;font-weight:600;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}
+.btn-gold{background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:var(--gold-ink)}
+.btn-gold:disabled{background:#43345a;color:#8d7ea5;cursor:not-allowed}
+.btn-ghost{background:transparent;border:1px solid var(--line-2);color:var(--text)}
+.btn-ghost:disabled{opacity:.4;cursor:not-allowed}
+.w100{width:100%}.grow{flex:1}.mt8{margin-top:8px}.mt12{margin-top:12px}
+.sm{font-size:13px}.muted{color:var(--muted)}.gold{color:var(--gold-hi)}.pink{color:var(--pink-hi)}
+.tiny{font-size:11.5px;color:var(--faint);text-align:center;margin:8px 0 0}
+.tiny.left{text-align:left}
+.eyebrow{font-size:11.5px;letter-spacing:.16em;color:var(--gold-hi);text-transform:uppercase}
+html[lang=th] .eyebrow,html[lang=th] .m-num,html[lang=th] .m-sub,html[lang=th] .pc-eyebrow{letter-spacing:0}
+.hero{position:relative;padding:18px;border-radius:20px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.hero::before,.hero::after{content:'';position:absolute;border-radius:50%;border:1px solid rgba(241,215,150,.22);pointer-events:none}
+.hero::before{width:190px;height:190px;right:-70px;top:-80px}
+.hero::after{width:120px;height:120px;right:-30px;top:-40px;border-color:rgba(229,99,181,.25)}
+.hero h1{font:700 26px/1.15 var(--display);margin:6px 0}
+.hero p{margin:0;color:var(--muted);font-size:14px;max-width:260px}
+.hero .from{margin-top:12px;font-size:13px;color:var(--muted)}
+.hero .from b{color:var(--gold-hi);font-size:18px;margin-left:4px}
+.promo-car{margin-bottom:16px}
+.pc-track{position:relative;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px;scroll-padding-inline:16px;scrollbar-width:none}
+.pc-track::-webkit-scrollbar{display:none}
+.pc-slide{flex:0 0 100%;scroll-snap-align:start;display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:16px 18px;min-height:138px;border-radius:18px;border:1px solid var(--line-2);cursor:pointer}
+.pc-0{background:var(--pc-0)}.pc-1{background:var(--pc-1)}.pc-2{background:var(--pc-2)}.pc-3{background:var(--pc-3)}.pc-4{background:var(--pc-4)}
+.pc-eyebrow{font-size:11px;letter-spacing:.06em;color:var(--gold-hi)}
+.pc-h{font-size:18px;font-weight:600;line-height:1.3;text-wrap:balance}
+.pc-s{font-size:13px;color:var(--muted)}
+.pc-cta{margin-top:auto;padding-top:6px;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--gold-hi)}
+.pc-cta code{font:600 12px ui-monospace,SFMono-Regular,Menlo,monospace;padding:2px 8px;border-radius:6px;border:1px dashed var(--line-2);color:var(--text)}
+.pc-dots{display:flex;justify-content:center;gap:2px;margin-top:4px}
+.pc-dots button{width:24px;height:22px;border:0;padding:0;background:none;display:grid;place-items:center;cursor:pointer}
+.pc-dots button::after{content:'';width:7px;height:7px;border-radius:4px;background:var(--line-2);transition:width .2s}
+.pc-dots button.on::after{width:18px;background:var(--gold-hi)}
+.promo-chip{display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:5px 5px 5px 12px;border-radius:999px;background:rgba(127,220,174,.1);color:var(--ok);font-size:12.5px}
+.promo-chip button{width:22px;height:22px;border-radius:50%;border:0;background:rgba(127,220,174,.16);color:var(--ok);display:grid;place-items:center;cursor:pointer}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:22px 0 10px}
+.sec-h h2{font-size:16px;margin:0;font-weight:600}
+.dates{position:relative;display:flex;gap:8px;overflow-x:auto;margin:0 -16px;padding:2px 16px 6px;scroll-snap-type:x proximity;scroll-padding-inline:16px;scrollbar-width:none}
+.dates::-webkit-scrollbar{display:none}
+.date{position:relative;flex:0 0 60px;height:78px;scroll-snap-align:start;border-radius:14px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;cursor:pointer;padding:0}
+.date .dow{font-size:11.5px;color:var(--muted)}
+.date .d{font:700 22px/1.1 var(--display)}
+.date .m{font-size:11px;color:var(--muted)}
+.date.sel{background:linear-gradient(180deg,var(--gold-hi),var(--gold));border-color:transparent;color:var(--gold-ink)}
+.date.sel .dow,.date.sel .m{color:#5a3b06}
+.date .sp,.spd{width:6px;height:6px;border-radius:50%;background:var(--z-mezz);display:inline-block}
+.date .sp{position:absolute;top:7px;right:7px}
+.legend-note{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-top:6px}
+.times{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.time{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:14px;min-height:100px;border-radius:16px;background:var(--surface);border:1px solid var(--line);cursor:pointer}
+.time .t{font:700 26px/1.2 var(--display)}
+.time .s{font-size:12.5px;color:var(--muted);margin-top:2px}
+.time .s.warn{color:var(--warn)}.time .s.bad{color:var(--danger)}
+.meter{display:block;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.08);margin-top:auto}
+.meter i{display:block;height:100%;border-radius:2px}
+.time.sel{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);background:var(--surface-2)}
+.time.off{opacity:.6}
+.time.off .t{color:var(--faint)}
+.badge{position:absolute;top:10px;right:10px;font-size:10.5px;padding:2px 8px;border-radius:999px;background:rgba(229,99,181,.2);color:var(--pink-hi)}
+.zones{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:2px 14px}
+.zone-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.zone-row:last-child{border-bottom:0}
+.zone-row b{margin-left:auto;font-weight:600}
+.sw{width:12px;height:12px;border-radius:4px;flex:0 0 auto;display:inline-block}
+.sw.z-diamond{background:var(--z-diamond)}.sw.z-gold{background:var(--z-gold)}.sw.z-silver{background:var(--z-silver)}.sw.z-mezz{background:var(--z-mezz)}
+.show-sum{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
+.show-sum .display{font:700 15px var(--display)}
+.link{background:none;border:0;color:var(--gold-hi);font-size:13px;cursor:pointer;margin-left:auto;text-decoration:underline;text-underline-offset:3px;padding:4px 0;white-space:nowrap}
+.chips{display:flex;gap:8px;overflow-x:auto;margin:0 -16px 12px;padding:0 16px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;display:flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;border:1px solid var(--line-2);background:transparent;font-size:13px;cursor:pointer;text-align:left}
+.chip.on{background:var(--surface-2);border-color:var(--gold)}
+.map-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.legend{display:flex;gap:12px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.lg{display:flex;align-items:center;gap:5px}
+.lg i{width:14px;height:12px;border-radius:3px;display:inline-block}
+.lg .a{background:linear-gradient(90deg,var(--z-diamond) 25%,var(--z-gold) 25% 50%,var(--z-silver) 50% 75%,var(--z-mezz) 75%)}
+.lg .tk{background:var(--taken)}
+.lg .me{background:#fff;box-shadow:inset 0 0 0 2px var(--gold)}
+.zoom{display:flex;gap:6px}
+.zoom button{width:34px;height:34px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);cursor:pointer;display:grid;place-items:center}
+.zoom button:disabled{opacity:.35;cursor:not-allowed}
+.map-wrap{overflow-x:auto;overflow-y:hidden;border-radius:16px;background:#130420;border:1px solid var(--line);-webkit-overflow-scrolling:touch}
+.map-wrap svg{display:block}
+.seat{cursor:pointer;transition:opacity .15s}
+.seat.z-diamond{fill:var(--z-diamond)}.seat.z-gold{fill:var(--z-gold)}.seat.z-silver{fill:var(--z-silver)}.seat.z-mezz{fill:var(--z-mezz)}
+.seat.tk{fill:var(--taken);cursor:not-allowed}
+.seat.me{fill:#fff;stroke:var(--gold);stroke-width:2.5}
+.seat.dim{opacity:.2}
+.ck{fill:none;stroke:#2a0f45;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.rowlbl{fill:var(--faint);font:600 10px var(--body)}
+.stage-shape{fill:#4a1d6e;stroke:var(--gold);stroke-width:1}
+.stage-t{fill:var(--gold-hi);font:700 15px var(--display)}
+.mz-t{fill:var(--muted);font:600 11px var(--body)}
+html[lang=en] .stage-t{letter-spacing:.3em}
+.mz-t tspan.en{letter-spacing:.2em}
+.mz-line{stroke:var(--line-2);stroke-dasharray:4 4}
+.hint{margin:8px 0 12px}
+.picked{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.pk{display:flex;align-items:center;gap:6px;padding:5px 5px 5px 10px;border-radius:10px;background:var(--surface);border:1px solid var(--line);font-size:13px}
+.pk button{width:24px;height:24px;border-radius:50%;border:0;background:var(--surface-2);cursor:pointer;display:grid;place-items:center}
+.ttl{font-size:20px;margin:0 0 4px;font-weight:600}
+.fs{font-size:13px;color:var(--muted);margin:0 0 14px}
+.note{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:rgba(255,197,110,.1);color:var(--warn);font-size:13px;margin-bottom:12px}
+.note svg{flex:0 0 auto;margin-top:2px}
+.item{display:flex;gap:12px;align-items:center;padding:14px;border-radius:16px;background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.item .ic{width:46px;height:46px;flex:0 0 auto;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;color:var(--gold-hi)}
+.item .tx{flex:1;min-width:0}
+.item .nm{font-weight:600;font-size:14.5px}
+.item .ds{font-size:12.5px;color:var(--muted)}
+.item .pr{font-size:13px;color:var(--gold-hi);margin-top:2px}
+.item.off{opacity:.45}
+.stepper{display:flex;align-items:center;gap:8px}
+.stepper button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line-2);background:transparent;cursor:pointer;display:grid;place-items:center}
+.stepper button:disabled{opacity:.3;cursor:not-allowed}
+.stepper span{min-width:18px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:14px}
+.sum summary{list-style:none;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600}
+.sum summary::-webkit-details-marker{display:none}
+.sum summary .chev{display:inline-block;transition:transform .2s;margin-left:6px}
+.sum[open] summary .chev{transform:rotate(180deg)}
+.sum-body{margin-top:10px;border-top:1px solid var(--line);padding-top:6px}
+.sum-line{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:5px 0;color:var(--muted)}
+.sum-line b{color:var(--text);font-weight:500;text-align:right}
+.sum-line.disc,.sum-line.disc b{color:var(--ok)}
+.sum-total{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:6px;padding-top:10px;font-weight:600}
+.fh{font-size:16px;font-weight:600;margin:22px 0 4px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.hint-s{font-size:12px;color:var(--faint);margin-top:5px}
+.in{width:100%;background:var(--surface);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;color:var(--text);font:16px var(--body);outline:none}
+.in:focus{border-color:var(--gold)}
+.in.bad{border-color:var(--danger)}
+textarea.in{resize:vertical;min-height:96px;line-height:1.5}
+.err{color:var(--danger);font-size:12px;margin-top:5px}
+.phone-row{display:grid;grid-template-columns:96px 1fr;gap:8px}
+.promo{display:flex;gap:8px;margin-top:8px}
+.promo .in{flex:1;min-width:0;text-transform:uppercase}
+.promo .btn{padding:12px 16px}
+.promo-ok,.promo-wait{display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:12px;font-size:13.5px;margin-top:8px}
+.promo-ok{background:rgba(127,220,174,.1);color:var(--ok)}
+.promo-wait{background:rgba(255,197,110,.1);color:var(--warn)}
+.promo-ok .link{color:var(--ok)}.promo-wait .link{color:var(--warn)}
+.promo-ok svg,.promo-wait svg{flex:0 0 auto}
+.pm{width:100%;display:flex;gap:12px;align-items:center;padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--surface);margin-bottom:8px;cursor:pointer;text-align:left}
+.pm.on{border-color:var(--gold);background:var(--surface-2)}
+.pm .rd{width:20px;height:20px;border-radius:50%;border:2px solid var(--line-2);flex:0 0 auto;display:grid;place-items:center}
+.pm.on .rd{border-color:var(--gold)}
+.pm.on .rd::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--gold-hi)}
+.pm .tx{flex:1;display:flex;flex-direction:column}
+.pm .nm{font-weight:600;font-size:14.5px}
+.pm .ds{font-size:12px;color:var(--muted)}
+.pm-ic{color:var(--muted)}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;margin-top:16px;cursor:pointer}
+.agree input{width:20px;height:20px;accent-color:var(--gold);margin:1px 0 0;flex:0 0 auto}
+.layer{position:absolute;inset:0;z-index:30;background:rgba(6,0,14,.62);display:flex;align-items:flex-end}
+.sheet{width:100%;max-height:88%;overflow:auto;background:var(--surface);border-radius:24px 24px 0 0;padding:10px 18px calc(22px + env(safe-area-inset-bottom));animation:up .22s ease-out}
+.grab{width:40px;height:4px;border-radius:2px;background:var(--line-2);margin:0 auto 14px}
+.sheet h3{font-size:18px;margin:0 0 6px}
+.sheet>p{margin:0 0 16px;color:var(--muted);font-size:14px}
+.sheet .btn+.btn{margin-top:10px}
+.sheet .mission-card{margin-bottom:14px}
+@keyframes up{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}.pc-dots button::after{transition:none}}
+.sh-ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;margin:4px 0 12px;background:rgba(255,145,145,.14);color:var(--danger)}
+.sug{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line-2);background:var(--surface-2);margin-bottom:8px;cursor:pointer;text-align:left}
+.sug b{font:700 17px var(--display);margin-right:6px}
+.gw-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px dashed var(--line-2);color:var(--muted)}
+.gw-amt{font:700 32px var(--display);color:var(--gold-hi);text-align:center;margin:8px 0 0}
+.gw-m{text-align:center;color:var(--muted);font-size:13px}
+.qr-box{background:#fff;border-radius:16px;padding:12px;width:max-content;margin:14px auto 6px;line-height:0}
+.ap-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:14px}
+.ap-z{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.done-h{text-align:center;padding:8px 0 18px}
+.ok-ic{width:64px;height:64px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;background:rgba(127,220,174,.14);color:var(--ok)}
+.done-h h1{font:700 24px var(--display);margin:0 0 4px}
+.done-h p{margin:0;color:var(--muted);font-size:14px;overflow-wrap:anywhere}
+.ticket{border-radius:22px;background:var(--surface-2);border:1px solid var(--line-2);overflow:hidden;margin-bottom:16px}
+.tk-top{padding:18px}
+.tk-brand{display:flex;align-items:baseline;justify-content:space-between}
+.tk-brand .display{font:700 20px var(--display);color:var(--gold-hi)}
+.tk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.tk-grid span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.tk-grid b{font-weight:600;font-size:15px}
+.span2{grid-column:span 2}
+.tk-perf{position:relative;border-top:2px dashed var(--line-2);margin:0 16px}
+.tk-perf::before,.tk-perf::after{content:'';position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:var(--app)}
+.tk-perf::before{left:-28px}.tk-perf::after{right:-28px}
+.tk-bot{padding:16px 18px 18px;text-align:center}
+.ref{margin-top:8px;font-size:13px;color:var(--muted)}
+.ref b{color:var(--text);letter-spacing:.08em;font-size:15px}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.act{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border-radius:14px;background:var(--surface);border:1px solid var(--line);font-size:12.5px;cursor:pointer}
+.tips ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
+.tips li{margin-bottom:4px}
+.g-title{font-size:24px;font-weight:600;line-height:1.3;margin:6px 0 8px;text-wrap:balance}
+.g-lead{margin:0;color:var(--muted);font-size:14.5px}
+.how{list-style:none;padding:0;margin:18px 0 20px;display:grid;gap:12px}
+.how-i{display:flex;gap:12px;align-items:flex-start;font-size:14.5px}
+.how-n{width:28px;height:28px;border-radius:50%;background:var(--surface-2);color:var(--gold-hi);display:grid;place-items:center;font:700 14px var(--display);flex:0 0 auto}
+.mchips{display:flex;flex-wrap:wrap;gap:8px}
+.mission-card{background:var(--surface);border:1px solid var(--line-2);border-radius:18px;padding:18px}
+.m-num{font-size:12px;letter-spacing:.08em;color:var(--pink-hi)}
+.m-title{font-size:20px;font-weight:600;margin:4px 0 8px;line-height:1.3}
+.m-story{margin:0;color:var(--muted);font-size:14px}
+.m-sub{margin-top:16px;font-size:12px;letter-spacing:.06em;color:var(--gold-hi)}
+.todo{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:9px}
+.todo li{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.todo .bx{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line-2);flex:0 0 auto;margin-top:2px;display:grid;place-items:center}
+.todo li.ok .bx{background:var(--ok);border-color:var(--ok);color:#06281a}
+.todo li.no .bx{border-color:var(--danger);color:var(--danger)}
+.todo li.no{color:var(--muted)}
+.q{border:0;margin:0;padding:14px 0;border-bottom:1px solid var(--line);min-width:0}
+.q-t{display:block;font-size:14.5px;font-weight:500;margin-bottom:10px;padding:0;color:var(--text)}
+.rate{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.rate button{height:44px;border-radius:12px;border:1px solid var(--line-2);background:var(--surface);font-weight:600;font-size:16px;cursor:pointer}
+.rate button.on{background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:var(--gold-ink);border-color:transparent}
+.q.bad .rate button{border-color:rgba(255,145,145,.5)}
+.rate-ends{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin-top:6px}
+.r-time{font:700 48px/1.1 var(--display);color:var(--gold-hi);font-variant-numeric:tabular-nums;margin-top:6px}
+.r-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.stat span{display:block;font-size:12px;color:var(--muted)}
+.stat b{font-size:22px;font-variant-numeric:tabular-nums}
+.send{display:flex;gap:8px;align-items:flex-start;padding:12px 14px;border-radius:14px;font-size:13px;margin-bottom:12px}
+.send svg{flex:0 0 auto;margin-top:2px}
+.send.ok{background:rgba(127,220,174,.1);color:var(--ok)}
+.send.warn{background:rgba(255,197,110,.1);color:var(--warn)}
+.send.wait{background:var(--surface);color:var(--muted)}
+.steps-mini{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px;text-align:center}
+.steps-mini span{display:block;font-size:11.5px;color:var(--muted)}
+.steps-mini b{font-variant-numeric:tabular-nums}
+.rt{margin-top:10px}
+.rt summary{cursor:pointer;font-size:13px;color:var(--muted);padding:6px 0}
+.rt textarea{font-size:13px;min-height:160px}
+.toast{position:absolute;left:50%;bottom:100px;transform:translate(-50%,10px);background:#fff;color:#22093a;padding:10px 16px;border-radius:999px;font-size:13px;font-weight:500;opacity:0;pointer-events:none;transition:.2s;z-index:40;width:max-content;max-width:86%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.proto{width:300px;color:var(--muted);font-size:14px}
+.proto h2{font:700 20px var(--display);color:var(--text);margin:0 0 6px}
+.proto>p{margin:0 0 10px}
+.pc-h2,.proto h3{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:20px 0 8px;font-weight:600}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pbtn{padding:10px 12px;border-radius:12px;border:1px solid var(--line-2);background:var(--surface);cursor:pointer;font-size:13px;text-align:left;display:flex;align-items:center;gap:8px}
+.proto ul{padding-left:18px;margin:0}
+.proto li{margin-bottom:6px}
+.dash{position:fixed;inset:0;z-index:60;overflow:auto;background:var(--bg);padding-block:24px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.dash-in{max-width:980px;margin:0 auto;display:grid;gap:16px}
+.dash-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.dash-h h2{font:700 24px var(--display);margin:0;color:var(--text)}
+.dash-act{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.dash-act .btn{padding:10px 16px;font-size:14px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.dcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}
+.dcard h3{margin:0 0 10px;font-size:15px;font-weight:600}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th,.tbl td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{color:var(--muted);font-weight:500;font-size:12px;white-space:nowrap}
+.tbl td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl td:first-child{min-width:170px}.tbl td:last-child{min-width:220px}
+.bar-row{display:grid;grid-template-columns:minmax(0,1fr) 110px 40px;gap:10px;align-items:center;font-size:13.5px;padding:5px 0}
+.bar-row .trk{height:8px;border-radius:4px;background:rgba(255,255,255,.08)}
+.bar-row .trk i{display:block;height:100%;border-radius:4px;background:var(--gold)}
+.bar-row .trk.ev i{background:var(--z-mezz)}
+.bar-row b{text-align:right;font-variant-numeric:tabular-nums}
+.run{border-top:1px solid var(--line);padding:12px 0;display:grid;gap:6px;font-size:13.5px;min-width:0}
+.run:first-of-type{border-top:0}
+.run-h{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.run-h b{font-size:14.5px}
+.pill{font-size:11.5px;padding:2px 8px;border-radius:999px;background:var(--surface-2);color:var(--muted);white-space:nowrap}
+.pill.ok{background:rgba(127,220,174,.12);color:var(--ok)}
+.pill.no{background:rgba(255,145,145,.12);color:var(--danger)}
+.run p{margin:0;color:var(--muted);overflow-wrap:anywhere}
+.run p.cm{color:var(--text)}
+.csv-out{width:100%;min-height:140px;font:12px ui-monospace,Menlo,monospace}
+@media (max-width:900px){.proto{display:none}.demo-chip{display:inline-flex}}
+@media (max-width:600px){.stage{padding:0;display:block;height:100%}.phone{width:100%;height:100%;max-height:none;border:0;border-radius:0;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="phone" id="phone">
+    <div class="proto-banner" id="pbanner"></div>
+    <header class="top" id="top"></header>
+    <nav class="steps" id="steps" aria-label="Booking steps"></nav>
+    <div class="mrow" id="mrow" hidden></div>
+    <div class="timer" id="timer" role="timer" hidden></div>
+    <main id="view"></main>
+    <footer class="bar" id="bar"></footer>
+    <div class="layer" id="layer" hidden></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <aside class="proto" id="proto"></aside>
+</div>
+<section class="dash" id="dash" hidden aria-label="Test results"></section>
+<script>
+const I18N={
+th:{proto_banner:'ต้นแบบเพื่อการออกแบบ · ไม่ใช่เว็บไซต์ทางการของ Tiffany’s Show',step1:'รอบการแสดง',step2:'ที่นั่ง',step3:'ชำระเงิน',step4:'ตั๋ว',back:'ย้อนกลับ',close:'ปิด',cancel:'ยกเลิก',edit:'เปลี่ยนรอบ',remove:'เอาออก',
+show_tag:'Cabaret show · Pattaya',show_meta:'แสดงทุกวัน วันละ 3 รอบ และมีรอบพิเศษในบางวัน',from_price:'บัตรเริ่มต้น',
+pick_date:'เลือกวันที่',pick_time:'เลือกรอบการแสดง',today:'วันนี้',special_note:'วันที่มีรอบพิเศษ',
+avail:'ว่าง {n} ที่',low:'เหลือ {n} ที่',soldout:'เต็มแล้ว',closed:'ปิดขายออนไลน์',closed_sub:'จองผ่าน Live chat',special:'รอบพิเศษ',
+zones_title:'ราคาบัตรตามโซน',bar_nosel:'ยังไม่ได้เลือกรอบ',btn_seats:'เลือกที่นั่ง',
+hold:'ถือที่นั่งไว้ให้คุณอีก',seats_hint:'แตะที่นั่งเพื่อเลือก สูงสุด 10 ที่ เลื่อนผังซ้าย-ขวาได้',
+lg_avail:'ว่าง',lg_taken:'ไม่ว่าง',lg_me:'ของคุณ',stage:'เวที',mezz_label:'ชั้นลอย',map_aria:'ผังที่นั่ง',
+auto_pick:'เลือกที่นั่งให้อัตโนมัติ',ap_sub:'ระบบจะหาที่นั่งติดกันที่ดีที่สุดในโซนที่เลือก',ap_n:'จำนวนที่นั่ง',ap_go:'หาที่นั่งให้',ap_none:'โซนนี้มีที่นั่งติดกันไม่พอ ลองโซนอื่น',ap_done:'เลือก {s} ให้แล้ว',
+seat_taken:'ที่นั่งนี้มีคนจองแล้ว',max_seats:'เลือกได้สูงสุด 10 ที่นั่งต่อการจอง',bar_seats_none:'ยังไม่ได้เลือกที่นั่ง',seats_n:'{n} ที่นั่ง',seat_1:'1 ที่นั่ง',btn_next:'ต่อไป',
+release_toast:'ปล่อยที่นั่งที่เลือกไว้แล้ว',
+food_title:'อาหารและเครื่องดื่ม',food_sub:'สั่งล่วงหน้า รับได้ที่โรงละคร ข้ามได้ถ้าไม่ต้องการ',food_sample:'เมนูและราคาในหน้านี้เป็นตัวอย่างสำหรับต้นแบบ',
+tue_closed:'ร้าน Thai Marché ปิดทุกวันอังคาร จึงสั่งบุฟเฟต์สำหรับวันนี้ไม่ได้',
+f_welcome:'เวลคัมดริงก์',f_welcome_d:'ม็อกเทลหรือน้ำผลไม้ 1 แก้ว',f_snack:'ชุดขนมและน้ำอัดลม',f_snack_d:'ทานระหว่างรอเข้าชม',
+f_dinner:'บุฟเฟต์ Thai Marché',f_dinner_d:'มื้อเย็นก่อนการแสดง',f_bubbly:'สปาร์กลิงไวน์',f_bubbly_d:'1 แก้ว สำหรับอายุ 20 ปีขึ้นไป',unavailable:'วันนี้ไม่เปิดให้บริการ',
+total_so_far:'ยอดรวมตอนนี้',btn_topay:'ไปชำระเงิน',btn_skip:'ข้าม ไปชำระเงิน',
+summary:'สรุปการจอง',discount:'ส่วนลด',total:'ยอดรวม',
+promos:'โปรโมชั่น',promo_label:'โปรโมชั่นตัวอย่าง',promo_cta:'แตะเพื่อใช้โปรนี้',promo_sel:'โปรที่เลือก',promo_picked:'เลือกโปร {c} แล้ว ระบบจะใช้ตอนชำระเงิน',
+promo:'โค้ดส่วนลด',promo_ph:'ใส่โค้ดจากโปรโมชั่น',apply:'ใช้โค้ด',promo_bad:'ไม่มีโค้ดนี้',promo_ok:'ใช้โค้ด {c} แล้ว ลด ฿{a}',promo_wait:'โค้ด {c} ยังใช้ไม่ได้: {r}',
+pr_EARLY15_h:'จองล่วงหน้า 7 วัน ลด 15%',pr_EARLY15_s:'ลดค่าบัตรทุกโซน เมื่อวันแสดงห่างจากวันนี้ 7 วันขึ้นไป',
+pr_SAT1630_h:'รอบพิเศษเสาร์ 16:30 ดริงก์ฟรี',pr_SAT1630_s:'เวลคัมดริงก์ฟรี 1 แก้วต่อที่นั่ง สั่งในขั้นอาหารแล้วระบบหักให้',
+pr_GROUP4_h:'มา 4 คนขึ้นไป ลด 10%',pr_GROUP4_s:'ลดทั้งค่าบัตรและอาหาร เมื่อจองตั้งแต่ 4 ที่นั่ง',
+pr_DINE20_h:'ดินเนอร์ + โชว์ บุฟเฟต์ลด 20%',pr_DINE20_s:'ลดค่าบุฟเฟต์ Thai Marché ทุกวัน ยกเว้นวันอังคาร',
+pr_MEZZ990_h:'Mezzanine วันธรรมดา ที่นั่งละ ฿990',pr_MEZZ990_s:'วันจันทร์ถึงพฤหัสบดี จากปกติ ฿1,200',
+rs_early:'วันแสดงต้องห่างจากวันนี้ 7 วันขึ้นไป',rs_sat:'ใช้ได้เฉพาะรอบพิเศษวันเสาร์ 16:30',rs_sat_drink:'เพิ่มเวลคัมดริงก์ในขั้นอาหารก่อน',rs_group:'ต้องจอง 4 ที่นั่งขึ้นไป',rs_dine:'เพิ่มบุฟเฟต์ Thai Marché ในขั้นอาหารก่อน',rs_mezz_day:'ใช้ได้เฉพาะวันจันทร์ถึงพฤหัสบดี',rs_mezz_zone:'ต้องมีที่นั่งโซน Mezzanine',
+contact:'ข้อมูลผู้จอง',contact_sub:'ไม่ต้องสมัครสมาชิก ระบบจะส่งตั๋วไปที่อีเมลนี้',
+f_name:'ชื่อ-นามสกุล',f_email:'อีเมล',f_phone:'เบอร์โทรศัพท์',f_nat:'สัญชาติ (ไม่บังคับ)',nat_ph:'เลือกสัญชาติ',
+e_name:'กรุณากรอกชื่อ-นามสกุล',e_email:'กรุณากรอกอีเมลให้ถูกต้อง',e_phone:'กรุณากรอกเบอร์โทร 8–12 หลัก',e_agree:'กรุณายอมรับเงื่อนไขก่อนชำระเงิน',fix_form:'กรุณาตรวจข้อมูลที่ไฮไลต์ไว้',
+pay_method:'ช่องทางชำระเงิน',pm_card:'บัตรเครดิต / เดบิต',pm_card_sub:'Visa · Mastercard · JCB · UnionPay',pm_pp:'พร้อมเพย์ QR',pm_pp_sub:'สแกนจ่ายผ่านแอปธนาคารไทย',pm_ali:'Alipay',pm_ali_sub:'支付宝',pm_wc:'WeChat Pay',pm_wc_sub:'微信支付',
+agree:'ฉันยอมรับเงื่อนไขการจองและนโยบายความเป็นส่วนตัว',btn_pay:'ชำระเงิน',
+gw_tag:'ต้นแบบ',gw_title:'หน้าชำระเงินจำลอง',gw_note:'ในระบบจริง ขั้นนี้จะส่งต่อไปยังผู้ให้บริการรับชำระเงิน',gw_qr_note:'QR ตัวอย่าง ใช้จ่ายจริงไม่ได้',gw_ok:'จำลอง: จ่ายสำเร็จ',gw_fail:'จำลอง: จ่ายไม่สำเร็จ',
+fail_title:'ชำระเงินไม่สำเร็จ',fail_body:'ยังไม่มีการตัดเงิน ที่นั่งของคุณยังถูกถือไว้อีก {t}',retry:'ลองอีกครั้ง',change_pm:'เปลี่ยนช่องทางชำระเงิน',
+expired_title:'หมดเวลาถือที่นั่ง',expired_body:'ที่นั่งที่เลือกไว้ถูกปล่อยให้ผู้อื่นแล้ว เลือกที่นั่งใหม่ได้เลย',reselect:'เลือกที่นั่งใหม่',
+soldout_title:'รอบนี้เต็มแล้ว',soldout_body:'รอบเหล่านี้ยังมีที่นั่งว่าง',
+closed_title:'ปิดขายออนไลน์แล้ว',closed_body:'รอบนี้ใกล้เวลาแสดงแล้ว ติดต่อเจ้าหน้าที่ทาง Live chat หรือโทร +66 38 421 700',chat:'เปิด Live chat',
+done_title:'จองสำเร็จ',done_sub:'ส่งตั๋วไปที่ {email} แล้ว',date_label:'วันที่',time_label:'รอบ',seat_label:'ที่นั่ง',zone_label:'โซน',
+qr_note:'แสดง QR นี้ที่ทางเข้าได้เลย',ref:'รหัสการจอง',qr_sample:'QR ตัวอย่างสำหรับต้นแบบ',
+save_ticket:'บันทึกตั๋ว',add_cal:'เพิ่มลงปฏิทิน',directions:'ดูเส้นทาง',
+tips_title:'ก่อนวันแสดง',tip1:'มาถึงก่อนเวลาแสดงอย่างน้อย 30 นาที',tip2:'แสดง QR บนมือถือได้เลย ไม่ต้องพิมพ์ตั๋ว',tip3:'อาหารที่สั่งไว้ รับได้ที่เคาน์เตอร์ในโรงละคร',
+book_again:'จองรอบอื่นเพิ่ม',proto_toast:'ต้นแบบ: ปุ่มนี้ยังไม่ทำงานจริง',
+g_eyebrow:'Usability test · ต้นแบบ',g_title:'ภารกิจจองตั๋ว Tiffany’s Show',g_intro:'ช่วยเราทดสอบระบบจองตั๋วแบบใหม่ คุณจะได้โจทย์ 1 ข้อ แล้วจองตั๋วให้ตรงตามโจทย์ให้เร็วที่สุด',
+g_how1:'อ่านโจทย์ แล้วกดเริ่มจับเวลา',g_how2:'จองตามโจทย์จนได้ตั๋ว ระบบจับเวลาให้อัตโนมัติ',g_how3:'ตอบแบบประเมินสั้นๆ 6 ข้อ แล้วส่งผลให้ผู้จัดทดสอบ',
+g_nick:'ชื่อเล่นของคุณ',g_nick_ph:'เช่น ปอ',g_nick_hint:'ใช้แยกผลของแต่ละคน ไม่บังคับ',g_pick:'เลือกโจทย์',g_random:'สุ่มให้',g_m:'ภารกิจ {n}',
+g_get:'รับโจทย์',g_free:'ลองระบบจองแบบอิสระ ไม่จับเวลา',g_dash:'ดูผลการทดสอบ',g_note:'นี่คือระบบต้นแบบ ไม่มีการจองหรือเก็บเงินจริง ข้อมูลในฟอร์มใส่เป็นข้อมูลสมมุติได้ และระบบไม่เก็บไว้',
+g_todo:'สิ่งที่ต้องทำให้ครบ',g_timer_note:'เวลาเริ่มนับเมื่อกดปุ่มด้านล่าง และหยุดเมื่อจองสำเร็จ ระหว่างจองกดปุ่ม "โจทย์" ด้านบนเพื่ออ่านอีกครั้งได้ตลอด',g_start:'เริ่มจับเวลา',
+g_view:'โจทย์',g_giveup:'ทำต่อไม่ได้ ข้ามไปทำแบบประเมิน',g_done_bar:'ภารกิจเสร็จใน {t}',g_to_survey:'ทำแบบประเมิน',
+mA_t:'ครอบครัวเที่ยววันเสาร์',mA_s:'คุณพาครอบครัว 4 คนมาเที่ยวพัทยา อยากดูรอบพิเศษ 16:30 ของ{d} และอยากได้เวลคัมดริงก์ฟรีจากโปรโมชั่น',
+mA_1:'รอบพิเศษ 16:30 ของ{d}',mA_2:'VIP Gold 4 ที่นั่ง',mA_3:'ทั้ง 4 ที่นั่งติดกันในแถวเดียว',mA_4:'เวลคัมดริงก์ 4 แก้ว',mA_5:'ใช้โปรโมชั่นที่ได้ดริงก์ฟรี',mA_6:'จ่ายด้วยพร้อมเพย์ QR',
+mB_t:'เซอร์ไพรส์วันครบรอบ',mB_s:'คุณจะพาแฟนดูโชว์ในวันครบรอบ ตั้งใจดูรอบ 19:30 ของ{d} ถ้ารอบนั้นเต็ม ให้เลือกรอบถัดไปของวันเดียวกัน',
+mB_1:'{d} รอบถัดจาก 19:30',mB_2:'VIP Diamond 2 ที่นั่งติดกัน',mB_3:'บุฟเฟต์ Thai Marché 2 ที่',mB_4:'สปาร์กลิงไวน์ 2 แก้ว',mB_5:'ใช้โปรโมชั่นลดค่าบุฟเฟต์',mB_6:'จ่ายด้วยบัตรเครดิต',mB_7:'ครั้งแรกให้กด "จำลอง: จ่ายไม่สำเร็จ" แล้วจ่ายใหม่จนสำเร็จ',
+mC_t:'ไกด์พากรุ๊ปทัวร์จีน',mC_s:'คุณเป็นไกด์พานักท่องเที่ยวจีน 5 คนที่มีงบจำกัด ลูกทัวร์อ่านภาษาไทยไม่ได้ จึงต้องจองในหน้าภาษาอังกฤษ',
+mC_1:'เปลี่ยนเว็บเป็นภาษาอังกฤษก่อนจอง',mC_2:'{d} รอบไหนก็ได้',mC_3:'Mezzanine 5 ที่นั่ง',mC_4:'ทั้ง 5 ที่นั่งติดกันในแถวเดียว',mC_5:'ไม่สั่งอาหารและเครื่องดื่ม',mC_6:'ใช้โปรโมชั่นที่ประหยัดที่สุดสำหรับกลุ่มนี้',mC_7:'สัญชาติ Chinese',mC_8:'จ่ายผ่าน Alipay',
+s_title:'แบบประเมินสั้นๆ',s_sub:'6 ข้อ ใช้เวลาไม่ถึง 1 นาที',s_q1:'เลือกวันและรอบการแสดงได้ง่ายแค่ไหน',s_q2:'เลือกที่นั่งบนผังได้ง่ายแค่ไหน',s_q3:'โปรโมชั่นและราคาเข้าใจได้ชัดเจนแค่ไหน',s_q4:'กรอกข้อมูลและชำระเงินได้ง่ายแค่ไหน',s_q5:'โดยรวมพอใจกับการจองครั้งนี้แค่ไหน',
+s_q6:'ข้อเสนอแนะเพิ่มเติม',s_q6_ph:'ตรงไหนที่สับสน หรืออยากให้ปรับอะไร',s_lo_easy:'ยากมาก',s_hi_easy:'ง่ายมาก',s_lo_clear:'ไม่ชัดเลย',s_hi_clear:'ชัดมาก',s_lo_sat:'ไม่พอใจ',s_hi_sat:'พอใจมาก',
+s_err:'เลือกคะแนนข้อนี้ก่อน',s_missing:'ยังเหลือ {n} ข้อที่ยังไม่ได้ให้คะแนน',s_submit:'ส่งแบบประเมิน',
+r_time:'เวลาที่ใช้จองจนสำเร็จ',r_gaveup:'ข้ามก่อนจองสำเร็จ',r_score:'ทำตามโจทย์ได้',r_sat:'ความพอใจโดยรวม',r_sending:'กำลังส่งผล…',r_sent:'ส่งผลให้ผู้จัดทดสอบแล้ว ขอบคุณที่ช่วยทดสอบ',
+r_nosend:'หน้านี้ส่งผลอัตโนมัติไม่ได้ กดคัดลอกผลลัพธ์แล้วส่งทาง LINE หรืออีเมลให้ผู้จัดทดสอบแทน',r_copy:'คัดลอกผลลัพธ์',r_copied:'คัดลอกแล้ว นำไปวางใน LINE หรืออีเมลได้เลย',r_copy_fail:'คัดลอกอัตโนมัติไม่ได้ เลือกข้อความด้านล่างแล้วคัดลอกเอง',
+r_show_text:'ดูข้อความผลลัพธ์',r_again:'เล่นอีกครั้ง',r_steps:'เวลาในแต่ละขั้น',r_checks:'ผลตามโจทย์',
+rt_head:'ผลทดสอบระบบจอง Tiffany’s (ต้นแบบ)',rt_tester:'ผู้ทดสอบ',rt_missed:'ข้อที่พลาด',rt_ratings:'คะแนน',rt_events:'สิ่งที่เกิดระหว่างจอง',
+rq1:'วัน/รอบ',rq2:'ที่นั่ง',rq3:'โปร/ราคา',rq4:'ชำระเงิน',rq5:'โดยรวม',k_showtime:'รอบ',k_seats:'ที่นั่ง',k_food:'อาหาร',k_pay:'ชำระเงิน',
+e_back:'กดย้อนกลับ',e_soldout:'แตะรอบที่เต็ม',e_closed:'แตะรอบที่ปิดขาย',e_taken:'แตะที่นั่งไม่ว่าง',e_promoFail:'ใส่โค้ดไม่ผ่าน',e_formErr:'กรอกฟอร์มไม่ผ่าน',e_payFail:'จ่ายไม่สำเร็จ',e_brief:'เปิดดูโจทย์ซ้ำ',e_expire:'หมดเวลาถือที่นั่ง',e_autopick:'ใช้เลือกที่นั่งอัตโนมัติ',e_promoTap:'แตะแบนเนอร์โปร',
+d_title:'ผลการทดสอบ',d_sub:'อัปเดตทันทีเมื่อมีคนส่งผล',d_runs:'จำนวนครั้งที่ทดสอบ',d_avg_time:'เวลาเฉลี่ย (คนที่จองสำเร็จ)',d_full:'ทำครบทุกข้อ',d_sat:'ความพอใจโดยรวมเฉลี่ย',
+d_by_mission:'แยกตามภารกิจ',d_mission:'ภารกิจ',d_n:'ครั้ง',d_avg_score:'ทำตามโจทย์ได้เฉลี่ย',d_missed:'ข้อที่พลาดบ่อย',d_ratings:'คะแนนเฉลี่ยรายข้อ',d_events:'สิ่งที่เกิดระหว่างจอง (รวมทุกคน)',d_list:'ผลรายคน',
+d_empty:'ยังไม่มีผลการทดสอบ ส่งลิงก์ให้ผู้ทดสอบ แล้วผลจะขึ้นที่นี่ทันที',d_close:'ปิด',d_csv:'คัดลอกเป็น CSV',d_copied:'คัดลอก CSV แล้ว วางใน Google Sheets หรือ Excel ได้เลย',d_csv_fail:'คัดลอกอัตโนมัติไม่ได้ เลือกข้อความด้านล่างแล้วคัดลอกเอง',
+d_loading:'กำลังโหลดผล…',d_unavail:'โหลดผลการทดสอบในหน้านี้ไม่ได้',d_anon:'ไม่ระบุชื่อ',d_none:'ไม่มี',d_comment:'ข้อเสนอแนะ',
+demo_title:'ตัวควบคุมต้นแบบ',d_jump:'ข้ามไปที่หน้า',d_sim:'จำลองสถานการณ์',d_intro:'หน้าเริ่มเกม',d_expire:'จำลองหมดเวลา',d_reset:'เริ่มใหม่ทั้งหมด',d_need_hold:'ต้องอยู่ในช่วงถือที่นั่งก่อน ระบบจึงจะจำลองหมดเวลาได้',
+p_intro:'ต้นแบบระบบจองบนมือถือ 4 ขั้น พร้อมเกมทดสอบแบบจับเวลา',p_try:'ลองทดสอบ',p_running:'กำลังจับเวลาภารกิจ ตัวควบคุมจะซ่อนไว้จนกว่าจะจบ',
+p_t1:'เริ่มที่หน้าเกม: รับโจทย์ จองตามโจทย์ แล้วตอบแบบประเมิน',p_t2:'{d} รอบ 19:30 เต็มแล้ว ลองแตะดูรอบแนะนำ',p_t3:'แตะแบนเนอร์โปรโมชั่นในหน้าเลือกรอบ',p_t4:'กด "จำลองหมดเวลา" เพื่อดูกรณีหมดเวลาถือที่นั่ง',
+p_mock:'ข้อมูลที่ใช้',p_mock_body:'ราคาโซนมาจากเว็บปัจจุบัน ส่วนผังที่นั่ง จำนวนที่ว่าง เมนูอาหาร โปรโมชั่น และหน้าชำระเงินเป็นข้อมูลสมมุติ ระบบเก็บเฉพาะผลการทดสอบและแบบประเมิน ไม่เก็บข้อมูลที่กรอกในฟอร์มจอง'},
+en:{proto_banner:'Design prototype · Not the official Tiffany’s Show website',step1:'Showtime',step2:'Seats',step3:'Payment',step4:'Ticket',back:'Back',close:'Close',cancel:'Cancel',edit:'Change',remove:'Remove',
+show_tag:'Cabaret show · Pattaya',show_meta:'Every day, 3 shows a day, plus special shows on some days',from_price:'Tickets from',
+pick_date:'Choose a date',pick_time:'Choose a showtime',today:'Today',special_note:'Days with a special show',
+avail:'{n} seats left',low:'Only {n} left',soldout:'Sold out',closed:'Online sales closed',closed_sub:'Book via live chat',special:'Special',
+zones_title:'Ticket prices by zone',bar_nosel:'No showtime selected',btn_seats:'Choose seats',
+hold:'Seats held for',seats_hint:'Tap seats to select, up to 10. Swipe the map sideways.',
+lg_avail:'Available',lg_taken:'Taken',lg_me:'Yours',stage:'STAGE',mezz_label:'',map_aria:'Seat map',
+auto_pick:'Pick best seats for me',ap_sub:'We find the best seats together in the zone you choose',ap_n:'Number of seats',ap_go:'Find seats',ap_none:'Not enough seats together in this zone. Try another zone.',ap_done:'Picked {s} for you',
+seat_taken:'This seat is already taken',max_seats:'You can book up to 10 seats at a time',bar_seats_none:'No seats selected',seats_n:'{n} seats',seat_1:'1 seat',btn_next:'Continue',
+release_toast:'Your selected seats were released',
+food_title:'Food & drinks',food_sub:'Order ahead and collect at the theatre. Optional.',food_sample:'Menu items and prices here are placeholders for the prototype',
+tue_closed:'Thai Marché restaurant is closed every Tuesday, so the buffet is not available today',
+f_welcome:'Welcome drink',f_welcome_d:'One mocktail or juice',f_snack:'Snack & soft drink set',f_snack_d:'Enjoy before the show',
+f_dinner:'Thai Marché buffet',f_dinner_d:'Dinner before the show',f_bubbly:'Sparkling wine',f_bubbly_d:'One glass, 20+ only',unavailable:'Not available today',
+total_so_far:'Total so far',btn_topay:'Go to payment',btn_skip:'Skip to payment',
+summary:'Booking summary',discount:'Discount',total:'Total',
+promos:'Promotions',promo_label:'Sample promotion',promo_cta:'Tap to use',promo_sel:'Promotion',promo_picked:'{c} selected. It applies at payment.',
+promo:'Promo code',promo_ph:'Enter a promo code',apply:'Apply',promo_bad:'This code does not exist',promo_ok:'{c} applied, ฿{a} off',promo_wait:'{c} does not apply yet: {r}',
+pr_EARLY15_h:'Book 7 days ahead, 15% off',pr_EARLY15_s:'On tickets in every zone, for shows 7 or more days from today',
+pr_SAT1630_h:'Saturday 16:30 special: free drink',pr_SAT1630_s:'One free welcome drink per seat. Add the drinks in the food step.',
+pr_GROUP4_h:'Groups of 4 or more, 10% off',pr_GROUP4_s:'On tickets and food, when you book 4 seats or more',
+pr_DINE20_h:'Dinner + show, buffet 20% off',pr_DINE20_s:'On the Thai Marché buffet, every day except Tuesday',
+pr_MEZZ990_h:'Weekday Mezzanine ฿990 a seat',pr_MEZZ990_s:'Monday to Thursday, normally ฿1,200',
+rs_early:'the show must be 7 or more days from today',rs_sat:'only for the Saturday 16:30 special show',rs_sat_drink:'add welcome drinks in the food step first',rs_group:'book 4 seats or more',rs_dine:'add the Thai Marché buffet in the food step first',rs_mezz_day:'only Monday to Thursday',rs_mezz_zone:'needs Mezzanine seats',
+contact:'Your details',contact_sub:'No account needed. We send your ticket to this email.',
+f_name:'Full name',f_email:'Email',f_phone:'Phone number',f_nat:'Nationality (optional)',nat_ph:'Select nationality',
+e_name:'Enter your full name',e_email:'Enter a valid email',e_phone:'Enter a phone number of 8–12 digits',e_agree:'Please accept the terms before paying',fix_form:'Please check the highlighted fields',
+pay_method:'Payment method',pm_card:'Credit / debit card',pm_card_sub:'Visa · Mastercard · JCB · UnionPay',pm_pp:'PromptPay QR',pm_pp_sub:'Scan with a Thai banking app',pm_ali:'Alipay',pm_ali_sub:'支付宝',pm_wc:'WeChat Pay',pm_wc_sub:'微信支付',
+agree:'I accept the booking terms and privacy policy',btn_pay:'Pay',
+gw_tag:'Prototype',gw_title:'Simulated payment page',gw_note:'In the real system this step hands off to the payment provider',gw_qr_note:'Sample QR, cannot be used to pay',gw_ok:'Simulate: payment succeeds',gw_fail:'Simulate: payment fails',
+fail_title:'Payment failed',fail_body:'You were not charged. Your seats are still held for {t}.',retry:'Try again',change_pm:'Change payment method',
+expired_title:'Seat hold expired',expired_body:'Your selected seats were released to other guests. Please choose seats again.',reselect:'Choose seats again',
+soldout_title:'This show is sold out',soldout_body:'These shows still have seats',
+closed_title:'Online sales closed',closed_body:'This show starts soon. Contact our team via live chat or call +66 38 421 700.',chat:'Open live chat',
+done_title:'Booking confirmed',done_sub:'Your ticket was sent to {email}',date_label:'Date',time_label:'Time',seat_label:'Seats',zone_label:'Zone',
+qr_note:'Show this QR at the entrance',ref:'Booking ref',qr_sample:'Sample QR for the prototype',
+save_ticket:'Save ticket',add_cal:'Add to calendar',directions:'Directions',
+tips_title:'Before the show',tip1:'Arrive at least 30 minutes before showtime',tip2:'Show the QR on your phone, no printing needed',tip3:'Collect your food order at the theatre counter',
+book_again:'Book another show',proto_toast:'Prototype: this button does nothing yet',
+g_eyebrow:'Usability test · Prototype',g_title:'The Tiffany’s Show booking challenge',g_intro:'Help us test a new ticket booking flow. You get one mission, then book tickets that match it as fast as you can.',
+g_how1:'Read the mission and start the timer',g_how2:'Book until you get the ticket. The timer runs on its own',g_how3:'Answer 6 short questions and send your result',
+g_nick:'Your nickname',g_nick_ph:'e.g. Po',g_nick_hint:'Helps us tell results apart. Optional.',g_pick:'Mission',g_random:'Random',g_m:'Mission {n}',
+g_get:'Get my mission',g_free:'Try the booking flow freely, no timer',g_dash:'View test results',g_note:'This is a prototype. Nothing is really booked or charged. Use made-up details in the form; they are not kept.',
+g_todo:'To complete',g_timer_note:'The timer starts when you tap the button below and stops when your booking is confirmed. Tap "Mission" at the top to read it again any time.',g_start:'Start the timer',
+g_view:'Mission',g_giveup:'I’m stuck, skip to the survey',g_done_bar:'Mission done in {t}',g_to_survey:'Answer the survey',
+mA_t:'Saturday family trip',mA_s:'You bring a family of 4 to Pattaya. You want the 16:30 special show on {d}, and free welcome drinks from a promotion.',
+mA_1:'16:30 special show on {d}',mA_2:'4 seats in VIP Gold',mA_3:'All 4 seats next to each other in one row',mA_4:'4 welcome drinks',mA_5:'The promotion that gives free drinks',mA_6:'Pay with PromptPay QR',
+mB_t:'Anniversary surprise',mB_s:'You are taking your partner to the show for your anniversary. You plan on the 19:30 show on {d}. If it is full, take the next show that same day.',
+mB_1:'{d}, the show after 19:30',mB_2:'2 VIP Diamond seats next to each other',mB_3:'2 Thai Marché buffets',mB_4:'2 glasses of sparkling wine',mB_5:'The promotion that discounts the buffet',mB_6:'Pay by credit card',mB_7:'First tap "Simulate: payment fails", then pay again until it works',
+mC_t:'Tour guide with a Chinese group',mC_s:'You guide 5 Chinese tourists on a tight budget. They can’t read Thai, so you book on the English site.',
+mC_1:'Switch the site to English before booking',mC_2:'{d}, any showtime',mC_3:'5 seats in Mezzanine',mC_4:'All 5 seats next to each other in one row',mC_5:'No food or drinks',mC_6:'The cheapest promotion for this group',mC_7:'Nationality: Chinese',mC_8:'Pay with Alipay',
+s_title:'Quick survey',s_sub:'6 questions, under a minute',s_q1:'How easy was it to choose the date and showtime?',s_q2:'How easy was it to choose seats on the map?',s_q3:'How clear were the promotions and prices?',s_q4:'How easy was it to fill in your details and pay?',s_q5:'Overall, how satisfied are you with this booking?',
+s_q6:'Any other suggestions?',s_q6_ph:'What was confusing, or what would you change?',s_lo_easy:'Very hard',s_hi_easy:'Very easy',s_lo_clear:'Not clear',s_hi_clear:'Very clear',s_lo_sat:'Not satisfied',s_hi_sat:'Very satisfied',
+s_err:'Pick a score for this question',s_missing:'{n} questions still need a score',s_submit:'Send survey',
+r_time:'Time to a confirmed booking',r_gaveup:'Skipped before finishing',r_score:'Mission items done',r_sat:'Overall satisfaction',r_sending:'Sending your result…',r_sent:'Your result was sent to the test organiser. Thanks for helping.',
+r_nosend:'This page could not send your result automatically. Copy it and send it to the organiser by LINE or email.',r_copy:'Copy result',r_copied:'Copied. Paste it into LINE or an email.',r_copy_fail:'Could not copy automatically. Select the text below and copy it.',
+r_show_text:'Show result text',r_again:'Play again',r_steps:'Time per step',r_checks:'Mission checklist',
+rt_head:'Tiffany’s booking prototype – test result',rt_tester:'Tester',rt_missed:'Missed',rt_ratings:'Scores',rt_events:'During booking',
+rq1:'Date/time',rq2:'Seats',rq3:'Promos/prices',rq4:'Payment',rq5:'Overall',k_showtime:'Showtime',k_seats:'Seats',k_food:'Food',k_pay:'Payment',
+e_back:'Back taps',e_soldout:'Sold-out taps',e_closed:'Closed-show taps',e_taken:'Taken-seat taps',e_promoFail:'Promo code failures',e_formErr:'Form errors',e_payFail:'Failed payments',e_brief:'Re-read mission',e_expire:'Seat hold expired',e_autopick:'Used auto-pick',e_promoTap:'Promo banner taps',
+d_title:'Test results',d_sub:'Updates as soon as someone sends a result',d_runs:'Test runs',d_avg_time:'Average time (completed runs)',d_full:'Completed every item',d_sat:'Average overall satisfaction',
+d_by_mission:'By mission',d_mission:'Mission',d_n:'Runs',d_avg_score:'Average items done',d_missed:'Most missed',d_ratings:'Average score per question',d_events:'What happened during booking (all runs)',d_list:'Each run',
+d_empty:'No results yet. Share the link with testers and results appear here right away.',d_close:'Close',d_csv:'Copy as CSV',d_copied:'CSV copied. Paste it into Google Sheets or Excel.',d_csv_fail:'Could not copy automatically. Select the text below and copy it.',
+d_loading:'Loading results…',d_unavail:'Test results cannot load on this page',d_anon:'Anonymous',d_none:'None',d_comment:'Suggestion',
+demo_title:'Prototype controls',d_jump:'Jump to',d_sim:'Simulate',d_intro:'Game start',d_expire:'Expire seat hold',d_reset:'Start over',d_need_hold:'A seat hold must be running to simulate expiry',
+p_intro:'A 4-step mobile booking prototype with a timed test game.',p_try:'Things to try',p_running:'A timed mission is running. Controls are hidden until it ends.',
+p_t1:'Start at the game screen: get a mission, book it, then answer the survey',p_t2:'{d}, 19:30 is sold out. Tap it to see suggestions',p_t3:'Tap a promotion banner on the showtime screen',p_t4:'Use "Expire seat hold" to see the timeout case',
+p_mock:'About the data',p_mock_body:'Zone prices come from the current website. The seat map, availability, food menu, promotions and payment page are made up. The page keeps only test results and survey answers, never what testers type into the booking form.'}
+};
+const TH_DOW=['อา.','จ.','อ.','พ.','พฤ.','ศ.','ส.'],EN_DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const TH_DOWF=['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'],EN_DOWF=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const TH_MON=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'],EN_MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const TH_MONF=['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'],EN_MONF=['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+const svg=(p,s=18,w=2)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const IC={back:svg('<path d="M15 18l-6-6 6-6"/>'),clock:svg('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',15),
+wand:svg('<path d="M4 20L14 10"/><path d="M15 3v3M13.5 4.5h3M19 8v3M17.5 9.5h3M18 15v2M17 16h2"/>'),x:svg('<path d="M6 6l12 12M18 6L6 18"/>',12,2.5),
+minus:svg('<path d="M5 12h14"/>',16),plus:svg('<path d="M12 5v14M5 12h14"/>',16),check:svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>',16,2.4),
+checkSm:svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>',12,3),xSm:svg('<path d="M7 7l10 10M17 7L7 17"/>',11,3),
+checkBig:svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>',30,2.4),alert:svg('<circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/>',26),
+info:svg('<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/>',16),download:svg('<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',20),
+cal:svg('<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',20),pin:svg('<path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/>',20),
+glass:svg('<path d="M7 4h10l-1.5 15a1.5 1.5 0 0 1-1.5 1.3h-4a1.5 1.5 0 0 1-1.5-1.3z"/><path d="M7.5 9h9"/>',22),
+box:svg('<path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/>',22),
+dish:svg('<path d="M3 15h18M5 15a7 7 0 0 1 14 0M12 6V5M4 19h16"/>',22),wine:svg('<path d="M8 3h8l-.5 5a3.5 3.5 0 0 1-7 0z"/><path d="M12 11.5V20M8.5 20h7"/>',22),
+card:svg('<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/>',22),qr:svg('<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2M20 14v.01M18 18h2v2M14 20h2"/>',22),
+wallet:svg('<path d="M4 7a2 2 0 0 1 2-2h11v4"/><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M16 13h2"/>',22),
+flag:svg('<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',15),copy:svg('<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',18),
+chart:svg('<path d="M4 20V10M10 20V4M16 20v-7M2 20h20"/>',18)};
+
+const ZONES=[{id:'diamond',name:'VIP Diamond'},{id:'gold',name:'VIP Gold'},{id:'silver',name:'VIP Silver'},{id:'mezz',name:'Mezzanine'}];
+const ZN=Object.fromEntries(ZONES.map(z=>[z.id,z.name]));
+const PRICES={diamond:2800,gold:2400,silver:2200,mezz:1200};
+const FOOD=[{id:'welcome',price:150,icon:'glass'},{id:'snack',price:250,icon:'box'},{id:'dinner',price:690,icon:'dish',restaurant:true},{id:'bubbly',price:390,icon:'wine'}];
+const FPRICE=Object.fromEntries(FOOD.map(f=>[f.id,f.price]));
+const PM=[{id:'card',name:'pm_card',sub:'pm_card_sub',icon:'card'},{id:'pp',name:'pm_pp',sub:'pm_pp_sub',icon:'qr'},{id:'ali',name:'pm_ali',sub:'pm_ali_sub',icon:'wallet'},{id:'wc',name:'pm_wc',sub:'pm_wc_sub',icon:'wallet'}];
+const CC=['+66','+86','+91','+82','+7','+81','+60','+84','+44','+1'];
+const NAT=[['TH','ไทย','Thai'],['CN','จีน','Chinese'],['IN','อินเดีย','Indian'],['KR','เกาหลี','Korean'],['RU','รัสเซีย','Russian'],['JP','ญี่ปุ่น','Japanese'],['MY','มาเลเซีย','Malaysian'],['VN','เวียดนาม','Vietnamese'],['GB','อังกฤษ','British'],['US','อเมริกัน','American'],['OT','อื่น ๆ','Other']];
+
+const TODAY=(()=>{const d=new Date();d.setHours(0,0,0,0);return d})();
+const DATES=Array.from({length:30},(_,i)=>{const d=new Date(TODAY);d.setDate(d.getDate()+i);return d});
+const ymd=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const showsFor=i=>{const a=[{time:'18:00'},{time:'19:30'},{time:'21:00'}];if(DATES[i].getDay()===6)a.unshift({time:'16:30',special:true});return a};
+const keyOf=(i,tm)=>ymd(DATES[i])+'_'+tm;
+const SAT_IDX=DATES.findIndex((d,i)=>i>=1&&d.getDay()===6);
+const SOLD_IDX=DATES.findIndex((d,i)=>i>=2&&![2,6].includes(d.getDay()));
+const WKD_IDX=DATES.findIndex((d,i)=>i>=3&&d.getDay()>=1&&d.getDay()<=4&&i!==SOLD_IDX);
+
+const P=22,SW=18,SH=16,LM=34,AISLE=28;
+const L0=LM,C0=L0+7*P+AISLE,R0=C0+16*P+AISLE,CX=C0+(16*P-(P-SW))/2,MAP_W=R0+7*P-(P-SW)+LM;
+const ROWS='ABCDEFGHIJKLMN',SEATS=[];
+for(let ri=0;ri<14;ri++){
+  const row=ROWS[ri],mz=ri>=10,by=mz?400+(ri-10)*P:112+ri*P;let n=1;
+  const add=(zone,x,dy,block)=>SEATS.push({id:row+n,row,ri,n:n++,zone,x,y:by+dy,block});
+  for(let c=0;c<7;c++)add(mz?'mezz':'silver',L0+c*P,(6-c)*2.2,'L');
+  for(let c=0;c<16;c++){if(ri<2&&(c===0||c===15))continue;add(mz?'mezz':ri<2?'diamond':'gold',C0+c*P,Math.pow(c-7.5,2)*.1,'C')}
+  for(let c=0;c<7;c++)add(mz?'mezz':'silver',R0+c*P,c*2.2,'R');
+}
+const SEAT=Object.fromEntries(SEATS.map(s=>[s.id,s]));
+const TOTAL=SEATS.length,MAP_H=Math.ceil(Math.max(...SEATS.map(s=>s.y))+SH+22);
+const ZOOMS=[.6,.8,1,1.25];
+
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function rng(seed){return()=>{seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const FORCE={[keyOf(1,'18:00')]:.93,[keyOf(SAT_IDX,'16:30')]:.35,[keyOf(SOLD_IDX,'19:30')]:1,[keyOf(SOLD_IDX,'21:00')]:.4};
+showsFor(WKD_IDX).forEach(s=>{FORCE[keyOf(WKD_IDX,s.time)]=.35});
+const GUAR={[keyOf(SAT_IDX,'16:30')]:[['gold',4]],[keyOf(SOLD_IDX,'21:00')]:[['diamond',2]]};
+showsFor(WKD_IDX).forEach(s=>{GUAR[keyOf(WKD_IDX,s.time)]=[['mezz',5]]});
+function hasRun(set,zone,n){
+  const g={};SEATS.forEach(s=>{if(s.zone===zone)(g[s.row+s.block]??=[]).push(s)});
+  return Object.values(g).some(r=>{r.sort((a,b)=>a.n-b.n);let c=0;for(const s of r){c=set.has(s.id)?0:c+1;if(c>=n)return true}return false});
+}
+function freeRun(set,zone,n){
+  const rows=[...new Set(SEATS.filter(s=>s.zone===zone&&s.block==='C').map(s=>s.ri))],ri=rows[Math.floor(rows.length/2)];
+  const r=SEATS.filter(s=>s.ri===ri&&s.block==='C').sort((a,b)=>a.n-b.n),st=Math.max(0,Math.floor((r.length-n)/2));
+  r.slice(st,st+n).forEach(s=>set.delete(s.id));
+}
+const takenCache=new Map();
+function taken(key){
+  if(takenCache.has(key))return takenCache.get(key);
+  const r=rng(hash(key)),f=FORCE[key]??.2+r()*.45,set=new Set(),W={diamond:1.25,gold:1.1,silver:1,mezz:.7};
+  for(const s of SEATS)if(f>=1||r()<Math.min(1,f*W[s.zone]))set.add(s.id);
+  (GUAR[key]||[]).forEach(([z,n])=>{if(!hasRun(set,z,n))freeRun(set,z,n)});
+  takenCache.set(key,set);return set;
+}
+const avail=key=>TOTAL-taken(key).size;
+function isClosed(i,tm){if(i!==0)return false;const[h,m]=tm.split(':').map(Number);const st=new Date(TODAY);st.setHours(h,m);return st-Date.now()<60*60*1000}
+function status(i,tm){if(isClosed(i,tm))return'closed';const a=avail(keyOf(i,tm));if(a===0)return'soldout';if(a<60)return'low';return'open'}
+const bookable=(i,tm)=>['open','low'].includes(status(i,tm));
+
+const PROMOS=[
+  {code:'EARLY15',checks:[c=>c.dateIdx>=7||'rs_early'],amount:c=>Math.round(c.tickets*.15)},
+  {code:'SAT1630',checks:[c=>(c.special&&c.dow===6)||'rs_sat',c=>(c.f.welcome||0)>0||'rs_sat_drink'],amount:c=>Math.min(c.f.welcome||0,c.n)*FPRICE.welcome},
+  {code:'GROUP4',checks:[c=>c.n>=4||'rs_group'],amount:c=>Math.round((c.tickets+c.food)*.1)},
+  {code:'DINE20',checks:[c=>(c.f.dinner||0)>0||'rs_dine'],amount:c=>Math.round((c.f.dinner||0)*FPRICE.dinner*.2)},
+  {code:'MEZZ990',checks:[c=>(c.dow>=1&&c.dow<=4)||'rs_mezz_day',c=>(c.zc.mezz||0)>0||'rs_mezz_zone'],amount:c=>(c.zc.mezz||0)*(PRICES.mezz-990)}
+];
+function promoCtx(){
+  const zc={};S.seats.forEach(id=>{const z=SEAT[id].zone;zc[z]=(zc[z]||0)+1});
+  const sh=S.time&&showsFor(S.dateIdx).find(x=>x.time===S.time);
+  return{dateIdx:S.dateIdx,dow:DATES[S.dateIdx].getDay(),special:!!(sh&&sh.special),n:S.seats.length,zc,f:S.food,
+    tickets:S.seats.reduce((a,id)=>a+PRICES[SEAT[id].zone],0),food:FOOD.reduce((a,f)=>a+(S.food[f.id]||0)*f.price,0)};
+}
+function evalPromo(code){
+  const p=PROMOS.find(x=>x.code===code);if(!p)return{ok:false,reason:'promo_bad'};
+  const c=promoCtx();for(const f of p.checks){const r=f(c);if(r!==true)return{ok:false,reason:r}}
+  return{ok:true,amount:p.amount(c)};
+}
+
+function adjacent(ids){
+  if(!ids.length)return false;
+  const ss=ids.map(id=>SEAT[id]).sort((a,b)=>a.n-b.n),r=ss[0];
+  if(!ss.every(s=>s.ri===r.ri&&s.block===r.block))return false;
+  const blk=SEATS.filter(s=>s.ri===r.ri&&s.block===r.block).sort((a,b)=>a.n-b.n).map(s=>s.id),i0=blk.indexOf(r.id);
+  return ss.every((s,k)=>blk[i0+k]===s.id);
+}
+const inZone=(ids,z)=>ids.every(id=>SEAT[id].zone===z);
+const MISSIONS={
+  A:{num:1,day:SAT_IDX,checks:[['mA_1',b=>b.date===SAT_IDX&&b.time==='16:30'],['mA_2',b=>b.seats.length===4&&inZone(b.seats,'gold')],['mA_3',b=>b.seats.length===4&&adjacent(b.seats)],['mA_4',b=>(b.food.welcome||0)===4],['mA_5',b=>b.promo==='SAT1630'&&b.promoOk],['mA_6',b=>b.pay==='pp']]},
+  B:{num:2,day:SOLD_IDX,checks:[['mB_1',b=>b.date===SOLD_IDX&&b.time==='21:00'],['mB_2',b=>b.seats.length===2&&inZone(b.seats,'diamond')&&adjacent(b.seats)],['mB_3',b=>(b.food.dinner||0)===2],['mB_4',b=>(b.food.bubbly||0)===2],['mB_5',b=>b.promo==='DINE20'&&b.promoOk],['mB_6',b=>b.pay==='card'],['mB_7',b=>b.payFails>=1]]},
+  C:{num:3,day:WKD_IDX,checks:[['mC_1',b=>b.lang==='en'],['mC_2',b=>b.date===WKD_IDX],['mC_3',b=>b.seats.length===5&&inZone(b.seats,'mezz')],['mC_4',b=>b.seats.length===5&&adjacent(b.seats)],['mC_5',b=>!Object.values(b.food).some(Boolean)],['mC_6',b=>b.promo==='MEZZ990'&&b.promoOk],['mC_7',b=>b.nat==='CN'],['mC_8',b=>b.pay==='ali']]}
+};
+const SQ=[['s_q1','s_lo_easy','s_hi_easy'],['s_q2','s_lo_easy','s_hi_easy'],['s_q3','s_lo_clear','s_hi_clear'],['s_q4','s_lo_easy','s_hi_easy'],['s_q5','s_lo_sat','s_hi_sat']];
+const STEPK=['showtime','seats','food','pay'];
+const EVK=['back','soldout','closed','taken','promoFail','formErr','payFail','expire','brief','autopick','promoTap'];
+
+const newGame=()=>({mission:null,start:0,end:0,steps:{},cur:null,curAt:0,ev:{},ratings:[0,0,0,0,0],comment:'',gaveUp:false,sErr:false,send:null,run:null});
+const S={lang:'th',mode:'intro',nick:'',pick:'rand',g:newGame(),step:1,sub:'food',dateIdx:0,time:null,seats:[],zone:null,zonePref:null,zoomIdx:1,food:{},promo:null,promoInput:'',promoErr:false,
+  form:{name:'',email:'',cc:'+66',phone:'',nat:''},pay:'card',agree:false,errors:{},sumOpen:false,holdEnd:null,booking:null,ap:{n:2,zone:'gold'},sheetLocked:false,pcIdx:0,
+  isOwner:false,dashRuns:null,dashState:null};
+const INIT_S=JSON.stringify(S);
+const HOLD=10*60*1000;
+const $=s=>document.querySelector(s);
+function t(k,v){let s=I18N[S.lang][k]??I18N.en[k]??k;if(v)for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s}
+const fmt=n=>n.toLocaleString('en-US');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const dow=d=>(S.lang==='th'?TH_DOW:EN_DOW)[d.getDay()];
+const mon=d=>(S.lang==='th'?TH_MON:EN_MON)[d.getMonth()];
+const fmtDate=d=>`${dow(d)} ${d.getDate()} ${mon(d)} ${S.lang==='th'?d.getFullYear()+543:d.getFullYear()}`;
+const fmtLong=d=>S.lang==='th'?`วัน${TH_DOWF[d.getDay()]}ที่ ${d.getDate()} ${TH_MON[d.getMonth()]}`:`${EN_DOWF[d.getDay()]} ${d.getDate()} ${EN_MON[d.getMonth()]}`;
+const monthLabel=d=>S.lang==='th'?`${TH_MONF[d.getMonth()]} ${d.getFullYear()+543}`:`${EN_MONF[d.getMonth()]} ${d.getFullYear()}`;
+const seatSort=(a,b)=>SEAT[a].ri-SEAT[b].ri||SEAT[a].n-SEAT[b].n;
+const curKey=()=>keyOf(S.dateIdx,S.time);
+function totals(){const tickets=S.seats.reduce((a,id)=>a+PRICES[SEAT[id].zone],0);const food=FOOD.reduce((a,f)=>a+(S.food[f.id]||0)*f.price,0);const sub=tickets+food;const e=S.promo?evalPromo(S.promo):null;const disc=e&&e.ok?e.amount:0;return{tickets,food,sub,disc,total:sub-disc}}
+const remaining=()=>S.holdEnd?Math.max(0,S.holdEnd-Date.now()):0;
+const mmss=ms=>{const s=Math.ceil(ms/1000);return`${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`};
+const fmtDur=ms=>{const s=Math.max(0,Math.floor((ms||0)/1000));return`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`};
+const inBooking=()=>S.mode==='run'||S.mode==='free';
+function ev(k){if(S.mode==='run'&&!S.g.end)S.g.ev[k]=(S.g.ev[k]||0)+1}
+
+const _cap={};
+const cap=n=>_cap[n]||(_cap[n]=window.claude&&typeof window.claude.use==='function'?Promise.resolve(window.claude.use(n)).catch(()=>null):Promise.resolve(null));
+
+function bestSeats(zone,n){
+  const tk=taken(curKey()),groups={};
+  SEATS.filter(s=>s.zone===zone).forEach(s=>{(groups[s.row+s.block]??=[]).push(s)});
+  let best=null,bs=Infinity;
+  for(const g of Object.values(groups)){
+    g.sort((a,b)=>a.n-b.n);
+    for(let i=0;i+n<=g.length;i++){
+      const w=g.slice(i,i+n);if(w.some(s=>tk.has(s.id)))continue;
+      const mx=(w[0].x+w[n-1].x)/2,score=w[0].ri*3+Math.abs(mx-CX)/P*(w[0].block==='C'?1:.6);
+      if(score<bs){bs=score;best=w}
+    }
+  }
+  return best?best.map(s=>s.id):null;
+}
+
+function qrSVG(seed,size){
+  const n=25,r=rng(hash(String(seed)));let s='';
+  const inF=(x,y)=>(x<8&&y<8)||(x>n-9&&y<8)||(x<8&&y>n-9);
+  for(let y=0;y<n;y++)for(let x=0;x<n;x++)if(!inF(x,y)&&r()<.48)s+=`<rect x="${x}" y="${y}" width="1" height="1"/>`;
+  const fp=(x,y)=>`<rect x="${x}" y="${y}" width="7" height="7"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3"/>`;
+  return`<svg width="${size}" height="${size}" viewBox="0 0 ${n} ${n}" shape-rendering="crispEdges" aria-hidden="true"><g fill="#1c0830">${s}${fp(0,0)}${fp(n-7,0)}${fp(0,n-7)}</g></svg>`;
+}
+
+function mapSVG(){
+  const tk=taken(curKey()),z=ZOOMS[S.zoomIdx],mine=new Set(S.seats);
+  const sx1=C0-24,sx2=C0+16*P-(P-SW)+24,mid=(sx1+sx2)/2;
+  let o=`<svg width="${Math.round(MAP_W*z)}" height="${Math.round(MAP_H*z)}" viewBox="0 0 ${MAP_W} ${MAP_H}" role="group" aria-label="${t('map_aria')}">`;
+  o+=`<path class="stage-shape" d="M${sx1} 18H${sx2}V58Q${mid} 92 ${sx1} 58Z"/><text class="stage-t" x="${mid}" y="50" text-anchor="middle">${t('stage')}</text>`;
+  for(let ri=0;ri<14;ri++){
+    const row=SEATS.filter(s=>s.ri===ri),a=row[0],b=row[row.length-1];
+    o+=`<text class="rowlbl" x="${a.x-12}" y="${(a.y+SH/2+3.5).toFixed(1)}" text-anchor="middle">${a.row}</text><text class="rowlbl" x="${b.x+SW+12}" y="${(b.y+SH/2+3.5).toFixed(1)}" text-anchor="middle">${b.row}</text>`;
+  }
+  o+=`<line class="mz-line" x1="20" x2="${MAP_W-20}" y1="364" y2="364"/><text class="mz-t" x="${CX}" y="386" text-anchor="middle"><tspan class="en">MEZZANINE</tspan>${t('mezz_label')?' · '+t('mezz_label'):''}</text>`;
+  for(const s of SEATS){
+    const me=mine.has(s.id),cls=`seat z-${s.zone}${me?' me':tk.has(s.id)?' tk':''}${S.zone&&s.zone!==S.zone?' dim':''}`;
+    o+=`<rect class="${cls}" data-act="seat" data-id="${s.id}" x="${s.x}" y="${s.y.toFixed(1)}" width="${SW}" height="${SH}" rx="4"><title>${s.id} · ${ZN[s.zone]}</title></rect>`;
+    if(me)o+=`<path class="ck" d="M${s.x+5} ${(s.y+8.5).toFixed(1)}l3 3l5.5-6"/>`;
+  }
+  return o+'</svg>';
+}
+
+function renderTop(){
+  const back=inBooking()&&(S.step===2||S.step===3),demo=S.mode==='intro'||S.mode==='free';
+  $('#pbanner').textContent=t('proto_banner');
+  $('#top').innerHTML=`${back?`<button class="icon-btn" data-act="back" aria-label="${t('back')}">${IC.back}</button>`:''}<div class="brand"><span class="display">Tiffany's Show</span><small>PATTAYA</small></div><div class="hdr-r">${demo?'<button class="demo-chip" data-act="demo">Demo</button>':''}<button class="lang" data-act="lang" aria-label="Language"><span class="${S.lang==='th'?'on':''}">TH</span><span class="${S.lang==='en'?'on':''}">EN</span></button></div>`;
+  const st=$('#steps');st.hidden=!inBooking();
+  st.innerHTML=['step1','step2','step3','step4'].map((k,i)=>`<div class="st${i+1<S.step?' done':i+1===S.step?' on':''}"${i+1===S.step?' aria-current="step"':''}><i></i><span>${t(k)}</span></div>`).join('');
+  const mr=$('#mrow'),on=S.mode==='run'&&!S.g.end;mr.hidden=!on;
+  if(on)mr.innerHTML=`${IC.flag}<span>${t('g_m',{n:MISSIONS[S.g.mission].num})}</span><b id="mclock">${fmtDur(Date.now()-S.g.start)}</b><button data-act="brief">${t('g_view')}</button>`;
+}
+
+function promoCarousel(){
+  return`<section class="promo-car" aria-roledescription="carousel" aria-label="${t('promos')}"><div class="pc-track" id="pctrack">${PROMOS.map((p,i)=>`<button class="pc-slide pc-${i}" data-act="promoSlide" data-i="${i}" aria-roledescription="slide" aria-label="${i+1} / ${PROMOS.length}: ${esc(t('pr_'+p.code+'_h'))}"><span class="pc-eyebrow">${t('promo_label')} · ${i+1}/${PROMOS.length}</span><span class="pc-h">${t('pr_'+p.code+'_h')}</span><span class="pc-s">${t('pr_'+p.code+'_s')}</span><span class="pc-cta">${t('promo_cta')} <code>${p.code}</code></span></button>`).join('')}</div>
+<div class="pc-dots">${PROMOS.map((p,i)=>`<button data-act="pcDot" data-i="${i}" class="${i===S.pcIdx?'on':''}" aria-label="${i+1}"${i===S.pcIdx?' aria-current="true"':''}></button>`).join('')}</div>
+${S.promo?`<div class="promo-chip">${t('promo_sel')}: <b>${S.promo}</b><button data-act="promoRm" aria-label="${t('remove')}">${IC.x}</button></div>`:''}</section>`;
+}
+function view1(){
+  const d=DATES[S.dateIdx];
+  return`${promoCarousel()}<section class="hero"><div class="eyebrow">${t('show_tag')}</div><h1>Tiffany's Show</h1><p>${t('show_meta')}</p><div class="from">${t('from_price')}<b>฿${fmt(Math.min(...Object.values(PRICES)))}</b></div></section>
+<div class="sec-h"><h2>${t('pick_date')}</h2><span class="muted sm">${monthLabel(d)}</span></div>
+<div class="dates" id="dates">${DATES.map((x,i)=>`<button class="date${i===S.dateIdx?' sel':''}" data-act="date" data-i="${i}" aria-pressed="${i===S.dateIdx}" aria-label="${fmtDate(x)}">${x.getDay()===6?'<span class="sp"></span>':''}<span class="dow">${i===0?t('today'):dow(x)}</span><span class="d">${x.getDate()}</span><span class="m">${mon(x)}</span></button>`).join('')}</div>
+<div class="legend-note"><span class="spd"></span>${t('special_note')}</div>
+<div class="sec-h"><h2>${t('pick_time')}</h2><span class="muted sm">${fmtDate(d)}</span></div>
+<div class="times">${showsFor(S.dateIdx).map(timeCard).join('')}</div>
+<div class="sec-h"><h2>${t('zones_title')}</h2></div>
+<div class="zones">${ZONES.map(z=>`<div class="zone-row"><span class="sw z-${z.id}"></span><span>${z.name}</span><b>฿${fmt(PRICES[z.id])}</b></div>`).join('')}</div>`;
+}
+function timeCard(sh){
+  const st=status(S.dateIdx,sh.time),a=avail(keyOf(S.dateIdx,sh.time)),sel=S.time===sh.time,off=st==='soldout'||st==='closed';
+  const line=st==='closed'?`<span class="s">${t('closed')}<br>${t('closed_sub')}</span>`:st==='soldout'?`<span class="s bad">${t('soldout')}</span>`:st==='low'?`<span class="s warn">${t('low',{n:a})}</span>`:`<span class="s">${t('avail',{n:a})}</span>`;
+  const meter=off?'':`<span class="meter"><i style="width:${Math.max(4,a/TOTAL*100).toFixed(0)}%;background:${st==='low'?'var(--warn)':'var(--ok)'}"></i></span>`;
+  return`<button class="time${sel?' sel':''}${off?' off':''}" data-act="time" data-time="${sh.time}" aria-pressed="${sel}">${sh.special?`<span class="badge">${t('special')}</span>`:''}<span class="t">${sh.time}</span>${line}${meter}</button>`;
+}
+
+function view2(){
+  const d=DATES[S.dateIdx],sh=showsFor(S.dateIdx).find(x=>x.time===S.time),picked=[...S.seats].sort(seatSort);
+  return`<div class="show-sum"><div><div class="display">Tiffany's Show</div><div class="muted sm">${fmtDate(d)} · ${S.time}${sh&&sh.special?` · <span class="pink">${t('special')}</span>`:''}</div></div><button class="link" data-act="back">${t('edit')}</button></div>
+<div class="chips">${ZONES.map(z=>`<button class="chip${S.zone===z.id?' on':''}" data-act="zone" data-z="${z.id}" aria-pressed="${S.zone===z.id}"><span class="sw z-${z.id}"></span>${z.name}<span class="muted">฿${fmt(PRICES[z.id])}</span></button>`).join('')}</div>
+<div class="map-tools"><div class="legend"><span class="lg"><i class="a"></i>${t('lg_avail')}</span><span class="lg"><i class="tk"></i>${t('lg_taken')}</span><span class="lg"><i class="me"></i>${t('lg_me')}</span></div><div class="zoom"><button data-act="zoom" data-d="-1" aria-label="Zoom out"${S.zoomIdx===0?' disabled':''}>${IC.minus}</button><button data-act="zoom" data-d="1" aria-label="Zoom in"${S.zoomIdx===ZOOMS.length-1?' disabled':''}>${IC.plus}</button></div></div>
+<div class="map-wrap" id="mapwrap">${mapSVG()}</div>
+<p class="muted sm hint">${t('seats_hint')}</p>
+<button class="btn btn-ghost w100" data-act="autopick">${IC.wand}${t('auto_pick')}</button>
+${picked.length?`<div class="picked">${picked.map(id=>{const s=SEAT[id];return`<span class="pk"><span class="sw z-${s.zone}"></span><b>${id}</b><span class="muted">฿${fmt(PRICES[s.zone])}</span><button data-act="unseat" data-id="${id}" aria-label="${t('remove')} ${id}">${IC.x}</button></span>`}).join('')}</div>`:''}`;
+}
+
+function viewFood(){
+  const tue=DATES[S.dateIdx].getDay()===2;
+  return`<h2 class="ttl">${t('food_title')}</h2><p class="fs">${t('food_sub')}</p>${tue?`<div class="note">${IC.info}<span>${t('tue_closed')}</span></div>`:''}
+${FOOD.map(f=>{const off=tue&&f.restaurant,q=S.food[f.id]||0;return`<div class="item${off?' off':''}"><div class="ic">${IC[f.icon]}</div><div class="tx"><div class="nm">${t('f_'+f.id)}</div><div class="ds">${off?t('unavailable'):t('f_'+f.id+'_d')}</div><div class="pr">฿${fmt(f.price)}</div></div><div class="stepper"><button data-act="qty" data-id="${f.id}" data-d="-1" aria-label="−"${q<=0||off?' disabled':''}>${IC.minus}</button><span>${q}</span><button data-act="qty" data-id="${f.id}" data-d="1" aria-label="+"${off||q>=20?' disabled':''}>${IC.plus}</button></div></div>`}).join('')}
+<p class="tiny">${t('food_sample')}</p>`;
+}
+
+function promoBox(){
+  if(S.promo){
+    const e=evalPromo(S.promo);
+    return e.ok?`<div class="promo-ok">${IC.check}<span>${t('promo_ok',{c:S.promo,a:fmt(e.amount)})}</span><button class="link" data-act="promoRm">${t('remove')}</button></div>`
+      :`<div class="promo-wait">${IC.info}<span>${t('promo_wait',{c:S.promo,r:t(e.reason)})}</span><button class="link" data-act="promoRm">${t('remove')}</button></div>`;
+  }
+  return`<div class="promo"><input id="f-promo" class="in${S.promoErr?' bad':''}" data-f="promo" value="${esc(S.promoInput)}" placeholder="${t('promo_ph')}" autocapitalize="characters" aria-label="${t('promo')}"><button class="btn btn-ghost" data-act="promo">${t('apply')}</button></div>${S.promoErr?`<div class="err" id="err-promo">${t('promo_bad')}</div>`:''}`;
+}
+function viewPay(){
+  const tt=totals(),d=DATES[S.dateIdx],f=S.form,E=S.errors,zc={};
+  S.seats.forEach(id=>{const z=SEAT[id].zone;zc[z]=(zc[z]||0)+1});
+  const err=k=>E[k]?`<div class="err" id="err-${k}">${t(E[k])}</div>`:'',bad=k=>E[k]?' bad':'';
+  return`<details class="card sum"${S.sumOpen?' open':''}><summary><span>${t('summary')}</span><span class="gold">฿${fmt(tt.total)}<span class="chev">▾</span></span></summary>
+<div class="sum-body"><div class="sum-line"><span>${fmtDate(d)} · ${S.time}</span></div><div class="sum-line"><span>${t('seat_label')}</span><b>${[...S.seats].sort(seatSort).join(', ')}</b></div>
+${ZONES.filter(z=>zc[z.id]).map(z=>`<div class="sum-line"><span>${z.name} × ${zc[z.id]}</span><b>฿${fmt(zc[z.id]*PRICES[z.id])}</b></div>`).join('')}
+${FOOD.filter(x=>S.food[x.id]).map(x=>`<div class="sum-line"><span>${t('f_'+x.id)} × ${S.food[x.id]}</span><b>฿${fmt(S.food[x.id]*x.price)}</b></div>`).join('')}
+${tt.disc?`<div class="sum-line disc"><span>${t('discount')} (${S.promo})</span><b>−฿${fmt(tt.disc)}</b></div>`:''}
+<div class="sum-total"><span>${t('total')}</span><span>฿${fmt(tt.total)}</span></div></div></details>
+<h3 class="fh">${t('promo')}</h3>${promoBox()}
+<h3 class="fh">${t('contact')}</h3><p class="fs">${t('contact_sub')}</p>
+<div class="field"><label for="f-name">${t('f_name')}</label><input id="f-name" class="in${bad('name')}" data-f="name" value="${esc(f.name)}" autocomplete="name">${err('name')}</div>
+<div class="field"><label for="f-email">${t('f_email')}</label><input id="f-email" type="email" inputmode="email" class="in${bad('email')}" data-f="email" value="${esc(f.email)}" autocomplete="email">${err('email')}</div>
+<div class="field"><label for="f-phone">${t('f_phone')}</label><div class="phone-row"><select id="f-cc" class="in" data-f="cc" aria-label="Country code">${CC.map(c=>`<option${c===f.cc?' selected':''}>${c}</option>`).join('')}</select><input id="f-phone" type="tel" inputmode="tel" class="in${bad('phone')}" data-f="phone" value="${esc(f.phone)}" autocomplete="tel-national"></div>${err('phone')}</div>
+<div class="field"><label for="f-nat">${t('f_nat')}</label><select id="f-nat" class="in" data-f="nat"><option value="">${t('nat_ph')}</option>${NAT.map(n=>`<option value="${n[0]}"${f.nat===n[0]?' selected':''}>${S.lang==='th'?n[1]:n[2]}</option>`).join('')}</select></div>
+<h3 class="fh" id="pm-h">${t('pay_method')}</h3>
+${PM.map(p=>`<button class="pm${S.pay===p.id?' on':''}" data-act="pm" data-m="${p.id}" aria-pressed="${S.pay===p.id}"><span class="rd"></span><span class="tx"><span class="nm">${t(p.name)}</span><span class="ds">${t(p.sub)}</span></span><span class="pm-ic">${IC[p.icon]}</span></button>`).join('')}
+<label class="agree"><input type="checkbox" id="agree"${S.agree?' checked':''}><span>${t('agree')}</span></label>${err('agree')}`;
+}
+
+function view4(){
+  const b=S.booking;if(!b)return'';
+  const d=DATES[b.date],zs=[...new Set(b.seats.map(id=>SEAT[id].zone))].map(z=>ZN[z]).join(', ');
+  return`<div class="done-h"><div class="ok-ic">${IC.checkBig}</div><h1>${t('done_title')}</h1><p>${t('done_sub',{email:esc(b.email)})}</p></div>
+<div class="ticket"><div class="tk-top"><div class="tk-brand"><span class="display">Tiffany's Show</span><span class="muted sm">Pattaya</span></div>
+<div class="tk-grid"><div><span>${t('date_label')}</span><b>${fmtDate(d)}</b></div><div><span>${t('time_label')}</span><b>${b.time}</b></div><div class="span2"><span>${t('seat_label')} (${b.seats.length})</span><b>${b.seats.join(', ')}</b></div><div class="span2"><span>${t('zone_label')}</span><b>${zs}</b></div></div></div>
+<div class="tk-perf"></div><div class="tk-bot"><div class="qr-box">${qrSVG(b.ref,150)}</div><div class="muted sm">${t('qr_note')}</div><div class="ref">${t('ref')} <b>${b.ref}</b></div><div class="tiny">${t('qr_sample')}</div></div></div>
+<div class="acts"><button class="act" data-act="proto">${IC.download}${t('save_ticket')}</button><button class="act" data-act="proto">${IC.cal}${t('add_cal')}</button><button class="act" data-act="proto">${IC.pin}${t('directions')}</button></div>
+<div class="card tips"><b>${t('tips_title')}</b><ul><li>${t('tip1')}</li><li>${t('tip2')}</li>${Object.values(b.food).some(Boolean)?`<li>${t('tip3')}</li>`:''}</ul></div>
+${S.mode==='free'?`<button class="btn btn-ghost w100" data-act="again">${t('book_again')}</button>`:''}`;
+}
+
+function viewIntro(){
+  const ms=['A','B','C'];
+  return`<section><div class="eyebrow">${t('g_eyebrow')}</div><h1 class="g-title">${t('g_title')}</h1><p class="g-lead">${t('g_intro')}</p></section>
+<ol class="how">${['g_how1','g_how2','g_how3'].map((k,i)=>`<li class="how-i"><span class="how-n">${i+1}</span><span>${t(k)}</span></li>`).join('')}</ol>
+<div class="field"><label for="g-nick">${t('g_nick')}</label><input id="g-nick" class="in" value="${esc(S.nick)}" placeholder="${t('g_nick_ph')}" maxlength="40" autocomplete="nickname"><div class="hint-s">${t('g_nick_hint')}</div></div>
+<div class="field"><label>${t('g_pick')}</label><div class="mchips">${[['rand',t('g_random')],...ms.map(id=>[id,`${t('g_m',{n:MISSIONS[id].num})} · ${t('m'+id+'_t')}`])].map(([v,l])=>`<button class="chip${S.pick===v?' on':''}" data-act="gPick" data-v="${v}" aria-pressed="${S.pick===v}">${l}</button>`).join('')}</div></div>
+<p class="tiny left">${t('g_note')}</p>
+<button class="btn btn-ghost w100 mt12" data-act="gFree">${t('g_free')}</button>
+${S.isOwner?`<button class="btn btn-ghost w100 mt8" data-act="dash">${IC.chart}${t('g_dash')}${S.dashRuns?` (${S.dashRuns.length})`:''}</button>`:''}`;
+}
+function missionCard(){
+  const id=S.g.mission,m=MISSIONS[id],d=fmtLong(DATES[m.day]);
+  return`<div class="mission-card"><div class="m-num">${t('g_m',{n:m.num})}</div><h2 class="m-title">${t('m'+id+'_t')}</h2><p class="m-story">${t('m'+id+'_s',{d})}</p><div class="m-sub">${t('g_todo')}</div><ul class="todo">${m.checks.map(([k])=>`<li><span class="bx"></span><span>${t(k,{d})}</span></li>`).join('')}</ul></div>`;
+}
+const viewBrief=()=>missionCard()+`<p class="fs mt12">${t('g_timer_note')}</p>`;
+function viewSurvey(){
+  return`<h2 class="ttl">${t('s_title')}</h2><p class="fs">${t('s_sub')}</p>${SQ.map(([q,lo,hi],i)=>{const v=S.g.ratings[i],bad=S.g.sErr&&!v;return`<fieldset class="q${bad?' bad':''}"><legend class="q-t">${i+1}. ${t(q)}</legend><div class="rate">${[1,2,3,4,5].map(n=>`<button data-act="rate" data-q="${i}" data-v="${n}" class="${v===n?'on':''}" aria-pressed="${v===n}" aria-label="${n} / 5">${n}</button>`).join('')}</div><div class="rate-ends"><span>${t(lo)}</span><span>${t(hi)}</span></div>${bad?`<div class="err">${t('s_err')}</div>`:''}</fieldset>`}).join('')}
+<div class="q"><label for="s-comment" class="q-t">6. ${t('s_q6')}</label><textarea id="s-comment" class="in" rows="4" maxlength="1000" placeholder="${t('s_q6_ph')}">${esc(S.g.comment)}</textarea></div>`;
+}
+function viewResult(){
+  const r=S.g.run,send=S.g.send;
+  return`<div class="done-h"><div class="eyebrow">${t('g_m',{n:MISSIONS[r.mission].num})} · ${esc(r.missionTitle)}</div><div class="r-time">${fmtDur(r.ms)}</div><p>${r.gaveUp?t('r_gaveup'):t('r_time')}</p></div>
+<div class="r-grid"><div class="stat"><span>${t('r_score')}</span><b>${r.score}/${r.max}</b></div><div class="stat"><span>${t('r_sat')}</span><b>${r.ratings[4]}/5</b></div></div>
+<div class="send ${send==='sent'?'ok':send==='failed'?'warn':'wait'}">${send==='sent'?IC.check+'<span>'+t('r_sent')+'</span>':send==='failed'?IC.info+'<span>'+t('r_nosend')+'</span>':'<span>'+t('r_sending')+'</span>'}</div>
+<div class="card"><b>${t('r_checks')}</b><ul class="todo">${r.checks.map(c=>`<li class="${c.ok?'ok':'no'}"><span class="bx">${c.ok?IC.checkSm:IC.xSm}</span><span>${esc(c.label)}</span></li>`).join('')}</ul></div>
+<div class="card"><b>${t('r_steps')}</b><div class="steps-mini">${STEPK.map(k=>`<div><span>${t('k_'+k)}</span><b>${fmtDur(r.steps[k])}</b></div>`).join('')}</div></div>
+<button class="btn btn-gold w100" data-act="rCopy">${IC.copy}${t('r_copy')}</button>
+<details class="rt" id="rtd"><summary>${t('r_show_text')}</summary><textarea id="rtext" class="in" readonly>${esc(runText(r))}</textarea></details>
+<button class="btn btn-ghost w100 mt8" data-act="rAgain">${t('r_again')}</button>`;
+}
+
+function renderBar(){
+  const bar=$('#bar'),tt=totals();let h='';
+  if(S.mode==='intro')h=`<button class="btn btn-gold w100" data-act="gGet">${t('g_get')}</button>`;
+  else if(S.mode==='brief')h=`<button class="btn btn-ghost" data-act="rAgain">${t('back')}</button><button class="btn btn-gold grow" data-act="gStart">${IC.clock}${t('g_start')}</button>`;
+  else if(S.mode==='survey')h=`<button class="btn btn-gold w100" data-act="sSubmit">${t('s_submit')}</button>`;
+  else if(S.mode==='result')h='';
+  else if(S.step===1){
+    const sh=S.time&&showsFor(S.dateIdx).find(x=>x.time===S.time);
+    h=`<div class="bar-info"><div class="k">${S.time?fmtDate(DATES[S.dateIdx]):t('bar_nosel')}</div><div class="v">${S.time?`${S.time}${sh&&sh.special?` · <span class="pink">${t('special')}</span>`:''}`:'—'}</div></div><button class="btn btn-gold" data-act="toSeats"${S.time?'':' disabled'}>${t('btn_seats')}</button>`;
+  }else if(S.step===2){
+    const ids=[...S.seats].sort(seatSort);
+    h=`<div class="bar-info"><div class="k">${ids.length?`${t(ids.length===1?'seat_1':'seats_n',{n:ids.length})} · ${ids.join(', ')}`:t('bar_seats_none')}</div><div class="v">฿${fmt(tt.tickets)}</div></div><button class="btn btn-gold" data-act="toFood"${ids.length?'':' disabled'}>${t('btn_next')}</button>`;
+  }else if(S.step===3&&S.sub==='food'){
+    const any=FOOD.some(f=>S.food[f.id]);
+    h=`<div class="bar-info"><div class="k">${t('total_so_far')}</div><div class="v">฿${fmt(tt.sub)}</div></div><button class="btn btn-gold" data-act="toPay">${any?t('btn_topay'):t('btn_skip')}</button>`;
+  }else if(S.step===3){
+    h=`<div class="bar-info"><div class="k">${t('total')}${tt.disc?` · ${t('discount')} ฿${fmt(tt.disc)}`:''}</div><div class="v">฿${fmt(tt.total)}</div></div><button class="btn btn-gold" data-act="pay">${t('btn_pay')}</button>`;
+  }else if(S.mode==='run'&&S.booking){
+    h=`<div class="bar-info"><div class="k">${t('g_done_bar',{t:fmtDur(S.g.end-S.g.start)})}</div><div class="v">${S.booking.ref}</div></div><button class="btn btn-gold" data-act="toSurvey">${t('g_to_survey')}</button>`;
+  }
+  bar.hidden=!h;bar.innerHTML=h;
+}
+
+function screenKey(){if(S.mode!=='run'||S.g.end)return null;return S.step===1?'showtime':S.step===2?'seats':S.step===3?(S.sub==='food'?'food':'pay'):null}
+function trackScreen(){const k=screenKey(),now=Date.now();if(S.g.cur!==k){if(S.g.cur)S.g.steps[S.g.cur]=(S.g.steps[S.g.cur]||0)+now-S.g.curAt;S.g.cur=k;S.g.curAt=now}}
+
+function render(keep=false){
+  document.documentElement.lang=S.lang;trackScreen();renderTop();
+  const v=$('#view'),prev={top:v.scrollTop,dates:$('#dates')?.scrollLeft,map:$('#mapwrap')?.scrollLeft,chips:$('.chips')?.scrollLeft};
+  v.innerHTML=S.mode==='intro'?viewIntro():S.mode==='brief'?viewBrief():S.mode==='survey'?viewSurvey():S.mode==='result'?viewResult():
+    S.step===1?view1():S.step===2?view2():S.step===3?(S.sub==='food'?viewFood():viewPay()):view4();
+  if(keep){
+    v.scrollTop=prev.top;
+    if($('#dates')&&prev.dates!=null)$('#dates').scrollLeft=prev.dates;
+    if($('#mapwrap')&&prev.map!=null)$('#mapwrap').scrollLeft=prev.map;
+    if($('.chips')&&prev.chips!=null)$('.chips').scrollLeft=prev.chips;
+  }else{v.scrollTop=0;if(inBooking()&&S.step===1)scrollDateIntoView();if(inBooking()&&S.step===2)centerMap()}
+  bindCarousel();renderBar();tick();renderProto();
+}
+function scrollDateIntoView(){const ds=$('#dates'),sel=$('.date.sel');if(ds&&sel&&(sel.offsetLeft<ds.scrollLeft||sel.offsetLeft+sel.offsetWidth>ds.scrollLeft+ds.clientWidth))ds.scrollLeft=Math.max(0,sel.offsetLeft-16)}
+function centerMap(){const w=$('#mapwrap');if(w)w.scrollLeft=(w.scrollWidth-w.clientWidth)/2}
+function scrollMapToZone(z){
+  const w=$('#mapwrap');if(!w||!z)return;
+  const ss=SEATS.filter(s=>s.zone===z&&(z!=='silver'||s.block==='L')),zm=ZOOMS[S.zoomIdx];
+  const c=(Math.min(...ss.map(s=>s.x))+Math.max(...ss.map(s=>s.x))+SW)/2*zm;
+  w.scrollTo({left:Math.max(0,c-w.clientWidth/2),behavior:'smooth'});
+}
+
+let pcPause=0,pcT;
+const reduceMotion=()=>window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function pcDots(){document.querySelectorAll('.pc-dots button').forEach((b,i)=>{b.classList.toggle('on',i===S.pcIdx);if(i===S.pcIdx)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current')})}
+function pcGo(smooth){const tr=$('#pctrack');if(!tr)return;const sl=tr.children[S.pcIdx];tr.scrollTo({left:sl.offsetLeft-16,behavior:smooth&&!reduceMotion()?'smooth':'auto'});pcDots()}
+function bindCarousel(){
+  const tr=$('#pctrack');if(!tr)return;
+  tr.scrollLeft=tr.children[S.pcIdx].offsetLeft-16;
+  const pause=()=>{pcPause=Date.now()+8000};
+  tr.addEventListener('pointerdown',pause,{passive:true});tr.addEventListener('touchstart',pause,{passive:true});
+  tr.addEventListener('scroll',()=>{clearTimeout(pcT);pcT=setTimeout(()=>{const w=tr.children[0].offsetWidth+10,i=Math.max(0,Math.min(PROMOS.length-1,Math.round(tr.scrollLeft/w)));if(i!==S.pcIdx){S.pcIdx=i;pcDots()}},90)},{passive:true});
+}
+setInterval(()=>{
+  if(!inBooking()||S.step!==1||!$('#layer').hidden||Date.now()<pcPause||reduceMotion()||document.hidden)return;
+  if(!$('#pctrack'))return;S.pcIdx=(S.pcIdx+1)%PROMOS.length;pcGo(true);
+},4500);
+
+let toastT;
+function toast(m){const el=$('#toast');el.textContent=m;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2600)}
+function openSheet(html,locked=false){S.sheetLocked=locked;const l=$('#layer');l.innerHTML=`<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${html}</div>`;l.hidden=false;l.querySelector('button')?.focus({preventScroll:true})}
+function closeSheet(){const l=$('#layer');l.hidden=true;l.innerHTML='';S.sheetLocked=false}
+
+function tick(){
+  const el=$('#timer'),on=inBooking()&&!!S.holdEnd&&(S.step===2||S.step===3);el.hidden=!on;
+  const mc=$('#mclock');if(mc&&S.mode==='run'&&!S.g.end)mc.textContent=fmtDur(Date.now()-S.g.start);
+  if(!on)return;
+  const r=remaining();el.innerHTML=`${IC.clock}<span>${t('hold')}</span><b>${mmss(r)}</b>`;el.classList.toggle('warn',r<120000);
+  if(r<=0)expire();
+}
+setInterval(tick,1000);
+function startHold(){S.holdEnd=Date.now()+HOLD}
+function expire(){
+  ev('expire');S.holdEnd=null;S.seats=[];S.step=2;S.sub='food';render();
+  openSheet(`<div class="sh-ic">${IC.alert}</div><h3>${t('expired_title')}</h3><p>${t('expired_body')}</p><button class="btn btn-gold w100" data-act="reselect">${t('reselect')}</button>`,true);
+}
+
+function suggestions(){
+  const out=[],add=(i,tm)=>{if(out.length<3&&bookable(i,tm))out.push({i,tm})};
+  showsFor(S.dateIdx).forEach(s=>add(S.dateIdx,s.time));
+  for(let i=S.dateIdx+1;i<DATES.length&&out.length<3;i++)showsFor(i).forEach(s=>add(i,s.time));
+  return out;
+}
+function gwSheet(){
+  const tt=totals(),m=PM.find(p=>p.id===S.pay);
+  openSheet(`<div class="gw-h"><span class="tag">${t('gw_tag')}</span><button class="icon-btn" data-act="close" aria-label="${t('close')}">${IC.x}</button></div><h3>${t('gw_title')}</h3><p>${t('gw_note')}</p><div class="gw-amt">฿${fmt(tt.total)}</div><div class="gw-m">${t(m.name)}</div>${S.pay!=='card'?`<div class="qr-box">${qrSVG(S.pay+tt.total,150)}</div><div class="tiny">${t('gw_qr_note')}</div>`:''}<div style="height:18px"></div><button class="btn btn-gold w100" data-act="payok">${t('gw_ok')}</button><button class="btn btn-ghost w100" data-act="payfail">${t('gw_fail')}</button>`);
+}
+function apSheet(){
+  const a=S.ap;
+  openSheet(`<h3>${t('auto_pick')}</h3><p>${t('ap_sub')}</p><div class="ap-row"><span>${t('ap_n')}</span><div class="stepper"><button data-act="apn" data-d="-1" aria-label="−"${a.n<=1?' disabled':''}>${IC.minus}</button><span>${a.n}</span><button data-act="apn" data-d="1" aria-label="+"${a.n>=10?' disabled':''}>${IC.plus}</button></div></div><div class="ap-z">${ZONES.map(z=>`<button class="chip${a.zone===z.id?' on':''}" data-act="apz" data-z="${z.id}" aria-pressed="${a.zone===z.id}"><span class="sw z-${z.id}"></span>${z.name}</button>`).join('')}</div><button class="btn btn-gold w100" data-act="apgo">${t('ap_go')}</button><button class="btn btn-ghost w100" data-act="close">${t('cancel')}</button>`);
+}
+function validate(){
+  const e={},f=S.form,dg=f.phone.replace(/\D/g,'');
+  if(!f.name.trim())e.name='e_name';
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim()))e.email='e_email';
+  if(dg.length<8||dg.length>12)e.phone='e_phone';
+  if(!S.agree)e.agree='e_agree';
+  return e;
+}
+const makeRef=()=>{const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';return'TFS-'+Array.from({length:6},()=>A[Math.floor(Math.random()*A.length)]).join('')};
+function book(){
+  const e=S.promo?evalPromo(S.promo):null,sh=showsFor(S.dateIdx).find(x=>x.time===S.time);
+  S.booking={ref:makeRef(),date:S.dateIdx,time:S.time,special:!!(sh&&sh.special),seats:[...S.seats].sort(seatSort),food:{...S.food},email:S.form.email.trim(),
+    promo:S.promo,promoOk:!!(e&&e.ok),pay:S.pay,lang:S.lang,nat:S.form.nat,payFails:S.g.ev.payFail||0,total:totals().total};
+  S.holdEnd=null;S.step=4;if(S.mode==='run')S.g.end=Date.now();closeSheet();render();
+}
+function resetBooking(){
+  closeSheet();
+  Object.assign(S,{step:1,sub:'food',dateIdx:0,time:null,seats:[],zone:null,zonePref:null,zoomIdx:1,food:{},promo:null,promoInput:'',promoErr:false,
+    form:{name:'',email:'',cc:'+66',phone:'',nat:''},pay:'card',agree:false,errors:{},sumOpen:false,holdEnd:null,booking:null,pcIdx:0});
+}
+function ensureShow(){
+  if(S.time&&bookable(S.dateIdx,S.time))return;
+  for(let i=0;i<DATES.length;i++){const s=showsFor(i).find(x=>bookable(i,x.time));if(s){S.dateIdx=i;S.time=s.time;return}}
+}
+function demoFill(){if(!S.form.name)Object.assign(S.form,{name:'Demo Guest',email:'guest@example.com',phone:'812345678'});S.agree=true}
+function demoJump(s){
+  closeSheet();
+  if(s==='intro'){resetBooking();S.g=newGame();S.mode='intro';render();return}
+  S.mode='free';
+  if(s==='1'){S.step=1;S.seats=[];S.holdEnd=null;render();return}
+  ensureShow();
+  if(!S.seats.length)S.seats=bestSeats('gold',2)||bestSeats('mezz',2)||[];
+  if(!S.holdEnd)startHold();
+  if(s==='2')S.step=2;
+  if(s==='food'){S.step=3;S.sub='food'}
+  if(s==='pay'){S.step=3;S.sub='pay';demoFill()}
+  if(s==='4'){demoFill();book();return}
+  render();
+}
+
+function grade(){
+  const m=MISSIONS[S.g.mission],d=fmtLong(DATES[m.day]),b=!S.g.gaveUp&&S.booking?S.booking:null;
+  return m.checks.map(([k,f])=>({k,label:t(k,{d}),ok:!!(b&&f(b))}));
+}
+function buildRun(){
+  const g=S.g,checks=grade(),b=g.gaveUp?null:S.booking;
+  return{v:1,at:new Date().toISOString(),nick:S.nick.trim().slice(0,40),mission:g.mission,missionTitle:t('m'+g.mission+'_t'),lang:S.lang,ms:g.end-g.start,gaveUp:g.gaveUp,
+    score:checks.filter(c=>c.ok).length,max:checks.length,checks,steps:{...g.steps},ev:{...g.ev},ratings:[...g.ratings],comment:g.comment.trim().slice(0,1000),
+    booking:b?{date:ymd(DATES[b.date]),time:b.time,seats:b.seats,food:b.food,promo:b.promo,promoOk:b.promoOk,pay:b.pay,total:b.total}:null,width:window.innerWidth};
+}
+function runText(r){
+  const L=[t('rt_head'),`${t('rt_tester')}: ${r.nick||t('d_anon')} · ${t('g_m',{n:MISSIONS[r.mission].num})} ${r.missionTitle}`,
+    `${t('r_time')}: ${fmtDur(r.ms)}${r.gaveUp?` (${t('r_gaveup')})`:''} · ${t('r_score')}: ${r.score}/${r.max}`];
+  const miss=r.checks.filter(c=>!c.ok).map(c=>c.label);if(miss.length)L.push(`${t('rt_missed')}: ${miss.join('; ')}`);
+  L.push(`${t('rt_ratings')}: ${r.ratings.map((v,i)=>`${t('rq'+(i+1))} ${v}`).join(' · ')}`);
+  if(r.comment)L.push(`${t('s_q6')}: ${r.comment}`);
+  L.push(`${t('r_steps')}: ${STEPK.map(k=>`${t('k_'+k)} ${fmtDur(r.steps[k])}`).join(' · ')}`);
+  const evs=EVK.filter(k=>r.ev[k]).map(k=>`${t('e_'+k)} ${r.ev[k]}`);if(evs.length)L.push(`${t('rt_events')}: ${evs.join(' · ')}`);
+  return L.join('\n');
+}
+async function submitRun(){
+  const r=S.g.run;S.g.send='sending';
+  try{
+    const[db,u]=await Promise.all([cap('db'),cap('user')]);
+    const id=u?await u.id():null;if(!db||!id)throw{code:'none'};
+    if(u&&(await u.can('data.write'))===false)throw{code:'readonly'};
+    const ref=db.doc('results/'+id);
+    for(let tries=0;;tries++){
+      try{const s=await ref.get();const prev=s.exists&&Array.isArray(s.data().runs)?s.data().runs:[];await ref.set({runs:[...prev,r].slice(-40),updatedAt:r.at});break}
+      catch(e){if(e&&e.code==='unavailable'&&tries<1){await new Promise(res=>setTimeout(res,600+Math.random()*600));continue}throw e}
+    }
+    S.g.send='sent';
+  }catch(e){S.g.send='failed'}
+  if(S.mode==='result'&&S.g.run===r)render(true);
+}
+function copyText(txt,ok,fail){try{navigator.clipboard.writeText(txt).then(ok,fail)}catch(e){fail()}}
+
+const mean=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:0;
+function dashBars(rows,max,cls){return rows.map(([l,v,shown])=>`<div class="bar-row"><span>${esc(l)}</span><span class="trk${cls?' '+cls:''}"><i style="width:${max?Math.max(3,v/max*100):0}%"></i></span><b>${shown}</b></div>`).join('')}
+function renderDash(){
+  const el=$('#dash');if(el.hidden)return;
+  const runs=(S.dashRuns||[]).filter(r=>r&&MISSIONS[r.mission]).slice().sort((a,b)=>String(b.at).localeCompare(String(a.at)));
+  let body;
+  if(S.dashState==='err')body=`<div class="dcard"><p class="muted" style="margin:0">${t('d_unavail')}</p></div>`;
+  else if(!S.dashRuns)body=`<div class="dcard"><p class="muted" style="margin:0">${t('d_loading')}</p></div>`;
+  else if(!runs.length)body=`<div class="dcard"><p class="muted" style="margin:0">${t('d_empty')}</p></div>`;
+  else{
+    const fin=runs.filter(r=>!r.gaveUp),full=runs.filter(r=>r.score===r.max).length;
+    const tiles=[[t('d_runs'),runs.length],[t('d_avg_time'),fin.length?fmtDur(mean(fin.map(r=>r.ms))):t('d_none')],[t('d_full'),`${Math.round(full/runs.length*100)}%`],[t('d_sat'),`${mean(runs.map(r=>r.ratings?.[4]||0)).toFixed(1)}/5`]];
+    const mrows=['A','B','C'].map(id=>{
+      const rs=runs.filter(r=>r.mission===id);if(!rs.length)return'';
+      const f=rs.filter(r=>!r.gaveUp),miss={};
+      rs.forEach(r=>(r.checks||[]).forEach(c=>{if(!c.ok){miss[c.k]=miss[c.k]||{n:0,label:c.label};miss[c.k].n++}}));
+      const top=Object.values(miss).sort((a,b)=>b.n-a.n).slice(0,2).map(m=>`${esc(m.label)} (${m.n}/${rs.length})`).join('<br>')||t('d_none');
+      return`<tr><td>${t('g_m',{n:MISSIONS[id].num})} · ${t('m'+id+'_t')}</td><td class="num">${rs.length}</td><td class="num">${f.length?fmtDur(mean(f.map(r=>r.ms))):'—'}</td><td class="num">${Math.round(mean(rs.map(r=>r.score/r.max))*100)}%</td><td>${top}</td></tr>`;
+    }).join('');
+    const rat=SQ.map(([q],i)=>{const a=mean(runs.map(r=>r.ratings?.[i]||0));return[t('rq'+(i+1)),a,a.toFixed(1)]});
+    const evs=EVK.map(k=>[t('e_'+k),runs.reduce((a,r)=>a+((r.ev||{})[k]||0),0)]).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]).map(([l,v])=>[l,v,v]);
+    const evMax=Math.max(0,...evs.map(x=>x[1]));
+    const list=runs.map(r=>{
+      const missed=(r.checks||[]).filter(c=>!c.ok).map(c=>esc(c.label));
+      const evl=EVK.filter(k=>(r.ev||{})[k]).map(k=>`${t('e_'+k)} ${r.ev[k]}`).join(' · ');
+      return`<div class="run"><div class="run-h"><b>${esc(r.nick)||t('d_anon')}</b><span class="pill">${t('g_m',{n:MISSIONS[r.mission].num})}</span><span class="pill">${fmtDur(r.ms)}${r.gaveUp?' · '+t('r_gaveup'):''}</span><span class="pill ${r.score===r.max?'ok':'no'}">${r.score}/${r.max}</span><span class="muted sm">${esc(new Date(r.at).toLocaleString(S.lang==='th'?'th-TH':'en-GB',{dateStyle:'medium',timeStyle:'short'}))}</span></div>
+<p>${t('rt_ratings')}: ${(r.ratings||[]).map((v,i)=>`${t('rq'+(i+1))} ${esc(v)}`).join(' · ')}</p>
+${r.comment?`<p class="cm">${t('d_comment')}: ${esc(r.comment)}</p>`:''}
+${missed.length?`<p>${t('rt_missed')}: ${missed.join('; ')}</p>`:''}
+<p>${t('r_steps')}: ${STEPK.map(k=>`${t('k_'+k)} ${fmtDur((r.steps||{})[k])}`).join(' · ')}</p>
+${evl?`<p>${t('rt_events')}: ${esc(evl)}</p>`:''}</div>`;
+    }).join('');
+    body=`<div class="tiles">${tiles.map(([l,v])=>`<div class="stat"><span>${l}</span><b>${v}</b></div>`).join('')}</div>
+<div class="dcard"><h3>${t('d_by_mission')}</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>${t('d_mission')}</th><th>${t('d_n')}</th><th>${t('d_avg_time')}</th><th>${t('d_avg_score')}</th><th>${t('d_missed')}</th></tr></thead><tbody>${mrows}</tbody></table></div></div>
+<div class="dgrid"><div class="dcard"><h3>${t('d_ratings')}</h3>${dashBars(rat,5)}</div><div class="dcard"><h3>${t('d_events')}</h3>${evs.length?dashBars(evs,evMax,'ev'):`<p class="muted" style="margin:0">${t('d_none')}</p>`}</div></div>
+<div class="dcard"><h3>${t('d_list')}</h3>${list}</div><div id="csvbox"></div>`;
+  }
+  el.innerHTML=`<div class="dash-in"><div class="dash-h"><h2>${t('d_title')}</h2><span class="muted sm">${t('d_sub')}</span><div class="dash-act"><button class="btn btn-ghost" data-act="dashCsv"${runs.length?'':' disabled'}>${IC.copy}${t('d_csv')}</button><button class="btn btn-gold" data-act="dashClose">${t('d_close')}</button></div></div>${body}</div>`;
+}
+function toCsv(runs){
+  const q=v=>{let s=String(v??'');if(/^[=+\-@]/.test(s))s="'"+s;return`"${s.replace(/"/g,'""')}"`};
+  const head=['submitted_at','nickname','mission','seconds','gave_up','score','max','q1_showtime','q2_seats','q3_promo','q4_payment','q5_overall','comment','showtime_s','seats_s','food_s','pay_s','missed','events'];
+  return[head.join(','),...runs.map(r=>[r.at,r.nick,r.mission,Math.round(r.ms/1000),r.gaveUp,r.score,r.max,...[0,1,2,3,4].map(i=>(r.ratings||[])[i]),r.comment,
+    ...STEPK.map(k=>Math.round(((r.steps||{})[k]||0)/1000)),(r.checks||[]).filter(c=>!c.ok).map(c=>c.label).join('; '),EVK.filter(k=>(r.ev||{})[k]).map(k=>`${k}=${r.ev[k]}`).join('; ')].map(q).join(','))].join('\n');
+}
+function renderProto(){
+  const run=S.mode==='run'||S.mode==='brief';
+  $('#proto').innerHTML=`<h2>Tiffany's Booking</h2><p>${t('p_intro')}</p>${run?`<p>${t('p_running')}</p>`:`${protoControls()}<h3>${t('p_try')}</h3><ul>${['p_t1','p_t2','p_t3','p_t4'].map(k=>`<li>${t(k,{d:fmtDate(DATES[SOLD_IDX])})}</li>`).join('')}</ul>`}<h3>${t('p_mock')}</h3><p>${t('p_mock_body')}</p>${S.isOwner?`<button class="pbtn" data-act="dash">${IC.chart}${t('g_dash')}${S.dashRuns?` (${S.dashRuns.length})`:''}</button>`:''}`;
+}
+function protoControls(){
+  return`<div class="pc-h2">${t('d_jump')}</div><div class="pgrid">${[['intro',t('d_intro')],['1',t('step1')],['2',t('step2')],['food',t('food_title')],['pay',t('step3')],['4',t('step4')]].map(([s,l])=>`<button class="pbtn" data-act="jump" data-s="${s}">${l}</button>`).join('')}</div><div class="pc-h2">${t('d_sim')}</div><div class="pgrid"><button class="pbtn" data-act="expireNow">${t('d_expire')}</button><button class="pbtn" data-act="reset">${t('d_reset')}</button></div>`;
+}
+
+const ACT={
+  back(){
+    ev('back');
+    if(S.step===2){const had=S.seats.length;S.seats=[];S.holdEnd=null;S.step=1;render();if(had)toast(t('release_toast'))}
+    else if(S.step===3&&S.sub==='pay'){S.sub='food';render()}
+    else if(S.step===3){S.step=2;render()}
+  },
+  lang(){S.lang=S.lang==='th'?'en':'th';render(true);renderDash()},
+  date(el){S.dateIdx=+el.dataset.i;if(S.time&&!(showsFor(S.dateIdx).some(x=>x.time===S.time)&&bookable(S.dateIdx,S.time)))S.time=null;render(true)},
+  time(el){
+    const tm=el.dataset.time,st=status(S.dateIdx,tm);
+    if(st==='soldout'){
+      ev('soldout');const sg=suggestions();
+      openSheet(`<div class="sh-ic">${IC.alert}</div><h3>${t('soldout_title')}</h3><p>${t('soldout_body')}</p>${sg.map(x=>`<button class="sug" data-act="pickSug" data-i="${x.i}" data-time="${x.tm}"><span><b>${x.tm}</b>${fmtDate(DATES[x.i])}</span><span class="muted sm">${t('avail',{n:avail(keyOf(x.i,x.tm))})}</span></button>`).join('')}<button class="btn btn-ghost w100" data-act="close">${t('close')}</button>`);
+    }else if(st==='closed'){
+      ev('closed');
+      openSheet(`<div class="sh-ic">${IC.clock}</div><h3>${t('closed_title')}</h3><p>${t('closed_body')}</p><button class="btn btn-gold w100" data-act="proto">${t('chat')}</button><button class="btn btn-ghost w100" data-act="close">${t('close')}</button>`);
+    }else{S.time=tm;render(true)}
+  },
+  pickSug(el){S.dateIdx=+el.dataset.i;S.time=el.dataset.time;closeSheet();render(true);scrollDateIntoView()},
+  toSeats(){if(!S.time)return;S.step=2;S.seats=[];S.zone=S.zonePref||null;startHold();render();if(S.zone)scrollMapToZone(S.zone)},
+  zone(el){const z=el.dataset.z;S.zone=S.zone===z?null:z;render(true);scrollMapToZone(S.zone)},
+  zoom(el){
+    const w=$('#mapwrap'),ratio=(w.scrollLeft+w.clientWidth/2)/w.scrollWidth;
+    S.zoomIdx=Math.max(0,Math.min(ZOOMS.length-1,S.zoomIdx+ +el.dataset.d));render(true);
+    const w2=$('#mapwrap');w2.scrollLeft=ratio*w2.scrollWidth-w2.clientWidth/2;
+  },
+  seat(el){
+    const id=el.dataset.id,i=S.seats.indexOf(id);
+    if(i>=0)S.seats.splice(i,1);
+    else if(taken(curKey()).has(id)){ev('taken');toast(t('seat_taken'));return}
+    else if(S.seats.length>=10){toast(t('max_seats'));return}
+    else S.seats.push(id);
+    render(true);
+  },
+  unseat(el){S.seats=S.seats.filter(x=>x!==el.dataset.id);render(true)},
+  autopick(){S.ap.zone=S.zone||S.ap.zone;apSheet()},
+  apn(el){S.ap.n=Math.max(1,Math.min(10,S.ap.n+ +el.dataset.d));apSheet()},
+  apz(el){S.ap.zone=el.dataset.z;apSheet()},
+  apgo(){const ids=bestSeats(S.ap.zone,S.ap.n);if(!ids){toast(t('ap_none'));return}ev('autopick');S.seats=ids;closeSheet();render(true);toast(t('ap_done',{s:ids.join(', ')}))},
+  toFood(){if(!S.seats.length)return;S.step=3;S.sub='food';if(DATES[S.dateIdx].getDay()===2)FOOD.filter(f=>f.restaurant).forEach(f=>delete S.food[f.id]);render()},
+  qty(el){const id=el.dataset.id;S.food[id]=Math.max(0,Math.min(20,(S.food[id]||0)+ +el.dataset.d));if(!S.food[id])delete S.food[id];render(true)},
+  toPay(){S.sub='pay';render()},
+  promo(){
+    const c=S.promoInput.trim().toUpperCase();if(!c)return;
+    if(!PROMOS.some(p=>p.code===c)){S.promoErr=true;ev('promoFail');render(true);return}
+    S.promo=c;S.promoErr=false;S.promoInput='';if(!evalPromo(c).ok)ev('promoFail');render(true);
+  },
+  promoRm(){S.promo=null;S.promoInput='';S.zonePref=null;render(true)},
+  promoSlide(el){
+    const p=PROMOS[+el.dataset.i];ev('promoTap');S.promo=p.code;S.promoErr=false;S.zonePref=p.code==='MEZZ990'?'mezz':null;S.pcIdx=+el.dataset.i;pcPause=Date.now()+8000;
+    if(p.code==='EARLY15'&&S.dateIdx<7){S.dateIdx=7;if(S.time&&!bookable(7,S.time))S.time=null}
+    if(p.code==='SAT1630'){S.dateIdx=SAT_IDX;S.time=bookable(SAT_IDX,'16:30')?'16:30':null}
+    render(true);scrollDateIntoView();toast(t('promo_picked',{c:p.code}));
+  },
+  pcDot(el){S.pcIdx=+el.dataset.i;pcPause=Date.now()+8000;pcGo(true)},
+  pm(el){S.pay=el.dataset.m;render(true)},
+  pay(){
+    S.errors=validate();
+    if(Object.keys(S.errors).length){ev('formErr');render(true);$('.in.bad, #err-agree')?.scrollIntoView({block:'center',behavior:'smooth'});toast(t('fix_form'));return}
+    gwSheet();
+  },
+  payok(){book()},
+  payfail(){ev('payFail');openSheet(`<div class="sh-ic">${IC.alert}</div><h3>${t('fail_title')}</h3><p>${t('fail_body',{t:mmss(remaining())})}</p><button class="btn btn-gold w100" data-act="retry">${t('retry')}</button><button class="btn btn-ghost w100" data-act="changePm">${t('change_pm')}</button>`)},
+  retry(){gwSheet()},
+  changePm(){closeSheet();$('#pm-h')?.scrollIntoView({block:'start',behavior:'smooth'})},
+  reselect(){closeSheet();startHold();render()},
+  proto(){toast(t('proto_toast'))},
+  again(){const m=S.mode;resetBooking();S.mode=m;render()},
+  demo(){openSheet(`<h3>${t('demo_title')}</h3>${protoControls()}<div style="height:16px"></div><button class="btn btn-ghost w100" data-act="close">${t('close')}</button>`)},
+  jump(el){demoJump(el.dataset.s)},
+  expireNow(){if(!S.holdEnd){toast(t('d_need_hold'));return}closeSheet();S.holdEnd=Date.now();tick()},
+  reset(){const keep={lang:S.lang,isOwner:S.isOwner,dashRuns:S.dashRuns,dashState:S.dashState,nick:S.nick};Object.assign(S,JSON.parse(INIT_S),keep);closeSheet();render()},
+  close(){closeSheet()},
+  gPick(el){S.pick=el.dataset.v;render(true)},
+  gGet(){const ids=['A','B','C'],id=S.pick==='rand'?ids[Math.floor(Math.random()*ids.length)]:S.pick;resetBooking();S.g=newGame();S.g.mission=id;S.mode='brief';render()},
+  gFree(){resetBooking();S.g=newGame();S.mode='free';render()},
+  gStart(){S.mode='run';S.g.start=Date.now();render()},
+  brief(){ev('brief');openSheet(`${missionCard()}<button class="btn btn-gold w100" data-act="close">${t('close')}</button><button class="btn btn-ghost w100" data-act="giveup">${t('g_giveup')}</button>`)},
+  giveup(){closeSheet();S.g.gaveUp=true;S.g.end=Date.now();S.holdEnd=null;S.mode='survey';render()},
+  toSurvey(){S.mode='survey';render()},
+  rate(el){S.g.ratings[+el.dataset.q]=+el.dataset.v;render(true)},
+  sSubmit(){
+    const miss=S.g.ratings.filter(v=>!v).length;
+    if(miss){S.g.sErr=true;render(true);$('.q.bad')?.scrollIntoView({block:'center',behavior:'smooth'});toast(t('s_missing',{n:miss}));return}
+    S.g.run=buildRun();S.mode='result';render();submitRun();
+  },
+  rCopy(){copyText(runText(S.g.run),()=>toast(t('r_copied')),()=>{const d=$('#rtd');if(d)d.open=true;const ta=$('#rtext');if(ta){ta.focus();ta.select()}toast(t('r_copy_fail'))})},
+  rAgain(){resetBooking();S.g=newGame();S.mode='intro';render()},
+  dash(){closeSheet();$('#dash').hidden=false;renderDash()},
+  dashClose(){$('#dash').hidden=true},
+  dashCsv(){
+    const runs=(S.dashRuns||[]).filter(r=>r&&MISSIONS[r.mission]).slice().sort((a,b)=>String(b.at).localeCompare(String(a.at))),csv=toCsv(runs);
+    copyText(csv,()=>toast(t('d_copied')),()=>{const box=$('#csvbox');if(box){box.innerHTML=`<div class="dcard"><p class="muted" style="margin:0 0 8px">${t('d_csv_fail')}</p><textarea class="in csv-out" id="csv-out" readonly>${esc(csv)}</textarea></div>`;const ta=$('#csv-out');ta.focus();ta.select()}})
+  }
+};
+document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(el&&ACT[el.dataset.act])ACT[el.dataset.act](el,e)});
+$('#layer').addEventListener('click',e=>{if(e.target.id==='layer'&&!S.sheetLocked)closeSheet()});
+document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(!$('#layer').hidden&&!S.sheetLocked)closeSheet();else if(!$('#dash').hidden)$('#dash').hidden=true});
+document.addEventListener('input',e=>{
+  const id=e.target.id;
+  if(id==='g-nick'){S.nick=e.target.value;return}
+  if(id==='s-comment'){S.g.comment=e.target.value;return}
+  const f=e.target.dataset.f;if(!f)return;
+  if(f==='promo'){S.promoInput=e.target.value;if(S.promoErr){S.promoErr=false;e.target.classList.remove('bad');$('#err-promo')?.remove()}return}
+  S.form[f]=e.target.value;
+  if(S.errors[f]){delete S.errors[f];e.target.classList.remove('bad');$('#err-'+f)?.remove()}
+});
+document.addEventListener('change',e=>{
+  if(e.target.id==='agree'){S.agree=e.target.checked;if(S.errors.agree){delete S.errors.agree;$('#err-agree')?.remove()}}
+  else if(e.target.dataset.f&&e.target.dataset.f!=='promo')S.form[e.target.dataset.f]=e.target.value;
+});
+document.addEventListener('toggle',e=>{if(e.target.classList&&e.target.classList.contains('sum'))S.sumOpen=e.target.open},true);
+
+render();
+(async()=>{
+  const u=await cap('user');
+  if(!u||!(await u.isOwner()))return;
+  S.isOwner=true;render(true);
+  const db=await cap('db');
+  if(!db){S.dashState='err';renderDash();return}
+  db.collection('results').onSnapshot(snap=>{
+    S.dashRuns=snap.docs.flatMap(d=>{const x=d.data();return Array.isArray(x&&x.runs)?x.runs:[]});S.dashState='ok';
+    if(S.mode==='intro')render(true);else renderProto();renderDash();
+  },()=>{S.dashState='err';renderDash()});
+})();
+</script>
+</body>
+</html>

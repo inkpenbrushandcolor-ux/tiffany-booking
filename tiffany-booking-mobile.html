@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Instrument+Sans:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark;--bg:#0e0e10;--app:#1b1b1c;--surface:#25252c;--surface-2:#30303b;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.18);--text:#f4f4f8;--muted:#b6b6c4;--faint:#868696;--gold:#5f5cfa;--gold-hi:#e697f6;--gold-ink:#1b1b1c;--danger:#ff9191;--warn:#ffc56e;--ok:#7fdcae;--pink-hi:#ffc2e6;--z-diamond:#aab5ff;--z-gold:#f2c14b;--z-silver:#d3d7e0;--z-mezz:#e563b5;--taken:#3a3a44;--pc-0:#3b39a8;--pc-1:#6b3f72;--pc-2:#3a3e78;--pc-3:#3a3a3f;--pc-4:#5a3470;--display:'Instrument Sans','Anuphan',system-ui,sans-serif;--body:'Anuphan',system-ui,-apple-system,sans-serif;--on-primary:#fff;--primary-grad:linear-gradient(180deg,#7370ff,#5f5cfa);--mark-a:#5f5cfa;--mark-b:#eae9f3}
+:root{color-scheme:dark;--bg:#0e0e10;--app:#1b1b1c;--surface:#25252c;--surface-2:#30303b;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.18);--text:#f4f4f8;--muted:#b6b6c4;--faint:#868696;--gold:#5f5cfa;--gold-hi:#e697f6;--gold-ink:#1b1b1c;--danger:#ff9191;--warn:#ffc56e;--ok:#7fdcae;--pink-hi:#ffc2e6;--z-diamond:#aab5ff;--z-gold:#f2c14b;--z-silver:#d3d7e0;--z-mezz:#e563b5;--taken:#3a3a44;--pc-0:#3b39a8;--pc-1:#6b3f72;--pc-2:#3a3e78;--pc-3:#3a3a3f;--pc-4:#5a3470;--display:'Chiswick Sans Text','Instrument Sans','Nirand','Anuphan',system-ui,sans-serif;--body:'Nirand','Anuphan',system-ui,-apple-system,sans-serif;--on-primary:#fff;--primary-grad:linear-gradient(180deg,#7370ff,#5f5cfa);--mark-a:#5f5cfa;--mark-b:#eae9f3}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0;height:100%}
@@ -21,11 +21,12 @@ button{font:inherit;color:inherit}
 .top{display:flex;align-items:center;gap:10px;padding:14px 14px 10px;flex:0 0 auto}
 .icon-btn{width:36px;height:36px;flex:0 0 auto;border-radius:50%;border:1px solid var(--line-2);background:transparent;display:grid;place-items:center;cursor:pointer}
 .brand{flex:1;min-width:0;display:flex;align-items:center;gap:8px;line-height:1}
-.brand .lg-mark{flex:0 0 auto}.icon-btn+.brand .lg-word{display:none}
 .lg-mark svg{display:block;height:36px;width:auto}.lg-word svg{display:block;height:30px;width:auto;color:#fff}
+.lg-stack{display:flex;flex-direction:column;align-items:center;gap:10px}
+.icon-btn+.brand .lg-word svg{height:25px}
 .lg-a{fill:var(--mark-a)}.lg-b{fill:var(--mark-b)}
-.tk-brand.tk-logo{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:12px}.tk-logo .lg-mark svg{height:44px}.tk-logo .lg-word svg{height:34px;color:var(--gold-hi)}
-.brand .display{font:700 18px var(--display);color:var(--gold-hi);letter-spacing:.02em;white-space:nowrap}
+.tk-brand.tk-logo{flex-direction:column;align-items:center;justify-content:center;margin-bottom:4px}.tk-logo .lg-mark svg{height:58px}.tk-logo .lg-word svg{height:38px;color:var(--gold-hi)}
+.brand .display{font:500 18px var(--display);color:var(--gold-hi);letter-spacing:.02em;white-space:nowrap}
 .brand small{font-size:10px;letter-spacing:.24em;color:var(--muted)}
 .hdr-r{display:flex;gap:6px;align-items:center}
 .lang{display:flex;border:1px solid var(--line-2);border-radius:999px;padding:2px;background:transparent;cursor:pointer}
@@ -53,6 +54,8 @@ button{font:inherit;color:inherit}
 .btn-gold{background:var(--primary-grad);color:var(--on-primary)}
 .btn-gold:disabled{background:#34343f;color:#7c7c8a;cursor:not-allowed}
 .btn-ghost{background:transparent;border:1px solid var(--line-2);color:var(--text)}
+.btn-auto{background:rgba(95,92,250,.18);border:1px solid var(--gold);color:var(--text)}.btn-auto svg{color:var(--gold-hi)}
+.auto-hint{margin:6px 2px 14px;font-size:12px;color:var(--muted);text-align:center}
 .btn-ghost:disabled{opacity:.4;cursor:not-allowed}
 .w100{width:100%}.grow{flex:1}.mt8{margin-top:8px}.mt12{margin-top:12px}
 .sm{font-size:13px}.muted{color:var(--muted)}.gold{color:var(--gold-hi)}.pink{color:var(--pink-hi)}
@@ -64,7 +67,7 @@ html[lang=th] .eyebrow,html[lang=th] .m-num,html[lang=th] .m-sub,html[lang=th] .
 .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;border:1px solid rgba(230,151,246,.22);pointer-events:none}
 .hero::before{width:190px;height:190px;right:-70px;top:-80px}
 .hero::after{width:120px;height:120px;right:-30px;top:-40px;border-color:rgba(229,99,181,.25)}
-.hero h1{font:700 26px/1.15 var(--display);margin:6px 0}
+.hero h1{font:500 26px/1.15 var(--display);margin:6px 0}
 .hero p{margin:0;color:var(--muted);font-size:14px;max-width:260px}
 .hero .from{margin-top:12px;font-size:13px;color:var(--muted)}
 .hero .from b{color:var(--gold-hi);font-size:18px;margin-left:4px}
@@ -90,7 +93,7 @@ html[lang=th] .eyebrow,html[lang=th] .m-num,html[lang=th] .m-sub,html[lang=th] .
 .dates::-webkit-scrollbar{display:none}
 .date{position:relative;flex:0 0 60px;height:78px;scroll-snap-align:start;border-radius:14px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;cursor:pointer;padding:0}
 .date .dow{font-size:11.5px;color:var(--muted)}
-.date .d{font:700 22px/1.1 var(--display)}
+.date .d{font:500 22px/1.1 var(--display)}
 .date .m{font-size:11px;color:var(--muted)}
 .date.sel{background:var(--primary-grad);border-color:transparent;color:var(--on-primary)}
 .date.sel .dow,.date.sel .m{color:rgba(255,255,255,.82)}
@@ -99,7 +102,7 @@ html[lang=th] .eyebrow,html[lang=th] .m-num,html[lang=th] .m-sub,html[lang=th] .
 .legend-note{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-top:6px}
 .times{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .time{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:14px;min-height:100px;border-radius:16px;background:var(--surface);border:1px solid var(--line);cursor:pointer}
-.time .t{font:700 26px/1.2 var(--display)}
+.time .t{font:500 26px/1.2 var(--display)}
 .time .s{font-size:12.5px;color:var(--muted);margin-top:2px}
 .time .s.warn{color:var(--warn)}.time .s.bad{color:var(--danger)}
 .meter{display:block;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.08);margin-top:auto}
@@ -115,7 +118,7 @@ html[lang=th] .eyebrow,html[lang=th] .m-num,html[lang=th] .m-sub,html[lang=th] .
 .sw{width:12px;height:12px;border-radius:4px;flex:0 0 auto;display:inline-block}
 .sw.z-diamond{background:var(--z-diamond)}.sw.z-gold{background:var(--z-gold)}.sw.z-silver{background:var(--z-silver)}.sw.z-mezz{background:var(--z-mezz)}
 .show-sum{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line);margin-bottom:14px}
-.show-sum .display{font:700 15px var(--display)}
+.show-sum .display{font:500 15px var(--display)}
 .link{background:none;border:0;color:var(--gold-hi);font-size:13px;cursor:pointer;margin-left:auto;text-decoration:underline;text-underline-offset:3px;padding:4px 0;white-space:nowrap}
 .chips{display:flex;gap:8px;overflow-x:auto;margin:0 -16px 12px;padding:0 16px;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
@@ -141,7 +144,7 @@ html[lang=th] .eyebrow,html[lang=th] .m-num,html[lang=th] .m-sub,html[lang=th] .
 .ck{fill:none;stroke:#1b1b1c;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 .rowlbl{fill:var(--faint);font:600 10px var(--body)}
 .stage-shape{fill:#30303b;stroke:var(--gold);stroke-width:1}
-.stage-t{fill:var(--gold-hi);font:700 15px var(--display)}
+.stage-t{fill:var(--gold-hi);font:500 15px var(--display)}
 .mz-t{fill:var(--muted);font:600 11px var(--body)}
 html[lang=en] .stage-t{letter-spacing:.3em}
 .mz-t tspan.en{letter-spacing:.2em}
@@ -242,22 +245,22 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 @media (prefers-reduced-motion:reduce){.sheet{animation:none}.pc-dots button::after{transition:none}}
 .sh-ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;margin:4px 0 12px;background:rgba(255,145,145,.14);color:var(--danger)}
 .sug{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line-2);background:var(--surface-2);margin-bottom:8px;cursor:pointer;text-align:left}
-.sug b{font:700 17px var(--display);margin-right:6px}
+.sug b{font:500 17px var(--display);margin-right:6px}
 .gw-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px dashed var(--line-2);color:var(--muted)}
-.gw-amt{font:700 32px var(--display);color:var(--gold-hi);text-align:center;margin:8px 0 0}
+.gw-amt{font:500 32px var(--display);color:var(--gold-hi);text-align:center;margin:8px 0 0}
 .gw-m{text-align:center;color:var(--muted);font-size:13px}
 .qr-box{background:#fff;border-radius:16px;padding:12px;width:max-content;margin:14px auto 6px;line-height:0}
 .ap-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:14px}
 .ap-z{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
 .done-h{text-align:center;padding:8px 0 18px}
 .ok-ic{width:64px;height:64px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;background:rgba(127,220,174,.14);color:var(--ok)}
-.done-h h1{font:700 24px var(--display);margin:0 0 4px}
+.done-h h1{font:500 24px var(--display);margin:0 0 4px}
 .done-h p{margin:0;color:var(--muted);font-size:14px;overflow-wrap:anywhere}
 .ticket{border-radius:22px;background:var(--surface-2);border:1px solid var(--line-2);overflow:hidden;margin-bottom:16px}
 .tk-top{padding:18px}
 .tk-brand{display:flex;align-items:baseline;justify-content:space-between}
-.tk-brand .display{font:700 20px var(--display);color:var(--gold-hi)}
+.tk-brand .display{font:500 20px var(--display);color:var(--gold-hi)}
 .tk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
 .tk-grid span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .tk-grid b{font-weight:600;font-size:15px}
@@ -276,7 +279,7 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 .g-lead{margin:0;color:var(--muted);font-size:14.5px}
 .how{list-style:none;padding:0;margin:18px 0 20px;display:grid;gap:12px}
 .how-i{display:flex;gap:12px;align-items:flex-start;font-size:14.5px}
-.how-n{width:28px;height:28px;border-radius:50%;background:var(--surface-2);color:var(--gold-hi);display:grid;place-items:center;font:700 14px var(--display);flex:0 0 auto}
+.how-n{width:28px;height:28px;border-radius:50%;background:var(--surface-2);color:var(--gold-hi);display:grid;place-items:center;font:500 14px var(--display);flex:0 0 auto}
 .mchips{display:flex;flex-wrap:wrap;gap:8px}
 .mission-card{background:var(--surface);border:1px solid var(--line-2);border-radius:18px;padding:18px}
 .m-num{font-size:12px;letter-spacing:.08em;color:var(--pink-hi)}
@@ -296,7 +299,7 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 .rate button.on{background:var(--primary-grad);color:var(--on-primary);border-color:transparent}
 .q.bad .rate button{border-color:rgba(255,145,145,.5)}
 .rate-ends{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin-top:6px}
-.r-time{font:700 48px/1.1 var(--display);color:var(--gold-hi);font-variant-numeric:tabular-nums;margin-top:6px}
+.r-time{font:500 48px/1.1 var(--display);color:var(--gold-hi);font-variant-numeric:tabular-nums;margin-top:6px}
 .r-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
 .stat span{display:block;font-size:12px;color:var(--muted)}
@@ -315,7 +318,7 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 .toast{position:absolute;left:50%;bottom:100px;transform:translate(-50%,10px);background:#fff;color:#1b1b1c;padding:10px 16px;border-radius:999px;font-size:13px;font-weight:500;opacity:0;pointer-events:none;transition:.2s;z-index:40;width:max-content;max-width:86%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .proto{width:300px;color:var(--muted);font-size:14px}
-.proto h2{font:700 20px var(--display);color:var(--text);margin:0 0 6px}
+.proto h2{font:500 20px var(--display);color:var(--text);margin:0 0 6px}
 .proto>p{margin:0 0 10px}
 .pc-h2,.proto h3{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:20px 0 8px;font-weight:600}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -325,7 +328,7 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 .dash{position:fixed;inset:0;z-index:60;overflow:auto;background:var(--bg);padding-block:24px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .dash-in{max-width:980px;margin:0 auto;display:grid;gap:16px}
 .dash-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.dash-h h2{font:700 24px var(--display);margin:0;color:var(--text)}
+.dash-h h2{font:500 24px var(--display);margin:0;color:var(--text)}
 .dash-act{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
 .dash-act .btn{padding:10px 16px;font-size:14px}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
@@ -382,7 +385,7 @@ avail:'ว่าง {n} ที่',low:'เหลือ {n} ที่',soldout:'
 zones_title:'ราคาบัตรตามโซน',bar_nosel:'ยังไม่ได้เลือกรอบ',btn_seats:'เลือกที่นั่ง',
 hold:'ถือที่นั่งไว้ให้คุณอีก',seats_hint:'แตะที่นั่งเพื่อเลือก สูงสุด 10 ที่ เลื่อนผังซ้าย-ขวาได้',
 lg_avail:'ว่าง',lg_taken:'ไม่ว่าง',lg_me:'ของคุณ',stage:'เวที',mezz_label:'ชั้นลอย',map_aria:'ผังที่นั่ง',
-auto_pick:'เลือกที่นั่งให้อัตโนมัติ',ap_sub:'ระบบจะหาที่นั่งติดกันที่ดีที่สุดในโซนที่เลือก',ap_n:'จำนวนที่นั่ง',ap_go:'หาที่นั่งให้',ap_none:'โซนนี้มีที่นั่งติดกันไม่พอ ลองโซนอื่น',ap_done:'เลือก {s} ให้แล้ว',
+auto_pick:'เลือกที่นั่งให้อัตโนมัติ',auto_hint:'ไม่ต้องจิ้มทีละที่ ระบบหาที่นั่งติดกันที่ดีที่สุดให้',ap_sub:'ระบบจะหาที่นั่งติดกันที่ดีที่สุดในโซนที่เลือก',ap_n:'จำนวนที่นั่ง',ap_go:'หาที่นั่งให้',ap_none:'โซนนี้มีที่นั่งติดกันไม่พอ ลองโซนอื่น',ap_done:'เลือก {s} ให้แล้ว',
 seat_taken:'ที่นั่งนี้มีคนจองแล้ว',max_seats:'เลือกได้สูงสุด 10 ที่นั่งต่อการจอง',bar_seats_none:'ยังไม่ได้เลือกที่นั่ง',seats_n:'{n} ที่นั่ง',seat_1:'1 ที่นั่ง',btn_next:'ต่อไป',
 release_toast:'ปล่อยที่นั่งที่เลือกไว้แล้ว',
 food_title:'อาหารและเครื่องดื่ม',food_sub:'สั่งล่วงหน้า รับได้ที่โรงละคร ข้ามได้ถ้าไม่ต้องการ',food_sample:'เมนูและราคาในหน้านี้เป็นตัวอย่างสำหรับต้นแบบ',
@@ -450,7 +453,7 @@ avail:'{n} seats left',low:'Only {n} left',soldout:'Sold out',closed:'Online sal
 zones_title:'Ticket prices by zone',bar_nosel:'No showtime selected',btn_seats:'Choose seats',
 hold:'Seats held for',seats_hint:'Tap seats to select, up to 10. Swipe the map sideways.',
 lg_avail:'Available',lg_taken:'Taken',lg_me:'Yours',stage:'STAGE',mezz_label:'',map_aria:'Seat map',
-auto_pick:'Pick best seats for me',ap_sub:'We find the best seats together in the zone you choose',ap_n:'Number of seats',ap_go:'Find seats',ap_none:'Not enough seats together in this zone. Try another zone.',ap_done:'Picked {s} for you',
+auto_pick:'Pick best seats for me',auto_hint:'No need to tap seats one by one. We find the best seats together.',ap_sub:'We find the best seats together in the zone you choose',ap_n:'Number of seats',ap_go:'Find seats',ap_none:'Not enough seats together in this zone. Try another zone.',ap_done:'Picked {s} for you',
 seat_taken:'This seat is already taken',max_seats:'You can book up to 10 seats at a time',bar_seats_none:'No seats selected',seats_n:'{n} seats',seat_1:'1 seat',btn_next:'Continue',
 release_toast:'Your selected seats were released',
 food_title:'Food & drinks',food_sub:'Order ahead and collect at the theatre. Optional.',food_sample:'Menu items and prices here are placeholders for the prototype',
@@ -708,7 +711,7 @@ function mapSVG(){
 function renderTop(){
   const back=inBooking()&&(S.step===2||S.step===3),demo=S.mode==='intro'||S.mode==='free';
   $('#pbanner').textContent=t('proto_banner');
-  $('#top').innerHTML=`${back?`<button class="icon-btn" data-act="back" aria-label="${t('back')}">${IC.back}</button>`:''}<div class="brand"><span class="lg-mark">${LOGO.mark}</span><span class="lg-word">${LOGO.word}</span></div><div class="hdr-r">${demo?'<button class="demo-chip" data-act="demo">Demo</button>':''}<button class="lang" data-act="lang" aria-label="Language"><span class="${S.lang==='th'?'on':''}">TH</span><span class="${S.lang==='en'?'on':''}">EN</span></button></div>`;
+  $('#top').innerHTML=`${back?`<button class="icon-btn" data-act="back" aria-label="${t('back')}">${IC.back}</button>`:''}<div class="brand"><span class="lg-word">${LOGO.word}</span></div><div class="hdr-r">${demo?'<button class="demo-chip" data-act="demo">Demo</button>':''}<button class="lang" data-act="lang" aria-label="Language"><span class="${S.lang==='th'?'on':''}">TH</span><span class="${S.lang==='en'?'on':''}">EN</span></button></div>`;
   const st=$('#steps');st.hidden=!inBooking();
   st.innerHTML=['step1','step2','step3','step4'].map((k,i)=>`<div class="st${i+1<S.step?' done':i+1===S.step?' on':''}"${i+1===S.step?' aria-current="step"':''}><i></i><span>${t(k)}</span></div>`).join('');
   const mr=$('#mrow'),on=S.mode==='run'&&!S.g.end;mr.hidden=!on;
@@ -742,10 +745,10 @@ function view2(){
   const d=DATES[S.dateIdx],sh=showsFor(S.dateIdx).find(x=>x.time===S.time),picked=[...S.seats].sort(seatSort);
   return`<div class="show-sum"><div><div class="display">Tiffany's Show</div><div class="muted sm">${fmtDate(d)} · ${S.time}${sh&&sh.special?` · <span class="pink">${t('special')}</span>`:''}</div></div><button class="link" data-act="back">${t('edit')}</button></div>
 <div class="chips">${ZONES.map(z=>`<button class="chip${S.zone===z.id?' on':''}" data-act="zone" data-z="${z.id}" aria-pressed="${S.zone===z.id}"><span class="sw z-${z.id}"></span>${z.name}<span class="muted">฿${fmt(PRICES[z.id])}</span></button>`).join('')}</div>
+<button class="btn btn-auto w100" data-act="autopick">${IC.wand}${t('auto_pick')}</button><p class="auto-hint">${t('auto_hint')}</p>
 <div class="map-tools"><div class="legend"><span class="lg"><i class="a"></i>${t('lg_avail')}</span><span class="lg"><i class="tk"></i>${t('lg_taken')}</span><span class="lg"><i class="me"></i>${t('lg_me')}</span></div><div class="zoom"><button data-act="zoom" data-d="-1" aria-label="Zoom out"${S.zoomIdx===0?' disabled':''}>${IC.minus}</button><button data-act="zoom" data-d="1" aria-label="Zoom in"${S.zoomIdx===ZOOMS.length-1?' disabled':''}>${IC.plus}</button></div></div>
 <div class="map-wrap" id="mapwrap">${mapSVG()}</div>
 <p class="muted sm hint">${t('seats_hint')}</p>
-<button class="btn btn-ghost w100" data-act="autopick">${IC.wand}${t('auto_pick')}</button>
 ${picked.length?`<div class="picked">${picked.map(id=>{const s=SEAT[id];return`<span class="pk"><span class="sw z-${s.zone}"></span><b>${id}</b><span class="muted">฿${fmt(PRICES[s.zone])}</span><button data-act="unseat" data-id="${id}" aria-label="${t('remove')} ${id}">${IC.x}</button></span>`}).join('')}</div>`:''}`;
 }
 
@@ -795,7 +798,7 @@ function view4(){
   const b=S.booking;if(!b)return'';
   const d=DATES[b.date],zs=[...new Set(b.seats.map(id=>SEAT[id].zone))].map(z=>ZN[z]).join(', ');
   return`<div class="done-h"><div class="ok-ic">${IC.checkBig}</div><h1>${t('done_title')}</h1><p>${t('done_sub',{email:esc(b.email)})}</p></div>
-<div class="ticket"><div class="tk-top"><div class="tk-brand tk-logo"><span class="lg-mark">${LOGO.mark}</span><span class="lg-word">${LOGO.word}</span></div>
+<div class="ticket"><div class="tk-top"><div class="tk-brand tk-logo lg-stack"><span class="lg-mark">${LOGO.mark}</span><span class="lg-word">${LOGO.word}</span></div>
 <div class="tk-grid"><div><span>${t('date_label')}</span><b>${fmtDate(d)}</b></div><div><span>${t('time_label')}</span><b>${b.time}</b></div><div class="span2"><span>${t('seat_label')} (${b.seats.length})</span><b>${b.seats.join(', ')}</b></div><div class="span2"><span>${t('zone_label')}</span><b>${zs}</b></div></div></div>
 <div class="tk-perf"></div><div class="tk-bot"><div class="qr-box">${qrSVG(b.ref,150)}</div><div class="muted sm">${t('qr_note')}</div><div class="ref">${t('ref')} <b>${b.ref}</b></div><div class="tiny">${t('qr_sample')}</div></div></div>
 <div class="acts"><button class="act" data-act="proto">${IC.download}${t('save_ticket')}</button><button class="act" data-act="proto">${IC.cal}${t('add_cal')}</button><button class="act" data-act="proto">${IC.pin}${t('directions')}</button></div>
@@ -1036,7 +1039,7 @@ async function submitRun(){
   if(S.mode==='result'&&S.g.run===r)render(true);
 }
 const IMG_C={bg:'#1b1b1c',surface:'#25252c',line:'rgba(255,255,255,.12)',text:'#f4f4f8',muted:'#b6b6c4',faint:'#868696',gold:'#5f5cfa',goldHi:'#e697f6',goldInk:'#1b1b1c',ok:'#7fdcae',danger:'#ff9191'};
-const IMG_DISP="'Instrument Sans','Anuphan',system-ui,sans-serif",IMG_BODY="'Anuphan',system-ui,-apple-system,sans-serif";
+const IMG_DISP="'Chiswick Sans Text','Instrument Sans','Nirand','Anuphan',system-ui,sans-serif",IMG_BODY="'Nirand','Anuphan',system-ui,-apple-system,sans-serif";
 function wrapLines(ctx,text,maxW){
   const segs=typeof Intl!=='undefined'&&Intl.Segmenter?[...new Intl.Segmenter(S.lang==='en'?'en':'th',{granularity:'word'}).segment(text)].map(x=>x.segment):[...text];
   const out=[];let line='';
@@ -1059,12 +1062,14 @@ function paintRun(ctx,r,draw){
   if(draw){ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,ctx.canvas.height)}
   // prototype banner
   if(draw){ctx.fillStyle=C.goldHi;ctx.fillRect(0,0,W,64)}
-  font(600,24);text(t('r_proto'),W/2,42,C.goldInk,'center');y=64+72;
-  // brand + date
-  if(draw&&IMG_LOGO.mark){ctx.drawImage(IMG_LOGO.mark,P,y-46,84*207/315,84);ctx.drawImage(IMG_LOGO.word,P+55+16,y-38,68*528/248,68)}else{font(700,44,IMG_DISP);text('Tiffany’s Show',P,y,C.goldHi)}
+  font(600,24);text(t('r_proto'),W/2,42,C.goldInk,'center');y=64+44;
+  // brand lockup (mark above wordmark) + date
+  const MH=100,WH=70;
+  if(IMG_LOGO.mark){if(draw){const mw=MH*207/315,ww=WH*528/248;ctx.drawImage(IMG_LOGO.mark,(W-mw)/2,y,mw,MH);ctx.drawImage(IMG_LOGO.word,(W-ww)/2,y+MH+14,ww,WH)}y+=MH+14+WH}
+  else{font(500,52,IMG_DISP);text('Tiffany’s Show',W/2,y+52,C.goldHi,'center');y+=70}
   const at=new Date(r.at),dt=`${at.getDate()} ${(S.lang==='en'?EN_MON:TH_MON)[at.getMonth()]} ${at.getFullYear()+(S.lang==='en'?0:543)} · ${String(at.getHours()).padStart(2,'0')}:${String(at.getMinutes()).padStart(2,'0')}`;
-  font(400,24);text(dt,W-P,y-6,C.muted,'right');
-  y+=38;
+  y+=46;font(400,24);text(dt,W/2,y,C.muted,'center');
+  y+=10;
   y+=60;font(500,26);text(t('rt_head'),P,y,C.muted);
   y+=60;font(600,46);text(`${t('rt_tester')}: ${r.nick||t('d_anon')}`,P,y,C.text);
   // mission received
@@ -1075,7 +1080,7 @@ function paintRun(ctx,r,draw){
   font(400,26);sl.forEach((ln,i)=>text(ln,P+32,y+98+46+i*38,C.muted));
   y+=mh;
   // time
-  y+=176;font(700,150,IMG_DISP);text(fmtDur(r.ms),W/2,y,C.goldHi,'center');
+  y+=176;font(500,150,IMG_DISP);text(fmtDur(r.ms),W/2,y,C.goldHi,'center');
   y+=58;font(400,32);text(r.gaveUp?t('r_gaveup'):t('r_time'),W/2,y,C.muted,'center');
   // stats
   y+=44;const sw=(IW-24)/2;
@@ -1128,7 +1133,7 @@ async function runImageBlob(r){
   }
   if(document.fonts&&document.fonts.load){
     const sample='ทดสอบ Tiffany 0123';
-    await Promise.all([`700 48px ${IMG_DISP}`,`400 28px ${IMG_BODY}`,`500 28px ${IMG_BODY}`,`600 28px ${IMG_BODY}`].map(f=>document.fonts.load(f,sample).catch(()=>null)));
+    await Promise.all([`500 48px ${IMG_DISP}`,`400 28px ${IMG_BODY}`,`500 28px ${IMG_BODY}`,`600 28px ${IMG_BODY}`].map(f=>document.fonts.load(f,sample).catch(()=>null)));
   }
   const c=document.createElement('canvas');c.width=1080;c.height=4000;
   const h=Math.ceil(paintRun(c.getContext('2d'),r,false));

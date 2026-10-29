@@ -6,7 +6,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function validRun(d) {
       return d.keys().hasOnly(['v', 'at', 'dev', 'nick', 'dept', 'mission', 'via', 'free', 'lang', 'ms', 'gaveUp',
-                               'score', 'max', 'checks', 'steps', 'ev', 'ratings', 'comment', 'booking'])
+                               'score', 'max', 'checks', 'steps', 'ev', 'ratings', 'comment', 'booking', 'coupons'])
         && d.keys().hasAll(['at', 'dev', 'nick', 'dept', 'mission', 'ms', 'score', 'max'])
         && d.at == request.time
         && d.dev is string && d.dev.size() > 0 && d.dev.size() <= 40

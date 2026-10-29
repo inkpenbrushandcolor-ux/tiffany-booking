@@ -215,6 +215,8 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 .sheet .btn+.btn{margin-top:10px}
 .sheet .mission-card{margin-bottom:14px}
 @keyframes up{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.or-sep{display:flex;align-items:center;gap:10px;margin:4px 0 14px;color:var(--faint);font-size:12px}.or-sep::before,.or-sep::after{content:'';flex:1;height:1px;background:var(--line-2)}
+.sm-list{display:grid;gap:10px;margin-top:10px}.sm-row span{display:block;font-size:12px;color:var(--muted)}.sm-row b{display:block;font-weight:500;font-size:14.5px}
 .mlist{display:flex;flex-direction:column;gap:8px}
 .mopt{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line-2);background:transparent;text-align:left;cursor:pointer;transition:background .12s,border-color .12s,transform .12s}
 .mopt .mn{flex:0 0 auto;font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--gold-hi);padding:3px 8px;border-radius:999px;border:1px solid rgba(230,151,246,.35)}
@@ -419,7 +421,7 @@ tips_title:'ก่อนวันแสดง',tip1:'มาถึงก่อน
 book_again:'จองรอบอื่นเพิ่ม',proto_toast:'ต้นแบบ: ปุ่มนี้ยังไม่ทำงานจริง',
 g_eyebrow:'Usability test · ต้นแบบ',g_title:'ภารกิจจองตั๋ว Tiffany’s Show',g_intro:'ช่วยเราทดสอบระบบจองตั๋วแบบใหม่ คุณจะได้โจทย์ 1 ข้อ แล้วจองตั๋วให้ตรงตามโจทย์ให้เร็วที่สุด',
 g_how1:'อ่านโจทย์ แล้วกดเริ่มจับเวลา',g_how2:'จองตามโจทย์จนได้ตั๋ว ระบบจับเวลาให้อัตโนมัติ',g_how3:'ตอบแบบประเมินสั้นๆ 6 ข้อ แล้วส่งผลให้ผู้จัดทดสอบ',
-g_nick:'ชื่อเล่นของคุณ',g_nick_ph:'เช่น ปอ',g_nick_hint:'ชื่อนี้จะขึ้นบนรูปผลทดสอบที่คุณส่งให้เรา',e_nick:'กรุณากรอกชื่อเล่นก่อนเริ่มเล่น',g_pick_hint:'กดปุ่ม "สุ่มภารกิจ" ให้ระบบสุ่มให้ หรือแตะชื่อภารกิจเพื่อเลือกเอง',g_spin:'สุ่มภารกิจ',g_spinning:'กำลังสุ่มภารกิจ…',g_go:'เริ่มภารกิจ',g_done_tag:'เล่นแล้ว',r_mission:'ภารกิจที่ได้รับ',r_via_spin:'ได้จากการสุ่ม',r_via_self:'เลือกเอง',g_pick:'ภารกิจทั้ง 5 แบบ',g_random:'สุ่มให้',g_m:'ภารกิจ {n}',
+g_nick:'ชื่อเล่นของคุณ',g_nick_ph:'เช่น ปอ',g_nick_hint:'ชื่อนี้จะขึ้นบนรูปผลทดสอบที่คุณส่งให้เรา',e_nick:'กรุณากรอกชื่อเล่นก่อนเริ่มเล่น',g_pick_hint:'กดปุ่ม "สุ่มภารกิจ" ให้ระบบสุ่มให้ หรือแตะชื่อภารกิจเพื่อเลือกเอง',g_spin:'สุ่มภารกิจ',fr_btn:'ทดลองจองแบบไม่มีโจทย์',fr_hint:'จองได้ตามใจ ไม่มีเช็กลิสต์ ตอนท้ายจะสรุปว่าคุณเลือกอะไรไปบ้าง',fr_or:'หรือเล่นแบบมีภารกิจ',mF_t:'จองแบบไม่มีโจทย์',mF_s:'ผู้ทดสอบจองตั๋วได้ตามใจ ไม่มีโจทย์ ผลด้านล่างคือสิ่งที่ผู้ทดสอบเลือกเอง',fr_tag:'ไม่มีโจทย์',fr_done_bar:'จองเสร็จใน {t}',r_type:'รูปแบบการทดสอบ',sm_title:'สรุปสิ่งที่เลือก',sm_show:'วันและรอบ',sm_seats:'ที่นั่ง',sm_food:'อาหารและเครื่องดื่ม',sm_promo:'โปรโมชั่น',sm_pay:'ชำระเงิน',sm_nat:'สัญชาติ',sm_none:'ไม่ได้สั่ง',sm_promo_none:'ไม่ได้ใช้โค้ด',sm_promo_ok:'{c} · ลด ฿{a}',sm_promo_no:'{c} · ใช้ไม่ได้กับการจองนี้',sm_promo_fail:'ใส่โค้ดไม่ผ่าน {n} ครั้ง',sm_status:'สถานะ',sm_not_booked:'ไม่ได้จองจนสำเร็จ',sm_time:'เวลาที่ใช้',g_spinning:'กำลังสุ่มภารกิจ…',g_go:'เริ่มภารกิจ',g_done_tag:'เล่นแล้ว',r_mission:'ภารกิจที่ได้รับ',r_via_spin:'ได้จากการสุ่ม',r_via_self:'เลือกเอง',g_pick:'ภารกิจทั้ง 5 แบบ',g_random:'สุ่มให้',g_m:'ภารกิจ {n}',
 g_get:'เริ่มเล่น',g_free:'ลองระบบจองแบบอิสระ ไม่จับเวลา',g_dash:'ดูผลการทดสอบ',g_note:'นี่คือระบบต้นแบบ ไม่มีการจองหรือเก็บเงินจริง ข้อมูลในฟอร์มใส่เป็นข้อมูลสมมุติได้ และระบบไม่เก็บไว้',
 g_todo:'สิ่งที่ต้องทำให้ครบ',g_timer_note:'เวลาเริ่มนับเมื่อกดปุ่มด้านล่าง และหยุดเมื่อจองสำเร็จ ระหว่างจองกดปุ่ม "โจทย์" ด้านบนเพื่ออ่านอีกครั้งได้ตลอด',g_start:'เริ่มจับเวลา',
 g_view:'โจทย์',g_giveup:'ทำต่อไม่ได้ ข้ามไปทำแบบประเมิน',g_done_bar:'ภารกิจเสร็จใน {t}',g_to_survey:'ทำแบบประเมิน',
@@ -487,7 +489,7 @@ tips_title:'Before the show',tip1:'Arrive at least 30 minutes before showtime',t
 book_again:'Book another show',proto_toast:'Prototype: this button does nothing yet',
 g_eyebrow:'Usability test · Prototype',g_title:'The Tiffany’s Show booking challenge',g_intro:'Help us test a new ticket booking flow. You get one mission, then book tickets that match it as fast as you can.',
 g_how1:'Read the mission and start the timer',g_how2:'Book until you get the ticket. The timer runs on its own',g_how3:'Answer 6 short questions and send your result',
-g_nick:'Your nickname',g_nick_ph:'e.g. Po',g_nick_hint:'This name appears on the result image you send us.',e_nick:'Enter your nickname to start',g_pick_hint:'Tap "Draw a mission" to get one at random, or tap a mission to choose it yourself.',g_spin:'Draw a mission',g_spinning:'Drawing a mission…',g_go:'Start mission',g_done_tag:'played',r_mission:'Mission',r_via_spin:'Drawn at random',r_via_self:'Chosen by tester',g_pick:'The 5 missions',g_random:'Random',g_m:'Mission {n}',
+g_nick:'Your nickname',g_nick_ph:'e.g. Po',g_nick_hint:'This name appears on the result image you send us.',e_nick:'Enter your nickname to start',g_pick_hint:'Tap "Draw a mission" to get one at random, or tap a mission to choose it yourself.',g_spin:'Draw a mission',fr_btn:'Try booking with no mission',fr_hint:'Book whatever you like. No checklist. At the end we sum up what you chose.',fr_or:'Or play with a mission',mF_t:'Booking with no mission',mF_s:'The tester booked freely with no mission. Below is what they chose.',fr_tag:'No mission',fr_done_bar:'Booked in {t}',r_type:'Test type',sm_title:'What they chose',sm_show:'Date and show',sm_seats:'Seats',sm_food:'Food and drinks',sm_promo:'Promotion',sm_pay:'Payment',sm_nat:'Nationality',sm_none:'None',sm_promo_none:'No code used',sm_promo_ok:'{c} · saved ฿{a}',sm_promo_no:'{c} · not valid for this booking',sm_promo_fail:'{n} failed code attempts',sm_status:'Status',sm_not_booked:'Did not finish booking',sm_time:'Time taken',g_spinning:'Drawing a mission…',g_go:'Start mission',g_done_tag:'played',r_mission:'Mission',r_via_spin:'Drawn at random',r_via_self:'Chosen by tester',g_pick:'The 5 missions',g_random:'Random',g_m:'Mission {n}',
 g_get:'Start playing',g_free:'Try the booking flow freely, no timer',g_dash:'View test results',g_note:'This is a prototype. Nothing is really booked or charged. Use made-up details in the form; they are not kept.',
 g_todo:'To complete',g_timer_note:'The timer starts when you tap the button below and stops when your booking is confirmed. Tap "Mission" at the top to read it again any time.',g_start:'Start the timer',
 g_view:'Mission',g_giveup:'I’m stuck, skip to the survey',g_done_bar:'Mission done in {t}',g_to_survey:'Answer the survey',
@@ -640,6 +642,7 @@ const SQ=[['s_q1','s_lo_easy','s_hi_easy'],['s_q2','s_lo_easy','s_hi_easy'],['s_
 const STEPK=['showtime','seats','food','pay'];
 const EVK=['back','soldout','closed','taken','promoFail','formErr','payFail','expire','brief','autopick','promoTap'];
 
+const FREE='F',isFree=id=>id===FREE,mTag=id=>isFree(id)?t('fr_tag'):t('g_m',{n:MISSIONS[id].num});
 const newGame=()=>({mission:null,via:null,start:0,end:0,steps:{},cur:null,curAt:0,ev:{},ratings:[0,0,0,0,0],comment:'',gaveUp:false,sErr:false,send:null,run:null});
 const S={lang:'th',mode:'intro',nick:'',pick:null,pickVia:null,nickErr:false,spinning:false,justLanded:false,g:newGame(),step:1,sub:'food',dateIdx:0,time:null,seats:[],zone:null,zonePref:null,zoomIdx:1,food:{},promo:null,promoInput:'',promoErr:false,
   form:{name:'',email:'',cc:'+66',phone:'',nat:''},pay:'card',agree:false,errors:{},sumOpen:false,holdEnd:null,booking:null,ap:{n:2,zone:'gold'},sheetLocked:false,pcIdx:0,
@@ -715,7 +718,7 @@ function renderTop(){
   const st=$('#steps');st.hidden=!inBooking();
   st.innerHTML=['step1','step2','step3','step4'].map((k,i)=>`<div class="st${i+1<S.step?' done':i+1===S.step?' on':''}"${i+1===S.step?' aria-current="step"':''}><i></i><span>${t(k)}</span></div>`).join('');
   const mr=$('#mrow'),on=S.mode==='run'&&!S.g.end;mr.hidden=!on;
-  if(on)mr.innerHTML=`${IC.flag}<span>${t('g_m',{n:MISSIONS[S.g.mission].num})}</span><b id="mclock">${fmtDur(Date.now()-S.g.start)}</b><button data-act="brief">${t('g_view')}</button>`;
+  if(on)mr.innerHTML=`${IC.flag}<span>${mTag(S.g.mission)}</span><b id="mclock">${fmtDur(Date.now()-S.g.start)}</b>${isFree(S.g.mission)?'':`<button data-act="brief">${t('g_view')}</button>`}`;
 }
 
 function promoCarousel(){
@@ -811,6 +814,8 @@ function viewIntro(){
   return`<section><div class="eyebrow">${t('g_eyebrow')}</div><h1 class="g-title">${t('g_title')}</h1><p class="g-lead">${t('g_intro')}</p></section>
 <ol class="how">${['g_how1','g_how2','g_how3'].map((k,i)=>`<li class="how-i"><span class="how-n">${i+1}</span><span>${t(k)}</span></li>`).join('')}</ol>
 <div class="field"><label for="g-nick">${t('g_nick')}</label><input id="g-nick" class="in${S.nickErr?' bad':''}" value="${esc(S.nick)}" placeholder="${t('g_nick_ph')}" maxlength="40" autocomplete="nickname"><div class="hint-s">${t('g_nick_hint')}</div>${S.nickErr?`<div class="err" id="err-nick">${t('e_nick')}</div>`:''}</div>
+<div class="field"><button class="btn btn-ghost w100" data-act="gFreeRun">${IC.cart||IC.flag}${t('fr_btn')}</button><div class="hint-s" style="text-align:center;margin-top:6px">${t('fr_hint')}</div></div>
+<div class="or-sep"><span>${t('fr_or')}</span></div>
 <div class="field"><label>${t('g_pick')}</label><div class="hint-s" style="margin:0 0 8px">${t('g_pick_hint')}</div><button class="btn btn-auto w100" data-act="gSpin" id="g-spin" style="margin-bottom:10px">${IC.wand}<span>${t('g_spin')}</span></button><div class="mlist" id="mlist">${ms.map(id=>`<button class="mopt${S.pick===id?' on':''}${S.pick===id&&land?' landed':''}${played.has(id)?' done':''}" data-act="gPick" data-v="${id}" data-done="· ${t('g_done_tag')}" aria-pressed="${S.pick===id}"><span class="mn">${t('g_m',{n:MISSIONS[id].num})}</span><span class="mt">${t('m'+id+'_t')}</span><span class="mk">${IC.check}</span></button>`).join('')}</div></div>
 ${S.pick?`<button class="btn btn-gold w100 mt12${land?' go-in':''}" data-act="gGet" id="g-go">${t('g_go')}</button>`:''}
 <p class="tiny left">${t('g_note')}</p>
@@ -853,11 +858,13 @@ function viewSurvey(){
 }
 function viewResult(){
   const r=S.g.run,send=S.g.send;
-  return`<div class="done-h"><div class="eyebrow">${t('g_m',{n:MISSIONS[r.mission].num})} · ${esc(r.missionTitle)}</div><div class="r-time">${fmtDur(r.ms)}</div><p>${r.gaveUp?t('r_gaveup'):t('r_time')}</p></div>
-<div class="r-who">${t('rt_tester')}: <b>${esc(r.nick||t('d_anon'))}</b> · ${r.via==='spin'?t('r_via_spin'):t('r_via_self')}</div>
-<div class="r-grid"><div class="stat"><span>${t('r_score')}</span><b>${r.score}/${r.max}</b></div><div class="stat"><span>${t('r_sat')}</span><b>${r.ratings[4]}/5</b></div></div>
+  const free=isFree(r.mission),bk=r.booking;
+  return`<div class="done-h"><div class="eyebrow">${free?esc(r.missionTitle):`${mTag(r.mission)} · ${esc(r.missionTitle)}`}</div><div class="r-time">${fmtDur(r.ms)}</div><p>${r.gaveUp?t('r_gaveup'):t('r_time')}</p></div>
+<div class="r-who">${t('rt_tester')}: <b>${esc(r.nick||t('d_anon'))}</b>${free?'':` · ${r.via==='spin'?t('r_via_spin'):t('r_via_self')}`}</div>
+<div class="r-grid"><div class="stat"><span>${free?t('total'):t('r_score')}</span><b>${free?(bk?'฿'+fmt(bk.total):'—'):`${r.score}/${r.max}`}</b></div><div class="stat"><span>${t('r_sat')}</span><b>${r.ratings[4]}/5</b></div></div>
 <div class="send ${send==='sent'?'ok':send==='failed'?'warn':'wait'}">${send==='sent'?IC.check+'<span>'+t('r_sent')+'</span>':send==='failed'?IC.info+'<span>'+t('r_nosend')+'</span>':'<span>'+t('r_sending')+'</span>'}</div>
-<div class="card"><b>${t('r_checks')}</b><ul class="todo">${r.checks.map(c=>`<li class="${c.ok?'ok':'no'}"><span class="bx">${c.ok?IC.checkSm:IC.xSm}</span><span>${esc(c.label)}</span></li>`).join('')}</ul></div>
+${free?`<div class="card"><b>${t('sm_title')}</b><div class="sm-list">${(r.summary||[]).map(([l,v])=>`<div class="sm-row"><span>${esc(l)}</span><b>${esc(v)}</b></div>`).join('')}</div></div>`
+:`<div class="card"><b>${t('r_checks')}</b><ul class="todo">${r.checks.map(c=>`<li class="${c.ok?'ok':'no'}"><span class="bx">${c.ok?IC.checkSm:IC.xSm}</span><span>${esc(c.label)}</span></li>`).join('')}</ul></div>`}
 <div class="card"><b>${t('r_steps')}</b><div class="steps-mini">${STEPK.map(k=>`<div><span>${t('k_'+k)}</span><b>${fmtDur(r.steps[k])}</b></div>`).join('')}</div></div>
 <button class="btn btn-gold w100" data-act="rSave">${IC.img}${t('r_save')}</button>
 <button class="btn btn-ghost w100 mt8" data-act="rCopy">${IC.copy}${t('r_copy')}</button>
@@ -883,7 +890,7 @@ function renderBar(){
   }else if(S.step===3){
     h=`<div class="bar-info"><div class="k">${t('total')}${tt.disc?` · ${t('discount')} ฿${fmt(tt.disc)}`:''}</div><div class="v">฿${fmt(tt.total)}</div></div><button class="btn btn-gold" data-act="pay">${t('btn_pay')}</button>`;
   }else if(S.mode==='run'&&S.booking){
-    h=`<div class="bar-info"><div class="k">${t('g_done_bar',{t:fmtDur(S.g.end-S.g.start)})}</div><div class="v">${S.booking.ref}</div></div><button class="btn btn-gold" data-act="toSurvey">${t('g_to_survey')}</button>`;
+    h=`<div class="bar-info"><div class="k">${t(isFree(S.g.mission)?'fr_done_bar':'g_done_bar',{t:fmtDur(S.g.end-S.g.start)})}</div><div class="v">${S.booking.ref}</div></div><button class="btn btn-gold" data-act="toSurvey">${t('g_to_survey')}</button>`;
   }
   bar.hidden=!h;bar.innerHTML=h;
 }
@@ -974,7 +981,7 @@ const makeRef=()=>{const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';return'TFS-'+Array
 function book(){
   const e=S.promo?evalPromo(S.promo):null,sh=showsFor(S.dateIdx).find(x=>x.time===S.time);
   S.booking={ref:makeRef(),date:S.dateIdx,time:S.time,special:!!(sh&&sh.special),seats:[...S.seats].sort(seatSort),food:{...S.food},email:S.form.email.trim(),
-    promo:S.promo,promoOk:!!(e&&e.ok),pay:S.pay,lang:S.lang,nat:S.form.nat,payFails:S.g.ev.payFail||0,total:totals().total};
+    promo:S.promo,promoOk:!!(e&&e.ok),pay:S.pay,lang:S.lang,nat:S.form.nat,payFails:S.g.ev.payFail||0,total:totals().total,disc:totals().disc};
   S.holdEnd=null;S.step=4;if(S.mode==='run')S.g.end=Date.now();closeSheet();render();
 }
 function resetBooking(){
@@ -1003,6 +1010,7 @@ function demoJump(s){
 }
 
 function grade(){
+  if(isFree(S.g.mission))return[];
   const m=MISSIONS[S.g.mission],d=fmtLong(DATES[m.day]),b=!S.g.gaveUp&&S.booking?S.booking:null;
   return m.checks.map(([k,f])=>({k,label:t(k,{d}),ok:!!(b&&f(b))}));
 }
@@ -1010,11 +1018,27 @@ function buildRun(){
   const g=S.g,checks=grade(),b=g.gaveUp?null:S.booking;
   return{v:1,at:new Date().toISOString(),nick:S.nick.trim().slice(0,40),mission:g.mission,via:g.via,missionTitle:t('m'+g.mission+'_t'),lang:S.lang,ms:g.end-g.start,gaveUp:g.gaveUp,
     score:checks.filter(c=>c.ok).length,max:checks.length,checks,steps:{...g.steps},ev:{...g.ev},ratings:[...g.ratings],comment:g.comment.trim().slice(0,1000),
-    booking:b?{date:ymd(DATES[b.date]),time:b.time,seats:b.seats,food:b.food,promo:b.promo,promoOk:b.promoOk,pay:b.pay,total:b.total}:null,width:window.innerWidth};
+    booking:b?{date:ymd(DATES[b.date]),time:b.time,seats:b.seats,food:b.food,promo:b.promo,promoOk:b.promoOk,pay:b.pay,nat:b.nat,total:b.total,disc:b.disc}:null,
+    summary:isFree(g.mission)?freeSummary(b,g):null,width:window.innerWidth};
 }
+// What a no-mission tester chose, as [label, value] rows in the current language.
+function freeSummary(b,g){
+  if(!b)return[[t('sm_status'),t('sm_not_booked')]];
+  const zc={};b.seats.forEach(id=>{const z=SEAT[id].zone;zc[z]=(zc[z]||0)+1});
+  const food=FOOD.filter(f=>b.food[f.id]).map(f=>`${t('f_'+f.id)} × ${b.food[f.id]}`).join(', ');
+  let promo=!b.promo?t('sm_promo_none'):b.promoOk?t('sm_promo_ok',{c:b.promo,a:fmt(b.disc||0)}):t('sm_promo_no',{c:b.promo});
+  if(g.ev.promoFail)promo+=` (${t('sm_promo_fail',{n:g.ev.promoFail})})`;
+  const nat=NAT.find(n=>n[0]===b.nat),pm=PM.find(x=>x.id===b.pay);
+  return[[t('sm_show'),`${fmtDate(DATES[b.date])} · ${b.time}${b.special?' · '+t('special'):''}`],
+    [t('sm_seats'),`${ZONES.filter(z=>zc[z.id]).map(z=>`${z.name} × ${zc[z.id]}`).join(', ')} (${b.seats.join(', ')})`],
+    [t('sm_food'),food||t('sm_none')],[t('sm_promo'),promo],[t('sm_pay'),pm?t(pm.name):'—'],
+    [t('sm_nat'),nat?(S.lang==='th'?nat[1]:nat[2]):'—'],[t('total'),`฿${fmt(b.total)}`]];
+}
+
 function runText(r){
-  const L=[t('rt_head'),`${t('rt_tester')}: ${r.nick||t('d_anon')} · ${t('g_m',{n:MISSIONS[r.mission].num})} ${r.missionTitle} (${r.via==='spin'?t('r_via_spin'):t('r_via_self')})`,
-    `${t('r_time')}: ${fmtDur(r.ms)}${r.gaveUp?` (${t('r_gaveup')})`:''} · ${t('r_score')}: ${r.score}/${r.max}`];
+  const free=isFree(r.mission),L=[t('rt_head'),`${t('rt_tester')}: ${r.nick||t('d_anon')} · ${mTag(r.mission)}${free?'':` ${r.missionTitle} (${r.via==='spin'?t('r_via_spin'):t('r_via_self')})`}`,
+    `${t('r_time')}: ${fmtDur(r.ms)}${r.gaveUp?` (${t('r_gaveup')})`:''}${free?'':` · ${t('r_score')}: ${r.score}/${r.max}`}`];
+  if(free)(r.summary||[]).forEach(([l,v])=>L.push(`${l}: ${v}`));
   const miss=r.checks.filter(c=>!c.ok).map(c=>c.label);if(miss.length)L.push(`${t('rt_missed')}: ${miss.join('; ')}`);
   L.push(`${t('rt_ratings')}: ${r.ratings.map((v,i)=>`${t('rq'+(i+1))} ${v}`).join(' · ')}`);
   if(r.comment)L.push(`${t('s_q6')}: ${r.comment}`);
@@ -1072,10 +1096,11 @@ function paintRun(ctx,r,draw){
   y+=60;font(500,26);text(t('rt_head'),P,y,C.muted);
   y+=60;font(600,46);text(`${t('rt_tester')}: ${r.nick||t('d_anon')}`,P,y,C.text);
   // mission received
-  y+=36;const m=MISSIONS[r.mission],story=t('m'+r.mission+'_s',{d:fmtLong(DATES[m.day])});
+  const free=isFree(r.mission);
+  y+=36;const m=MISSIONS[r.mission],story=free?t('mF_s'):t('m'+r.mission+'_s',{d:fmtLong(DATES[m.day])});
   font(400,26);const sl=wrapLines(ctx,story,IW-64),mh=48+50+sl.length*38+32;card(mh);
-  font(500,24);text(`${t('r_mission')} · ${r.via==='spin'?t('r_via_spin'):t('r_via_self')}`,P+32,y+50,C.muted);
-  font(600,34);text(`${t('g_m',{n:m.num})} · ${r.missionTitle}`,P+32,y+98,C.goldHi);
+  font(500,24);text(free?t('r_type'):`${t('r_mission')} · ${r.via==='spin'?t('r_via_spin'):t('r_via_self')}`,P+32,y+50,C.muted);
+  font(600,34);text(free?r.missionTitle:`${mTag(r.mission)} · ${r.missionTitle}`,P+32,y+98,C.goldHi);
   font(400,26);sl.forEach((ln,i)=>text(ln,P+32,y+98+46+i*38,C.muted));
   y+=mh;
   // time
@@ -1083,13 +1108,22 @@ function paintRun(ctx,r,draw){
   y+=58;font(400,32);text(r.gaveUp?t('r_gaveup'):t('r_time'),W/2,y,C.muted,'center');
   // stats
   y+=44;const sw=(IW-24)/2;
-  [[t('r_score'),`${r.score}/${r.max}`],[t('r_sat'),`${r.ratings[4]}/5`]].forEach(([l,v],i)=>{
+  [free?[t('total'),r.booking?'฿'+fmt(r.booking.total):'—']:[t('r_score'),`${r.score}/${r.max}`],[t('r_sat'),`${r.ratings[4]}/5`]].forEach(([l,v],i)=>{
     const x=P+i*(sw+24);
     if(draw){rrect(ctx,x,y,sw,150,28);ctx.fillStyle=C.surface;ctx.fill();ctx.strokeStyle=C.line;ctx.lineWidth=2;ctx.stroke()}
     font(400,26);text(l,x+32,y+52,C.muted);font(600,52);text(v,x+32,y+118,C.text);
   });
   y+=150+28;
+  // what a no-mission tester chose
+  if(free){
+    font(500,30);const rows=(r.summary||[]).map(([l,v])=>({l,lines:wrapLines(ctx,v,IW-64)}));
+    const sh=56+30+rows.reduce((a,x)=>a+34+x.lines.length*40+18,0)+10;card(sh);
+    let sy=y+60;font(600,32);text(t('sm_title'),P+32,sy,C.text);sy+=30;
+    rows.forEach(({l,lines})=>{sy+=34;font(400,24);text(l,P+32,sy,C.muted);font(500,30);lines.forEach((ln,i)=>text(ln,P+32,sy+42+i*40,C.text));sy+=lines.length*40+18});
+    y+=sh+28;
+  }
   // checklist
+  else{
   font(400,30);const rows=r.checks.map(c=>({c,lines:wrapLines(ctx,c.label,IW-64-60)}));
   const ch=56+40+rows.reduce((a,x)=>a+x.lines.length*42+22,0)+14;card(ch);
   let cy=y+60;font(600,32);text(t('r_checks'),P+32,cy,C.text);cy+=40;
@@ -1104,6 +1138,7 @@ function paintRun(ctx,r,draw){
     cy+=lines.length*42+22;
   });
   y+=ch+28;
+  }
   // steps + ratings side by side
   const kh=60+STEPK.length*48+24,rh=60+5*48+24,bh=Math.max(kh,rh);
   [[t('r_steps'),STEPK.map(k=>[t('k_'+k),fmtDur(r.steps[k])])],[t('rt_ratings'),r.ratings.map((v,i)=>[t('rq'+(i+1)),`${v}/5`])]].forEach(([h,list],i)=>{
@@ -1289,6 +1324,10 @@ const ACT={
   close(){closeSheet()},
   gPick(el){if(S.spinning)return;S.pick=el.dataset.v;S.pickVia='self';S.justLanded=true;render(true)},
   gSpin(){spinMission()},
+  gFreeRun(){
+    if(!S.nick.trim()){S.nickErr=true;render(true);$('#g-nick')?.focus();return}
+    resetBooking();S.g=newGame();S.g.mission=FREE;S.g.via='free';S.mode='run';S.g.start=Date.now();render()
+  },
   gGet(){
     if(S.spinning)return;
     if(!S.nick.trim()){S.nickErr=true;render(true);$('#g-nick')?.focus();return}
@@ -1304,7 +1343,7 @@ const ACT={
   sSubmit(){
     const miss=S.g.ratings.filter(v=>!v).length;
     if(miss){S.g.sErr=true;render(true);$('.q.bad')?.scrollIntoView({block:'center',behavior:'smooth'});toast(t('s_missing',{n:miss}));return}
-    S.g.run=buildRun();markPlayed(S.g.mission);S.mode='result';render();submitRun();
+    S.g.run=buildRun();if(!isFree(S.g.mission))markPlayed(S.g.mission);S.mode='result';render();submitRun();
   },
   rSave(){saveRunImage(S.g.run)},
   rCopy(){copyText(runText(S.g.run),()=>toast(t('r_copied')),()=>{const d=$('#rtd');if(d)d.open=true;const ta=$('#rtext');if(ta){ta.focus();ta.select()}toast(t('r_copy_fail'))})},

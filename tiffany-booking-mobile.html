@@ -770,8 +770,8 @@ function ev(k){if(S.mode==='run'&&!S.g.end)S.g.ev[k]=(S.g.ev[k]||0)+1}
 const _cap={};
 const cap=n=>_cap[n]||(_cap[n]=window.claude&&typeof window.claude.use==='function'?Promise.resolve(window.claude.use(n)).catch(()=>null):Promise.resolve(null));
 
-// Firebase web config from the Firebase console. While it is null, results fall back to the Claude store and the stats page says it is not connected.
-const FB_CONFIG=null;
+// Firebase web config (project tiffany-booking). These values are public by design; firestore.rules is what protects the data.
+const FB_CONFIG={apiKey:"AIzaSyDqCxc3RMo5SzxC8-kUIpZZK_MUyw9DWFs",authDomain:"tiffany-booking.firebaseapp.com",projectId:"tiffany-booking",storageBucket:"tiffany-booking.firebasestorage.app",messagingSenderId:"96340997981",appId:"1:96340997981:web:63fbec6962ff7d18711ab4"};
 const FB_SDK='https://www.gstatic.com/firebasejs/10.12.2/';
 let _fb=null;
 function fb(){

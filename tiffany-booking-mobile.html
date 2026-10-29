@@ -327,6 +327,32 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 .pbtn{padding:10px 12px;border-radius:12px;border:1px solid var(--line-2);background:var(--surface);cursor:pointer;font-size:13px;text-align:left;display:flex;align-items:center;gap:8px}
 .proto ul{padding-left:18px;margin:0}
 .proto li{margin-bottom:6px}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ok);margin-left:auto}
+.live i{width:8px;height:8px;border-radius:50%;background:currentColor;animation:livep 1.6s ease-in-out infinite}
+@keyframes livep{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.live i{animation:none}}
+.st-in{max-width:640px}.st-in .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+.lb-h{display:flex;align-items:center;gap:10px;margin-bottom:10px}.lb-h h3{margin:0}
+.lb-tabs{display:flex;gap:6px;overflow-x:auto;margin:0 0 12px;padding:2px 0;scrollbar-width:none}
+.lb-tabs button{flex:none;border:1px solid var(--line-2);background:transparent;color:var(--muted);border-radius:999px;padding:7px 12px;font:500 13px var(--body);cursor:pointer}
+.lb-tabs button.on{background:var(--gold);border-color:var(--gold);color:var(--on-primary)}
+.lb-first{border-radius:14px;padding:14px 16px;background:linear-gradient(135deg,rgba(95,92,250,.32),rgba(230,151,246,.18));border:1px solid rgba(230,151,246,.35);margin-bottom:6px}
+.lb-ey{display:block;font-size:12px;color:var(--gold-hi);margin-bottom:6px}
+.lb-fr,.lb-row{display:flex;align-items:center;gap:12px}
+.lb-row{padding:10px 2px;border-top:1px solid var(--line)}
+.lb-rk{flex:none;width:24px;text-align:center;font:500 15px var(--display);color:var(--muted)}
+.lb-who{flex:1;min-width:0}
+.lb-who b{display:block;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-first .lb-who b{font-size:20px}
+.lb-who em{font-style:normal;font-size:11px;font-weight:500;color:var(--gold-ink);background:var(--gold-hi);border-radius:999px;padding:1px 7px;margin-left:4px;vertical-align:2px}
+.lb-who span,.lb-res span{display:block;font-size:12px;color:var(--muted)}
+.lb-res{flex:none;text-align:right;font-variant-numeric:tabular-nums}
+.lb-res b{font-size:16px}.lb-first .lb-res b{font:500 26px var(--display)}
+.dp-row{padding:7px 0}
+.dp-top{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;margin-bottom:6px}
+.dp-top b{white-space:nowrap;font-variant-numeric:tabular-nums}.dp-top b span{font-weight:400}
+.dp-trk{height:10px;border-radius:5px;background:rgba(255,255,255,.08)}
+.dp-trk i{display:block;height:100%;border-radius:5px;background:var(--gold)}
 .dash{position:fixed;inset:0;z-index:60;overflow:auto;background:var(--bg);padding-block:24px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .dash-in{max-width:980px;margin:0 auto;display:grid;gap:16px}
 .dash-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
@@ -378,6 +404,7 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
   <aside class="proto" id="proto"></aside>
 </div>
 <section class="dash" id="dash" hidden aria-label="Test results"></section>
+<section class="dash" id="stats" hidden aria-label="Leaderboard"></section>
 <script>
 const I18N={
 th:{proto_banner:'ต้นแบบเพื่อการออกแบบ · ไม่ใช่เว็บไซต์ทางการของ Tiffany’s Show',step1:'รอบการแสดง',step2:'ที่นั่ง',step3:'ชำระเงิน',step4:'ตั๋ว',back:'ย้อนกลับ',close:'ปิด',cancel:'ยกเลิก',edit:'เปลี่ยนรอบ',remove:'เอาออก',
@@ -421,7 +448,7 @@ tips_title:'ก่อนวันแสดง',tip1:'มาถึงก่อน
 book_again:'จองรอบอื่นเพิ่ม',proto_toast:'ต้นแบบ: ปุ่มนี้ยังไม่ทำงานจริง',
 g_eyebrow:'Usability test · ต้นแบบ',g_title:'ภารกิจจองตั๋ว Tiffany’s Show',g_intro:'ช่วยเราทดสอบระบบจองตั๋วแบบใหม่ คุณจะได้โจทย์ 1 ข้อ แล้วจองตั๋วให้ตรงตามโจทย์ให้เร็วที่สุด',
 g_how1:'อ่านโจทย์ แล้วกดเริ่มจับเวลา',g_how2:'จองตามโจทย์จนได้ตั๋ว ระบบจับเวลาให้อัตโนมัติ',g_how3:'ตอบแบบประเมินสั้นๆ 6 ข้อ แล้วส่งผลให้ผู้จัดทดสอบ',
-g_nick:'ชื่อเล่นของคุณ',g_nick_ph:'เช่น ปอ',g_nick_hint:'ชื่อนี้จะขึ้นบนรูปผลทดสอบที่คุณส่งให้เรา',e_nick:'กรุณากรอกชื่อเล่นก่อนเริ่มเล่น',g_pick_hint:'กดปุ่ม "สุ่มภารกิจ" ให้ระบบสุ่มให้ หรือแตะชื่อภารกิจเพื่อเลือกเอง',g_spin:'สุ่มภารกิจ',fr_btn:'ทดลองจองแบบไม่มีโจทย์',fr_hint:'จองได้ตามใจ ไม่มีเช็กลิสต์ ตอนท้ายจะสรุปว่าคุณเลือกอะไรไปบ้าง',fr_or:'หรือเล่นแบบมีภารกิจ',mF_t:'จองแบบไม่มีโจทย์',mF_s:'ผู้ทดสอบจองตั๋วได้ตามใจ ไม่มีโจทย์ ผลด้านล่างคือสิ่งที่ผู้ทดสอบเลือกเอง',fr_tag:'ไม่มีโจทย์',fr_done_bar:'จองเสร็จใน {t}',r_type:'รูปแบบการทดสอบ',sm_title:'สรุปสิ่งที่เลือก',sm_show:'วันและรอบ',sm_seats:'ที่นั่ง',sm_food:'อาหารและเครื่องดื่ม',sm_promo:'โปรโมชั่น',sm_pay:'ชำระเงิน',sm_nat:'สัญชาติ',sm_none:'ไม่ได้สั่ง',sm_promo_none:'ไม่ได้ใช้โค้ด',sm_promo_ok:'{c} · ลด ฿{a}',sm_promo_no:'{c} · ใช้ไม่ได้กับการจองนี้',sm_promo_fail:'ใส่โค้ดไม่ผ่าน {n} ครั้ง',sm_status:'สถานะ',sm_not_booked:'ไม่ได้จองจนสำเร็จ',sm_time:'เวลาที่ใช้',g_spinning:'กำลังสุ่มภารกิจ…',g_go:'เริ่มภารกิจ',g_done_tag:'เล่นแล้ว',r_mission:'ภารกิจที่ได้รับ',r_via_spin:'ได้จากการสุ่ม',r_via_self:'เลือกเอง',g_pick:'ภารกิจทั้ง 5 แบบ',g_random:'สุ่มให้',g_m:'ภารกิจ {n}',
+g_nick:'ชื่อเล่นของคุณ',g_nick_ph:'เช่น ปอ',g_nick_hint:'ชื่อนี้จะขึ้นบนรูปผลทดสอบที่คุณส่งให้เรา',e_nick:'กรุณากรอกชื่อเล่นก่อนเริ่มเล่น',g_pick_hint:'กดปุ่ม "สุ่มภารกิจ" ให้ระบบสุ่มให้ หรือแตะชื่อภารกิจเพื่อเลือกเอง',g_spin:'สุ่มภารกิจ',fr_btn:'ทดลองจองแบบไม่มีโจทย์',fr_hint:'จองได้ตามใจ ไม่มีเช็กลิสต์ ตอนท้ายจะสรุปว่าคุณเลือกอะไรไปบ้าง',fr_or:'หรือเล่นแบบมีภารกิจ',mF_t:'จองแบบไม่มีโจทย์',mF_s:'ผู้ทดสอบจองตั๋วได้ตามใจ ไม่มีโจทย์ ผลด้านล่างคือสิ่งที่ผู้ทดสอบเลือกเอง',fr_tag:'ไม่มีโจทย์',fr_done_bar:'จองเสร็จใน {t}',r_type:'รูปแบบการทดสอบ',sm_title:'สรุปสิ่งที่เลือก',sm_show:'วันและรอบ',sm_seats:'ที่นั่ง',sm_food:'อาหารและเครื่องดื่ม',sm_promo:'โปรโมชั่น',sm_pay:'ชำระเงิน',sm_nat:'สัญชาติ',sm_none:'ไม่ได้สั่ง',sm_promo_none:'ไม่ได้ใช้โค้ด',sm_promo_ok:'{c} · ลด ฿{a}',sm_promo_no:'{c} · ใช้ไม่ได้กับการจองนี้',sm_promo_fail:'ใส่โค้ดไม่ผ่าน {n} ครั้ง',sm_status:'สถานะ',sm_not_booked:'ไม่ได้จองจนสำเร็จ',sm_time:'เวลาที่ใช้',g_spinning:'กำลังสุ่มภารกิจ…',g_go:'เริ่มภารกิจ',g_done_tag:'เล่นแล้ว',r_mission:'ภารกิจที่ได้รับ',r_via_spin:'ได้จากการสุ่ม',r_via_self:'เลือกเอง',g_pick:'ภารกิจทั้ง 5 แบบ',g_random:'สุ่มให้',g_m:'ภารกิจ {n}',g_dept:'แผนก',g_dept_ph:'เลือกแผนก',g_dept_hint:'ใช้นับว่าแต่ละแผนกเข้ามาทดสอบกี่คน ถ้าไม่ใช่พนักงาน เลือก "บุคคลภายนอก"',e_dept:'กรุณาเลือกแผนกก่อนเริ่มเล่น',dp_perf:'การแสดง',dp_prod:'งานสร้างโชว์และเทคนิค',dp_box:'ขายตั๋วและรับจอง',dp_svc:'บริการลูกค้าและ F&B',dp_b2b:'ขายกลุ่มและเอเจนซี่ทัวร์',dp_mkt:'การตลาดและ PR',dp_fin:'บัญชีและการเงิน',dp_hr:'HR และธุรการ',dp_it:'ไอที',dp_ext:'บุคคลภายนอก',lb_open:'ดูอันดับและสถิติ',lb_title:'อันดับและสถิติ',lb_live:'อัปเดตสด',lb_people:'ผู้ทดสอบ',lb_runs:'รอบที่เล่น',lb_depts:'แผนกที่เข้าร่วม',lb_board:'อันดับ',lb_rule:'เรียงตามข้อที่ทำได้ก่อน แล้วดูเวลา นับรอบที่ดีที่สุดของแต่ละคน ไม่รวมโหมดไม่มีโจทย์',lb_all:'ทุกภารกิจ',lb_first:'อันดับ 1 ตอนนี้',lb_empty:'ยังไม่มีใครเล่นจบในหมวดนี้',lb_dept_t:'แต่ละแผนกเข้ามาเล่นกี่คน',lb_n_people:'{n} คน',lb_n_runs:'{n} รอบ',lb_off:'ยังไม่ได้เชื่อมต่อฐานข้อมูล',lb_err:'โหลดข้อมูลไม่ได้ ลองปิดแล้วเปิดใหม่อีกครั้ง',lb_close:'ปิด',lb_csv:'ดาวน์โหลด CSV',lb_updated:'ล่าสุด {t}',lb_mine:'คุณ',
 g_get:'เริ่มเล่น',g_free:'ลองระบบจองแบบอิสระ ไม่จับเวลา',g_dash:'ดูผลการทดสอบ',g_note:'นี่คือระบบต้นแบบ ไม่มีการจองหรือเก็บเงินจริง ข้อมูลในฟอร์มใส่เป็นข้อมูลสมมุติได้ และระบบไม่เก็บไว้',
 g_todo:'สิ่งที่ต้องทำให้ครบ',g_timer_note:'เวลาเริ่มนับเมื่อกดปุ่มด้านล่าง และหยุดเมื่อจองสำเร็จ ระหว่างจองกดปุ่ม "โจทย์" ด้านบนเพื่ออ่านอีกครั้งได้ตลอด',g_start:'เริ่มจับเวลา',
 g_view:'โจทย์',g_giveup:'ทำต่อไม่ได้ ข้ามไปทำแบบประเมิน',g_done_bar:'ภารกิจเสร็จใน {t}',g_to_survey:'ทำแบบประเมิน',
@@ -489,7 +516,7 @@ tips_title:'Before the show',tip1:'Arrive at least 30 minutes before showtime',t
 book_again:'Book another show',proto_toast:'Prototype: this button does nothing yet',
 g_eyebrow:'Usability test · Prototype',g_title:'The Tiffany’s Show booking challenge',g_intro:'Help us test a new ticket booking flow. You get one mission, then book tickets that match it as fast as you can.',
 g_how1:'Read the mission and start the timer',g_how2:'Book until you get the ticket. The timer runs on its own',g_how3:'Answer 6 short questions and send your result',
-g_nick:'Your nickname',g_nick_ph:'e.g. Po',g_nick_hint:'This name appears on the result image you send us.',e_nick:'Enter your nickname to start',g_pick_hint:'Tap "Draw a mission" to get one at random, or tap a mission to choose it yourself.',g_spin:'Draw a mission',fr_btn:'Try booking with no mission',fr_hint:'Book whatever you like. No checklist. At the end we sum up what you chose.',fr_or:'Or play with a mission',mF_t:'Booking with no mission',mF_s:'The tester booked freely with no mission. Below is what they chose.',fr_tag:'No mission',fr_done_bar:'Booked in {t}',r_type:'Test type',sm_title:'What they chose',sm_show:'Date and show',sm_seats:'Seats',sm_food:'Food and drinks',sm_promo:'Promotion',sm_pay:'Payment',sm_nat:'Nationality',sm_none:'None',sm_promo_none:'No code used',sm_promo_ok:'{c} · saved ฿{a}',sm_promo_no:'{c} · not valid for this booking',sm_promo_fail:'{n} failed code attempts',sm_status:'Status',sm_not_booked:'Did not finish booking',sm_time:'Time taken',g_spinning:'Drawing a mission…',g_go:'Start mission',g_done_tag:'played',r_mission:'Mission',r_via_spin:'Drawn at random',r_via_self:'Chosen by tester',g_pick:'The 5 missions',g_random:'Random',g_m:'Mission {n}',
+g_nick:'Your nickname',g_nick_ph:'e.g. Po',g_nick_hint:'This name appears on the result image you send us.',e_nick:'Enter your nickname to start',g_pick_hint:'Tap "Draw a mission" to get one at random, or tap a mission to choose it yourself.',g_spin:'Draw a mission',fr_btn:'Try booking with no mission',fr_hint:'Book whatever you like. No checklist. At the end we sum up what you chose.',fr_or:'Or play with a mission',mF_t:'Booking with no mission',mF_s:'The tester booked freely with no mission. Below is what they chose.',fr_tag:'No mission',fr_done_bar:'Booked in {t}',r_type:'Test type',sm_title:'What they chose',sm_show:'Date and show',sm_seats:'Seats',sm_food:'Food and drinks',sm_promo:'Promotion',sm_pay:'Payment',sm_nat:'Nationality',sm_none:'None',sm_promo_none:'No code used',sm_promo_ok:'{c} · saved ฿{a}',sm_promo_no:'{c} · not valid for this booking',sm_promo_fail:'{n} failed code attempts',sm_status:'Status',sm_not_booked:'Did not finish booking',sm_time:'Time taken',g_spinning:'Drawing a mission…',g_go:'Start mission',g_done_tag:'played',r_mission:'Mission',r_via_spin:'Drawn at random',r_via_self:'Chosen by tester',g_pick:'The 5 missions',g_random:'Random',g_m:'Mission {n}',g_dept:'Department',g_dept_ph:'Choose your department',g_dept_hint:'We use this to count testers per department. Not on staff? Choose "External tester".',e_dept:'Choose your department to start',dp_perf:'Performance',dp_prod:'Show production & tech',dp_box:'Ticketing & reservations',dp_svc:'Guest service & F&B',dp_b2b:'Group sales & tour agents',dp_mkt:'Marketing & PR',dp_fin:'Accounting & finance',dp_hr:'HR & admin',dp_it:'IT',dp_ext:'External tester',lb_open:'Leaderboard and stats',lb_title:'Leaderboard and stats',lb_live:'Live',lb_people:'Testers',lb_runs:'Runs played',lb_depts:'Departments taking part',lb_board:'Leaderboard',lb_rule:'Ranked by checks completed, then time. Each person’s best run counts. No-mission runs are not ranked.',lb_all:'All missions',lb_first:'Number 1 right now',lb_empty:'Nobody has finished this one yet',lb_dept_t:'Testers per department',lb_n_people:'{n} people',lb_n_runs:'{n} runs',lb_off:'The database is not connected yet',lb_err:'Could not load the data. Close this and try again.',lb_close:'Close',lb_csv:'Download CSV',lb_updated:'Updated {t}',lb_mine:'you',
 g_get:'Start playing',g_free:'Try the booking flow freely, no timer',g_dash:'View test results',g_note:'This is a prototype. Nothing is really booked or charged. Use made-up details in the form; they are not kept.',
 g_todo:'To complete',g_timer_note:'The timer starts when you tap the button below and stops when your booking is confirmed. Tap "Mission" at the top to read it again any time.',g_start:'Start the timer',
 g_view:'Mission',g_giveup:'I’m stuck, skip to the survey',g_done_bar:'Mission done in {t}',g_to_survey:'Answer the survey',
@@ -642,9 +669,10 @@ const SQ=[['s_q1','s_lo_easy','s_hi_easy'],['s_q2','s_lo_easy','s_hi_easy'],['s_
 const STEPK=['showtime','seats','food','pay'];
 const EVK=['back','soldout','closed','taken','promoFail','formErr','payFail','expire','brief','autopick','promoTap'];
 
+const DEPTS=['perf','prod','box','svc','b2b','mkt','fin','hr','it','ext'],deptName=k=>k?t('dp_'+k):'';
 const FREE='F',isFree=id=>id===FREE,mTag=id=>isFree(id)?t('fr_tag'):t('g_m',{n:MISSIONS[id].num});
 const newGame=()=>({mission:null,via:null,start:0,end:0,steps:{},cur:null,curAt:0,ev:{},ratings:[0,0,0,0,0],comment:'',gaveUp:false,sErr:false,send:null,run:null});
-const S={lang:'th',mode:'intro',nick:'',pick:null,pickVia:null,nickErr:false,spinning:false,justLanded:false,g:newGame(),step:1,sub:'food',dateIdx:0,time:null,seats:[],zone:null,zonePref:null,zoomIdx:1,food:{},promo:null,promoInput:'',promoErr:false,
+const S={lang:'th',mode:'intro',nick:'',dept:'',deptErr:false,pick:null,pickVia:null,nickErr:false,spinning:false,justLanded:false,g:newGame(),step:1,sub:'food',dateIdx:0,time:null,seats:[],zone:null,zonePref:null,zoomIdx:1,food:{},promo:null,promoInput:'',promoErr:false,
   form:{name:'',email:'',cc:'+66',phone:'',nat:''},pay:'card',agree:false,errors:{},sumOpen:false,holdEnd:null,booking:null,ap:{n:2,zone:'gold'},sheetLocked:false,pcIdx:0,
   isOwner:false,dashRuns:null,dashState:null};
 const INIT_S=JSON.stringify(S);
@@ -669,6 +697,23 @@ function ev(k){if(S.mode==='run'&&!S.g.end)S.g.ev[k]=(S.g.ev[k]||0)+1}
 
 const _cap={};
 const cap=n=>_cap[n]||(_cap[n]=window.claude&&typeof window.claude.use==='function'?Promise.resolve(window.claude.use(n)).catch(()=>null):Promise.resolve(null));
+
+// Firebase web config from the Firebase console. While it is null, results fall back to the Claude store and the stats page says it is not connected.
+const FB_CONFIG=null;
+const FB_SDK='https://www.gstatic.com/firebasejs/10.12.2/';
+let _fb=null;
+function fb(){
+  if(!FB_CONFIG)return Promise.resolve(null);
+  return _fb||(_fb=Promise.all([import(FB_SDK+'firebase-app.js'),import(FB_SDK+'firebase-firestore.js')])
+    .then(([a,f])=>({f,db:f.getFirestore(a.initializeApp(FB_CONFIG))})).catch(()=>{_fb=null;return null}));
+}
+// A random id kept per browser, so one person playing several runs counts once.
+function devId(){
+  if(devId.v)return devId.v;let d='';
+  try{d=localStorage.getItem('tf_dev')||''}catch(e){}
+  if(!d){const a=new Uint32Array(4);crypto.getRandomValues(a);d=[...a].map(x=>x.toString(36)).join('');try{localStorage.setItem('tf_dev',d)}catch(e){}}
+  return devId.v=d;
+}
 
 function bestSeats(zone,n){
   const tk=taken(curKey()),groups={};
@@ -814,10 +859,12 @@ function viewIntro(){
   return`<section><div class="eyebrow">${t('g_eyebrow')}</div><h1 class="g-title">${t('g_title')}</h1><p class="g-lead">${t('g_intro')}</p></section>
 <ol class="how">${['g_how1','g_how2','g_how3'].map((k,i)=>`<li class="how-i"><span class="how-n">${i+1}</span><span>${t(k)}</span></li>`).join('')}</ol>
 <div class="field"><label for="g-nick">${t('g_nick')}</label><input id="g-nick" class="in${S.nickErr?' bad':''}" value="${esc(S.nick)}" placeholder="${t('g_nick_ph')}" maxlength="40" autocomplete="nickname"><div class="hint-s">${t('g_nick_hint')}</div>${S.nickErr?`<div class="err" id="err-nick">${t('e_nick')}</div>`:''}</div>
+<div class="field"><label for="g-dept">${t('g_dept')}</label><select id="g-dept" class="in${S.deptErr?' bad':''}"><option value="">${t('g_dept_ph')}</option>${DEPTS.map(k=>`<option value="${k}"${S.dept===k?' selected':''}>${t('dp_'+k)}</option>`).join('')}</select><div class="hint-s">${t('g_dept_hint')}</div>${S.deptErr?`<div class="err" id="err-dept">${t('e_dept')}</div>`:''}</div>
 <div class="field"><button class="btn btn-ghost w100" data-act="gFreeRun">${IC.cart||IC.flag}${t('fr_btn')}</button><div class="hint-s" style="text-align:center;margin-top:6px">${t('fr_hint')}</div></div>
 <div class="or-sep"><span>${t('fr_or')}</span></div>
 <div class="field"><label>${t('g_pick')}</label><div class="hint-s" style="margin:0 0 8px">${t('g_pick_hint')}</div><button class="btn btn-auto w100" data-act="gSpin" id="g-spin" style="margin-bottom:10px">${IC.wand}<span>${t('g_spin')}</span></button><div class="mlist" id="mlist">${ms.map(id=>`<button class="mopt${S.pick===id?' on':''}${S.pick===id&&land?' landed':''}${played.has(id)?' done':''}" data-act="gPick" data-v="${id}" data-done="· ${t('g_done_tag')}" aria-pressed="${S.pick===id}"><span class="mn">${t('g_m',{n:MISSIONS[id].num})}</span><span class="mt">${t('m'+id+'_t')}</span><span class="mk">${IC.check}</span></button>`).join('')}</div></div>
 ${S.pick?`<button class="btn btn-gold w100 mt12${land?' go-in':''}" data-act="gGet" id="g-go">${t('g_go')}</button>`:''}
+<button class="btn btn-ghost w100 mt12" data-act="stats">${IC.chart}${t('lb_open')}</button>
 <p class="tiny left">${t('g_note')}</p>
 ${S.isOwner?`<button class="btn btn-ghost w100 mt8" data-act="dash">${IC.chart}${t('g_dash')}${S.dashRuns?` (${S.dashRuns.length})`:''}</button>`:''}`;
 }
@@ -860,7 +907,7 @@ function viewResult(){
   const r=S.g.run,send=S.g.send;
   const free=isFree(r.mission),bk=r.booking;
   return`<div class="done-h"><div class="eyebrow">${free?esc(r.missionTitle):`${mTag(r.mission)} · ${esc(r.missionTitle)}`}</div><div class="r-time">${fmtDur(r.ms)}</div><p>${r.gaveUp?t('r_gaveup'):t('r_time')}</p></div>
-<div class="r-who">${t('rt_tester')}: <b>${esc(r.nick||t('d_anon'))}</b>${free?'':` · ${r.via==='spin'?t('r_via_spin'):t('r_via_self')}`}</div>
+<div class="r-who">${t('rt_tester')}: <b>${esc(r.nick||t('d_anon'))}</b>${r.dept?` · ${esc(deptName(r.dept))}`:''}${free?'':` · ${r.via==='spin'?t('r_via_spin'):t('r_via_self')}`}</div>
 <div class="r-grid"><div class="stat"><span>${free?t('total'):t('r_score')}</span><b>${free?(bk?'฿'+fmt(bk.total):'—'):`${r.score}/${r.max}`}</b></div><div class="stat"><span>${t('r_sat')}</span><b>${r.ratings[4]}/5</b></div></div>
 <div class="send ${send==='sent'?'ok':send==='failed'?'warn':'wait'}">${send==='sent'?IC.check+'<span>'+t('r_sent')+'</span>':send==='failed'?IC.info+'<span>'+t('r_nosend')+'</span>':'<span>'+t('r_sending')+'</span>'}</div>
 ${free?`<div class="card"><b>${t('sm_title')}</b><div class="sm-list">${(r.summary||[]).map(([l,v])=>`<div class="sm-row"><span>${esc(l)}</span><b>${esc(v)}</b></div>`).join('')}</div></div>`
@@ -868,6 +915,7 @@ ${free?`<div class="card"><b>${t('sm_title')}</b><div class="sm-list">${(r.summa
 <div class="card"><b>${t('r_steps')}</b><div class="steps-mini">${STEPK.map(k=>`<div><span>${t('k_'+k)}</span><b>${fmtDur(r.steps[k])}</b></div>`).join('')}</div></div>
 <button class="btn btn-gold w100" data-act="rSave">${IC.img}${t('r_save')}</button>
 <button class="btn btn-ghost w100 mt8" data-act="rCopy">${IC.copy}${t('r_copy')}</button>
+<button class="btn btn-ghost w100 mt8" data-act="stats">${IC.chart}${t('lb_open')}</button>
 <details class="rt" id="rtd"><summary>${t('r_show_text')}</summary><textarea id="rtext" class="in" readonly>${esc(runText(r))}</textarea></details>
 <button class="btn btn-ghost w100 mt8" data-act="rAgain">${t('r_again')}</button>`;
 }
@@ -1016,7 +1064,7 @@ function grade(){
 }
 function buildRun(){
   const g=S.g,checks=grade(),b=g.gaveUp?null:S.booking;
-  return{v:1,at:new Date().toISOString(),nick:S.nick.trim().slice(0,40),mission:g.mission,via:g.via,missionTitle:t('m'+g.mission+'_t'),lang:S.lang,ms:g.end-g.start,gaveUp:g.gaveUp,
+  return{v:1,at:new Date().toISOString(),dev:devId(),nick:S.nick.trim().slice(0,40),dept:S.dept,mission:g.mission,via:g.via,missionTitle:t('m'+g.mission+'_t'),lang:S.lang,ms:g.end-g.start,gaveUp:g.gaveUp,
     score:checks.filter(c=>c.ok).length,max:checks.length,checks,steps:{...g.steps},ev:{...g.ev},ratings:[...g.ratings],comment:g.comment.trim().slice(0,1000),
     booking:b?{date:ymd(DATES[b.date]),time:b.time,seats:b.seats,food:b.food,promo:b.promo,promoOk:b.promoOk,pay:b.pay,nat:b.nat,total:b.total,disc:b.disc}:null,
     summary:isFree(g.mission)?freeSummary(b,g):null,width:window.innerWidth};
@@ -1036,7 +1084,7 @@ function freeSummary(b,g){
 }
 
 function runText(r){
-  const free=isFree(r.mission),L=[t('rt_head'),`${t('rt_tester')}: ${r.nick||t('d_anon')} · ${mTag(r.mission)}${free?'':` ${r.missionTitle} (${r.via==='spin'?t('r_via_spin'):t('r_via_self')})`}`,
+  const free=isFree(r.mission),L=[t('rt_head'),`${t('rt_tester')}: ${r.nick||t('d_anon')}${r.dept?` (${deptName(r.dept)})`:''} · ${mTag(r.mission)}${free?'':` ${r.missionTitle} (${r.via==='spin'?t('r_via_spin'):t('r_via_self')})`}`,
     `${t('r_time')}: ${fmtDur(r.ms)}${r.gaveUp?` (${t('r_gaveup')})`:''}${free?'':` · ${t('r_score')}: ${r.score}/${r.max}`}`];
   if(free)(r.summary||[]).forEach(([l,v])=>L.push(`${l}: ${v}`));
   const miss=r.checks.filter(c=>!c.ok).map(c=>c.label);if(miss.length)L.push(`${t('rt_missed')}: ${miss.join('; ')}`);
@@ -1046,20 +1094,32 @@ function runText(r){
   const evs=EVK.filter(k=>r.ev[k]).map(k=>`${t('e_'+k)} ${r.ev[k]}`);if(evs.length)L.push(`${t('rt_events')}: ${evs.join(' · ')}`);
   return L.join('\n');
 }
+// Results go to Firestore when FB_CONFIG is set, otherwise to the Claude artifact store.
 async function submitRun(){
   const r=S.g.run;S.g.send='sending';
   try{
-    const[db,u]=await Promise.all([cap('db'),cap('user')]);
-    const id=u?await u.id():null;if(!db||!id)throw{code:'none'};
-    if(u&&(await u.can('data.write'))===false)throw{code:'readonly'};
-    const ref=db.doc('results/'+id);
-    for(let tries=0;;tries++){
-      try{const s=await ref.get();const prev=s.exists&&Array.isArray(s.data().runs)?s.data().runs:[];await ref.set({runs:[...prev,r].slice(-40),updatedAt:r.at});break}
-      catch(e){if(e&&e.code==='unavailable'&&tries<1){await new Promise(res=>setTimeout(res,600+Math.random()*600));continue}throw e}
-    }
+    const F=await fb();
+    if(F)await F.f.addDoc(F.f.collection(F.db,'runs'),fbDoc(r,F.f.serverTimestamp()));
+    else await submitClaude(r);
     S.g.send='sent';
   }catch(e){S.g.send='failed'}
   if(S.mode==='result'&&S.g.run===r)render(true);
+}
+async function submitClaude(r){
+  const[db,u]=await Promise.all([cap('db'),cap('user')]);
+  const id=u?await u.id():null;if(!db||!id)throw{code:'none'};
+  if(u&&(await u.can('data.write'))===false)throw{code:'readonly'};
+  const ref=db.doc('results/'+id);
+  for(let tries=0;;tries++){
+    try{const s=await ref.get();const prev=s.exists&&Array.isArray(s.data().runs)?s.data().runs:[];await ref.set({runs:[...prev,r].slice(-40),updatedAt:r.at});break}
+    catch(e){if(e&&e.code==='unavailable'&&tries<1){await new Promise(res=>setTimeout(res,600+Math.random()*600));continue}throw e}
+  }
+}
+// The run as stored in Firestore; firestore.rules checks these fields.
+function fbDoc(r,at){
+  const ints=o=>Object.fromEntries(Object.entries(o||{}).map(([k,v])=>[k,Math.round(v)||0]));
+  return{v:1,at,dev:r.dev,nick:r.nick,dept:r.dept,mission:r.mission,via:r.via||'',free:isFree(r.mission),lang:r.lang,ms:Math.round(r.ms),gaveUp:!!r.gaveUp,
+    score:r.score,max:r.max,checks:r.checks.map(c=>({k:c.k,ok:c.ok})),steps:ints(r.steps),ev:ints(r.ev),ratings:r.ratings.map(v=>+v||0),comment:r.comment,booking:r.booking};
 }
 const IMG_C={bg:'#1b1b1c',surface:'#25252c',line:'rgba(255,255,255,.12)',text:'#f4f4f8',muted:'#b6b6c4',faint:'#868696',gold:'#5f5cfa',goldHi:'#e697f6',goldInk:'#1b1b1c',ok:'#7fdcae',danger:'#ff9191'};
 const IMG_DISP="'Chiswick Sans Text','Instrument Sans','Nirand','Anuphan',system-ui,sans-serif",IMG_BODY="'Nirand','Anuphan',system-ui,-apple-system,sans-serif";
@@ -1095,6 +1155,7 @@ function paintRun(ctx,r,draw){
   y+=10;
   y+=60;font(500,26);text(t('rt_head'),P,y,C.muted);
   y+=60;font(600,46);text(`${t('rt_tester')}: ${r.nick||t('d_anon')}`,P,y,C.text);
+  if(r.dept){y+=46;font(400,30);text(deptName(r.dept),P,y,C.muted)}
   // mission received
   const free=isFree(r.mission);
   y+=36;const m=MISSIONS[r.mission],story=free?t('mF_s'):t('m'+r.mission+'_s',{d:fmtLong(DATES[m.day])});
@@ -1238,6 +1299,56 @@ function toCsv(runs){
   return[head.join(','),...runs.map(r=>[r.at,r.nick,r.mission,Math.round(r.ms/1000),r.gaveUp,r.score,r.max,...[0,1,2,3,4].map(i=>(r.ratings||[])[i]),r.comment,
     ...STEPK.map(k=>Math.round(((r.steps||{})[k]||0)/1000)),(r.checks||[]).filter(c=>!c.ok).map(c=>c.label).join('; '),EVK.filter(k=>(r.ev||{})[k]).map(k=>`${k}=${r.ev[k]}`).join('; ')].map(q).join(','))].join('\n');
 }
+const ST={runs:null,err:'',tab:'all',at:0};let stUnsub=null;
+const isAdmin=/[?&]admin\b/.test(location.search);
+async function openStats(){
+  closeSheet();$('#stats').hidden=false;renderStats();
+  if(stUnsub)return;
+  const F=await fb();
+  if(!F){ST.err=FB_CONFIG?'err':'off';renderStats();return}
+  stUnsub=F.f.onSnapshot(F.f.query(F.f.collection(F.db,'runs'),F.f.orderBy('at','desc'),F.f.limit(2000)),
+    snap=>{ST.runs=snap.docs.map(d=>d.data());ST.err='';ST.at=Date.now();renderStats()},
+    ()=>{ST.err='err';stUnsub=null;renderStats()});
+}
+const rankCmp=(a,b)=>b.score/b.max-a.score/a.max||a.ms-b.ms;
+function renderStats(){
+  const el=$('#stats');if(el.hidden)return;
+  const msg=m=>`<div class="dcard"><p class="muted" style="margin:0">${m}</p></div>`;
+  const runs=(ST.runs||[]).filter(r=>r&&DEPTS.includes(r.dept)),me=devId();
+  let body;
+  if(ST.err)body=msg(t(ST.err==='off'?'lb_off':'lb_err'));
+  else if(!ST.runs)body=msg(t('d_loading'));
+  else{
+    const best={};
+    runs.filter(r=>!r.free&&!r.gaveUp&&MISSIONS[r.mission]&&r.max>0&&(ST.tab==='all'||r.mission===ST.tab))
+      .forEach(r=>{const b=best[r.dev];if(!b||rankCmp(r,b)<0)best[r.dev]=r});
+    const top=Object.values(best).sort(rankCmp).slice(0,10),f=top[0];
+    const per=DEPTS.map(k=>{const rs=runs.filter(r=>r.dept===k);return{k,people:new Set(rs.map(r=>r.dev)).size,runs:rs.length}}).sort((a,b)=>b.people-a.people||b.runs-a.runs);
+    const pmax=Math.max(1,...per.map(p=>p.people));
+    const who=r=>`<div class="lb-who"><b>${esc(r.nick)}${r.dev===me?`<em>${t('lb_mine')}</em>`:''}</b><span>${esc(deptName(r.dept))}${ST.tab==='all'?` · ${mTag(r.mission)}`:''}</span></div><div class="lb-res"><b>${fmtDur(r.ms)}</b><span>${r.score}/${r.max}</span></div>`;
+    const tabs=[['all',t('lb_all')],...Object.keys(MISSIONS).map(id=>[id,mTag(id)])];
+    const tiles=[[t('lb_people'),new Set(runs.map(r=>r.dev)).size],[t('lb_runs'),runs.length],[t('lb_depts'),`${per.filter(p=>p.people).length}/${DEPTS.length}`]];
+    body=`<div class="tiles">${tiles.map(([l,v])=>`<div class="stat"><span>${l}</span><b>${v}</b></div>`).join('')}</div>
+<div class="dcard"><div class="lb-h"><h3>${t('lb_board')}</h3><span class="live"><i></i>${t('lb_live')}</span></div><p class="muted sm" style="margin:0 0 12px">${t('lb_rule')}</p>
+<div class="lb-tabs" role="tablist">${tabs.map(([v,l])=>`<button role="tab" data-act="lbTab" data-v="${v}" class="${ST.tab===v?'on':''}" aria-selected="${ST.tab===v}">${l}</button>`).join('')}</div>
+${f?`<div class="lb-first"><span class="lb-ey">${t('lb_first')}</span><div class="lb-fr">${who(f)}</div></div>${top.slice(1).map((r,i)=>`<div class="lb-row"><span class="lb-rk">${i+2}</span>${who(r)}</div>`).join('')}`:`<p class="muted" style="margin:0">${t('lb_empty')}</p>`}</div>
+<div class="dcard"><div class="lb-h"><h3>${t('lb_dept_t')}</h3><span class="live"><i></i>${t('lb_live')}</span></div>
+${per.map(p=>`<div class="dp-row"><div class="dp-top"><span>${esc(deptName(p.k))}</span><b>${t('lb_n_people',{n:p.people})}<span class="muted"> · ${t('lb_n_runs',{n:p.runs})}</span></b></div><div class="dp-trk"><i style="width:${p.people/pmax*100}%"></i></div></div>`).join('')}</div>`;
+  }
+  const upd=ST.at?new Date(ST.at).toLocaleTimeString(S.lang==='th'?'th-TH':'en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'}):'';
+  el.innerHTML=`<div class="dash-in st-in"><div class="dash-h"><h2>${t('lb_title')}</h2>${upd?`<span class="muted sm">${t('lb_updated',{t:upd})}</span>`:''}<div class="dash-act">${isAdmin&&runs.length?`<button class="btn btn-ghost" data-act="lbCsv">${IC.download}${t('lb_csv')}</button>`:''}<button class="btn btn-gold" data-act="statsClose">${t('lb_close')}</button></div></div>${body}</div>`;
+}
+// Every stored run as a spreadsheet; open the page with ?admin to see the button.
+function fbCsv(runs){
+  const q=v=>{let x=String(v??'');if(/^[=+\-@]/.test(x))x="'"+x;return`"${x.replace(/"/g,'""')}"`};
+  const head=['submitted_at','nickname','department','mission','via','seconds','gave_up','score','max','q1_showtime','q2_seats','q3_promo','q4_payment','q5_overall','comment','showtime_s','seats_s','food_s','pay_s','missed','total','promo','events','device'];
+  return'﻿'+[head.join(','),...runs.map(r=>{
+    const m=MISSIONS[r.mission],d=m?fmtLong(DATES[m.day]):'',at=r.at&&r.at.toDate?r.at.toDate().toISOString():'';
+    return[at,r.nick,deptName(r.dept),isFree(r.mission)?t('fr_tag'):mTag(r.mission),r.via,Math.round(r.ms/1000),r.gaveUp,r.score,r.max,...[0,1,2,3,4].map(i=>(r.ratings||[])[i]),r.comment,
+      ...STEPK.map(k=>Math.round(((r.steps||{})[k]||0)/1000)),(r.checks||[]).filter(c=>!c.ok).map(c=>t(c.k,{d})).join('; '),r.booking?r.booking.total:'',r.booking?r.booking.promo||'':'',
+      EVK.filter(k=>(r.ev||{})[k]).map(k=>`${k}=${r.ev[k]}`).join('; '),r.dev].map(q).join(',')})].join('\n');
+}
+
 function renderProto(){
   const run=S.mode==='run'||S.mode==='brief';
   $('#proto').innerHTML=`<h2>Tiffany's Booking</h2><p>${t('p_intro')}</p>${run?`<p>${t('p_running')}</p>`:`${protoControls()}<h3>${t('p_try')}</h3><ul>${['p_t1','p_t2','p_t3','p_t4'].map(k=>`<li>${t(k,{d:fmtDate(DATES[SOLD_IDX])})}</li>`).join('')}</ul>`}<h3>${t('p_mock')}</h3><p>${t('p_mock_body')}</p>${S.isOwner?`<button class="pbtn" data-act="dash">${IC.chart}${t('g_dash')}${S.dashRuns?` (${S.dashRuns.length})`:''}</button>`:''}`;
@@ -1246,6 +1357,11 @@ function protoControls(){
   return`<div class="pc-h2">${t('d_jump')}</div><div class="pgrid">${[['intro',t('d_intro')],['1',t('step1')],['2',t('step2')],['food',t('food_title')],['pay',t('step3')],['4',t('step4')]].map(([s,l])=>`<button class="pbtn" data-act="jump" data-s="${s}">${l}</button>`).join('')}</div><div class="pc-h2">${t('d_sim')}</div><div class="pgrid"><button class="pbtn" data-act="expireNow">${t('d_expire')}</button><button class="pbtn" data-act="reset">${t('d_reset')}</button></div>`;
 }
 
+function needWho(){
+  if(!S.nick.trim()){S.nickErr=true;render(true);$('#g-nick')?.focus();return true}
+  if(!S.dept){S.deptErr=true;render(true);$('#g-dept')?.focus();return true}
+  return false;
+}
 const ACT={
   back(){
     ev('back');
@@ -1253,7 +1369,7 @@ const ACT={
     else if(S.step===3&&S.sub==='pay'){S.sub='food';render()}
     else if(S.step===3){S.step=2;render()}
   },
-  lang(){S.lang=S.lang==='th'?'en':'th';render(true);renderDash()},
+  lang(){S.lang=S.lang==='th'?'en':'th';render(true);renderDash();renderStats()},
   date(el){S.dateIdx=+el.dataset.i;if(S.time&&!(showsFor(S.dateIdx).some(x=>x.time===S.time)&&bookable(S.dateIdx,S.time)))S.time=null;render(true)},
   time(el){
     const tm=el.dataset.time,st=status(S.dateIdx,tm);
@@ -1320,17 +1436,17 @@ const ACT={
   demo(){openSheet(`<h3>${t('demo_title')}</h3>${protoControls()}<div style="height:16px"></div><button class="btn btn-ghost w100" data-act="close">${t('close')}</button>`)},
   jump(el){demoJump(el.dataset.s)},
   expireNow(){if(!S.holdEnd){toast(t('d_need_hold'));return}closeSheet();S.holdEnd=Date.now();tick()},
-  reset(){const keep={lang:S.lang,isOwner:S.isOwner,dashRuns:S.dashRuns,dashState:S.dashState,nick:S.nick};Object.assign(S,JSON.parse(INIT_S),keep);closeSheet();render()},
+  reset(){const keep={lang:S.lang,isOwner:S.isOwner,dashRuns:S.dashRuns,dashState:S.dashState,nick:S.nick,dept:S.dept};Object.assign(S,JSON.parse(INIT_S),keep);closeSheet();render()},
   close(){closeSheet()},
   gPick(el){if(S.spinning)return;S.pick=el.dataset.v;S.pickVia='self';S.justLanded=true;render(true)},
   gSpin(){spinMission()},
   gFreeRun(){
-    if(!S.nick.trim()){S.nickErr=true;render(true);$('#g-nick')?.focus();return}
+    if(needWho())return;
     resetBooking();S.g=newGame();S.g.mission=FREE;S.g.via='free';S.mode='run';S.g.start=Date.now();render()
   },
   gGet(){
     if(S.spinning)return;
-    if(!S.nick.trim()){S.nickErr=true;render(true);$('#g-nick')?.focus();return}
+    if(needWho())return;
     if(!S.pick){spinMission(()=>ACT.gGet());return}
     const id=S.pick;resetBooking();S.g=newGame();S.g.mission=id;S.g.via=S.pickVia||'self';S.mode='brief';render()
   },
@@ -1350,6 +1466,10 @@ const ACT={
   rAgain(){const done=S.mode==='result';resetBooking();S.g=newGame();if(done){S.pick=null;S.pickVia=null}S.mode='intro';render()},
   dash(){closeSheet();$('#dash').hidden=false;renderDash()},
   dashClose(){$('#dash').hidden=true},
+  stats(){openStats()},
+  statsClose(){$('#stats').hidden=true},
+  lbTab(el){ST.tab=el.dataset.v;renderStats()},
+  lbCsv(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([fbCsv(ST.runs||[])],{type:'text/csv'}));a.download=`tiffany-results-${ymd(new Date())}.csv`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)},
   dashCsv(){
     const runs=(S.dashRuns||[]).filter(r=>r&&MISSIONS[r.mission]).slice().sort((a,b)=>String(b.at).localeCompare(String(a.at))),csv=toCsv(runs);
     copyText(csv,()=>toast(t('d_copied')),()=>{const box=$('#csvbox');if(box){box.innerHTML=`<div class="dcard"><p class="muted" style="margin:0 0 8px">${t('d_csv_fail')}</p><textarea class="in csv-out" id="csv-out" readonly>${esc(csv)}</textarea></div>`;const ta=$('#csv-out');ta.focus();ta.select()}})
@@ -1357,7 +1477,7 @@ const ACT={
 };
 document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(el&&ACT[el.dataset.act])ACT[el.dataset.act](el,e)});
 $('#layer').addEventListener('click',e=>{if(e.target.id==='layer'&&!S.sheetLocked)closeSheet()});
-document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(!$('#layer').hidden&&!S.sheetLocked)closeSheet();else if(!$('#dash').hidden)$('#dash').hidden=true});
+document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(!$('#layer').hidden&&!S.sheetLocked)closeSheet();else if(!$('#stats').hidden)$('#stats').hidden=true;else if(!$('#dash').hidden)$('#dash').hidden=true});
 document.addEventListener('input',e=>{
   const id=e.target.id;
   if(id==='g-nick'){S.nick=e.target.value;if(S.nickErr){S.nickErr=false;e.target.classList.remove('bad');$('#err-nick')?.remove()}return}
@@ -1368,6 +1488,7 @@ document.addEventListener('input',e=>{
   if(S.errors[f]){delete S.errors[f];e.target.classList.remove('bad');$('#err-'+f)?.remove()}
 });
 document.addEventListener('change',e=>{
+  if(e.target.id==='g-dept'){S.dept=e.target.value;if(S.deptErr){S.deptErr=false;e.target.classList.remove('bad');$('#err-dept')?.remove()}return}
   if(e.target.id==='agree'){S.agree=e.target.checked;if(S.errors.agree){delete S.errors.agree;$('#err-agree')?.remove()}}
   else if(e.target.dataset.f&&e.target.dataset.f!=='promo'){S.form[e.target.dataset.f]=e.target.value;if(e.target.dataset.f==='cc'){delete S.errors.phone;render(true)}}
 });

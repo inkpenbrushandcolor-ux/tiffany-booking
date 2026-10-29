@@ -1,0 +1,27 @@
+rules_version = '2';
+// Paste this into Firebase console > Firestore Database > Rules, then Publish.
+// Anyone can read results (the leaderboard is public) and add a new run,
+// but nobody can change or delete a run from the website.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function validRun(d) {
+      return d.keys().hasOnly(['v', 'at', 'dev', 'nick', 'dept', 'mission', 'via', 'free', 'lang', 'ms', 'gaveUp',
+                               'score', 'max', 'checks', 'steps', 'ev', 'ratings', 'comment', 'booking'])
+        && d.keys().hasAll(['at', 'dev', 'nick', 'dept', 'mission', 'ms', 'score', 'max'])
+        && d.at == request.time
+        && d.dev is string && d.dev.size() > 0 && d.dev.size() <= 40
+        && d.nick is string && d.nick.size() > 0 && d.nick.size() <= 40
+        && d.dept in ['perf', 'prod', 'box', 'svc', 'b2b', 'mkt', 'fin', 'hr', 'it', 'ext']
+        && d.mission in ['A', 'B', 'C', 'D', 'E', 'F']
+        && d.ms is int && d.ms >= 10000 && d.ms <= 7200000
+        && d.score is int && d.max is int && d.score >= 0 && d.score <= d.max && d.max <= 10
+        && (!('comment' in d) || (d.comment is string && d.comment.size() <= 1000));
+    }
+
+    match /runs/{runId} {
+      allow read: if true;
+      allow create: if validRun(request.resource.data);
+      allow update, delete: if false;
+    }
+  }
+}

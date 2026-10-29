@@ -179,6 +179,7 @@ html[lang=en] .stage-t{letter-spacing:.3em}
 .sum-line.disc,.sum-line.disc b{color:var(--ok)}
 .sum-total{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:6px;padding-top:10px;font-weight:600}
 .fh{font-size:16px;font-weight:600;margin:22px 0 4px}
+.fake-note{font-size:13px;font-weight:500;color:var(--danger)}
 .field{margin-bottom:12px}
 .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
 .hint-s{font-size:12px;color:var(--faint);margin-top:5px}
@@ -504,8 +505,8 @@ pr_MEZZ990_h:'Mezzanine วันธรรมดา ที่นั่งละ 
 rs_early:'วันแสดงต้องห่างจากวันนี้ 7 วันขึ้นไป',rs_sat:'ใช้ได้เฉพาะรอบพิเศษวันเสาร์ 16:30',rs_sat_drink:'เพิ่มเวลคัมดริงก์ในขั้นอาหารก่อน',rs_group:'ต้องจอง 4 ที่นั่งขึ้นไป',rs_dine:'เพิ่มบุฟเฟต์ Thai Marché ในขั้นอาหารก่อน',rs_mezz_day:'ใช้ได้เฉพาะวันจันทร์ถึงพฤหัสบดี',rs_mezz_zone:'ต้องมีที่นั่งโซน Mezzanine',
 contact:'ข้อมูลผู้จอง',contact_sub:'ไม่ต้องสมัครสมาชิก ระบบจะส่งตั๋วไปที่อีเมลนี้',
 f_name:'ชื่อ-นามสกุล',f_email:'อีเมล',f_phone:'เบอร์โทรศัพท์',f_nat:'สัญชาติ (ไม่บังคับ)',nat_ph:'เลือกสัญชาติ',
-e_name:'กรุณากรอกชื่อ-นามสกุล',e_email:'กรุณากรอกอีเมลให้ถูกต้อง',e_phone:'เบอร์มือถือไม่ถูกต้อง สำหรับ {cc} ใช้รูปแบบ {x}',h_name:'ระบบต้นแบบ ใส่ชื่อสมมติได้',ph_name:'เช่น สมใจ ใจดี',h_email:'ใส่อีเมลสมมติได้ แต่ต้องอยู่ในรูปแบบอีเมล',ph_email:'เช่น name@example.com',h_phone:'ใส่เบอร์สมมติได้ แต่จำนวนหลักต้องถูกต้องตามเบอร์มือถือ เช่น {x}',e_agree:'กรุณายอมรับเงื่อนไขก่อนชำระเงิน',fix_form:'กรุณาตรวจข้อมูลที่ไฮไลต์ไว้',
-pay_method:'ช่องทางชำระเงิน',pm_card:'บัตรเครดิต / เดบิต',pm_card_sub:'Visa · Mastercard · JCB · UnionPay',pm_pp:'พร้อมเพย์ QR',pm_pp_sub:'สแกนจ่ายผ่านแอปธนาคารไทย',pm_ali:'Alipay',pm_ali_sub:'支付宝',pm_wc:'WeChat Pay',pm_wc_sub:'微信支付',
+e_name:'กรุณากรอกชื่อ-นามสกุล',e_email:'กรุณากรอกอีเมลให้ถูกต้อง',e_phone:'เบอร์มือถือไม่ถูกต้อง สำหรับ {cc} ใช้รูปแบบ {x}',h_name:'ไม่จำเป็นต้องใช้ชื่อจริง ใส่ชื่อสมมุติได้ แต่ขอให้อยู่ในรูปแบบชื่อและนามสกุล',ph_name:'ชื่อสมมุติ เช่น สมใจ ใจดี',h_email:'ไม่จำเป็นต้องใช้อีเมลจริง ใส่อีเมลสมมุติได้ แต่ขอให้อยู่ในรูปแบบอีเมล',ph_email:'อีเมลสมมุติ เช่น name@example.com',h_phone:'ไม่จำเป็นต้องใช้เบอร์จริง ใส่เบอร์สมมุติได้ แต่จำนวนหลักต้องถูกต้องตามเบอร์มือถือ เช่น {x}',e_agree:'กรุณายอมรับเงื่อนไขก่อนชำระเงิน',fix_form:'กรุณาตรวจข้อมูลที่ไฮไลต์ไว้',
+pay_method:'ช่องทางชำระเงิน',pay_fake:'ไม่ต้องกังวล ระบบนี้ไม่มีการจ่ายเงินจริง และไม่ต้องกรอกข้อมูลจริง',pm_card:'บัตรเครดิต / เดบิต',pm_card_sub:'Visa · Mastercard · JCB · UnionPay',pm_pp:'พร้อมเพย์ QR',pm_pp_sub:'สแกนจ่ายผ่านแอปธนาคารไทย',pm_ali:'Alipay',pm_ali_sub:'支付宝',pm_wc:'WeChat Pay',pm_wc_sub:'微信支付',
 agree:'ฉันยอมรับเงื่อนไขการจองและนโยบายความเป็นส่วนตัว',btn_pay:'ชำระเงิน',
 gw_tag:'ต้นแบบ',gw_title:'หน้าชำระเงินจำลอง',gw_note:'ในระบบจริง ขั้นนี้จะส่งต่อไปยังผู้ให้บริการรับชำระเงิน',gw_qr_note:'QR ตัวอย่าง ใช้จ่ายจริงไม่ได้',gw_ok:'จำลอง: จ่ายสำเร็จ',gw_fail:'จำลอง: จ่ายไม่สำเร็จ',
 fail_title:'ชำระเงินไม่สำเร็จ',fail_body:'ยังไม่มีการตัดเงิน ที่นั่งของคุณยังถูกถือไว้อีก {t}',retry:'ลองอีกครั้ง',change_pm:'เปลี่ยนช่องทางชำระเงิน',
@@ -572,8 +573,8 @@ pr_MEZZ990_h:'Weekday Mezzanine ฿990 a seat',pr_MEZZ990_s:'Monday to Thursday,
 rs_early:'the show must be 7 or more days from today',rs_sat:'only for the Saturday 16:30 special show',rs_sat_drink:'add welcome drinks in the food step first',rs_group:'book 4 seats or more',rs_dine:'add the Thai Marché buffet in the food step first',rs_mezz_day:'only Monday to Thursday',rs_mezz_zone:'needs Mezzanine seats',
 contact:'Your details',contact_sub:'No account needed. We send your ticket to this email.',
 f_name:'Full name',f_email:'Email',f_phone:'Phone number',f_nat:'Nationality (optional)',nat_ph:'Select nationality',
-e_name:'Enter your full name',e_email:'Enter a valid email',e_phone:'Not a valid mobile number for {cc}. Use the format {x}',h_name:'This is a prototype. Any made-up name is fine.',ph_name:'e.g. Somjai Jaidee',h_email:'A made-up email is fine, but it must look like an email',ph_email:'e.g. name@example.com',h_phone:'A made-up number is fine, but it needs the right number of digits for a mobile, e.g. {x}',e_agree:'Please accept the terms before paying',fix_form:'Please check the highlighted fields',
-pay_method:'Payment method',pm_card:'Credit / debit card',pm_card_sub:'Visa · Mastercard · JCB · UnionPay',pm_pp:'PromptPay QR',pm_pp_sub:'Scan with a Thai banking app',pm_ali:'Alipay',pm_ali_sub:'支付宝',pm_wc:'WeChat Pay',pm_wc_sub:'微信支付',
+e_name:'Enter your full name',e_email:'Enter a valid email',e_phone:'Not a valid mobile number for {cc}. Use the format {x}',h_name:'You don’t need your real name. A made-up one is fine, as long as it looks like a first and last name.',ph_name:'Made-up name, e.g. Somjai Jaidee',h_email:'You don’t need your real email. A made-up one is fine, as long as it looks like an email.',ph_email:'Made-up email, e.g. name@example.com',h_phone:'You don’t need your real number. A made-up one is fine, but it needs the right number of digits for a mobile, e.g. {x}',e_agree:'Please accept the terms before paying',fix_form:'Please check the highlighted fields',
+pay_method:'Payment method',pay_fake:'Don’t worry: nothing is really charged, and you don’t need real details',pm_card:'Credit / debit card',pm_card_sub:'Visa · Mastercard · JCB · UnionPay',pm_pp:'PromptPay QR',pm_pp_sub:'Scan with a Thai banking app',pm_ali:'Alipay',pm_ali_sub:'支付宝',pm_wc:'WeChat Pay',pm_wc_sub:'微信支付',
 agree:'I accept the booking terms and privacy policy',btn_pay:'Pay',
 gw_tag:'Prototype',gw_title:'Simulated payment page',gw_note:'In the real system this step hands off to the payment provider',gw_qr_note:'Sample QR, cannot be used to pay',gw_ok:'Simulate: payment succeeds',gw_fail:'Simulate: payment fails',
 fail_title:'Payment failed',fail_body:'You were not charged. Your seats are still held for {t}.',retry:'Try again',change_pm:'Change payment method',
@@ -922,7 +923,7 @@ ${tt.disc?`<div class="sum-line disc"><span>${t('discount')} (${S.promo})</span>
 <div class="field"><label for="f-email">${t('f_email')}</label><input id="f-email" type="email" inputmode="email" class="in${bad('email')}" data-f="email" value="${esc(f.email)}" placeholder="${t('ph_email')}" autocomplete="email"><div class="hint-s">${t('h_email')}</div>${err('email')}</div>
 <div class="field"><label for="f-phone">${t('f_phone')}</label><div class="phone-row"><select id="f-cc" class="in" data-f="cc" aria-label="Country code">${CC.map(c=>`<option${c===f.cc?' selected':''}>${c}</option>`).join('')}</select><input id="f-phone" type="tel" inputmode="tel" class="in${bad('phone')}" data-f="phone" value="${esc(f.phone)}" placeholder="${PH_EX[f.cc]||''}" autocomplete="tel-national"></div><div class="hint-s">${t('h_phone',{x:PH_EX[f.cc]||''})}</div>${err('phone')}</div>
 <div class="field"><label for="f-nat">${t('f_nat')}</label><select id="f-nat" class="in" data-f="nat"><option value="">${t('nat_ph')}</option>${NAT.map(n=>`<option value="${n[0]}"${f.nat===n[0]?' selected':''}>${S.lang==='th'?n[1]:n[2]}</option>`).join('')}</select></div>
-<h3 class="fh" id="pm-h">${t('pay_method')}</h3>
+<h3 class="fh" id="pm-h">${t('pay_method')} <span class="fake-note">(${t('pay_fake')})</span></h3>
 ${PM.map(p=>`<button class="pm${S.pay===p.id?' on':''}" data-act="pm" data-m="${p.id}" aria-pressed="${S.pay===p.id}"><span class="rd"></span><span class="tx"><span class="nm">${t(p.name)}</span><span class="ds">${t(p.sub)}</span></span><span class="pm-ic">${IC[p.icon]}</span></button>`).join('')}
 <label class="agree"><input type="checkbox" id="agree"${S.agree?' checked':''}><span>${t('agree')}</span></label>${err('agree')}`;
 }

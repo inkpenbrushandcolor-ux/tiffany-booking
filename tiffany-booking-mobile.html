@@ -1571,7 +1571,7 @@ function resultLive(){
 const rankCmp=(a,b)=>b.score/b.max-a.score/a.max||a.ms-b.ms;
 const atMs=r=>r.at&&r.at.toMillis?r.at.toMillis():Infinity;
 // Miss Booking Universe counts from here on; tries before this were the team's own tests.
-const G_FROM=Date.UTC(2026,10,2,5,0);
+const G_FROM=Date.UTC(2026,10,2,4,50);
 const isG=r=>r.mission==='G'&&atMs(r)>=G_FROM;
 // Ranked list for a leaderboard tab: first try per person for 'G', best run per person otherwise ('all' leaves G out).
 function board(runs,tab){

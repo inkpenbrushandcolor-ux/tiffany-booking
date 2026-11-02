@@ -396,7 +396,84 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 .cdn-n.go{font-size:76px;letter-spacing:.03em;background:var(--primary-grad);-webkit-background-clip:text;background-clip:text;color:transparent;animation:cdgo .6s cubic-bezier(.2,1.6,.4,1) both}
 @keyframes cdn{0%{transform:scale(1.8);opacity:0}22%{transform:none;opacity:1}80%{opacity:1}100%{transform:scale(.8);opacity:.15}}
 @keyframes cdgo{0%{transform:scale(.4);opacity:0}100%{transform:none;opacity:1}}
-@media (prefers-reduced-motion:reduce){.cd,.cp-ic,.cpn-pop,.cpn.just,.ty-pop,.cdn-n{animation:none}.flip-in,.rv-txt{transition:none}}
+.date .crn{position:absolute;top:4px;right:4px;color:var(--z-gold);line-height:0}.date .crn svg{width:13px;height:13px}
+.date.sel .crn{color:#fff}
+.legend-note{flex-wrap:wrap;gap:4px 14px}.legend-note>span{display:inline-flex;align-items:center;gap:6px}
+.crn-l{color:var(--z-gold);line-height:0}.crn-l svg{width:13px;height:13px}
+.ev-bar{display:flex;gap:12px;align-items:flex-start;margin:4px 0 12px;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(242,193,75,.16),rgba(230,151,246,.1));border:1px solid rgba(242,193,75,.45);animation:dropin .35s ease-out}
+.ev-ic{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--z-gold);color:#1b1b1c}
+.ev-bar b{display:block;font-size:14px;line-height:1.4}.ev-bar span{display:block;font-size:13px;color:var(--muted);line-height:1.45;margin-top:2px}
+.badge.ev{background:rgba(242,193,75,.2);color:var(--z-gold)}
+.lbl-any{font-weight:400;color:var(--faint);font-size:12.5px}
+.mode-o{position:relative}
+.mode-o.mu{padding:26px 16px 22px;border:1.5px solid var(--gold-hi);background:radial-gradient(120% 90% at 0% 0%,rgba(95,92,250,.45),transparent 60%),linear-gradient(135deg,rgba(95,92,250,.28),rgba(230,151,246,.18));box-shadow:0 10px 30px rgba(95,92,250,.35);animation:mubounce 1.8s ease-in-out infinite;margin-top:8px}
+.mode-o.mu .mo-ic{width:52px;height:52px;background:linear-gradient(180deg,#ffd86b,var(--z-gold));color:#1b1b1c}.mode-o.mu .mo-ic svg{width:26px;height:26px}
+.mode-o.mu{grid-template-columns:52px 1fr}
+.mode-o.mu .mo-t{font:600 21px var(--display)}.mode-o.mu .mo-n{color:var(--text)}
+.mu-badge{position:absolute;top:-11px;left:14px;display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--gold-hi);color:var(--gold-ink)}
+.mu-badge svg{width:12px;height:12px}
+@keyframes mubounce{0%,100%{transform:translateY(0)}45%{transform:translateY(-6px)}60%{transform:translateY(0)}72%{transform:translateY(-2px)}}
+.gl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.gl-skip{border:0;background:none;color:var(--muted);font-size:13px;padding:6px 2px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.gl-card{position:relative;min-height:360px;border-radius:22px;padding:30px 22px 26px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(120% 70% at 50% 18%,rgba(95,92,250,.45),transparent 65%),linear-gradient(160deg,#2c2c36,#17171b);border:1px solid rgba(230,151,246,.45);box-shadow:0 16px 40px rgba(0,0,0,.45);animation:glin .4s cubic-bezier(.2,.8,.3,1);touch-action:pan-y}
+.gl-card.back{animation-name:glback}
+@keyframes glin{from{transform:translateX(40px);opacity:0}}
+@keyframes glback{from{transform:translateX(-40px);opacity:0}}
+.gl-n{position:absolute;top:14px;left:16px;font:600 12px var(--display);letter-spacing:.08em;color:var(--gold-hi)}
+.gl-ic{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:var(--primary-grad);color:#fff;box-shadow:0 10px 26px rgba(95,92,250,.5);margin-bottom:20px}
+.gl-ic svg{width:38px;height:38px}
+.gl-card h2{margin:0 0 10px;font-size:22px;font-weight:600;line-height:1.35;text-wrap:balance}
+.gl-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.6;max-width:30ch;text-wrap:pretty}
+.gl-card .gl-x{margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,197,110,.1);border:1px solid rgba(255,197,110,.35);color:var(--text);font-size:13.5px;text-align:left;max-width:none}
+.gl-card.end .lg-mark svg{height:96px;margin:0 auto 18px}
+.gl-dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+.gl-dots i{width:7px;height:7px;border-radius:50%;background:var(--line-2);transition:all .25s}
+.gl-dots i.on{width:22px;border-radius:4px;background:var(--gold-hi)}
+.btn.grow{flex:1}
+.pa-pop{width:100%;max-width:380px;max-height:94%;overflow:auto;background:radial-gradient(110% 50% at 50% 0%,rgba(95,92,250,.35),transparent 70%),var(--surface);border-radius:24px;padding:24px 16px 16px;border:1px solid rgba(230,151,246,.45);box-shadow:0 20px 60px rgba(0,0,0,.6);animation:pop .55s cubic-bezier(.2,1.6,.4,1)}
+.pa-hd{text-align:center}
+.pa-ic{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--primary-grad);color:#fff}.pa-ic svg{width:22px;height:22px}
+.pa-hd h2{margin:10px 0 2px;font-size:21px;font-weight:600}
+.pa-hd p{margin:0;font-size:14px;color:var(--muted)}.pa-hd p b{color:var(--gold-hi);font-weight:600}
+.pa-v{margin:16px 0 14px;border-radius:14px;padding:11px 13px;display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5}
+.pa-v.no{background:rgba(255,145,145,.1);border:1px solid rgba(255,145,145,.35)}
+.pa-v.ok{background:rgba(127,220,174,.1);border:1px solid rgba(127,220,174,.4)}
+.pa-vi{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#1b1b1c;margin-top:1px}
+.pa-v.no .pa-vi{background:var(--danger)}.pa-v.ok .pa-vi{background:var(--ok)}
+.pa-v b{font-weight:600}.pa-v em{font-style:normal;color:var(--danger);font-weight:600}
+.pa-list{display:grid;gap:9px}
+.pa-cp{display:flex;border-radius:12px;background:var(--surface-2);position:relative;border:1px solid transparent}
+.pa-cp::before,.pa-cp::after{content:'';position:absolute;left:78px;width:14px;height:14px;border-radius:50%;background:var(--surface)}
+.pa-cp::before{top:-8px}.pa-cp::after{bottom:-8px}
+.pa-l{flex:0 0 85px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 4px;border-radius:12px 0 0 12px;border-right:2px dashed var(--surface);background:#3a3a46;color:var(--muted)}
+.pa-l small{font-size:11px;line-height:1.2}.pa-l b{font:600 19px var(--display);color:var(--text);line-height:1.2}
+.pa-r{flex:1;min-width:0;padding:9px 11px}
+.pa-t{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.pa-t code{font:600 13px ui-monospace,Menlo,monospace;letter-spacing:.04em}
+.pa-s{font-size:12.5px;color:var(--muted);line-height:1.4;margin-top:2px}
+.pa-chip{font-size:11px;font-weight:600;border-radius:999px;padding:1px 8px;line-height:1.6;display:inline-flex;align-items:center;gap:3px}
+.pa-chip svg{width:11px;height:11px}
+.pa-chip.best{background:var(--gold-hi);color:var(--gold-ink)}
+.pa-chip.you{border:1px solid var(--line-2);color:var(--text)}
+.pa-cp.best{border-color:var(--gold-hi);box-shadow:0 0 0 3px rgba(230,151,246,.14)}
+.pa-cp.best .pa-l{background:var(--primary-grad);color:rgba(255,255,255,.85)}.pa-cp.best .pa-l b{color:#fff}
+.pa-cp.best code{color:var(--gold-hi)}
+.mt16{margin-top:16px}
+.pa-foot{text-align:center;font-size:12px;color:var(--faint);margin:8px 0 0}
+.crown-win{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 12px;border-radius:999px;background:rgba(242,193,75,.16);color:var(--z-gold);font-weight:600;font-size:13.5px}
+.crown-win svg{width:16px;height:16px}
+.goals{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:10px}
+.goals li{display:flex;gap:12px;align-items:center}
+.goals .gi{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--surface-2);color:var(--gold-hi)}
+.goals .gt{flex:1;min-width:0;display:flex;flex-direction:column}
+.goals .gt b{font-size:14px;font-weight:600;line-height:1.35}.goals .gt small{font-size:12px;color:var(--muted);line-height:1.4}
+.goals .bx{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center}
+.goals li.ok .bx{background:var(--ok);color:#06281a}
+.goals li.no .bx{border:1.5px solid var(--danger);color:var(--danger)}
+.goals li.no .gi{color:var(--faint)}
+.rk-rep{margin:6px 0 0}
+.lb-ey svg{width:13px;height:13px;vertical-align:-2px;margin-right:4px;color:var(--z-gold)}
+@media (prefers-reduced-motion:reduce){.cd,.cp-ic,.cpn-pop,.cpn.just,.ty-pop,.cdn-n,.mode-o.mu,.gl-card,.pa-pop,.ev-bar{animation:none}.flip-in,.rv-txt{transition:none}}
 .rk{text-align:center}
 .rk-t{font-size:15px;color:var(--muted)}
 .rk-n{font:500 72px var(--display);line-height:1.05;color:var(--gold-hi);margin:2px 0}
@@ -532,7 +609,7 @@ tips_title:'ก่อนวันแสดง',tip1:'มาถึงก่อน
 book_again:'จองรอบอื่นเพิ่ม',proto_toast:'ต้นแบบ: ปุ่มนี้ยังไม่ทำงานจริง',
 g_eyebrow:'Usability test · ต้นแบบ',g_title:'ภารกิจจองตั๋ว Tiffany’s Show',g_intro:'ช่วยเราทดสอบระบบจองตั๋วแบบใหม่ เริ่มจากบอกชื่อเล่นและแผนกของคุณ',
 g_how1:'อ่านโจทย์ แล้วกดเริ่มจับเวลา',g_how2:'จองตามโจทย์จนได้ตั๋ว ระบบจับเวลาให้อัตโนมัติ',g_how3:'ตอบแบบประเมินสั้นๆ 6 ข้อ แล้วส่งผลให้ผู้จัดทดสอบ',
-g_nick:'ชื่อเล่นของคุณ',g_nick_ph:'เช่น ปอ',g_nick_hint:'ชื่อนี้จะขึ้นบนรูปผลทดสอบที่คุณส่งให้เรา',e_nick:'กรุณากรอกชื่อเล่นก่อนเริ่มเล่น',g_pick_hint:'กดปุ่ม "สุ่มภารกิจ" ให้ระบบสุ่มให้ หรือแตะชื่อภารกิจเพื่อเลือกเอง',g_spin:'สุ่มภารกิจ',fr_btn:'ทดลองจองแบบไม่มีโจทย์',fr_hint:'จองได้ตามใจ ไม่มีเช็กลิสต์ ตอนท้ายจะสรุปว่าคุณเลือกอะไรไปบ้าง',fr_or:'หรือเล่นแบบมีภารกิจ',mF_t:'จองแบบไม่มีโจทย์',mF_s:'ผู้ทดสอบจองตั๋วได้ตามใจ ไม่มีโจทย์ ผลด้านล่างคือสิ่งที่ผู้ทดสอบเลือกเอง',fr_tag:'ไม่มีโจทย์',fr_done_bar:'จองเสร็จใน {t}',r_type:'รูปแบบการทดสอบ',sm_title:'สรุปสิ่งที่เลือก',sm_show:'วันและรอบ',sm_seats:'ที่นั่ง',sm_food:'อาหารและเครื่องดื่ม',sm_promo:'โปรโมชั่น',sm_pay:'ชำระเงิน',sm_nat:'สัญชาติ',sm_none:'ไม่ได้สั่ง',sm_promo_none:'ไม่ได้ใช้โค้ด',sm_promo_ok:'{c} · ลด ฿{a}',sm_promo_no:'{c} · ใช้ไม่ได้กับการจองนี้',sm_promo_fail:'ใส่โค้ดไม่ผ่าน {n} ครั้ง',sm_status:'สถานะ',sm_not_booked:'ไม่ได้จองจนสำเร็จ',sm_time:'เวลาที่ใช้',g_spinning:'กำลังสุ่มภารกิจ…',g_go:'เริ่มภารกิจ',g_done_tag:'เล่นแล้ว',r_mission:'ภารกิจที่ได้รับ',r_via_spin:'ได้จากการสุ่ม',r_via_self:'เลือกเอง',g_pick:'ภารกิจทั้ง 5 แบบ',g_random:'สุ่มให้',g_m:'ภารกิจ {n}',g_next:'ต่อไป',cd_t:'การจองตั๋วสมมุติจะเริ่มขึ้นใน',cd_go:'START!',ty_h:'ขอบคุณที่ช่วยกันทดสอบระบบการจอง',ty_msg:'เพื่อนำไปพัฒนารูปแบบและประสบการณ์<br>การจองตั๋วที่ดีที่สุด<br>ให้กับลูกค้าของเราทุกคน',rk_title:'คุณจองได้เร็วเป็นลำดับที่',rk_of:'จาก {n} คนที่เล่น{m}',rk_none:'รอบนี้ยังไม่ติดอันดับ',rk_wait:'กำลังโหลดอันดับ…',ch_dept:'จำนวนผู้เข้าเล่นแต่ละแผนก',dps_perf:'การแสดง',dps_prod:'เทคนิค',dps_box:'ขายตั๋ว',dps_svc:'บริการ',dps_mkt:'การตลาด',dps_fin:'บัญชี',dps_hr:'HR',dps_it:'ไอที',ch_title:'เลือกวิธีเล่น',ch_m:'เล่นแบบมีภารกิจ',ch_m_note:'ได้รับการจัดอันดับ',ch_f:'เล่นแบบไม่มีภารกิจ',ch_f_note:'ทดลองระบบจองทั่วไป ไม่มีภารกิจ และไม่ติดอันดับ',dk_title:'เลือกการ์ด 1 ใบ',dk_sub:'การ์ดแต่ละใบคือลูกค้า 1 แบบ แตะการ์ดเพื่อเปิดดูว่าคุณจะได้เป็นใคร',dk_card:'การ์ดใบที่ {n}',rv_you:'คุณคือ…',r_via_card:'ได้จากการเปิดการ์ด',ch_A_n:'คุณแม่สายแพลน',ch_A_d:'คุณแม่วัย 38 ที่วางแผนทริปครอบครัวล่วงหน้าทุกอย่าง อบอุ่น รอบคอบ และไม่ยอมพลาดของแถมจากโปรโมชั่น',ch_B_n:'หนุ่มโรแมนติก',ch_B_d:'หนุ่มวัย 32 กำลังเตรียมเซอร์ไพรส์วันครบรอบให้แฟน ตั้งใจทุกรายละเอียด และยอมจ่ายเพื่อคืนสำคัญ',ch_C_n:'ไกด์มือโปร',ch_C_d:'ไกด์สาววัย 29 พูดได้หลายภาษา คล่องแคล่ว คุมงบเก่ง ดูแลลูกทัวร์ได้ทั้งกรุ๊ป',ch_D_n:'เจ้าสาวฮันนีมูน',ch_D_d:'เจ้าสาวป้ายแดงจากอินเดีย มาฮันนีมูนที่พัทยา ชอบความหรูแบบคุ้มค่า และจองล่วงหน้าเพื่อเอาส่วนลด',ch_E_n:'หัวหน้าแก๊ง',ch_E_d:'หนุ่มเกาหลีวัย 24 คนจองให้เพื่อนทั้งแก๊ง สายสนุก อยากให้ทุกคนนั่งด้วยกัน และหาโปรที่คุ้มที่สุด',cp_title:'เก็บโค้ดส่วนลดก่อนจอง',cp_sub:'กด "เก็บ" โค้ดที่เหมาะกับคุณ แล้วกดใช้ได้ตอนชำระเงิน',cp_get:'เก็บ',cp_got:'เก็บแล้ว',cp_go:'เริ่มจองเลย',cp_note:'เวลาเริ่มนับเมื่อกดปุ่มนี้',wl_title:'โค้ดที่คุณเก็บไว้ แตะเพื่อใช้',sm_cp:'โค้ดที่เก็บไว้',sm_cp_none:'ไม่ได้เก็บโค้ด',cpb_EARLY15:'15%',cps_EARLY15:'ลดค่าบัตร',cpb_SAT1630:'ฟรี',cps_SAT1630:'เวลคัมดริงก์',cpb_GROUP4:'10%',cps_GROUP4:'ลดทั้งบิล',cpb_DINE20:'20%',cps_DINE20:'ลดบุฟเฟต์',cpb_MEZZ990:'฿990',cps_MEZZ990:'ต่อที่นั่ง',g_dept:'แผนก',g_dept_ph:'เลือกแผนก',g_dept_hint:'ใช้นับว่าแต่ละแผนกเข้ามาทดสอบกี่คน',e_dept:'กรุณาเลือกแผนกก่อนเริ่มเล่น',dp_perf:'การแสดง',dp_prod:'งานสร้างโชว์และเทคนิค',dp_box:'ขายตั๋วและรับจอง',dp_svc:'บริการลูกค้าและ F&B',dp_mkt:'การตลาดและ PR',dp_fin:'บัญชีและการเงิน',dp_hr:'HR และธุรการ',dp_it:'ไอที',lb_open:'ดูอันดับและสถิติ',lb_title:'อันดับและสถิติ',lb_live:'อัปเดตสด',lb_people:'ผู้ทดสอบ',lb_runs:'รอบที่เล่น',lb_depts:'แผนกที่เข้าร่วม',lb_board:'อันดับ',lb_rule:'เรียงตามข้อที่ทำได้ก่อน แล้วดูเวลา นับรอบที่ดีที่สุดของแต่ละคน ไม่รวมโหมดไม่มีโจทย์',lb_all:'ทุกภารกิจ',lb_first:'อันดับ 1 ตอนนี้',lb_empty:'ยังไม่มีใครเล่นจบในหมวดนี้',lb_dept_t:'แต่ละแผนกเข้ามาเล่นกี่คน',lb_n_people:'{n} คน',lb_n_runs:'{n} รอบ',lb_off:'ยังไม่ได้เชื่อมต่อฐานข้อมูล',lb_err:'โหลดข้อมูลไม่ได้ ลองปิดแล้วเปิดใหม่อีกครั้ง',lb_close:'ปิด',lb_csv:'ดาวน์โหลด CSV',lb_updated:'ล่าสุด {t}',lb_mine:'คุณ',
+g_nick:'ชื่อเล่นของคุณ',g_nick_ph:'เช่น ปอ',g_nick_hint:'ชื่อนี้จะขึ้นบนรูปผลทดสอบที่คุณส่งให้เรา',e_nick:'กรุณากรอกชื่อเล่นก่อนเริ่มเล่น',g_pick_hint:'กดปุ่ม "สุ่มภารกิจ" ให้ระบบสุ่มให้ หรือแตะชื่อภารกิจเพื่อเลือกเอง',g_spin:'สุ่มภารกิจ',fr_btn:'ทดลองจองแบบไม่มีโจทย์',fr_hint:'จองได้ตามใจ ไม่มีเช็กลิสต์ ตอนท้ายจะสรุปว่าคุณเลือกอะไรไปบ้าง',fr_or:'หรือเล่นแบบมีภารกิจ',mF_t:'จองแบบไม่มีโจทย์',mF_s:'ผู้ทดสอบจองตั๋วได้ตามใจ ไม่มีโจทย์ ผลด้านล่างคือสิ่งที่ผู้ทดสอบเลือกเอง',fr_tag:'ไม่มีโจทย์',fr_done_bar:'จองเสร็จใน {t}',r_type:'รูปแบบการทดสอบ',sm_title:'สรุปสิ่งที่เลือก',sm_show:'วันและรอบ',sm_seats:'ที่นั่ง',sm_food:'อาหารและเครื่องดื่ม',sm_promo:'โปรโมชั่น',sm_pay:'ชำระเงิน',sm_nat:'สัญชาติ',sm_none:'ไม่ได้สั่ง',sm_promo_none:'ไม่ได้ใช้โค้ด',sm_promo_ok:'{c} · ลด ฿{a}',sm_promo_no:'{c} · ใช้ไม่ได้กับการจองนี้',sm_promo_fail:'ใส่โค้ดไม่ผ่าน {n} ครั้ง',sm_status:'สถานะ',sm_not_booked:'ไม่ได้จองจนสำเร็จ',sm_time:'เวลาที่ใช้',g_spinning:'กำลังสุ่มภารกิจ…',g_go:'เริ่มภารกิจ',g_done_tag:'เล่นแล้ว',r_mission:'ภารกิจที่ได้รับ',r_via_spin:'ได้จากการสุ่ม',r_via_self:'เลือกเอง',g_pick:'ภารกิจทั้ง 5 แบบ',g_random:'สุ่มให้',g_m:'ภารกิจ {n}',g_next:'ต่อไป',mu_name:'Miss Booking Universe',mu_tag:'Miss Booking Universe',mu_badge:'เกมแนะนำ',mu_note:'เพื่อนๆ ทุกคนได้โจทย์เดียวกัน ใครจองไวและถูกต้องที่สุด ได้มงไปเลย',g_dept_any:'(อะไรก็ได้ ไม่สำคัญ)',r_via_std:'โจทย์เดียวกันทุกคน',gl_ey:'สิ่งที่เราอยากรู้',gl_skip:'ข้าม',gl_go:'เข้าใจแล้ว ไปดูโจทย์',gl_1:'เข้าใจการเลือกวันและรอบ',gl_1_s:'รวมถึงกรณีที่มีอีเวนต์หรือรอบพิเศษ จองได้ตรงตามวัตถุประสงค์ของลูกค้า',gl_2:'เข้าใจการเลือกที่นั่ง และโซนต่างๆ',gl_2_s:'เลือกโซนและที่นั่งให้ครบตามจำนวนคน',gl_3:'เข้าใจการจองอาหาร และแอดออนต่างๆ',gl_3_s:'เพิ่มอาหารและเครื่องดื่มได้ครบตามที่ลูกค้าต้องการ',gl_4:'เข้าใจการใช้โค้ดส่วนลดที่คุ้มค่าที่สุด',gl_4_s:'เลือกโค้ดที่ถูกต้องและคุ้มที่สุดสำหรับลูกค้าคนนั้น',gl_5:'เข้าใจการกรอกข้อมูลผู้จอง',gl_5_s:'กรอกข้อมูลและเลือกสัญชาติได้ถูกต้อง',gl_6:'เข้าใจการชำระเงิน',gl_6_s:'รวมถึงกรณีจ่ายไม่สำเร็จ ต้องทำอย่างไรต่อ',gl_6_x:'ในการจองจริง บางครั้งการตัดเงินไม่สำเร็จ เช่น บัตรถูกปฏิเสธหรือสัญญาณขาด รอบนี้จึงให้ลองกด "จ่ายไม่สำเร็จ" ก่อน 1 ครั้ง แล้วจ่ายใหม่ให้สำเร็จ',gl_end_h:'ขอบคุณที่ร่วมกันพัฒนา',gl_end_s:'ข้อมูลทุกอย่างใส่เป็นข้อมูลสมมุติได้เลย',ev_note:'วันที่มีการประกวด Miss Tiffany\'s Universe',ev_bar_h:'คืนนี้มีการประกวด Miss Tiffany\'s Universe รอบ Preliminary',ev_bar_s:'ผู้ชมรอบ 19:30 นั่งชมการประกวดต่อได้ทันทีหลังจบโชว์',ev_badge:'+ Preliminary',mG_t:'จองโชว์ให้เจ้านายชาวญี่ปุ่น',mG_s:'คุณเป็นเลขาฯ บริษัท ต้องจองโชว์ให้เจ้านายชาวญี่ปุ่น 4 คน เจ้านายได้ข่าวว่าเร็วๆ นี้จะมีการประกวด Miss Tiffany\'s Universe รอบ Preliminary และอยากดูทั้งโชว์และการประกวดในคืนเดียว',mG_1:'จองโชว์รอบที่ได้ดูการประกวด Preliminary ต่อ',mG_2:'VIP Gold 4 ที่นั่ง ติดกันในแถวเดียว',mG_3:'บุฟเฟต์ Thai Marché 4 ที่ และสปาร์กลิงไวน์ 2 แก้ว',mG_4:'เก็บโค้ดก่อนจอง แล้วใช้โค้ดที่ประหยัดที่สุด',mG_5:'สัญชาติญี่ปุ่น (Japanese)',mG_6:'จ่ายด้วยบัตรเครดิต ครั้งแรกให้กด "จำลอง: จ่ายไม่สำเร็จ" แล้วจ่ายใหม่ให้สำเร็จ',ch_G_n:'เลขาฯ มือโปร',ch_G_d:'เลขาฯ วัย 28 ของบริษัทญี่ปุ่นในพัทยา ละเอียด คล่องแคล่ว ได้รับมอบหมายให้จองโชว์ให้เจ้านาย 4 คน ทุกอย่างต้องเป๊ะและคุ้มที่สุด',pa_h:'คุ้มสุดมีเพียงหนึ่งเดียว',pa_s:'การจองนี้ใช้ได้ {n} โค้ด แต่<b>ลดได้ไม่เท่ากัน</b>',pa_s1:'การจองนี้ใช้ได้ 1 โค้ด',pa_save:'ลดได้',pa_best:'คุ้มที่สุด',pa_you:'เพื่อนๆ ใช้',pa_ok:'<b>เก่งมาก!</b> เพื่อนๆ เลือกโค้ดที่คุ้มที่สุด ประหยัดไป ฿{a}',pa_diff:'เพื่อนๆ ใช้ <b>{c}</b> ถ้าใช้ <b>{b}</b> จะประหยัดเพิ่มอีก <em>฿{a}</em>',pa_none:'เพื่อนๆ ยังไม่ได้ใช้โค้ด พลาดส่วนลดไป <em>฿{a}</em>',pa_bad:'โค้ด <b>{c}</b> ใช้กับการจองนี้ไม่ได้ พลาดส่วนลดไป <em>฿{a}</em>',pa_go:'ดูผลของฉัน',pa_foot:'ส่วนลดคำนวณจากรายการที่เพื่อนๆ จองจริง',cr_EARLY15:'ลด 15% ค่าบัตร เมื่อจองก่อน 7 วันขึ้นไป',cr_SAT1630:'เวลคัมดริงก์ฟรี รอบพิเศษเสาร์ 16:30',cr_GROUP4:'ลด 10% ทั้งบิล เมื่อมา 4 คนขึ้นไป',cr_DINE20:'ลด 20% ค่าบุฟเฟต์ Thai Marché',cr_MEZZ990:'Mezzanine ที่นั่งละ ฿990 วันจันทร์ถึงพฤหัสฯ',r_goals:'ผลตามวัตถุประสงค์',r_crown:'มงลง! ทำถูกครบทุกข้อ',rk_title_first:'อันดับจากรอบแรกของคุณ',rk_repeat:'รอบนี้เป็นการเล่นซ้ำ จึงไม่นับเข้าอันดับ',lb_rule_mu:'นับเฉพาะรอบแรกของแต่ละคน เรียงตามข้อที่ทำถูกก่อน แล้วดูเวลา',cd_t:'การจองตั๋วสมมุติจะเริ่มขึ้นใน',cd_go:'START!',ty_h:'ขอบคุณที่ช่วยกันทดสอบระบบการจอง',ty_msg:'เพื่อนำไปพัฒนารูปแบบและประสบการณ์<br>การจองตั๋วที่ดีที่สุด<br>ให้กับลูกค้าของเราทุกคน',rk_title:'คุณจองได้เร็วเป็นลำดับที่',rk_of:'จาก {n} คนที่เล่น {m}',rk_none:'รอบนี้ยังไม่ติดอันดับ',rk_wait:'กำลังโหลดอันดับ…',ch_dept:'จำนวนผู้เข้าเล่นแต่ละแผนก',dps_perf:'การแสดง',dps_prod:'เทคนิค',dps_box:'ขายตั๋ว',dps_svc:'บริการ',dps_mkt:'การตลาด',dps_fin:'บัญชี',dps_hr:'HR',dps_it:'ไอที',ch_title:'เลือกวิธีเล่น',ch_m:'เล่นแบบมีภารกิจ',ch_m_note:'ได้รับการจัดอันดับ',ch_f:'เล่นแบบไม่มีภารกิจ',ch_f_note:'ทดลองระบบจองทั่วไป ไม่มีภารกิจ และไม่ติดอันดับ',dk_title:'เลือกการ์ด 1 ใบ',dk_sub:'การ์ดแต่ละใบคือลูกค้า 1 แบบ แตะการ์ดเพื่อเปิดดูว่าคุณจะได้เป็นใคร',dk_card:'การ์ดใบที่ {n}',rv_you:'คุณคือ…',r_via_card:'ได้จากการเปิดการ์ด',ch_A_n:'คุณแม่สายแพลน',ch_A_d:'คุณแม่วัย 38 ที่วางแผนทริปครอบครัวล่วงหน้าทุกอย่าง อบอุ่น รอบคอบ และไม่ยอมพลาดของแถมจากโปรโมชั่น',ch_B_n:'หนุ่มโรแมนติก',ch_B_d:'หนุ่มวัย 32 กำลังเตรียมเซอร์ไพรส์วันครบรอบให้แฟน ตั้งใจทุกรายละเอียด และยอมจ่ายเพื่อคืนสำคัญ',ch_C_n:'ไกด์มือโปร',ch_C_d:'ไกด์สาววัย 29 พูดได้หลายภาษา คล่องแคล่ว คุมงบเก่ง ดูแลลูกทัวร์ได้ทั้งกรุ๊ป',ch_D_n:'เจ้าสาวฮันนีมูน',ch_D_d:'เจ้าสาวป้ายแดงจากอินเดีย มาฮันนีมูนที่พัทยา ชอบความหรูแบบคุ้มค่า และจองล่วงหน้าเพื่อเอาส่วนลด',ch_E_n:'หัวหน้าแก๊ง',ch_E_d:'หนุ่มเกาหลีวัย 24 คนจองให้เพื่อนทั้งแก๊ง สายสนุก อยากให้ทุกคนนั่งด้วยกัน และหาโปรที่คุ้มที่สุด',cp_title:'เก็บโค้ดส่วนลดก่อนจอง',cp_sub:'กด "เก็บ" โค้ดที่เหมาะกับคุณ แล้วกดใช้ได้ตอนชำระเงิน',cp_get:'เก็บ',cp_got:'เก็บแล้ว',cp_go:'เริ่มจองเลย',cp_note:'เวลาเริ่มนับเมื่อกดปุ่มนี้',wl_title:'โค้ดที่คุณเก็บไว้ แตะเพื่อใช้',sm_cp:'โค้ดที่เก็บไว้',sm_cp_none:'ไม่ได้เก็บโค้ด',cpb_EARLY15:'15%',cps_EARLY15:'ลดค่าบัตร',cpb_SAT1630:'ฟรี',cps_SAT1630:'เวลคัมดริงก์',cpb_GROUP4:'10%',cps_GROUP4:'ลดทั้งบิล',cpb_DINE20:'20%',cps_DINE20:'ลดบุฟเฟต์',cpb_MEZZ990:'฿990',cps_MEZZ990:'ต่อที่นั่ง',g_dept:'แผนก',g_dept_ph:'เลือกแผนก',g_dept_hint:'ใช้นับว่าแต่ละแผนกเข้ามาทดสอบกี่คน',e_dept:'กรุณาเลือกแผนกก่อนเริ่มเล่น',dp_perf:'การแสดง',dp_prod:'งานสร้างโชว์และเทคนิค',dp_box:'ขายตั๋วและรับจอง',dp_svc:'บริการลูกค้าและ F&B',dp_mkt:'การตลาดและ PR',dp_fin:'บัญชีและการเงิน',dp_hr:'HR และธุรการ',dp_it:'ไอที',lb_open:'ดูอันดับและสถิติ',lb_title:'อันดับและสถิติ',lb_live:'อัปเดตสด',lb_people:'ผู้ทดสอบ',lb_runs:'รอบที่เล่น',lb_depts:'แผนกที่เข้าร่วม',lb_board:'อันดับ',lb_rule:'เรียงตามข้อที่ทำได้ก่อน แล้วดูเวลา นับรอบที่ดีที่สุดของแต่ละคน ไม่รวมโหมดไม่มีโจทย์',lb_all:'ทุกภารกิจ',lb_first:'อันดับ 1 ตอนนี้',lb_empty:'ยังไม่มีใครเล่นจบในหมวดนี้',lb_dept_t:'แต่ละแผนกเข้ามาเล่นกี่คน',lb_n_people:'{n} คน',lb_n_runs:'{n} รอบ',lb_off:'ยังไม่ได้เชื่อมต่อฐานข้อมูล',lb_err:'โหลดข้อมูลไม่ได้ ลองปิดแล้วเปิดใหม่อีกครั้ง',lb_close:'ปิด',lb_csv:'ดาวน์โหลด CSV',lb_updated:'ล่าสุด {t}',lb_mine:'คุณ',
 g_get:'เริ่มเล่น',g_free:'ลองระบบจองแบบอิสระ ไม่จับเวลา',g_dash:'ดูผลการทดสอบ',g_note:'นี่คือระบบต้นแบบ ไม่มีการจองหรือเก็บเงินจริง ข้อมูลในฟอร์มใส่เป็นข้อมูลสมมุติได้ และระบบไม่เก็บไว้',
 g_todo:'สิ่งที่คุณต้องทำ',g_timer_note:'ขั้นต่อไปคุณจะได้เก็บโค้ดส่วนลด เวลาเริ่มนับเมื่อกด "เริ่มจองเลย" และหยุดเมื่อจองสำเร็จ ระหว่างจองกดปุ่ม "โจทย์" ด้านบนเพื่ออ่านอีกครั้งได้ตลอด',g_start:'เริ่มจับเวลา',
 g_view:'โจทย์',g_giveup:'ทำต่อไม่ได้ ข้ามไปทำแบบประเมิน',g_done_bar:'ภารกิจเสร็จใน {t}',g_to_survey:'ทำแบบประเมิน',
@@ -600,7 +677,7 @@ tips_title:'Before the show',tip1:'Arrive at least 30 minutes before showtime',t
 book_again:'Book another show',proto_toast:'Prototype: this button does nothing yet',
 g_eyebrow:'Usability test · Prototype',g_title:'The Tiffany’s Show booking challenge',g_intro:'Help us test a new ticket booking flow. Start by telling us your nickname and department.',
 g_how1:'Read the mission and start the timer',g_how2:'Book until you get the ticket. The timer runs on its own',g_how3:'Answer 6 short questions and send your result',
-g_nick:'Your nickname',g_nick_ph:'e.g. Po',g_nick_hint:'This name appears on the result image you send us.',e_nick:'Enter your nickname to start',g_pick_hint:'Tap "Draw a mission" to get one at random, or tap a mission to choose it yourself.',g_spin:'Draw a mission',fr_btn:'Try booking with no mission',fr_hint:'Book whatever you like. No checklist. At the end we sum up what you chose.',fr_or:'Or play with a mission',mF_t:'Booking with no mission',mF_s:'The tester booked freely with no mission. Below is what they chose.',fr_tag:'No mission',fr_done_bar:'Booked in {t}',r_type:'Test type',sm_title:'What they chose',sm_show:'Date and show',sm_seats:'Seats',sm_food:'Food and drinks',sm_promo:'Promotion',sm_pay:'Payment',sm_nat:'Nationality',sm_none:'None',sm_promo_none:'No code used',sm_promo_ok:'{c} · saved ฿{a}',sm_promo_no:'{c} · not valid for this booking',sm_promo_fail:'{n} failed code attempts',sm_status:'Status',sm_not_booked:'Did not finish booking',sm_time:'Time taken',g_spinning:'Drawing a mission…',g_go:'Start mission',g_done_tag:'played',r_mission:'Mission',r_via_spin:'Drawn at random',r_via_self:'Chosen by tester',g_pick:'The 5 missions',g_random:'Random',g_m:'Mission {n}',g_next:'Next',cd_t:'Your practice booking starts in',cd_go:'START!',ty_h:'Thank you for helping us test the booking system',ty_msg:'What we learn goes into building the best ticket booking experience for every one of our guests.',rk_title:'Your booking speed ranks',rk_of:'out of {n} people who played {m}',rk_none:'This run is not ranked yet',rk_wait:'Loading the ranking…',ch_dept:'Players per department',dps_perf:'Show',dps_prod:'Tech',dps_box:'Tickets',dps_svc:'Service',dps_mkt:'Marketing',dps_fin:'Finance',dps_hr:'HR',dps_it:'IT',ch_title:'How do you want to play?',ch_m:'Play with a mission',ch_m_note:'You get ranked',ch_f:'Play with no mission',ch_f_note:'Try the booking flow freely. No mission, and no ranking',dk_title:'Pick a card',dk_sub:'Each card is one kind of guest. Tap a card to find out who you are.',dk_card:'Card {n}',rv_you:'You are…',r_via_card:'Drawn from the deck',ch_A_n:'The Planner Mum',ch_A_d:'A 38-year-old mum who plans every family trip ahead. Warm, careful, and never misses a free extra.',ch_B_n:'The Romantic',ch_B_d:'A 32-year-old planning an anniversary surprise. Every detail matters, and the big night is worth paying for.',ch_C_n:'The Pro Guide',ch_C_d:'A 29-year-old guide who speaks several languages. Quick, good with a budget, and keeps the whole group together.',ch_D_n:'The Honeymooner',ch_D_d:'A newlywed from India on honeymoon in Pattaya. Loves luxury at a good price, and books early for the discount.',ch_E_n:'The Squad Leader',ch_E_d:'A 24-year-old from Korea booking for the whole crew. Fun-loving, wants everyone seated together, and hunts for the best group deal.',cp_title:'Collect your discount codes',cp_sub:'Tap "Collect" on the codes that suit you, then use one at payment.',cp_get:'Collect',cp_got:'Collected',cp_go:'Start booking',cp_note:'The timer starts when you tap this button',wl_title:'Your collected codes. Tap one to use it',sm_cp:'Codes collected',sm_cp_none:'None collected',cpb_EARLY15:'15%',cps_EARLY15:'off tickets',cpb_SAT1630:'FREE',cps_SAT1630:'welcome drink',cpb_GROUP4:'10%',cps_GROUP4:'off the bill',cpb_DINE20:'20%',cps_DINE20:'off buffet',cpb_MEZZ990:'฿990',cps_MEZZ990:'per seat',g_dept:'Department',g_dept_ph:'Choose your department',g_dept_hint:'We use this to count testers per department.',e_dept:'Choose your department to start',dp_perf:'Performance',dp_prod:'Show production & tech',dp_box:'Ticketing & reservations',dp_svc:'Guest service & F&B',dp_mkt:'Marketing & PR',dp_fin:'Accounting & finance',dp_hr:'HR & admin',dp_it:'IT',lb_open:'Leaderboard and stats',lb_title:'Leaderboard and stats',lb_live:'Live',lb_people:'Testers',lb_runs:'Runs played',lb_depts:'Departments taking part',lb_board:'Leaderboard',lb_rule:'Ranked by checks completed, then time. Each person’s best run counts. No-mission runs are not ranked.',lb_all:'All missions',lb_first:'Number 1 right now',lb_empty:'Nobody has finished this one yet',lb_dept_t:'Testers per department',lb_n_people:'{n} people',lb_n_runs:'{n} runs',lb_off:'The database is not connected yet',lb_err:'Could not load the data. Close this and try again.',lb_close:'Close',lb_csv:'Download CSV',lb_updated:'Updated {t}',lb_mine:'you',
+g_nick:'Your nickname',g_nick_ph:'e.g. Po',g_nick_hint:'This name appears on the result image you send us.',e_nick:'Enter your nickname to start',g_pick_hint:'Tap "Draw a mission" to get one at random, or tap a mission to choose it yourself.',g_spin:'Draw a mission',fr_btn:'Try booking with no mission',fr_hint:'Book whatever you like. No checklist. At the end we sum up what you chose.',fr_or:'Or play with a mission',mF_t:'Booking with no mission',mF_s:'The tester booked freely with no mission. Below is what they chose.',fr_tag:'No mission',fr_done_bar:'Booked in {t}',r_type:'Test type',sm_title:'What they chose',sm_show:'Date and show',sm_seats:'Seats',sm_food:'Food and drinks',sm_promo:'Promotion',sm_pay:'Payment',sm_nat:'Nationality',sm_none:'None',sm_promo_none:'No code used',sm_promo_ok:'{c} · saved ฿{a}',sm_promo_no:'{c} · not valid for this booking',sm_promo_fail:'{n} failed code attempts',sm_status:'Status',sm_not_booked:'Did not finish booking',sm_time:'Time taken',g_spinning:'Drawing a mission…',g_go:'Start mission',g_done_tag:'played',r_mission:'Mission',r_via_spin:'Drawn at random',r_via_self:'Chosen by tester',g_pick:'The 5 missions',g_random:'Random',g_m:'Mission {n}',g_next:'Next',mu_name:'Miss Booking Universe',mu_tag:'Miss Booking Universe',mu_badge:'Recommended',mu_note:'Everyone gets the same task. Book the fastest and most accurately to win the crown',g_dept_any:'(any is fine)',r_via_std:'Same task for everyone',gl_ey:'What we want to learn',gl_skip:'Skip',gl_go:'Got it, show me the task',gl_1:'Choosing a date and show',gl_1_s:'Including events and special shows, so the booking fits what the guest wants',gl_2:'Choosing seats and zones',gl_2_s:'Pick the right zone and enough seats for everyone',gl_3:'Adding food and extras',gl_3_s:'Add every food and drink item the guest wants',gl_4:'Using the best discount code',gl_4_s:'Pick the code that is valid and saves the guest the most',gl_5:'Filling in booker details',gl_5_s:'Enter the details and choose the right nationality',gl_6:'Paying',gl_6_s:'Including what to do when a payment fails',gl_6_x:'In real bookings a payment sometimes fails, for example a declined card or a dropped connection. So this time, tap "payment fails" once first, then pay again until it goes through.',gl_end_h:'Thanks for helping us improve',gl_end_s:'Everything you enter can be made up',ev_note:'Miss Tiffany\'s Universe night',ev_bar_h:'Miss Tiffany\'s Universe Preliminary tonight',ev_bar_s:'Guests at the 19:30 show stay on to watch the pageant right after the show',ev_badge:'+ Preliminary',mG_t:'Booking for the Japanese bosses',mG_s:'You are a company secretary booking the show for 4 Japanese executives. They heard the Miss Tiffany\'s Universe Preliminary is coming up and want to see both the show and the pageant in one night.',mG_1:'Book the show that continues into the Preliminary',mG_2:'4 seats in VIP Gold, side by side in one row',mG_3:'4 Thai Marché buffets and 2 glasses of sparkling wine',mG_4:'Collect codes first, then use the one that saves the most',mG_5:'Nationality: Japanese',mG_6:'Pay by credit card. First tap "Simulate: payment fails", then pay again until it works',ch_G_n:'The Pro Secretary',ch_G_d:'A 28-year-old secretary at a Japanese company in Pattaya. Precise and quick, she has to book the show for 4 executives, and it has to be right and the best deal.',pa_h:'Only one is the best deal',pa_s:'{n} codes work for this booking, but <b>they save different amounts</b>',pa_s1:'1 code works for this booking',pa_save:'Saves',pa_best:'Best deal',pa_you:'You used',pa_ok:'<b>Well done!</b> You picked the best code and saved ฿{a}',pa_diff:'You used <b>{c}</b>. With <b>{b}</b> you would have saved another <em>฿{a}</em>',pa_none:'You did not use a code and missed <em>฿{a}</em> off',pa_bad:'<b>{c}</b> does not work for this booking. You missed <em>฿{a}</em> off',pa_go:'See my result',pa_foot:'Discounts are worked out from what you actually booked',cr_EARLY15:'15% off tickets when booked 7+ days ahead',cr_SAT1630:'Free welcome drink, Saturday 16:30 special',cr_GROUP4:'10% off the bill for 4 or more people',cr_DINE20:'20% off the Thai Marché buffet',cr_MEZZ990:'Mezzanine at ฿990 a seat, Monday to Thursday',r_goals:'Results by goal',r_crown:'Crowned! Every item correct',rk_title_first:'Your rank from your first try',rk_repeat:'This was a repeat, so it does not count toward the ranking',lb_rule_mu:'Only each person\'s first try counts. Ranked by items correct, then time.',cd_t:'Your practice booking starts in',cd_go:'START!',ty_h:'Thank you for helping us test the booking system',ty_msg:'What we learn goes into building the best ticket booking experience for every one of our guests.',rk_title:'Your booking speed ranks',rk_of:'out of {n} people who played {m}',rk_none:'This run is not ranked yet',rk_wait:'Loading the ranking…',ch_dept:'Players per department',dps_perf:'Show',dps_prod:'Tech',dps_box:'Tickets',dps_svc:'Service',dps_mkt:'Marketing',dps_fin:'Finance',dps_hr:'HR',dps_it:'IT',ch_title:'How do you want to play?',ch_m:'Play with a mission',ch_m_note:'You get ranked',ch_f:'Play with no mission',ch_f_note:'Try the booking flow freely. No mission, and no ranking',dk_title:'Pick a card',dk_sub:'Each card is one kind of guest. Tap a card to find out who you are.',dk_card:'Card {n}',rv_you:'You are…',r_via_card:'Drawn from the deck',ch_A_n:'The Planner Mum',ch_A_d:'A 38-year-old mum who plans every family trip ahead. Warm, careful, and never misses a free extra.',ch_B_n:'The Romantic',ch_B_d:'A 32-year-old planning an anniversary surprise. Every detail matters, and the big night is worth paying for.',ch_C_n:'The Pro Guide',ch_C_d:'A 29-year-old guide who speaks several languages. Quick, good with a budget, and keeps the whole group together.',ch_D_n:'The Honeymooner',ch_D_d:'A newlywed from India on honeymoon in Pattaya. Loves luxury at a good price, and books early for the discount.',ch_E_n:'The Squad Leader',ch_E_d:'A 24-year-old from Korea booking for the whole crew. Fun-loving, wants everyone seated together, and hunts for the best group deal.',cp_title:'Collect your discount codes',cp_sub:'Tap "Collect" on the codes that suit you, then use one at payment.',cp_get:'Collect',cp_got:'Collected',cp_go:'Start booking',cp_note:'The timer starts when you tap this button',wl_title:'Your collected codes. Tap one to use it',sm_cp:'Codes collected',sm_cp_none:'None collected',cpb_EARLY15:'15%',cps_EARLY15:'off tickets',cpb_SAT1630:'FREE',cps_SAT1630:'welcome drink',cpb_GROUP4:'10%',cps_GROUP4:'off the bill',cpb_DINE20:'20%',cps_DINE20:'off buffet',cpb_MEZZ990:'฿990',cps_MEZZ990:'per seat',g_dept:'Department',g_dept_ph:'Choose your department',g_dept_hint:'We use this to count testers per department.',e_dept:'Choose your department to start',dp_perf:'Performance',dp_prod:'Show production & tech',dp_box:'Ticketing & reservations',dp_svc:'Guest service & F&B',dp_mkt:'Marketing & PR',dp_fin:'Accounting & finance',dp_hr:'HR & admin',dp_it:'IT',lb_open:'Leaderboard and stats',lb_title:'Leaderboard and stats',lb_live:'Live',lb_people:'Testers',lb_runs:'Runs played',lb_depts:'Departments taking part',lb_board:'Leaderboard',lb_rule:'Ranked by checks completed, then time. Each person’s best run counts. No-mission runs are not ranked.',lb_all:'All missions',lb_first:'Number 1 right now',lb_empty:'Nobody has finished this one yet',lb_dept_t:'Testers per department',lb_n_people:'{n} people',lb_n_runs:'{n} runs',lb_off:'The database is not connected yet',lb_err:'Could not load the data. Close this and try again.',lb_close:'Close',lb_csv:'Download CSV',lb_updated:'Updated {t}',lb_mine:'you',
 g_get:'Start playing',g_free:'Try the booking flow freely, no timer',g_dash:'View test results',g_note:'This is a prototype. Nothing is really booked or charged. Use made-up details in the form; they are not kept.',
 g_todo:'What you need to do',g_timer_note:'Next you can collect discount codes. The timer starts when you tap "Start booking" and stops when your booking is confirmed. Tap "Mission" at the top to read it again any time.',g_start:'Start the timer',
 g_view:'Mission',g_giveup:'I’m stuck, skip to the survey',g_done_bar:'Mission done in {t}',g_to_survey:'Answer the survey',
@@ -634,7 +711,7 @@ const TH_MON=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','ม�
 const TH_MONF=['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'],EN_MONF=['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 const svg=(p,s=18,w=2)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
-const IC={back:svg('<path d="M15 18l-6-6 6-6"/>'),clock:svg('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',15),
+const IC={crown:svg('<path d="M3 17h18l-1.6-10-4.9 4L12 4 9.5 11l-4.9-4L3 17z"/><path d="M4 20.5h16"/>'),seat:svg('<path d="M7 13V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6"/><path d="M5 10v5h14v-5"/><path d="M7 15v4M17 15v4"/>'),form:svg('<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>'),back:svg('<path d="M15 18l-6-6 6-6"/>'),clock:svg('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',15),
 wand:svg('<path d="M4 20L14 10"/><path d="M15 3v3M13.5 4.5h3M19 8v3M17.5 9.5h3M18 15v2M17 16h2"/>'),x:svg('<path d="M6 6l12 12M18 6L6 18"/>',12,2.5),
 minus:svg('<path d="M5 12h14"/>',16),plus:svg('<path d="M12 5v14M5 12h14"/>',16),check:svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>',16,2.4),
 checkSm:svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>',12,3),xSm:svg('<path d="M7 7l10 10M17 7L7 17"/>',11,3),
@@ -664,13 +741,15 @@ const NAT=[['TH','ไทย','Thai'],['CN','จีน','Chinese'],['IN','อิ�
 const TODAY=(()=>{const d=new Date();d.setHours(0,0,0,0);return d})();
 const DATES=Array.from({length:30},(_,i)=>{const d=new Date(TODAY);d.setDate(d.getDate()+i);return d});
 const ymd=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-const showsFor=i=>{const a=[{time:'18:00'},{time:'19:30'},{time:'21:00'}];if(DATES[i].getDay()===6)a.unshift({time:'16:30',special:true});return a};
+const showsFor=i=>{const a=[{time:'18:00'},{time:'19:30',prelim:i===PRELIM_IDX},{time:'21:00'}];if(DATES[i].getDay()===6)a.unshift({time:'16:30',special:true});return a};
 const keyOf=(i,tm)=>ymd(DATES[i])+'_'+tm;
 const SAT_IDX=DATES.findIndex((d,i)=>i>=1&&d.getDay()===6);
 const SOLD_IDX=DATES.findIndex((d,i)=>i>=2&&![2,6].includes(d.getDay()));
 const WKD_IDX=DATES.findIndex((d,i)=>i>=3&&d.getDay()>=1&&d.getDay()<=4&&i!==SOLD_IDX);
 const EARLY_IDX=DATES.findIndex((d,i)=>i>=8&&![SAT_IDX,SOLD_IDX,WKD_IDX].includes(i));
 const FRI_IDX=DATES.findIndex((d,i)=>i>=2&&d.getDay()===5&&![SOLD_IDX,EARLY_IDX].includes(i));
+// Miss Tiffany's Universe Preliminary follows the 19:30 show on one night, 8+ days out so EARLY15 applies.
+const PRELIM_IDX=DATES.findIndex((d,i)=>i>=8&&d.getDay()!==6&&![SOLD_IDX,WKD_IDX,EARLY_IDX,FRI_IDX].includes(i));
 
 const P=22,SW=18,SH=16,LM=34,AISLE=28;
 const L0=LM,C0=L0+7*P+AISLE,R0=C0+16*P+AISLE,CX=C0+(16*P-(P-SW))/2,MAP_W=R0+7*P-(P-SW)+LM;
@@ -693,6 +772,7 @@ showsFor(WKD_IDX).forEach(s=>{FORCE[keyOf(WKD_IDX,s.time)]=.35});
 const GUAR={[keyOf(SAT_IDX,'16:30')]:[['gold',4]],[keyOf(SOLD_IDX,'21:00')]:[['diamond',2]]};
 showsFor(WKD_IDX).forEach(s=>{GUAR[keyOf(WKD_IDX,s.time)]=[['mezz',5]]});
 GUAR[keyOf(FRI_IDX,'19:30')]=[['gold',6]];
+const PRELIM_KEY=keyOf(PRELIM_IDX,'19:30');FORCE[PRELIM_KEY]=.5;GUAR[PRELIM_KEY]=[['gold',4]];
 function hasRun(set,zone,n){
   const g={};SEATS.forEach(s=>{if(s.zone===zone)(g[s.row+s.block]??=[]).push(s)});
   return Object.values(g).some(r=>{r.sort((a,b)=>a.n-b.n);let c=0;for(const s of r){c=set.has(s.id)?0:c+1;if(c>=n)return true}return false});
@@ -705,7 +785,7 @@ function freeRun(set,zone,n){
 const takenCache=new Map();
 function taken(key){
   if(takenCache.has(key))return takenCache.get(key);
-  const r=rng(hash(key)),f=FORCE[key]??.2+r()*.45,set=new Set(),W={diamond:1.25,gold:1.1,silver:1,mezz:.7};
+  const r=rng(hash(key===PRELIM_KEY?'prelim-1930':key)),f=FORCE[key]??.2+r()*.45,set=new Set(),W={diamond:1.25,gold:1.1,silver:1,mezz:.7};
   for(const s of SEATS)if(f>=1||r()<Math.min(1,f*W[s.zone]))set.add(s.id);
   (GUAR[key]||[]).forEach(([z,n])=>{if(!hasRun(set,z,n))freeRun(set,z,n)});
   takenCache.set(key,set);return set;
@@ -747,15 +827,19 @@ const MISSIONS={
   B:{num:2,day:SOLD_IDX,checks:[['mB_1',b=>b.date===SOLD_IDX&&b.time==='21:00'],['mB_2',b=>b.seats.length===2&&inZone(b.seats,'diamond')&&adjacent(b.seats)],['mB_3',b=>(b.food.dinner||0)===2],['mB_4',b=>(b.food.bubbly||0)===2],['mB_5',b=>b.promo==='DINE20'&&b.promoOk],['mB_6',b=>b.pay==='card'],['mB_7',b=>b.payFails>=1]]},
   C:{num:3,day:WKD_IDX,checks:[['mC_1',b=>b.lang==='en'],['mC_2',b=>b.date===WKD_IDX],['mC_3',b=>b.seats.length===5&&inZone(b.seats,'mezz')],['mC_4',b=>b.seats.length===5&&adjacent(b.seats)],['mC_5',b=>!Object.values(b.food).some(Boolean)],['mC_6',b=>b.promo==='MEZZ990'&&b.promoOk],['mC_7',b=>b.nat==='CN'],['mC_8',b=>b.pay==='ali']]},
   D:{num:4,day:EARLY_IDX,checks:[['mD_1',b=>b.date===EARLY_IDX&&b.time==='21:00'],['mD_2',b=>b.seats.length===2&&inZone(b.seats,'silver')&&adjacent(b.seats)],['mD_3',b=>(b.food.bubbly||0)===2],['mD_4',b=>b.promo==='EARLY15'&&b.promoOk],['mD_5',b=>b.nat==='IN'],['mD_6',b=>b.pay==='card']]},
+  G:{num:6,day:PRELIM_IDX,std:true,checks:[['mG_1',b=>b.date===PRELIM_IDX&&b.time==='19:30'],['mG_2',b=>b.seats.length===4&&inZone(b.seats,'gold')&&adjacent(b.seats)],['mG_3',b=>(b.food.dinner||0)===4&&(b.food.bubbly||0)===2],['mG_4',b=>b.promoOk&&!!(b.opts||[]).length&&b.disc>=b.opts[0].a],['mG_5',b=>b.nat==='JP'],['mG_6',b=>b.pay==='card'&&b.payFails>=1]]},
   E:{num:5,day:FRI_IDX,checks:[['mE_1',b=>b.date===FRI_IDX&&b.time==='19:30'],['mE_2',b=>b.seats.length===6&&inZone(b.seats,'gold')],['mE_3',b=>b.seats.length===6&&adjacent(b.seats)],['mE_4',b=>(b.food.snack||0)===6],['mE_5',b=>b.promo==='GROUP4'&&b.promoOk],['mE_6',b=>b.nat==='KR'],['mE_7',b=>b.pay==='card']]}
 };
 const SQ=[['s_q1','s_lo_easy','s_hi_easy'],['s_q2','s_lo_easy','s_hi_easy'],['s_q3','s_lo_clear','s_hi_clear'],['s_q4','s_lo_easy','s_hi_easy'],['s_q5','s_lo_sat','s_hi_sat']];
 const STEPK=['showtime','seats','food','pay'];
-const EVK=['back','soldout','closed','taken','promoFail','formErr','payFail','expire','brief','autopick','promoTap'];
+const EVK=['back','soldout','closed','taken','promoFail','formErr','payFail','expire','brief','autopick','promoTap','retry','changePm','fe_name','fe_email','fe_phone','fe_agree'];
+// Mission G's six checks line up one-to-one with the six goal cards.
+const GOALS=[['cal','gl_1'],['seat','gl_2'],['dish','gl_3'],['tag','gl_4'],['form','gl_5'],['card','gl_6']];
+const deckIds=()=>Object.keys(MISSIONS).filter(id=>!MISSIONS[id].std);
 
 const DEPTS=['perf','prod','box','svc','mkt','fin','hr','it'],deptName=k=>k?t('dp_'+k):'';
-const viaLabel=v=>t(v==='card'?'r_via_card':v==='spin'?'r_via_spin':'r_via_self');
-const FREE='F',isFree=id=>id===FREE,mTag=id=>isFree(id)?t('fr_tag'):t('g_m',{n:MISSIONS[id].num});
+const viaLabel=v=>t(v==='card'?'r_via_card':v==='spin'?'r_via_spin':v==='std'?'r_via_std':'r_via_self');
+const FREE='F',isFree=id=>id===FREE,mTag=id=>isFree(id)?t('fr_tag'):MISSIONS[id].std?t('mu_tag'):t('g_m',{n:MISSIONS[id].num});
 const newGame=()=>({mission:null,via:null,wallet:[],start:0,end:0,steps:{},cur:null,curAt:0,ev:{},ratings:[0,0,0,0,0],comment:'',gaveUp:false,sErr:false,send:null,run:null});
 const S={lang:'th',mode:'intro',nick:'',dept:'',deptErr:false,revealed:false,pick:null,pickVia:null,nickErr:false,spinning:false,justLanded:false,g:newGame(),step:1,sub:'food',dateIdx:0,time:null,seats:[],zone:null,zonePref:null,zoomIdx:1,food:{},promo:null,promoInput:'',promoErr:false,
   form:{name:'',email:'',cc:'+66',phone:'',nat:''},pay:'card',agree:false,errors:{},sumOpen:false,holdEnd:null,booking:null,ap:{n:2,zone:'gold'},sheetLocked:false,pcIdx:0,
@@ -860,9 +944,10 @@ function view1(){
   const d=DATES[S.dateIdx];
   return`${promoCarousel()}<section class="hero"><div class="eyebrow">${t('show_tag')}</div><h1>Tiffany's Show</h1><p>${t('show_meta')}</p><div class="from">${t('from_price')}<b>฿${fmt(Math.min(...Object.values(PRICES)))}</b></div></section>
 <div class="sec-h"><h2>${t('pick_date')}</h2><span class="muted sm">${monthLabel(d)}</span></div>
-<div class="dates" id="dates">${DATES.map((x,i)=>`<button class="date${i===S.dateIdx?' sel':''}" data-act="date" data-i="${i}" aria-pressed="${i===S.dateIdx}" aria-label="${fmtDate(x)}">${x.getDay()===6?'<span class="sp"></span>':''}<span class="dow">${i===0?t('today'):dow(x)}</span><span class="d">${x.getDate()}</span><span class="m">${mon(x)}</span></button>`).join('')}</div>
-<div class="legend-note"><span class="spd"></span>${t('special_note')}</div>
+<div class="dates" id="dates">${DATES.map((x,i)=>`<button class="date${i===S.dateIdx?' sel':''}" data-act="date" data-i="${i}" aria-pressed="${i===S.dateIdx}" aria-label="${fmtDate(x)}">${i===PRELIM_IDX?`<span class="crn">${IC.crown}</span>`:x.getDay()===6?'<span class="sp"></span>':''}<span class="dow">${i===0?t('today'):dow(x)}</span><span class="d">${x.getDate()}</span><span class="m">${mon(x)}</span></button>`).join('')}</div>
+<div class="legend-note"><span><span class="spd"></span>${t('special_note')}</span><span><span class="crn-l">${IC.crown}</span>${t('ev_note')}</span></div>
 <div class="sec-h"><h2>${t('pick_time')}</h2><span class="muted sm">${fmtDate(d)}</span></div>
+${S.dateIdx===PRELIM_IDX?`<div class="ev-bar"><span class="ev-ic">${IC.crown}</span><div><b>${t('ev_bar_h')}</b><span>${t('ev_bar_s')}</span></div></div>`:''}
 <div class="times">${showsFor(S.dateIdx).map(timeCard).join('')}</div>
 <div class="sec-h"><h2>${t('zones_title')}</h2></div>
 <div class="zones">${ZONES.map(z=>`<div class="zone-row"><span class="sw z-${z.id}"></span><span>${z.name}</span><b>฿${fmt(PRICES[z.id])}</b></div>`).join('')}</div>`;
@@ -871,12 +956,12 @@ function timeCard(sh){
   const st=status(S.dateIdx,sh.time),a=avail(keyOf(S.dateIdx,sh.time)),sel=S.time===sh.time,off=st==='soldout'||st==='closed';
   const line=st==='closed'?`<span class="s">${t('closed')}<br>${t('closed_sub')}</span>`:st==='soldout'?`<span class="s bad">${t('soldout')}</span>`:st==='low'?`<span class="s warn">${t('low',{n:a})}</span>`:`<span class="s">${t('avail',{n:a})}</span>`;
   const meter=off?'':`<span class="meter"><i style="width:${Math.max(4,a/TOTAL*100).toFixed(0)}%;background:${st==='low'?'var(--warn)':'var(--ok)'}"></i></span>`;
-  return`<button class="time${sel?' sel':''}${off?' off':''}" data-act="time" data-time="${sh.time}" aria-pressed="${sel}">${sh.special?`<span class="badge">${t('special')}</span>`:''}<span class="t">${sh.time}</span>${line}${meter}</button>`;
+  return`<button class="time${sel?' sel':''}${off?' off':''}" data-act="time" data-time="${sh.time}" aria-pressed="${sel}">${sh.special?`<span class="badge">${t('special')}</span>`:sh.prelim?`<span class="badge ev">${t('ev_badge')}</span>`:''}<span class="t">${sh.time}</span>${line}${meter}</button>`;
 }
 
 function view2(){
   const d=DATES[S.dateIdx],sh=showsFor(S.dateIdx).find(x=>x.time===S.time),picked=[...S.seats].sort(seatSort);
-  return`<div class="show-sum"><div><div class="display">Tiffany's Show</div><div class="muted sm">${fmtDate(d)} · ${S.time}${sh&&sh.special?` · <span class="pink">${t('special')}</span>`:''}</div></div><button class="link" data-act="back">${t('edit')}</button></div>
+  return`<div class="show-sum"><div><div class="display">Tiffany's Show</div><div class="muted sm">${fmtDate(d)} · ${S.time}${sh&&sh.special?` · <span class="pink">${t('special')}</span>`:sh&&sh.prelim?` · <span class="pink">${t('ev_badge')}</span>`:''}</div></div><button class="link" data-act="back">${t('edit')}</button></div>
 <div class="chips">${ZONES.map(z=>`<button class="chip${S.zone===z.id?' on':''}" data-act="zone" data-z="${z.id}" aria-pressed="${S.zone===z.id}"><span class="sw z-${z.id}"></span>${z.name}<span class="muted">฿${fmt(PRICES[z.id])}</span></button>`).join('')}</div>
 <button class="btn btn-auto w100" data-act="autopick">${IC.wand}${t('auto_pick')}</button><p class="auto-hint">${t('auto_hint')}</p>
 <div class="map-tools"><div class="legend"><span class="lg"><i class="a"></i>${t('lg_avail')}</span><span class="lg"><i class="tk"></i>${t('lg_taken')}</span><span class="lg"><i class="me"></i>${t('lg_me')}</span></div><div class="zoom"><button data-act="zoom" data-d="-1" aria-label="Zoom out"${S.zoomIdx===0?' disabled':''}>${IC.minus}</button><button data-act="zoom" data-d="1" aria-label="Zoom in"${S.zoomIdx===ZOOMS.length-1?' disabled':''}>${IC.plus}</button></div></div>
@@ -931,6 +1016,20 @@ function openThanks(){
   l.innerHTML=`<div class="ty-pop" role="dialog" aria-modal="true" aria-labelledby="ty-h">${thanksBody()}</div>`;l.hidden=false;
   l.querySelector('button').focus({preventScroll:true});
 }
+// After the thank-you card in Miss Booking Universe: every code that worked for this booking, best first.
+function paBody(){
+  const b=S.g.run.booking,o=b.opts,best=o[0],used=b.promoOk?o.find(x=>x.c===b.promo):null;
+  const v=used&&used.a>=best.a?['ok',t('pa_ok',{a:fmt(best.a)})]:used?['no',t('pa_diff',{c:used.c,b:best.c,a:fmt(best.a-used.a)})]:b.promo?['no',t('pa_bad',{c:esc(b.promo),a:fmt(best.a)})]:['no',t('pa_none',{a:fmt(best.a)})];
+  return`<div class="pa-hd"><span class="pa-ic">${IC.tag}</span><h2 id="pa-h">${t('pa_h')}</h2><p>${o.length>1?t('pa_s',{n:o.length}):t('pa_s1')}</p></div>
+<div class="pa-v ${v[0]}"><span class="pa-vi">${v[0]==='ok'?IC.checkSm:IC.xSm}</span><span>${v[1]}</span></div>
+<div class="pa-list">${o.map((x,i)=>`<div class="pa-cp${i===0?' best':''}"><div class="pa-l"><small>${t('pa_save')}</small><b>฿${fmt(x.a)}</b></div><div class="pa-r"><div class="pa-t"><code>${x.c}</code>${i===0?`<span class="pa-chip best">${IC.crown}${t('pa_best')}</span>`:''}${used&&used.c===x.c?`<span class="pa-chip you">${t('pa_you')}</span>`:''}</div><div class="pa-s">${t('cr_'+x.c)}</div></div></div>`).join('')}</div>
+<button class="btn btn-gold w100 mt16" data-act="paClose">${t('pa_go')} →</button><p class="pa-foot">${t('pa_foot')}</p>`;
+}
+function openPromoAns(){
+  const l=$('#layer');l.classList.add('mid');
+  l.innerHTML=`<div class="pa-pop" role="dialog" aria-modal="true" aria-labelledby="pa-h">${paBody()}</div>`;l.hidden=false;
+  l.querySelector('button').focus({preventScroll:true});
+}
 const walletBox=()=>{const w=S.mode==='run'?S.g.wallet:[];return w.length?`<div class="wallet"><span>${t('wl_title')}</span>${w.map(c=>`<button class="wchip" data-act="promoUse" data-c="${c}">${IC.tag}${c}</button>`).join('')}</div>`:''};
 
 function promoSheet(){
@@ -975,14 +1074,15 @@ function viewIntro(){
   return`<section><div class="eyebrow">${t('g_eyebrow')}</div><h1 class="g-title">${t('g_title')}</h1><p class="g-lead">${t('g_intro')}</p></section>
 <div style="height:18px"></div>
 <div class="field"><label for="g-nick">${t('g_nick')}</label><input id="g-nick" class="in${S.nickErr?' bad':''}" value="${esc(S.nick)}" placeholder="${t('g_nick_ph')}" maxlength="40" autocomplete="nickname"><div class="hint-s">${t('g_nick_hint')}</div>${S.nickErr?`<div class="err" id="err-nick">${t('e_nick')}</div>`:''}</div>
-<div class="field"><label for="g-dept">${t('g_dept')}</label><select id="g-dept" class="in${S.deptErr?' bad':''}"><option value="">${t('g_dept_ph')}</option>${DEPTS.map(k=>`<option value="${k}"${S.dept===k?' selected':''}>${t('dp_'+k)}</option>`).join('')}</select><div class="hint-s">${t('g_dept_hint')}</div>${S.deptErr?`<div class="err" id="err-dept">${t('e_dept')}</div>`:''}</div>
+<div class="field"><label for="g-dept">${t('g_dept')} <span class="lbl-any">${t('g_dept_any')}</span></label><select id="g-dept" class="in${S.deptErr?' bad':''}"><option value="">${t('g_dept_ph')}</option>${DEPTS.map(k=>`<option value="${k}"${S.dept===k?' selected':''}>${t('dp_'+k)}</option>`).join('')}</select><div class="hint-s">${t('g_dept_hint')}</div>${S.deptErr?`<div class="err" id="err-dept">${t('e_dept')}</div>`:''}</div>
 <button class="btn btn-ghost w100 mt12" data-act="stats">${IC.chart}${t('lb_open')}</button>
 <p class="tiny left">${t('g_note')}</p>
 ${S.isOwner?`<button class="btn btn-ghost w100 mt8" data-act="dash">${IC.chart}${t('g_dash')}${S.dashRuns?` (${S.dashRuns.length})`:''}</button>`:''}`;
 }
 function viewChoose(){
   return`<section><div class="eyebrow">${esc(S.nick.trim())} · ${esc(deptName(S.dept))}</div><h1 class="g-title">${t('ch_title')}</h1></section>
-<div class="modes"><button class="mode-o hi" data-act="toDeck"><span class="mo-ic">${IC.trophy}</span><span class="mo-t">${t('ch_m')}</span><span class="mo-n">★ ${t('ch_m_note')}</span></button>
+<div class="modes"><button class="mode-o mu" data-act="toStd"><span class="mu-badge">${IC.crown}${t('mu_badge')}</span><span class="mo-ic">${IC.crown}</span><span class="mo-t">${t('mu_name')}</span><span class="mo-n">${t('mu_note')}</span></button>
+<button class="mode-o" data-act="toDeck"><span class="mo-ic">${IC.trophy}</span><span class="mo-t">${t('ch_m')}</span><span class="mo-n">★ ${t('ch_m_note')}</span></button>
 <button class="mode-o" data-act="gFreeRun"><span class="mo-ic">${IC.flag}</span><span class="mo-t">${t('ch_f')}</span><span class="mo-n">${t('ch_f_note')}</span></button></div>`;
 }
 // Card back: the CI lockup, mark stacked above the wordmark.
@@ -998,17 +1098,25 @@ function viewReveal(){
 <div class="rv-txt"><div class="eyebrow">${t('rv_you')}</div><h1 class="rv-name">${t('ch_'+id+'_n')}</h1><div class="rv-m">${mTag(id)} · ${t('m'+id+'_t')}</div><p class="rv-d">${t('ch_'+id+'_d')}</p></div>`;
 }
 function playedSet(){try{return new Set(JSON.parse(localStorage.getItem('tf_played')||'[]'))}catch(e){return new Set()}}
-function markPlayed(id){try{const p=playedSet();p.add(id);if(p.size>=Object.keys(MISSIONS).length)p.clear();localStorage.setItem('tf_played',JSON.stringify([...p]))}catch(e){}}
+function markPlayed(id){try{const p=playedSet();p.add(id);if(p.size>=deckIds().length)p.clear();localStorage.setItem('tf_played',JSON.stringify([...p]))}catch(e){}}
 // Draws a mission this browser has not played yet, never the one already shown.
 function pickTarget(){
-  const ids=Object.keys(MISSIONS),played=playedSet();
+  const ids=deckIds(),played=playedSet();
   let pool=ids.filter(id=>!played.has(id)&&id!==S.pick);
   if(!pool.length)pool=ids.filter(id=>id!==S.pick);
   const a=new Uint32Array(1);crypto.getRandomValues(a);return pool[a[0]%pool.length];
 }
 function missionCard(){
   const id=S.g.mission,m=MISSIONS[id],d=fmtLong(DATES[m.day]);
-  return`<div class="mission-card"><div class="m-head"><span class="m-av" style="background-image:url(${charImg(id)})" role="img" aria-label="${esc(t('ch_'+id+'_n'))}"></span><div><div class="m-num">${t('g_m',{n:m.num})} · ${t('ch_'+id+'_n')}</div><h2 class="m-title">${t('m'+id+'_t')}</h2></div></div><p class="m-story">${t('m'+id+'_s',{d})}</p><div class="m-sub">${t('g_todo')}</div><ol class="todo num">${m.checks.map(([k],i)=>`<li><span class="nb">${i+1}</span><span>${t(k,{d})}</span></li>`).join('')}</ol></div>`;
+  return`<div class="mission-card"><div class="m-head"><span class="m-av" style="background-image:url(${charImg(id)})" role="img" aria-label="${esc(t('ch_'+id+'_n'))}"></span><div><div class="m-num">${mTag(id)} · ${t('ch_'+id+'_n')}</div><h2 class="m-title">${t('m'+id+'_t')}</h2></div></div><p class="m-story">${t('m'+id+'_s',{d})}</p><div class="m-sub">${t('g_todo')}</div><ol class="todo num">${m.checks.map(([k],i)=>`<li><span class="nb">${i+1}</span><span>${t(k,{d})}</span></li>`).join('')}</ol></div>`;
+}
+function viewGoals(){
+  const i=S.gl,n=GOALS.length,dir=S.glDir<0?' back':'';
+  const top=`<div class="gl-top"><span class="eyebrow">${t('gl_ey')}</span><button class="gl-skip" data-act="toBrief">${t('gl_skip')}</button></div>`;
+  const dots=`<div class="gl-dots" aria-hidden="true">${[...GOALS,0].map((x,k)=>`<i class="${k===i?'on':''}"></i>`).join('')}</div>`;
+  if(i>=n)return top+`<div class="gl-card end${dir}" id="glc"><span class="lg-mark">${LOGO.mark}</span><h2>${t('gl_end_h')}</h2><p>${t('gl_end_s')}</p></div>`+dots;
+  const[ic,k]=GOALS[i];
+  return top+`<div class="gl-card${dir}" id="glc"><span class="gl-n">${i+1} / ${n}</span><span class="gl-ic">${IC[ic]}</span><h2>${t(k)}</h2><p>${t(k+'_s')}</p>${k==='gl_6'?`<p class="gl-x">${t('gl_6_x')}</p>`:''}</div>`+dots;
 }
 const viewBrief=()=>missionCard()+`<p class="fs mt12">${t('g_timer_note')}</p>`;
 function viewSurvey(){
@@ -1017,13 +1125,14 @@ function viewSurvey(){
 }
 function viewResult(){
   const r=S.g.run,send=S.g.send;
-  const free=isFree(r.mission),bk=r.booking;
-  return`<div class="done-h"><div class="eyebrow">${free?esc(r.missionTitle):`${mTag(r.mission)} · ${esc(r.missionTitle)}`}</div><div class="r-time">${fmtDur(r.ms)}</div><p>${r.gaveUp?t('r_gaveup'):t('r_time')}</p></div>
+  const free=isFree(r.mission),bk=r.booking,std=!free&&MISSIONS[r.mission].std;
+  return`<div class="done-h"><div class="eyebrow">${free?esc(r.missionTitle):`${mTag(r.mission)} · ${esc(r.missionTitle)}`}</div><div class="r-time">${fmtDur(r.ms)}</div><p>${r.gaveUp?t('r_gaveup'):t('r_time')}</p>${std&&!r.gaveUp&&r.score===r.max?`<div class="crown-win">${IC.crown}${t('r_crown')}</div>`:''}</div>
 <div class="r-who">${t('rt_tester')}: <b>${esc(r.nick||t('d_anon'))}</b>${r.dept?` · ${esc(deptName(r.dept))}`:''}${free?'':` · ${viaLabel(r.via)}`}</div>
 <div class="r-grid"><div class="stat"><span>${free?t('total'):t('r_score')}</span><b>${free?(bk?'฿'+fmt(bk.total):'—'):`${r.score}/${r.max}`}</b></div><div class="stat"><span>${t('r_sat')}</span><b>${r.ratings[4]}/5</b></div></div>
 ${FB_CONFIG?`<div id="r-live">${resultLive()}</div>`:''}
 <div class="send ${send==='sent'?'ok':send==='failed'?'warn':'wait'}">${send==='sent'?IC.check+'<span>'+t('r_sent')+'</span>':send==='failed'?IC.info+'<span>'+t('r_nosend')+'</span>':'<span>'+t('r_sending')+'</span>'}</div>
 ${free?`<div class="card"><b>${t('sm_title')}</b><div class="sm-list">${(r.summary||[]).map(([l,v])=>`<div class="sm-row"><span>${esc(l)}</span><b>${esc(v)}</b></div>`).join('')}</div></div>`
+:std?`<div class="card"><b>${t('r_goals')}</b><ul class="goals">${r.checks.map((c,i)=>`<li class="${c.ok?'ok':'no'}"><span class="gi">${IC[GOALS[i][0]]}</span><span class="gt"><b>${t(GOALS[i][1])}</b><small>${esc(c.label)}</small></span><span class="bx">${c.ok?IC.checkSm:IC.xSm}</span></li>`).join('')}</ul></div>`
 :`<div class="card"><b>${t('r_checks')}</b><ul class="todo">${r.checks.map(c=>`<li class="${c.ok?'ok':'no'}"><span class="bx">${c.ok?IC.checkSm:IC.xSm}</span><span>${esc(c.label)}</span></li>`).join('')}</ul></div>`}
 <div class="card"><b>${t('r_steps')}</b><div class="steps-mini">${STEPK.map(k=>`<div><span>${t('k_'+k)}</span><b>${fmtDur(r.steps[k])}</b></div>`).join('')}</div></div>
 <button class="btn btn-gold w100" data-act="rSave">${IC.img}${t('r_save')}</button>
@@ -1038,13 +1147,15 @@ function renderBar(){
   if(S.mode==='intro')h=`<button class="btn btn-gold w100" data-act="toChoose">${t('g_next')}</button>`;
   else if(S.mode==='choose')h=`<button class="btn btn-ghost w100" data-act="toIntro">${t('back')}</button>`;
   else if(S.mode==='deck')h=`<button class="btn btn-ghost w100" data-act="toChoose">${t('back')}</button>`;
-  else if(S.mode==='reveal')h=S.revealed?`<button class="btn btn-gold w100" data-act="toBrief">${t('g_next')}</button>`:'';
+  else if(S.mode==='reveal')h=S.revealed?`<button class="btn btn-gold w100" data-act="${MISSIONS[S.g.mission].std?'toGoals':'toBrief'}">${t('g_next')}</button>`:'';
+  else if(S.mode==='goals')h=S.gl>=GOALS.length?`<button class="btn btn-ghost" data-act="glPrev">${t('back')}</button><button class="btn btn-gold grow" data-act="toBrief">${t('gl_go')}</button>`
+    :`${S.gl?`<button class="btn btn-ghost" data-act="glPrev">${t('back')}</button>`:''}<button class="btn btn-gold grow" data-act="glNext">${t('g_next')}</button>`;
   else if(S.mode==='brief')h=`<button class="btn btn-gold w100" data-act="gStart">${t('g_next')}</button>`;
   else if(S.mode==='survey')h=`<button class="btn btn-gold w100" data-act="sSubmit">${t('s_submit')}</button>`;
   else if(S.mode==='result')h='';
   else if(S.step===1){
     const sh=S.time&&showsFor(S.dateIdx).find(x=>x.time===S.time);
-    h=`<div class="bar-info"><div class="k">${S.time?fmtDate(DATES[S.dateIdx]):t('bar_nosel')}</div><div class="v">${S.time?`${S.time}${sh&&sh.special?` · <span class="pink">${t('special')}</span>`:''}`:'—'}</div></div><button class="btn btn-gold" data-act="toSeats"${S.time?'':' disabled'}>${t('btn_seats')}</button>`;
+    h=`<div class="bar-info"><div class="k">${S.time?fmtDate(DATES[S.dateIdx]):t('bar_nosel')}</div><div class="v">${S.time?`${S.time}${sh&&sh.special?` · <span class="pink">${t('special')}</span>`:sh&&sh.prelim?` · <span class="pink">${t('ev_badge')}</span>`:''}`:'—'}</div></div><button class="btn btn-gold" data-act="toSeats"${S.time?'':' disabled'}>${t('btn_seats')}</button>`;
   }else if(S.step===2){
     const ids=[...S.seats].sort(seatSort);
     h=`<div class="bar-info"><div class="k">${ids.length?`${t(ids.length===1?'seat_1':'seats_n',{n:ids.length})} · ${ids.join(', ')}`:t('bar_seats_none')}</div><div class="v">฿${fmt(tt.tickets)}</div></div><button class="btn btn-gold" data-act="toFood"${ids.length?'':' disabled'}>${t('btn_next')}</button>`;
@@ -1065,7 +1176,7 @@ function trackScreen(){const k=screenKey(),now=Date.now();if(S.g.cur!==k){if(S.g
 function render(keep=false){
   document.documentElement.lang=S.lang;trackScreen();renderTop();
   const v=$('#view'),prev={top:v.scrollTop,dates:$('#dates')?.scrollLeft,map:$('#mapwrap')?.scrollLeft,chips:$('.chips')?.scrollLeft};
-  v.innerHTML=S.mode==='intro'?viewIntro():S.mode==='choose'?viewChoose():S.mode==='deck'?viewDeck():S.mode==='reveal'?viewReveal():S.mode==='brief'?viewBrief():S.mode==='survey'?viewSurvey():S.mode==='result'?viewResult():
+  v.innerHTML=S.mode==='intro'?viewIntro():S.mode==='choose'?viewChoose():S.mode==='deck'?viewDeck():S.mode==='reveal'?viewReveal():S.mode==='brief'?viewBrief():S.mode==='goals'?viewGoals():S.mode==='survey'?viewSurvey():S.mode==='result'?viewResult():
     S.step===1?view1():S.step===2?view2():S.step===3?(S.sub==='food'?viewFood():viewPay()):view4();
   if(keep){
     v.scrollTop=prev.top;
@@ -1144,7 +1255,9 @@ function validate(){
 const makeRef=()=>{const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';return'TFS-'+Array.from({length:6},()=>A[Math.floor(Math.random()*A.length)]).join('')};
 function book(){
   const e=S.promo?evalPromo(S.promo):null,sh=showsFor(S.dateIdx).find(x=>x.time===S.time);
-  S.booking={ref:makeRef(),date:S.dateIdx,time:S.time,special:!!(sh&&sh.special),seats:[...S.seats].sort(seatSort),food:{...S.food},email:S.form.email.trim(),
+  const opts=PROMOS.map(p=>({c:p.code,e:evalPromo(p.code)})).filter(o=>o.e.ok).map(o=>({c:o.c,a:o.e.amount})).sort((x,y)=>y.a-x.a);
+  if(S.mode==='run'&&S.g.failAt)S.g.steps.recover=Date.now()-S.g.failAt;
+  S.booking={ref:makeRef(),date:S.dateIdx,time:S.time,special:!!(sh&&sh.special),prelim:!!(sh&&sh.prelim),opts,seats:[...S.seats].sort(seatSort),food:{...S.food},email:S.form.email.trim(),
     promo:S.promo,promoOk:!!(e&&e.ok),pay:S.pay,lang:S.lang,nat:S.form.nat,payFails:S.g.ev.payFail||0,total:totals().total,disc:totals().disc};
   S.holdEnd=null;S.step=4;if(S.mode==='run')S.g.end=Date.now();closeSheet();render();
 }
@@ -1182,7 +1295,7 @@ function buildRun(){
   const g=S.g,checks=grade(),b=g.gaveUp?null:S.booking;
   return{v:1,at:new Date().toISOString(),dev:devId(),nick:S.nick.trim().slice(0,40),dept:S.dept,mission:g.mission,via:g.via,missionTitle:t('m'+g.mission+'_t'),lang:S.lang,ms:g.end-g.start,gaveUp:g.gaveUp,
     score:checks.filter(c=>c.ok).length,max:checks.length,checks,steps:{...g.steps},ev:{...g.ev},ratings:[...g.ratings],comment:g.comment.trim().slice(0,1000),
-    booking:b?{date:ymd(DATES[b.date]),time:b.time,seats:b.seats,food:b.food,promo:b.promo,promoOk:b.promoOk,pay:b.pay,nat:b.nat,total:b.total,disc:b.disc}:null,
+    booking:b?{date:ymd(DATES[b.date]),time:b.time,seats:b.seats,food:b.food,promo:b.promo,promoOk:b.promoOk,pay:b.pay,nat:b.nat,total:b.total,disc:b.disc,opts:b.opts}:null,
     summary:isFree(g.mission)?freeSummary(b,g):null,coupons:[...g.wallet],width:window.innerWidth};
 }
 // What a no-mission tester chose, as [label, value] rows in the current language.
@@ -1411,11 +1524,11 @@ ${evl?`<p>${t('rt_events')}: ${esc(evl)}</p>`:''}</div>`;
 }
 function toCsv(runs){
   const q=v=>{let s=String(v??'');if(/^[=+\-@]/.test(s))s="'"+s;return`"${s.replace(/"/g,'""')}"`};
-  const head=['submitted_at','nickname','mission','seconds','gave_up','score','max','q1_showtime','q2_seats','q3_promo','q4_payment','q5_overall','comment','showtime_s','seats_s','food_s','pay_s','missed','events'];
+  const head=['submitted_at','nickname','mission','seconds','gave_up','score','max','q1_showtime','q2_seats','q3_promo','q4_payment','q5_overall','comment','showtime_s','seats_s','food_s','pay_s','pay_recover_s','missed','events'];
   return[head.join(','),...runs.map(r=>[r.at,r.nick,r.mission,Math.round(r.ms/1000),r.gaveUp,r.score,r.max,...[0,1,2,3,4].map(i=>(r.ratings||[])[i]),r.comment,
-    ...STEPK.map(k=>Math.round(((r.steps||{})[k]||0)/1000)),(r.checks||[]).filter(c=>!c.ok).map(c=>c.label).join('; '),EVK.filter(k=>(r.ev||{})[k]).map(k=>`${k}=${r.ev[k]}`).join('; ')].map(q).join(','))].join('\n');
+    ...STEPK.map(k=>Math.round(((r.steps||{})[k]||0)/1000)),(r.steps||{}).recover?Math.round(r.steps.recover/1000):'',(r.checks||[]).filter(c=>!c.ok).map(c=>c.label).join('; '),EVK.filter(k=>(r.ev||{})[k]).map(k=>`${k}=${r.ev[k]}`).join('; ')].map(q).join(','))].join('\n');
 }
-const ST={runs:null,err:'',tab:'all',at:0};let stUnsub=null;
+const ST={runs:null,err:'',tab:'G',at:0};let stUnsub=null;
 const isAdmin=/[?&]admin\b/.test(location.search);
 // One live subscription to every run, shared by the stats page and the result page.
 async function watchRuns(){
@@ -1435,10 +1548,8 @@ function resultLive(){
   const r=S.g.run,me=devId(),runs=ST.runs.filter(x=>x&&DEPTS.includes(x.dept));
   let rank='';
   if(!isFree(r.mission)){
-    const best={};
-    runs.filter(x=>!x.free&&!x.gaveUp&&x.mission===r.mission&&x.max>0).forEach(x=>{const b=best[x.dev];if(!b||rankCmp(x,b)<0)best[x.dev]=x});
-    const list=Object.values(best).sort(rankCmp),i=list.findIndex(x=>x.dev===me);
-    rank=`<div class="card rk">${i<0?`<p class="muted" style="margin:0">${t('rk_none')}</p>`:`<div class="rk-t">${t('rk_title')}</div><div class="rk-n">${i+1}</div><div class="rk-s">${t('rk_of',{n:list.length,m:mTag(r.mission)})}</div>`}</div>`;
+    const list=board(runs,r.mission),i=list.findIndex(x=>x.dev===me),rep=r.mission==='G'&&runs.filter(x=>x.dev===me&&x.mission==='G').length>1;
+    rank=`<div class="card rk">${i<0?`<p class="muted" style="margin:0">${t(rep?'rk_repeat':'rk_none')}</p>`:`<div class="rk-t">${t(rep?'rk_title_first':'rk_title')}</div><div class="rk-n">${i+1}</div><div class="rk-s">${t('rk_of',{n:list.length,m:mTag(r.mission)})}</div>${rep?`<p class="rk-s rk-rep">${t('rk_repeat')}</p>`:''}`}</div>`;
   }
   const per=DEPTS.map(k=>({k,n:new Set(runs.filter(x=>x.dept===k).map(x=>x.dev)).size})).filter(p=>p.n||p.k===r.dept),mx=Math.max(1,...per.map(p=>p.n));
   const grow=!S.g.liveDrawn;S.g.liveDrawn=true;
@@ -1446,6 +1557,14 @@ function resultLive(){
 <div class="vbars${grow?' grow':''}">${per.map((p,i)=>`<div class="vb${p.k===r.dept?' me':''}" style="--i:${i}"><div class="vb-t"><span class="vb-l">${t('dps_'+p.k)}</span><span class="vb-b" style="height:${Math.max(4,Math.round(p.n/mx*130))}px"></span></div><b class="vb-n">${p.n}</b></div>`).join('')}</div></div>`;
 }
 const rankCmp=(a,b)=>b.score/b.max-a.score/a.max||a.ms-b.ms;
+const atMs=r=>r.at&&r.at.toMillis?r.at.toMillis():Infinity;
+// Ranked list for a leaderboard tab: first try per person for 'G', best run per person otherwise ('all' leaves G out).
+function board(runs,tab){
+  const pick={};
+  if(tab==='G'){runs.filter(r=>r.mission==='G').forEach(r=>{const f=pick[r.dev];if(!f||atMs(r)<atMs(f))pick[r.dev]=r});return Object.values(pick).filter(r=>!r.gaveUp&&r.max>0).sort(rankCmp)}
+  runs.filter(r=>!r.free&&!r.gaveUp&&MISSIONS[r.mission]&&!MISSIONS[r.mission].std&&r.max>0&&(tab==='all'||r.mission===tab)).forEach(r=>{const b=pick[r.dev];if(!b||rankCmp(r,b)<0)pick[r.dev]=r});
+  return Object.values(pick).sort(rankCmp);
+}
 function renderStats(){
   const el=$('#stats');if(el.hidden)return;
   const msg=m=>`<div class="dcard"><p class="muted" style="margin:0">${m}</p></div>`;
@@ -1454,19 +1573,16 @@ function renderStats(){
   if(ST.err)body=msg(t(ST.err==='off'?'lb_off':'lb_err'));
   else if(!ST.runs)body=msg(t('d_loading'));
   else{
-    const best={};
-    runs.filter(r=>!r.free&&!r.gaveUp&&MISSIONS[r.mission]&&r.max>0&&(ST.tab==='all'||r.mission===ST.tab))
-      .forEach(r=>{const b=best[r.dev];if(!b||rankCmp(r,b)<0)best[r.dev]=r});
-    const top=Object.values(best).sort(rankCmp).slice(0,10),f=top[0];
+    const top=board(runs,ST.tab).slice(0,10),f=top[0];
     const per=DEPTS.map(k=>{const rs=runs.filter(r=>r.dept===k);return{k,people:new Set(rs.map(r=>r.dev)).size,runs:rs.length}}).sort((a,b)=>b.people-a.people||b.runs-a.runs);
     const pmax=Math.max(1,...per.map(p=>p.people));
     const who=r=>`<div class="lb-who"><b>${esc(r.nick)}${r.dev===me?`<em>${t('lb_mine')}</em>`:''}</b><span>${esc(deptName(r.dept))}${ST.tab==='all'?` · ${mTag(r.mission)}`:''}</span></div><div class="lb-res"><b>${fmtDur(r.ms)}</b><span>${r.score}/${r.max}</span></div>`;
-    const tabs=[['all',t('lb_all')],...Object.keys(MISSIONS).map(id=>[id,mTag(id)])];
+    const tabs=[['G',t('mu_tag')],['all',t('lb_all')],...deckIds().map(id=>[id,mTag(id)])];
     const tiles=[[t('lb_people'),new Set(runs.map(r=>r.dev)).size],[t('lb_runs'),runs.length],[t('lb_depts'),`${per.filter(p=>p.people).length}/${DEPTS.length}`]];
     body=`<div class="tiles">${tiles.map(([l,v])=>`<div class="stat"><span>${l}</span><b>${v}</b></div>`).join('')}</div>
-<div class="dcard"><div class="lb-h"><h3>${t('lb_board')}</h3><span class="live"><i></i>${t('lb_live')}</span></div><p class="muted sm" style="margin:0 0 12px">${t('lb_rule')}</p>
+<div class="dcard"><div class="lb-h"><h3>${t('lb_board')}</h3><span class="live"><i></i>${t('lb_live')}</span></div><p class="muted sm" style="margin:0 0 12px">${t(ST.tab==='G'?'lb_rule_mu':'lb_rule')}</p>
 <div class="lb-tabs" role="tablist">${tabs.map(([v,l])=>`<button role="tab" data-act="lbTab" data-v="${v}" class="${ST.tab===v?'on':''}" aria-selected="${ST.tab===v}">${l}</button>`).join('')}</div>
-${f?`<div class="lb-first"><span class="lb-ey">${t('lb_first')}</span><div class="lb-fr">${who(f)}</div></div>${top.slice(1).map((r,i)=>`<div class="lb-row"><span class="lb-rk">${i+2}</span>${who(r)}</div>`).join('')}`:`<p class="muted" style="margin:0">${t('lb_empty')}</p>`}</div>
+${f?`<div class="lb-first"><span class="lb-ey">${ST.tab==='G'?IC.crown:''}${t('lb_first')}</span><div class="lb-fr">${who(f)}</div></div>${top.slice(1).map((r,i)=>`<div class="lb-row"><span class="lb-rk">${i+2}</span>${who(r)}</div>`).join('')}`:`<p class="muted" style="margin:0">${t('lb_empty')}</p>`}</div>
 <div class="dcard"><div class="lb-h"><h3>${t('lb_dept_t')}</h3><span class="live"><i></i>${t('lb_live')}</span></div>
 ${per.map(p=>`<div class="dp-row"><div class="dp-top"><span>${esc(deptName(p.k))}</span><b>${t('lb_n_people',{n:p.people})}<span class="muted"> · ${t('lb_n_runs',{n:p.runs})}</span></b></div><div class="dp-trk"><i style="width:${p.people/pmax*100}%"></i></div></div>`).join('')}</div>`;
   }
@@ -1476,11 +1592,11 @@ ${per.map(p=>`<div class="dp-row"><div class="dp-top"><span>${esc(deptName(p.k))
 // Every stored run as a spreadsheet; open the page with ?admin to see the button.
 function fbCsv(runs){
   const q=v=>{let x=String(v??'');if(/^[=+\-@]/.test(x))x="'"+x;return`"${x.replace(/"/g,'""')}"`};
-  const head=['submitted_at','nickname','department','mission','via','seconds','gave_up','score','max','q1_showtime','q2_seats','q3_promo','q4_payment','q5_overall','comment','showtime_s','seats_s','food_s','pay_s','missed','total','promo','collected','events','device'];
+  const head=['submitted_at','nickname','department','mission','via','seconds','gave_up','score','max','q1_showtime','q2_seats','q3_promo','q4_payment','q5_overall','comment','showtime_s','seats_s','food_s','pay_s','pay_recover_s','missed','total','promo','collected','events','device'];
   return'﻿'+[head.join(','),...runs.map(r=>{
     const m=MISSIONS[r.mission],d=m?fmtLong(DATES[m.day]):'',at=r.at&&r.at.toDate?r.at.toDate().toISOString():'';
     return[at,r.nick,deptName(r.dept),isFree(r.mission)?t('fr_tag'):mTag(r.mission),r.via,Math.round(r.ms/1000),r.gaveUp,r.score,r.max,...[0,1,2,3,4].map(i=>(r.ratings||[])[i]),r.comment,
-      ...STEPK.map(k=>Math.round(((r.steps||{})[k]||0)/1000)),(r.checks||[]).filter(c=>!c.ok).map(c=>t(c.k,{d})).join('; '),r.booking?r.booking.total:'',r.booking?r.booking.promo||'':'',(r.coupons||[]).join('; '),
+      ...STEPK.map(k=>Math.round(((r.steps||{})[k]||0)/1000)),(r.steps||{}).recover?Math.round(r.steps.recover/1000):'',(r.checks||[]).filter(c=>!c.ok).map(c=>t(c.k,{d})).join('; '),r.booking?r.booking.total:'',r.booking?r.booking.promo||'':'',(r.coupons||[]).join('; '),
       EVK.filter(k=>(r.ev||{})[k]).map(k=>`${k}=${r.ev[k]}`).join('; '),r.dev].map(q).join(',')})].join('\n');
 }
 
@@ -1504,7 +1620,7 @@ const ACT={
     else if(S.step===3&&S.sub==='pay'){S.sub='food';render()}
     else if(S.step===3){S.step=2;render()}
   },
-  lang(){S.lang=S.lang==='th'?'en':'th';render(true);renderDash();renderStats();const cp=$('.cpn-pop');if(cp)cp.innerHTML=couponBody();const ty=$('.ty-pop');if(ty)ty.innerHTML=thanksBody();const cdt=$('.cdn-t');if(cdt)cdt.textContent=t('cd_t')},
+  lang(){S.lang=S.lang==='th'?'en':'th';render(true);renderDash();renderStats();const cp=$('.cpn-pop');if(cp)cp.innerHTML=couponBody();const ty=$('.ty-pop');if(ty)ty.innerHTML=thanksBody();const pa=$('.pa-pop');if(pa)pa.innerHTML=paBody();const cdt=$('.cdn-t');if(cdt)cdt.textContent=t('cd_t')},
   date(el){S.dateIdx=+el.dataset.i;if(S.time&&!(showsFor(S.dateIdx).some(x=>x.time===S.time)&&bookable(S.dateIdx,S.time)))S.time=null;render(true)},
   time(el){
     const tm=el.dataset.time,st=status(S.dateIdx,tm);
@@ -1558,13 +1674,13 @@ const ACT={
   pm(el){S.pay=el.dataset.m;render(true)},
   pay(){
     S.errors=validate();
-    if(Object.keys(S.errors).length){ev('formErr');render(true);$('.in.bad, #err-agree')?.scrollIntoView({block:'center',behavior:'smooth'});toast(t('fix_form'));return}
+    if(Object.keys(S.errors).length){ev('formErr');Object.keys(S.errors).forEach(k=>ev('fe_'+k));render(true);$('.in.bad, #err-agree')?.scrollIntoView({block:'center',behavior:'smooth'});toast(t('fix_form'));return}
     gwSheet();
   },
   payok(){book()},
-  payfail(){ev('payFail');openSheet(`<div class="sh-ic">${IC.alert}</div><h3>${t('fail_title')}</h3><p>${t('fail_body',{t:mmss(remaining())})}</p><button class="btn btn-gold w100" data-act="retry">${t('retry')}</button><button class="btn btn-ghost w100" data-act="changePm">${t('change_pm')}</button>`)},
-  retry(){gwSheet()},
-  changePm(){closeSheet();$('#pm-h')?.scrollIntoView({block:'start',behavior:'smooth'})},
+  payfail(){ev('payFail');if(S.mode==='run'&&!S.g.failAt)S.g.failAt=Date.now();openSheet(`<div class="sh-ic">${IC.alert}</div><h3>${t('fail_title')}</h3><p>${t('fail_body',{t:mmss(remaining())})}</p><button class="btn btn-gold w100" data-act="retry">${t('retry')}</button><button class="btn btn-ghost w100" data-act="changePm">${t('change_pm')}</button>`)},
+  retry(){ev('retry');gwSheet()},
+  changePm(){ev('changePm');closeSheet();$('#pm-h')?.scrollIntoView({block:'start',behavior:'smooth'})},
   reselect(){closeSheet();startHold();render()},
   proto(){toast(t('proto_toast'))},
   again(){const m=S.mode;resetBooking();S.mode=m;render()},
@@ -1573,9 +1689,10 @@ const ACT={
   expireNow(){if(!S.holdEnd){toast(t('d_need_hold'));return}closeSheet();S.holdEnd=Date.now();tick()},
   reset(){const keep={lang:S.lang,isOwner:S.isOwner,dashRuns:S.dashRuns,dashState:S.dashState,nick:S.nick,dept:S.dept};Object.assign(S,JSON.parse(INIT_S),keep);closeSheet();render()},
   close(){closeSheet()},
-  tyClose(){closeSheet();if(ST.runs&&$('#r-live')){S.g.liveDrawn=false;liveUpdate()}},
+  tyClose(){const r=S.g.run;if(r&&MISSIONS[r.mission]?.std&&r.booking&&(r.booking.opts||[]).length){openPromoAns();return}ACT.paClose()},
+  paClose(){closeSheet();if(ST.runs&&$('#r-live')){S.g.liveDrawn=false;liveUpdate()}},
   toIntro(){S.mode='intro';render()},
-  toChoose(){if(S.mode==='intro'&&needWho())return;S.mode='choose';render()},
+  toChoose(){if(S.mode==='intro'&&needWho())return;new Image().src=charImg('G');S.mode='choose';render()},
   toDeck(){Object.keys(MISSIONS).forEach(id=>{new Image().src=charImg(id)});S.pick=null;S.mode='deck';render()},
   gCard(el){
     if(S.spinning)return;S.spinning=true;
@@ -1587,6 +1704,14 @@ const ACT={
     },rm?0:450);
   },
   toBrief(){S.mode='brief';render()},
+  toStd(){
+    resetBooking();S.g=newGame();S.g.mission='G';S.g.via='std';S.pick='G';S.pickVia='std';
+    const rm=reduceMotion();S.revealed=rm;S.mode='reveal';render();
+    if(!rm)setTimeout(()=>{S.revealed=true;$('#flip')?.classList.add('on');setTimeout(renderBar,900)},300);
+  },
+  toGoals(){S.gl=0;S.glDir=1;S.mode='goals';render()},
+  glNext(){if(S.gl<GOALS.length){S.gl++;S.glDir=1;render()}},
+  glPrev(){if(S.gl>0){S.gl--;S.glDir=-1;render()}},
   gFreeRun(){
     if(needWho())return;
     resetBooking();S.g=newGame();S.g.mission=FREE;S.g.via='free';ACT.gStart();
@@ -1602,7 +1727,7 @@ const ACT={
   sSubmit(){
     const miss=S.g.ratings.filter(v=>!v).length;
     if(miss){S.g.sErr=true;render(true);$('.q.bad')?.scrollIntoView({block:'center',behavior:'smooth'});toast(t('s_missing',{n:miss}));return}
-    S.g.run=buildRun();if(!isFree(S.g.mission))markPlayed(S.g.mission);S.mode='result';render();openThanks();submitRun();watchRuns();
+    S.g.run=buildRun();if(!isFree(S.g.mission)&&!MISSIONS[S.g.mission].std)markPlayed(S.g.mission);S.mode='result';render();openThanks();submitRun();watchRuns();
   },
   rSave(){saveRunImage(S.g.run)},
   rCopy(){copyText(runText(S.g.run),()=>toast(t('r_copied')),()=>{const d=$('#rtd');if(d)d.open=true;const ta=$('#rtext');if(ta){ta.focus();ta.select()}toast(t('r_copy_fail'))})},
@@ -1619,8 +1744,14 @@ const ACT={
   }
 };
 document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(el&&ACT[el.dataset.act])ACT[el.dataset.act](el,e)});
-$('#layer').addEventListener('click',e=>{if(e.target.id==='layer'&&!S.sheetLocked)closeSheet()});
-document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(!$('#layer').hidden&&!S.sheetLocked)closeSheet();else if(!$('#stats').hidden)$('#stats').hidden=true;else if(!$('#dash').hidden)$('#dash').hidden=true});
+// Swipe between goal cards.
+let glX=null;
+document.addEventListener('touchstart',e=>{glX=S.mode==='goals'&&e.target.closest('#glc')?e.touches[0].clientX:null},{passive:true});
+document.addEventListener('touchend',e=>{if(glX===null)return;const dx=e.changedTouches[0].clientX-glX;glX=null;if(Math.abs(dx)>50)(dx<0?ACT.glNext:ACT.glPrev)()});
+// Closing the thank-you card any way still leads on to the promo answer card.
+const dismissLayer=()=>{if($('.ty-pop'))ACT.tyClose();else if($('.pa-pop'))ACT.paClose();else closeSheet()};
+$('#layer').addEventListener('click',e=>{if(e.target.id==='layer'&&!S.sheetLocked)dismissLayer()});
+document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(!$('#layer').hidden&&!S.sheetLocked)dismissLayer();else if(!$('#stats').hidden)$('#stats').hidden=true;else if(!$('#dash').hidden)$('#dash').hidden=true});
 document.addEventListener('input',e=>{
   const id=e.target.id;
   if(id==='g-nick'){S.nick=e.target.value;if(S.nickErr){S.nickErr=false;e.target.classList.remove('bad');$('#err-nick')?.remove()}return}

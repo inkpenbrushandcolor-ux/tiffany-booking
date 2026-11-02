@@ -12,7 +12,7 @@ service cloud.firestore {
         && d.dev is string && d.dev.size() > 0 && d.dev.size() <= 40
         && d.nick is string && d.nick.size() > 0 && d.nick.size() <= 40
         && d.dept in ['perf', 'prod', 'box', 'svc', 'b2b', 'mkt', 'fin', 'hr', 'it', 'ext']
-        && d.mission in ['A', 'B', 'C', 'D', 'E', 'F']
+        && d.mission in ['A', 'B', 'C', 'D', 'E', 'F', 'G']
         && d.ms is int && d.ms >= 10000 && d.ms <= 7200000
         && d.score is int && d.max is int && d.score >= 0 && d.score <= d.max && d.max <= 10
         && (!('comment' in d) || (d.comment is string && d.comment.size() <= 1000));

@@ -300,7 +300,10 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 .rate{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .rate button{height:44px;border-radius:12px;border:1px solid var(--line-2);background:var(--surface);font-weight:600;font-size:16px;cursor:pointer}
 .rate button.on{background:var(--primary-grad);color:var(--on-primary);border-color:transparent}
-.q.bad .rate button{border-color:rgba(255,145,145,.5)}
+.q.bad .rate button,.q.bad .cf button{border-color:rgba(255,145,145,.5)}
+.cf{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cf button{height:52px;border-radius:14px;border:1px solid var(--line-2);background:var(--surface);font-weight:600;font-size:17px;cursor:pointer}
+.cf button.on{background:var(--primary-grad);color:var(--on-primary);border-color:transparent}
 .rate-ends{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin-top:6px}
 .r-time{font:500 48px/1.1 var(--display);color:var(--gold-hi);font-variant-numeric:tabular-nums;margin-top:6px}
 .r-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
@@ -641,8 +644,8 @@ mB_t:'เซอร์ไพรส์วันครบรอบ',mB_s:'คุณ
 mB_1:'{d} รอบถัดจาก 19:30',mB_2:'VIP Diamond 2 ที่นั่งติดกัน',mB_3:'บุฟเฟต์ Thai Marché 2 ที่',mB_4:'สปาร์กลิงไวน์ 2 แก้ว',mB_5:'ใช้โปรโมชั่นลดค่าบุฟเฟต์',mB_6:'จ่ายด้วยบัตรเครดิต',mB_7:'ครั้งแรกให้กด "จำลอง: จ่ายไม่สำเร็จ" แล้วจ่ายใหม่จนสำเร็จ',
 mC_t:'ไกด์พากรุ๊ปทัวร์จีน',mC_s:'คุณเป็นไกด์พานักท่องเที่ยวจีน 5 คนที่มีงบจำกัด ลูกทัวร์อ่านภาษาไทยไม่ได้ จึงต้องจองในหน้าภาษาอังกฤษ',
 mC_1:'เปลี่ยนเว็บเป็นภาษาอังกฤษก่อนจอง',mC_2:'{d} รอบไหนก็ได้',mC_3:'Mezzanine 5 ที่นั่ง',mC_4:'ทั้ง 5 ที่นั่งติดกันในแถวเดียว',mC_5:'ไม่สั่งอาหารและเครื่องดื่ม',mC_6:'ใช้โปรโมชั่นที่ประหยัดที่สุดสำหรับกลุ่มนี้',mC_7:'สัญชาติ Chinese',mC_8:'จ่ายผ่าน Alipay',mD_t:'คู่ฮันนีมูนจากอินเดีย',mD_s:'คุณเป็นคู่แต่งงานใหม่จากอินเดีย วางแผนมาฮันนีมูนที่พัทยา อยากดูโชว์รอบ 21:00 ของ{d} และอยากได้ส่วนลดเพราะจองล่วงหน้า',mD_1:'{d} รอบ 21:00',mD_2:'VIP Silver 2 ที่นั่งติดกัน',mD_3:'สปาร์กลิงไวน์ 2 แก้ว',mD_4:'ใช้โปรโมชั่นจองล่วงหน้า',mD_5:'สัญชาติ Indian',mD_6:'จ่ายด้วยบัตรเครดิต',mE_t:'แก๊งเพื่อนจากเกาหลี',mE_s:'คุณมากับเพื่อนชาวเกาหลีรวม 6 คน อยากดูรอบ 19:30 ของ{d} นั่งติดกันทั้งแก๊งในโซน VIP Gold พร้อมชุดขนมคนละชุด และใช้โปรที่คุ้มที่สุดสำหรับกลุ่ม',mE_1:'{d} รอบ 19:30',mE_2:'VIP Gold 6 ที่นั่ง',mE_3:'ทั้ง 6 ที่นั่งติดกันในแถวเดียว',mE_4:'ชุดขนมและน้ำอัดลม 6 ชุด',mE_5:'ใช้โปรโมชั่นสำหรับกลุ่ม',mE_6:'สัญชาติ Korean',mE_7:'จ่ายด้วยบัตรเครดิต',
-s_title:'แบบประเมินสั้นๆ',s_sub:'6 ข้อ ใช้เวลาไม่ถึง 1 นาที',s_q1:'เลือกวันและรอบการแสดงได้ง่ายแค่ไหน',s_q2:'เลือกที่นั่งบนผังได้ง่ายแค่ไหน',s_q3:'โปรโมชั่นและราคาเข้าใจได้ชัดเจนแค่ไหน',s_q4:'กรอกข้อมูลและชำระเงินได้ง่ายแค่ไหน',s_q5:'โดยรวมพอใจกับการจองครั้งนี้แค่ไหน',
-s_q6:'ข้อเสนอแนะเพิ่มเติม',s_q6_ph:'ตรงไหนที่สับสน หรืออยากให้ปรับอะไร',s_lo_easy:'ยากมาก',s_hi_easy:'ง่ายมาก',s_lo_clear:'ไม่ชัดเลย',s_hi_clear:'ชัดมาก',s_lo_sat:'ไม่พอใจ',s_hi_sat:'พอใจมาก',
+s_title:'แบบประเมินสั้นๆ',s_sub:'7 ข้อ ใช้เวลาไม่ถึง 1 นาที',s_q1:'เลือกวันและรอบการแสดงได้ง่ายแค่ไหน',s_q2:'เลือกที่นั่งบนผังได้ง่ายแค่ไหน',s_q3:'โปรโมชั่นและราคาเข้าใจได้ชัดเจนแค่ไหน',s_q4:'กรอกข้อมูลและชำระเงินได้ง่ายแค่ไหน',s_q5:'โดยรวมพอใจกับการจองครั้งนี้แค่ไหน',
+s_q6:'ข้อเสนอแนะเพิ่มเติม',s_cf:'คุณงงหรือสับสนหรือไม่',s_cf_y:'งง',s_cf_n:'ไม่งง',d_confused:'ตอบว่างง',s_q6_ph:'ตรงไหนที่สับสน หรืออยากให้ปรับอะไร',s_lo_easy:'ยากมาก',s_hi_easy:'ง่ายมาก',s_lo_clear:'ไม่ชัดเลย',s_hi_clear:'ชัดมาก',s_lo_sat:'ไม่พอใจ',s_hi_sat:'พอใจมาก',
 s_err:'เลือกคะแนนข้อนี้ก่อน',s_missing:'ยังเหลือ {n} ข้อที่ยังไม่ได้ให้คะแนน',s_submit:'ส่งแบบประเมิน',
 r_time:'เวลาที่ใช้จองจนสำเร็จ',r_gaveup:'ข้ามก่อนจองสำเร็จ',r_score:'ทำตามโจทย์ได้',r_sat:'ความพอใจโดยรวม',r_sending:'กำลังส่งผล…',r_sent:'ส่งผลให้ผู้จัดทดสอบแล้ว ขอบคุณที่ช่วยทดสอบ',
 r_nosend:'หน้านี้ส่งผลอัตโนมัติไม่ได้ กดบันทึกผลเป็นรูปภาพ แล้วส่งรูปทาง LINE หรืออีเมลให้ผู้จัดทดสอบแทน',r_save:'บันทึกผลเป็นรูปภาพ',r_saved:'บันทึกรูปแล้ว ส่งรูปนี้ทาง LINE หรืออีเมลให้ผู้จัดทดสอบได้เลย',r_save_fail:'สร้างรูปไม่สำเร็จ กดคัดลอกผลลัพธ์แทน',r_proto:'ต้นแบบเพื่อการออกแบบ · ไม่ใช่เว็บไซต์ทางการของ Tiffany’s Show',r_comment:'ความคิดเห็น',r_copy:'คัดลอกผลลัพธ์',r_copied:'คัดลอกแล้ว นำไปวางใน LINE หรืออีเมลได้เลย',r_copy_fail:'คัดลอกอัตโนมัติไม่ได้ เลือกข้อความด้านล่างแล้วคัดลอกเอง',
@@ -709,8 +712,8 @@ mB_t:'Anniversary surprise',mB_s:'You are taking your partner to the show for yo
 mB_1:'{d}, the show after 19:30',mB_2:'2 VIP Diamond seats next to each other',mB_3:'2 Thai Marché buffets',mB_4:'2 glasses of sparkling wine',mB_5:'The promotion that discounts the buffet',mB_6:'Pay by credit card',mB_7:'First tap "Simulate: payment fails", then pay again until it works',
 mC_t:'Tour guide with a Chinese group',mC_s:'You guide 5 Chinese tourists on a tight budget. They can’t read Thai, so you book on the English site.',
 mC_1:'Switch the site to English before booking',mC_2:'{d}, any showtime',mC_3:'5 seats in Mezzanine',mC_4:'All 5 seats next to each other in one row',mC_5:'No food or drinks',mC_6:'The cheapest promotion for this group',mC_7:'Nationality: Chinese',mC_8:'Pay with Alipay',mD_t:'Honeymoon couple from India',mD_s:'You are newlyweds from India planning a honeymoon in Pattaya. You want the 21:00 show on {d}, and a discount for booking early.',mD_1:'21:00 show on {d}',mD_2:'2 seats next to each other in VIP Silver',mD_3:'2 glasses of sparkling wine',mD_4:'The early-booking promotion',mD_5:'Nationality: Indian',mD_6:'Pay by credit card',mE_t:'Friends trip from Korea',mE_s:'You travel with friends from Korea, 6 people in all. You want the 19:30 show on {d}, everyone together in VIP Gold, a snack set each, and the best promotion for a group.',mE_1:'19:30 show on {d}',mE_2:'6 seats in VIP Gold',mE_3:'All 6 seats next to each other in one row',mE_4:'6 snack & soft drink sets',mE_5:'The group promotion',mE_6:'Nationality: Korean',mE_7:'Pay by credit card',
-s_title:'Quick survey',s_sub:'6 questions, under a minute',s_q1:'How easy was it to choose the date and showtime?',s_q2:'How easy was it to choose seats on the map?',s_q3:'How clear were the promotions and prices?',s_q4:'How easy was it to fill in your details and pay?',s_q5:'Overall, how satisfied are you with this booking?',
-s_q6:'Any other suggestions?',s_q6_ph:'What was confusing, or what would you change?',s_lo_easy:'Very hard',s_hi_easy:'Very easy',s_lo_clear:'Not clear',s_hi_clear:'Very clear',s_lo_sat:'Not satisfied',s_hi_sat:'Very satisfied',
+s_title:'Quick survey',s_sub:'7 questions, under a minute',s_q1:'How easy was it to choose the date and showtime?',s_q2:'How easy was it to choose seats on the map?',s_q3:'How clear were the promotions and prices?',s_q4:'How easy was it to fill in your details and pay?',s_q5:'Overall, how satisfied are you with this booking?',
+s_q6:'Any other suggestions?',s_cf:'Did anything confuse you?',s_cf_y:'Confused',s_cf_n:'Not confused',d_confused:'Said confused',s_q6_ph:'What was confusing, or what would you change?',s_lo_easy:'Very hard',s_hi_easy:'Very easy',s_lo_clear:'Not clear',s_hi_clear:'Very clear',s_lo_sat:'Not satisfied',s_hi_sat:'Very satisfied',
 s_err:'Pick a score for this question',s_missing:'{n} questions still need a score',s_submit:'Send survey',
 r_time:'Time to a confirmed booking',r_gaveup:'Skipped before finishing',r_score:'Mission items done',r_sat:'Overall satisfaction',r_sending:'Sending your result…',r_sent:'Your result was sent to the test organiser. Thanks for helping.',
 r_nosend:'This page could not send your result automatically. Save it as an image and send it to the organiser by LINE or email.',r_save:'Save result as image',r_saved:'Image saved. Send it to the organiser by LINE or email.',r_save_fail:'Could not create the image. Copy the result instead.',r_proto:'Design prototype · Not the official Tiffany’s Show website',r_comment:'Comment',r_copy:'Copy result',r_copied:'Copied. Paste it into LINE or an email.',r_copy_fail:'Could not copy automatically. Select the text below and copy it.',
@@ -862,7 +865,7 @@ const deckIds=()=>Object.keys(MISSIONS).filter(id=>!MISSIONS[id].std);
 const DEPTS=['perf','prod','box','svc','mkt','fin','hr','it'],deptName=k=>k?t('dp_'+k):'';
 const viaLabel=v=>t(v==='card'?'r_via_card':v==='spin'?'r_via_spin':v==='std'?'r_via_std':'r_via_self');
 const FREE='F',isFree=id=>id===FREE,mTag=id=>isFree(id)?t('fr_tag'):MISSIONS[id].std?t('mu_tag'):t('g_m',{n:MISSIONS[id].num});
-const newGame=()=>({mission:null,via:null,wallet:[],start:0,end:0,steps:{},cur:null,curAt:0,ev:{},ratings:[0,0,0,0,0],comment:'',gaveUp:false,sErr:false,send:null,run:null});
+const newGame=()=>({mission:null,via:null,wallet:[],start:0,end:0,steps:{},cur:null,curAt:0,ev:{},ratings:[0,0,0,0,0],confused:null,comment:'',gaveUp:false,sErr:false,send:null,run:null});
 const S={lang:'th',mode:'intro',nick:'',dept:'',deptErr:false,revealed:false,pick:null,pickVia:null,nickErr:false,spinning:false,justLanded:false,g:newGame(),step:1,sub:'food',dateIdx:0,time:null,seats:[],zone:null,zonePref:null,zoomIdx:1,food:{},promo:null,promoInput:'',promoErr:false,
   form:{name:'',email:'',cc:'+66',phone:'',nat:''},pay:'card',agree:false,errors:{},sumOpen:false,holdEnd:null,booking:null,ap:{n:2,zone:'gold'},sheetLocked:false,pcIdx:0,
   isOwner:false,dashRuns:null,dashState:null};
@@ -1142,8 +1145,9 @@ function viewGoals(){
 }
 const viewBrief=()=>missionCard()+`<p class="fs mt12">${t('g_timer_note')}</p>`;
 function viewSurvey(){
-  return`<h2 class="ttl">${t('s_title')}</h2><p class="fs">${t('s_sub')}</p>${SQ.map(([q,lo,hi],i)=>{const v=S.g.ratings[i],bad=S.g.sErr&&!v;return`<fieldset class="q${bad?' bad':''}"><legend class="q-t">${i+1}. ${t(q)}</legend><div class="rate">${[1,2,3,4,5].map(n=>`<button data-act="rate" data-q="${i}" data-v="${n}" class="${v===n?'on':''}" aria-pressed="${v===n}" aria-label="${n} / 5">${n}</button>`).join('')}</div><div class="rate-ends"><span>${t(lo)}</span><span>${t(hi)}</span></div>${bad?`<div class="err">${t('s_err')}</div>`:''}</fieldset>`}).join('')}
-<div class="q"><label for="s-comment" class="q-t">6. ${t('s_q6')}</label><textarea id="s-comment" class="in" rows="4" maxlength="1000" placeholder="${t('s_q6_ph')}">${esc(S.g.comment)}</textarea></div>`;
+  const cf=S.g.confused,cfBad=S.g.sErr&&cf===null;
+  return`<h2 class="ttl">${t('s_title')}</h2><p class="fs">${t('s_sub')}</p><fieldset class="q${cfBad?' bad':''}"><legend class="q-t">1. ${t('s_cf')}</legend><div class="cf">${[[true,'s_cf_y'],[false,'s_cf_n']].map(([v,k])=>`<button data-act="cf" data-v="${v?1:0}" class="${cf===v?'on':''}" aria-pressed="${cf===v}">${t(k)}</button>`).join('')}</div></fieldset>${SQ.map(([q,lo,hi],i)=>{const v=S.g.ratings[i],bad=S.g.sErr&&!v;return`<fieldset class="q${bad?' bad':''}"><legend class="q-t">${i+2}. ${t(q)}</legend><div class="rate">${[1,2,3,4,5].map(n=>`<button data-act="rate" data-q="${i}" data-v="${n}" class="${v===n?'on':''}" aria-pressed="${v===n}" aria-label="${n} / 5">${n}</button>`).join('')}</div><div class="rate-ends"><span>${t(lo)}</span><span>${t(hi)}</span></div>${bad?`<div class="err">${t('s_err')}</div>`:''}</fieldset>`}).join('')}
+<div class="q"><label for="s-comment" class="q-t">7. ${t('s_q6')}</label><textarea id="s-comment" class="in" rows="4" maxlength="1000" placeholder="${t('s_q6_ph')}">${esc(S.g.comment)}</textarea></div>`;
 }
 function viewResult(){
   const r=S.g.run,send=S.g.send;
@@ -1316,7 +1320,7 @@ function grade(){
 function buildRun(){
   const g=S.g,checks=grade(),b=g.gaveUp?null:S.booking;
   return{v:1,at:new Date().toISOString(),dev:devId(),nick:S.nick.trim().slice(0,40),dept:S.dept,mission:g.mission,via:g.via,missionTitle:t('m'+g.mission+'_t'),lang:S.lang,ms:g.end-g.start,gaveUp:g.gaveUp,
-    score:checks.filter(c=>c.ok).length,max:checks.length,checks,steps:{...g.steps},ev:{...g.ev},ratings:[...g.ratings],comment:g.comment.trim().slice(0,1000),
+    score:checks.filter(c=>c.ok).length,max:checks.length,checks,steps:{...g.steps},ev:{...g.ev},ratings:[...g.ratings],confused:g.confused,comment:g.comment.trim().slice(0,1000),
     booking:b?{date:ymd(DATES[b.date]),time:b.time,seats:b.seats,food:b.food,promo:b.promo,promoOk:b.promoOk,pay:b.pay,nat:b.nat,total:b.total,disc:b.disc,opts:b.opts}:null,
     summary:isFree(g.mission)?freeSummary(b,g):null,coupons:[...g.wallet],width:window.innerWidth};
 }
@@ -1350,7 +1354,11 @@ async function submitRun(){
   const r=S.g.run;S.g.send='sending';
   try{
     const F=await fb();
-    if(F)await F.f.addDoc(F.f.collection(F.db,'runs'),fbDoc(r,F.f.serverTimestamp()));
+    // If the database rules do not accept the confused answer yet, still save the run without it.
+    if(F){
+      const add=d=>F.f.addDoc(F.f.collection(F.db,'runs'),d),doc=fbDoc(r,F.f.serverTimestamp());
+      try{await add(doc)}catch(e){if(!('confused' in doc))throw e;delete doc.confused;await add(doc)}
+    }
     else await submitClaude(r);
     S.g.send='sent';
   }catch(e){S.g.send='failed'}
@@ -1370,7 +1378,7 @@ async function submitClaude(r){
 function fbDoc(r,at){
   const ints=o=>Object.fromEntries(Object.entries(o||{}).map(([k,v])=>[k,Math.round(v)||0]));
   return{v:1,at,dev:r.dev,nick:r.nick,dept:r.dept,mission:r.mission,via:r.via||'',free:isFree(r.mission),lang:r.lang,ms:Math.round(r.ms),gaveUp:!!r.gaveUp,
-    score:r.score,max:r.max,checks:r.checks.map(c=>({k:c.k,ok:c.ok})),steps:ints(r.steps),ev:ints(r.ev),ratings:r.ratings.map(v=>+v||0),comment:r.comment,booking:r.booking,coupons:r.coupons||[]};
+    score:r.score,max:r.max,checks:r.checks.map(c=>({k:c.k,ok:c.ok})),steps:ints(r.steps),ev:ints(r.ev),ratings:r.ratings.map(v=>+v||0),comment:r.comment,booking:r.booking,coupons:r.coupons||[],...(typeof r.confused==='boolean'?{confused:r.confused}:{})};
 }
 const IMG_C={bg:'#1b1b1c',surface:'#25252c',line:'rgba(255,255,255,.12)',text:'#f4f4f8',muted:'#b6b6c4',faint:'#868696',gold:'#5f5cfa',goldHi:'#e697f6',goldInk:'#1b1b1c',ok:'#7fdcae',danger:'#ff9191'};
 const IMG_DISP="'Chiswick Sans Text','Instrument Sans','Nirand','Anuphan',system-ui,sans-serif",IMG_BODY="'Nirand','Anuphan',system-ui,-apple-system,sans-serif";
@@ -1605,6 +1613,7 @@ function renderStats(){
     const who=r=>`<div class="lb-who"><b>${esc(r.nick)}${r.dev===me?`<em>${t('lb_mine')}</em>`:''}</b><span>${esc(deptName(r.dept))}${ST.tab==='all'?` · ${mTag(r.mission)}`:''}</span></div><div class="lb-res"><b>${fmtDur(r.ms)}</b><span>${r.score}/${r.max}</span></div>`;
     const tabs=[['G',t('mu_tag')],['all',t('lb_all')],...deckIds().map(id=>[id,mTag(id)])];
     const tiles=[[t('lb_people'),new Set(runs.map(r=>r.dev)).size],[t('lb_runs'),runs.length],[t('lb_depts'),`${per.filter(p=>p.people).length}/${DEPTS.length}`]];
+    const cfa=runs.filter(r=>typeof r.confused==='boolean');if(isAdmin&&cfa.length)tiles.push([t('d_confused'),`${cfa.filter(r=>r.confused).length}/${cfa.length}`]);
     body=`<div class="tiles">${tiles.map(([l,v])=>`<div class="stat"><span>${l}</span><b>${v}</b></div>`).join('')}</div>
 <div class="dcard"><div class="lb-h"><h3>${t('lb_board')}</h3><span class="live"><i></i>${t('lb_live')}</span></div><p class="muted sm" style="margin:0 0 12px">${t(ST.tab==='G'?'lb_rule_mu':'lb_rule')}</p>
 <div class="lb-tabs" role="tablist">${tabs.map(([v,l])=>`<button role="tab" data-act="lbTab" data-v="${v}" class="${ST.tab===v?'on':''}" aria-selected="${ST.tab===v}">${l}</button>`).join('')}</div>
@@ -1618,10 +1627,10 @@ ${per.map(p=>`<div class="dp-row"><div class="dp-top"><span>${esc(deptName(p.k))
 // Every stored run as a spreadsheet; open the page with ?admin to see the button.
 function fbCsv(runs){
   const q=v=>{let x=String(v??'');if(/^[=+\-@]/.test(x))x="'"+x;return`"${x.replace(/"/g,'""')}"`};
-  const head=['submitted_at','nickname','department','mission','via','seconds','gave_up','score','max','q1_showtime','q2_seats','q3_promo','q4_payment','q5_overall','comment','showtime_s','seats_s','food_s','pay_s','pay_recover_s','missed','total','promo','collected','events','device'];
+  const head=['submitted_at','nickname','department','mission','via','seconds','gave_up','score','max','confused','q1_showtime','q2_seats','q3_promo','q4_payment','q5_overall','comment','showtime_s','seats_s','food_s','pay_s','pay_recover_s','missed','total','promo','collected','events','device'];
   return'﻿'+[head.join(','),...runs.map(r=>{
     const m=MISSIONS[r.mission],d=m?fmtLong(DATES[m.day]):'',at=r.at&&r.at.toDate?r.at.toDate().toISOString():'';
-    return[at,r.nick,deptName(r.dept),isFree(r.mission)?t('fr_tag'):mTag(r.mission),r.via,Math.round(r.ms/1000),r.gaveUp,r.score,r.max,...[0,1,2,3,4].map(i=>(r.ratings||[])[i]),r.comment,
+    return[at,r.nick,deptName(r.dept),isFree(r.mission)?t('fr_tag'):mTag(r.mission),r.via,Math.round(r.ms/1000),r.gaveUp,r.score,r.max,r.confused===true?'yes':r.confused===false?'no':'',...[0,1,2,3,4].map(i=>(r.ratings||[])[i]),r.comment,
       ...STEPK.map(k=>Math.round(((r.steps||{})[k]||0)/1000)),(r.steps||{}).recover?Math.round(r.steps.recover/1000):'',(r.checks||[]).filter(c=>!c.ok).map(c=>t(c.k,{d})).join('; '),r.booking?r.booking.total:'',r.booking?r.booking.promo||'':'',(r.coupons||[]).join('; '),
       EVK.filter(k=>(r.ev||{})[k]).map(k=>`${k}=${r.ev[k]}`).join('; '),r.dev].map(q).join(',')})].join('\n');
 }
@@ -1750,8 +1759,9 @@ const ACT={
   giveup(){closeSheet();S.g.gaveUp=true;S.g.end=Date.now();S.holdEnd=null;S.mode='survey';render()},
   toSurvey(){S.mode='survey';render()},
   rate(el){S.g.ratings[+el.dataset.q]=+el.dataset.v;render(true)},
+  cf(el){S.g.confused=el.dataset.v==='1';render(true)},
   sSubmit(){
-    const miss=S.g.ratings.filter(v=>!v).length;
+    const miss=S.g.ratings.filter(v=>!v).length+(S.g.confused===null?1:0);
     if(miss){S.g.sErr=true;render(true);$('.q.bad')?.scrollIntoView({block:'center',behavior:'smooth'});toast(t('s_missing',{n:miss}));return}
     S.g.run=buildRun();if(!isFree(S.g.mission)&&!MISSIONS[S.g.mission].std)markPlayed(S.g.mission);S.mode='result';render();openThanks();submitRun();watchRuns();
   },

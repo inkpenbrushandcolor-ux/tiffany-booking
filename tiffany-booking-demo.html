@@ -421,7 +421,7 @@ $('#layer').addEventListener('click',e=>{
 const SEASONS={normal:{art:'star'},xmas:{art:'xmas'},halloween:{art:'halloween'},songkran:{art:'songkran'}};
 const rnd=(a,b)=>a+Math.random()*(b-a);
 function fxStart(name){
-  const fx=$('#fx'),art=(SEASONS[name]||SEASONS.normal).art,N=16;
+  const fx=$('#fx'),art=(SEASONS[name]||SEASONS.normal).art;
   fx.getAnimations?.({subtree:true}).forEach(a=>a.cancel());fx.innerHTML='';
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const drop=(el,first)=>{
@@ -433,8 +433,9 @@ function fxStart(name){
     const a=el.animate([{opacity:0,transform:at(0)},{opacity:o,transform:at(.2),offset:.2},{opacity:o,transform:at(.7),offset:.7},{opacity:0,transform:at(1)}],{duration:d,delay:first?rnd(0,d):rnd(0,1500),easing:'linear',fill:'backwards'});
     a.onfinish=()=>drop(el,false);
   };
-  // a festive season mixes its head with a few logo sparkles
-  for(let k=0;k<N;k++){const kk=art==='star'||k%3===2?'star':art,el=document.createElement('i');el.dataset.k=kk;el.className=kk==='star'?'st':'';el.innerHTML=`<img src="demo-img/fx-${kk}.svg" alt="">`;fx.appendChild(el);drop(el,true)}
+  // normal: 16 sparkles; a festive season: 6 heads mixed with 5 sparkles
+  const pieces=art==='star'?Array(16).fill('star'):[...Array(6).fill(art),...Array(5).fill('star')];
+  for(const kk of pieces){const el=document.createElement('i');el.dataset.k=kk;el.className=kk==='star'?'st':'';el.innerHTML=`<img src="demo-img/fx-${kk}.svg" alt="">`;fx.appendChild(el);drop(el,true)}
 }
 let season=new URLSearchParams(location.search).get('season');if(!SEASONS[season])season='normal';
 function setSeason(n){season=n;fxStart(n);$$('#seasons button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.season===n));

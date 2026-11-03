@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="352.65 281.10 63.70 63.70"><defs>
+    <style>
+      .st0, .st1, .st2 {
+        fill: none;
+      }
+
+      .st3, .st4 {
+        fill: #2b2445;
+      }
+
+      .st5 {
+        isolation: isolate;
+        opacity: .12;
+      }
+
+      .st1, .st6 {
+        stroke: #fff;
+        stroke-miterlimit: 3.68;
+      }
+
+      .st1, .st2 {
+        stroke-width: 5.34px;
+      }
+
+      .st1, .st2, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16, .st17, .st18, .st19, .st20, .st21, .st22, .st23 {
+        stroke-linecap: round;
+      }
+
+      .st24 {
+        fill: #f29a1f;
+      }
+
+      .st25 {
+        fill: #ffc83d;
+      }
+
+      .st26, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16, .st17, .st18, .st19, .st20, .st21, .st22, .st23 {
+        fill: #eae9f3;
+      }
+
+      .st6 {
+        stroke-width: .09px;
+      }
+
+      .st6, .st27 {
+        fill: #fff;
+      }
+
+      .st28 {
+        fill: #605cfc;
+      }
+
+      .st4 {
+        stroke-miterlimit: 3.76;
+        stroke-width: .66px;
+      }
+
+      .st4, .st2, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16, .st17, .st18, .st19, .st20, .st21, .st22, .st23 {
+        stroke: #eae9f3;
+      }
+
+      .st2, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16, .st17, .st18, .st19, .st20, .st21, .st22, .st23 {
+        stroke-linejoin: round;
+      }
+
+      .st29 {
+        fill: #ff8a1f;
+      }
+
+      .st7 {
+        stroke-width: 1.7px;
+      }
+
+      .st8 {
+        stroke-width: 1.7px;
+      }
+
+      .st9 {
+        stroke-width: 1.7px;
+      }
+
+      .st10 {
+        stroke-width: 1.7px;
+      }
+
+      .st11 {
+        stroke-width: 1.7px;
+      }
+
+      .st12 {
+        stroke-width: 1.7px;
+      }
+
+      .st13 {
+        stroke-width: 1.7px;
+      }
+
+      .st14 {
+        stroke-width: 1.7px;
+      }
+
+      .st15 {
+        stroke-width: 1.7px;
+      }
+
+      .st16 {
+        stroke-width: 1.7px;
+      }
+
+      .st17 {
+        stroke-width: 1.7px;
+      }
+
+      .st18 {
+        stroke-width: 1.7px;
+      }
+
+      .st19 {
+        stroke-width: 1.7px;
+      }
+
+      .st20 {
+        stroke-width: 1.7px;
+      }
+
+      .st21 {
+        stroke-width: 1.7px;
+      }
+
+      .st22 {
+        stroke-width: 1.6px;
+      }
+
+      .st23 {
+        stroke-width: 1.56px;
+      }
+
+      .st30 {
+        fill: #e23b46;
+      }
+
+      .st31 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="st0" d="M275.75,295.54c2.15-6.77,6.48-16.44,11.19-23.02,2.22-3.1,5.38-5.4,9.09-5.68,2.83-.2,5.4,1.29,7.21,3.51-2.42-1.03-5.01-1.01-7.17.37-2.92,2.12-4.32,6.86-4,11.66.51,6.33,2.65,11.85,3.46,16.29-6.92,1.06-13.51.02-19.77-3.13Z" />
+    </clipPath>
+  </defs>
+  <path class="st26" d="M412.79,314.56v-3.26l-11.2-1c-8.03,0-14.53-6.67-14.53-14.89l-.95-13.33h-3.23l-.95,13.33c0,8.22-6.51,14.89-14.53,14.89l-11.2,1v3.26l11.2,1c8.03,0,14.53,6.67,14.53,14.89l.95,13.33h3.23l.95-13.33c0-8.22,6.51-14.89,14.53-14.89l11.2-1Z" />
+  </svg>

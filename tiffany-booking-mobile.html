@@ -401,6 +401,22 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 @keyframes cdgo{0%{transform:scale(.4);opacity:0}100%{transform:none;opacity:1}}
 .date .crn{position:absolute;top:4px;right:4px;color:var(--z-gold);line-height:0}.date .crn svg{width:13px;height:13px}
 .date.sel .crn{color:#fff}
+.sec-hc{align-items:center}
+.cal-btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 10px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);color:var(--text);font:500 13px var(--body);cursor:pointer;white-space:nowrap}
+.cal-btn svg{width:16px;height:16px}.cal-btn svg:last-child{width:14px;height:14px;color:var(--muted)}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin:12px 0 6px}.cal-nav b{font-size:15px;font-weight:600}
+.cal-nav .icon-btn:disabled{opacity:.3;cursor:default}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal-wd{font-size:11.5px;color:var(--faint);padding:4px 0}
+.cal-d{position:relative;height:44px;border:0;border-radius:12px;background:none;padding:0;display:grid;place-items:center;font:500 15px var(--display);color:var(--text);cursor:pointer}
+.cal-d:hover{background:var(--surface-2)}
+.cal-d.off,.cal-offk{color:var(--faint);opacity:.5;cursor:default}.cal-d.off:hover{background:none}
+.cal-offk{font:500 14px var(--display);opacity:.5}
+.cal-d.sel{background:var(--primary-grad);color:var(--on-primary)}.cal-d.today{padding-bottom:8px}
+.cal-d .spd{position:absolute;top:6px;right:8px}
+.cal-d .crn{position:absolute;top:3px;right:5px;color:var(--z-gold);line-height:0}.cal-d .crn svg{width:12px;height:12px}.cal-d.sel .crn{color:#fff}
+.cal-d .td{position:absolute;bottom:4px;left:0;right:0;font:500 9px/1 var(--body);color:inherit;opacity:.85}
+.cal-legend{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
 .legend-note{flex-wrap:wrap;gap:4px 14px}.legend-note>span{display:inline-flex;align-items:center;gap:6px}
 .crn-l{color:var(--z-gold);line-height:0}.crn-l svg{width:13px;height:13px}
 .ev-bar{display:flex;gap:12px;align-items:flex-start;margin:4px 0 12px;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(242,193,75,.16),rgba(230,151,246,.1));border:1px solid rgba(242,193,75,.45);animation:dropin .35s ease-out}
@@ -595,7 +611,7 @@ textarea.in{resize:vertical;min-height:96px;line-height:1.5}
 const I18N={
 th:{proto_banner:'ต้นแบบเพื่อการออกแบบ · ไม่ใช่เว็บไซต์ทางการของ Tiffany’s Show',step1:'รอบการแสดง',step2:'ที่นั่ง',step3:'ชำระเงิน',step4:'ตั๋ว',back:'ย้อนกลับ',close:'ปิด',cancel:'ยกเลิก',edit:'เปลี่ยนรอบ',remove:'เอาออก',
 show_tag:'A Spectacular World Class Show',show_meta:'แสดงทุกวัน วันละ 3 รอบ และมีรอบพิเศษในบางวัน',from_price:'บัตรเริ่มต้น',
-pick_date:'เลือกวันที่',pick_time:'เลือกรอบการแสดง',today:'วันนี้',special_note:'วันที่มีรอบพิเศษ',
+pick_date:'เลือกวันที่',pick_time:'เลือกรอบการแสดง',today:'วันนี้',special_note:'วันที่มีรอบพิเศษ',cal_open:'ดูปฏิทิน',cal_title:'เลือกวันที่',cal_prev:'เดือนก่อนหน้า',cal_next:'เดือนถัดไป',cal_off:'วันที่จองไม่ได้',
 avail:'ว่าง {n} ที่',low:'เหลือ {n} ที่',soldout:'เต็มแล้ว',closed:'ปิดขายออนไลน์',closed_sub:'จองผ่าน Live chat',special:'รอบพิเศษ',
 zones_title:'ราคาบัตรตามโซน',bar_nosel:'ยังไม่ได้เลือกรอบ',btn_seats:'เลือกที่นั่ง',
 hold:'ถือที่นั่งไว้ให้คุณอีก',seats_hint:'แตะที่นั่งเพื่อเลือก สูงสุด 10 ที่ เลื่อนผังซ้าย-ขวาได้',
@@ -652,7 +668,7 @@ r_nosend:'หน้านี้ส่งผลอัตโนมัติไม�
 r_show_text:'ดูข้อความผลลัพธ์',r_again:'เล่นอีกครั้ง',r_steps:'เวลาในแต่ละขั้น',r_checks:'ผลตามโจทย์',
 rt_head:'ผลทดสอบระบบจอง Tiffany’s (ต้นแบบ)',rt_tester:'ผู้ทดสอบ',rt_missed:'ข้อที่พลาด',rt_ratings:'คะแนน',rt_events:'สิ่งที่เกิดระหว่างจอง',
 rq1:'วัน/รอบ',rq2:'ที่นั่ง',rq3:'โปร/ราคา',rq4:'ชำระเงิน',rq5:'โดยรวม',k_showtime:'รอบ',k_seats:'ที่นั่ง',k_food:'อาหาร',k_pay:'ชำระเงิน',
-e_back:'กดย้อนกลับ',e_soldout:'แตะรอบที่เต็ม',e_closed:'แตะรอบที่ปิดขาย',e_taken:'แตะที่นั่งไม่ว่าง',e_promoFail:'ใส่โค้ดไม่ผ่าน',e_formErr:'กรอกฟอร์มไม่ผ่าน',e_payFail:'จ่ายไม่สำเร็จ',e_brief:'เปิดดูโจทย์ซ้ำ',e_expire:'หมดเวลาถือที่นั่ง',e_autopick:'ใช้เลือกที่นั่งอัตโนมัติ',e_promoTap:'แตะแบนเนอร์โปร',
+e_back:'กดย้อนกลับ',e_cal:'เปิดปฏิทิน',e_soldout:'แตะรอบที่เต็ม',e_closed:'แตะรอบที่ปิดขาย',e_taken:'แตะที่นั่งไม่ว่าง',e_promoFail:'ใส่โค้ดไม่ผ่าน',e_formErr:'กรอกฟอร์มไม่ผ่าน',e_payFail:'จ่ายไม่สำเร็จ',e_brief:'เปิดดูโจทย์ซ้ำ',e_expire:'หมดเวลาถือที่นั่ง',e_autopick:'ใช้เลือกที่นั่งอัตโนมัติ',e_promoTap:'แตะแบนเนอร์โปร',
 d_title:'ผลการทดสอบ',d_sub:'อัปเดตทันทีเมื่อมีคนส่งผล',d_runs:'จำนวนครั้งที่ทดสอบ',d_avg_time:'เวลาเฉลี่ย (คนที่จองสำเร็จ)',d_full:'ทำครบทุกข้อ',d_sat:'ความพอใจโดยรวมเฉลี่ย',
 d_by_mission:'แยกตามภารกิจ',d_mission:'ภารกิจ',d_n:'ครั้ง',d_avg_score:'ทำตามโจทย์ได้เฉลี่ย',d_missed:'ข้อที่พลาดบ่อย',d_ratings:'คะแนนเฉลี่ยรายข้อ',d_events:'สิ่งที่เกิดระหว่างจอง (รวมทุกคน)',d_list:'ผลรายคน',
 d_empty:'ยังไม่มีผลการทดสอบ ส่งลิงก์ให้ผู้ทดสอบ แล้วผลจะขึ้นที่นี่ทันที',d_close:'ปิด',d_csv:'คัดลอกเป็น CSV',d_copied:'คัดลอก CSV แล้ว วางใน Google Sheets หรือ Excel ได้เลย',d_csv_fail:'คัดลอกอัตโนมัติไม่ได้ เลือกข้อความด้านล่างแล้วคัดลอกเอง',
@@ -663,7 +679,7 @@ p_t1:'เริ่มที่หน้าเกม: รับโจทย์ �
 p_mock:'ข้อมูลที่ใช้',p_mock_body:'ราคาโซนมาจากเว็บปัจจุบัน ส่วนผังที่นั่ง จำนวนที่ว่าง เมนูอาหาร โปรโมชั่น และหน้าชำระเงินเป็นข้อมูลสมมุติ ระบบเก็บเฉพาะผลการทดสอบและแบบประเมิน ไม่เก็บข้อมูลที่กรอกในฟอร์มจอง'},
 en:{proto_banner:'Design prototype · Not the official Tiffany’s Show website',step1:'Showtime',step2:'Seats',step3:'Payment',step4:'Ticket',back:'Back',close:'Close',cancel:'Cancel',edit:'Change',remove:'Remove',
 show_tag:'A Spectacular World Class Show',show_meta:'Every day, 3 shows a day, plus special shows on some days',from_price:'Tickets from',
-pick_date:'Choose a date',pick_time:'Choose a showtime',today:'Today',special_note:'Days with a special show',
+pick_date:'Choose a date',pick_time:'Choose a showtime',today:'Today',special_note:'Days with a special show',cal_open:'View calendar',cal_title:'Select a date',cal_prev:'Previous month',cal_next:'Next month',cal_off:'Not available to book',
 avail:'{n} seats left',low:'Only {n} left',soldout:'Sold out',closed:'Online sales closed',closed_sub:'Book via live chat',special:'Special',
 zones_title:'Ticket prices by zone',bar_nosel:'No showtime selected',btn_seats:'Choose seats',
 hold:'Seats held for',seats_hint:'Tap seats to select, up to 10. Swipe the map sideways.',
@@ -720,7 +736,7 @@ r_nosend:'This page could not send your result automatically. Save it as an imag
 r_show_text:'Show result text',r_again:'Play again',r_steps:'Time per step',r_checks:'Mission checklist',
 rt_head:'Tiffany’s booking prototype – test result',rt_tester:'Tester',rt_missed:'Missed',rt_ratings:'Scores',rt_events:'During booking',
 rq1:'Date/time',rq2:'Seats',rq3:'Promos/prices',rq4:'Payment',rq5:'Overall',k_showtime:'Showtime',k_seats:'Seats',k_food:'Food',k_pay:'Payment',
-e_back:'Back taps',e_soldout:'Sold-out taps',e_closed:'Closed-show taps',e_taken:'Taken-seat taps',e_promoFail:'Promo code failures',e_formErr:'Form errors',e_payFail:'Failed payments',e_brief:'Re-read mission',e_expire:'Seat hold expired',e_autopick:'Used auto-pick',e_promoTap:'Promo banner taps',
+e_back:'Back taps',e_cal:'Opened the calendar',e_soldout:'Sold-out taps',e_closed:'Closed-show taps',e_taken:'Taken-seat taps',e_promoFail:'Promo code failures',e_formErr:'Form errors',e_payFail:'Failed payments',e_brief:'Re-read mission',e_expire:'Seat hold expired',e_autopick:'Used auto-pick',e_promoTap:'Promo banner taps',
 d_title:'Test results',d_sub:'Updates as soon as someone sends a result',d_runs:'Test runs',d_avg_time:'Average time (completed runs)',d_full:'Completed every item',d_sat:'Average overall satisfaction',
 d_by_mission:'By mission',d_mission:'Mission',d_n:'Runs',d_avg_score:'Average items done',d_missed:'Most missed',d_ratings:'Average score per question',d_events:'What happened during booking (all runs)',d_list:'Each run',
 d_empty:'No results yet. Share the link with testers and results appear here right away.',d_close:'Close',d_csv:'Copy as CSV',d_copied:'CSV copied. Paste it into Google Sheets or Excel.',d_csv_fail:'Could not copy automatically. Select the text below and copy it.',
@@ -857,7 +873,7 @@ const MISSIONS={
 };
 const SQ=[['s_q1','s_lo_easy','s_hi_easy'],['s_q2','s_lo_easy','s_hi_easy'],['s_q3','s_lo_clear','s_hi_clear'],['s_q4','s_lo_easy','s_hi_easy'],['s_q5','s_lo_sat','s_hi_sat']];
 const STEPK=['showtime','seats','food','pay'];
-const EVK=['back','soldout','closed','taken','promoFail','formErr','payFail','expire','brief','autopick','promoTap','retry','changePm','fe_name','fe_email','fe_phone','fe_agree'];
+const EVK=['back','cal','soldout','closed','taken','promoFail','formErr','payFail','expire','brief','autopick','promoTap','retry','changePm','fe_name','fe_email','fe_phone','fe_agree'];
 // Mission G's six checks line up one-to-one with the six goal cards.
 const GOALS=[['cal','gl_1'],['seat','gl_2'],['dish','gl_3'],['tag','gl_4'],['form','gl_5'],['card','gl_6']];
 const deckIds=()=>Object.keys(MISSIONS).filter(id=>!MISSIONS[id].std);
@@ -968,7 +984,7 @@ ${S.promo?`<div class="promo-chip">${t('promo_sel')}: <b>${S.promo}</b><button d
 function view1(){
   const d=DATES[S.dateIdx];
   return`${promoCarousel()}<section class="hero"><div class="eyebrow">${t('show_tag')}</div><h1>Tiffany's Show</h1><p>${t('show_meta')}</p><div class="from">${t('from_price')}<b>฿${fmt(Math.min(...Object.values(PRICES)))}</b></div></section>
-<div class="sec-h"><h2>${t('pick_date')}</h2><span class="muted sm">${monthLabel(d)}</span></div>
+<div class="sec-h sec-hc"><h2>${t('pick_date')}</h2><button class="cal-btn" data-act="calOpen" aria-haspopup="dialog" aria-label="${t('cal_open')}: ${monthLabel(d)}">${IC.cal}${monthLabel(d)}${CHEV_D}</button></div>
 <div class="dates" id="dates">${DATES.map((x,i)=>`<button class="date${i===S.dateIdx?' sel':''}" data-act="date" data-i="${i}" aria-pressed="${i===S.dateIdx}" aria-label="${fmtDate(x)}">${i===PRELIM_IDX?`<span class="crn">${IC.crown}</span>`:x.getDay()===6?'<span class="sp"></span>':''}<span class="dow">${i===0?t('today'):dow(x)}</span><span class="d">${x.getDate()}</span><span class="m">${mon(x)}</span></button>`).join('')}</div>
 <div class="legend-note"><span><span class="spd"></span>${t('special_note')}</span><span><span class="crn-l">${IC.crown}</span>${t('ev_note')}</span></div>
 <div class="sec-h"><h2>${t('pick_time')}</h2><span class="muted sm">${fmtDate(d)}</span></div>
@@ -1240,6 +1256,25 @@ setInterval(()=>{
 let toastT;
 function toast(m){const el=$('#toast');el.textContent=m;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2600)}
 function openSheet(html,locked=false){S.sheetLocked=locked;const l=$('#layer');l.innerHTML=`<div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${html}</div>`;l.hidden=false;l.querySelector('button')?.focus({preventScroll:true})}
+// Full-month calendar. Weeks start on Monday; only the bookable dates (DATES) can be picked.
+const CHEV_D=svg('<path d="m6 9 6 6 6-6"/>',14),CHEV_R=svg('<path d="m9 18 6-6-6-6"/>',16);
+const calMonths=()=>{const a=DATES[0],b=DATES[DATES.length-1];return(b.getFullYear()-a.getFullYear())*12+b.getMonth()-a.getMonth()};
+function calBody(){
+  const first=new Date(DATES[0].getFullYear(),DATES[0].getMonth()+S.calM,1),y=first.getFullYear(),m=first.getMonth(),days=new Date(y,m+1,0).getDate();
+  const wd=[1,2,3,4,5,6,0].map(i=>`<span class="cal-wd">${(S.lang==='th'?TH_DOW:EN_DOW)[i]}</span>`).join('');
+  const cells=[];for(let k=(first.getDay()+6)%7;k>0;k--)cells.push('<span></span>');
+  for(let n=1;n<=days;n++){
+    const dt=new Date(y,m,n),i=Math.round((dt-DATES[0])/864e5),ok=i>=0&&i<DATES.length;
+    if(!ok){cells.push(`<span class="cal-d off" aria-hidden="true">${n}</span>`);continue}
+    const sp=dt.getDay()===6,cr=i===PRELIM_IDX,lab=[fmtDate(dt),sp&&t('special_note'),cr&&t('ev_note')].filter(Boolean).join(', ');
+    cells.push(`<button class="cal-d${i===S.dateIdx?' sel':''}${i===0?' today':''}" data-act="calPick" data-i="${i}" aria-label="${esc(lab)}"${i===S.dateIdx?' aria-current="date"':''}>${n}${cr?`<span class="crn">${IC.crown}</span>`:sp?'<span class="spd"></span>':''}${i===0?`<span class="td">${t('today')}</span>`:''}</button>`);
+  }
+  return`<div class="gw-h"><h3 style="margin:0">${t('cal_title')}</h3><button class="icon-btn" data-act="close" aria-label="${t('close')}">${IC.x}</button></div>
+<div class="cal-nav"><button class="icon-btn" data-act="calPrev" aria-label="${t('cal_prev')}"${S.calM<=0?' disabled':''}>${IC.back}</button><b aria-live="polite">${monthLabel(first)}</b><button class="icon-btn" data-act="calNext" aria-label="${t('cal_next')}"${S.calM>=calMonths()?' disabled':''}>${CHEV_R}</button></div>
+<div class="cal-g">${wd}${cells.join('')}</div>
+<div class="legend-note cal-legend"><span><span class="spd"></span>${t('special_note')}</span><span><span class="crn-l">${IC.crown}</span>${t('ev_note')}</span><span><b class="cal-offk" aria-hidden="true">1</b>${t('cal_off')}</span></div>`;
+}
+function calRedraw(act){const sh=$('#layer .sheet');if(!sh)return;sh.innerHTML=`<div class="grab"></div>${calBody()}`;const b=sh.querySelector(`[data-act="${act}"]:not([disabled])`)||sh.querySelector('[data-act="close"]');b?.focus({preventScroll:true})}
 function closeSheet(){const l=$('#layer');l.hidden=true;l.classList.remove('mid');l.innerHTML='';S.sheetLocked=false}
 
 function tick(){
@@ -1724,6 +1759,10 @@ const ACT={
   expireNow(){if(!S.holdEnd){toast(t('d_need_hold'));return}closeSheet();S.holdEnd=Date.now();tick()},
   reset(){const keep={lang:S.lang,isOwner:S.isOwner,dashRuns:S.dashRuns,dashState:S.dashState,nick:S.nick,dept:S.dept};Object.assign(S,JSON.parse(INIT_S),keep);closeSheet();render()},
   close(){closeSheet()},
+  calOpen(){ev('cal');const d=DATES[S.dateIdx];S.calM=(d.getFullYear()-DATES[0].getFullYear())*12+d.getMonth()-DATES[0].getMonth();openSheet(calBody());$('#layer .cal-d.sel')?.focus({preventScroll:true})},
+  calPrev(){S.calM=Math.max(0,S.calM-1);calRedraw('calPrev')},
+  calNext(){S.calM=Math.min(calMonths(),S.calM+1);calRedraw('calNext')},
+  calPick(el){ACT.date(el);closeSheet();scrollDateIntoView();$('.date.sel')?.focus({preventScroll:true})},
   tyClose(){const r=S.g.run;if(r&&MISSIONS[r.mission]?.std&&r.booking&&(r.booking.opts||[]).length){openPromoAns();return}ACT.paClose()},
   paClose(){closeSheet();if(ST.runs&&$('#r-live')){S.g.liveDrawn=false;liveUpdate()}},
   toIntro(){S.mode='intro';render()},
